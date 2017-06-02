@@ -80,7 +80,7 @@
                         <div class="menu-footer-box footer-box">
                             <h2 class="title14">How to Buy</h2>
                             <ul class="list-unstyled">
-                                <li><a href="#">Create an Account</a></li>
+                                <li><a href="?login">Create an Account</a></li>
                                 <li><a href="#">Making Payments</a></li>
                                 <li><a href="#">Delivery Options</a></li>
                                 <li><a href="#">Buyer Protection</a></li>
@@ -94,9 +94,8 @@
                             <ul class="list-unstyled">
                                 <li><a href="#">Customer Support</a></li>
                                 <li><a href="#">Affiliate Program</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Contact us</a></li>
+                                <li><a href="?about">About us</a></li>
+                                <li><a href="?contact">Contact us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -193,7 +192,7 @@
                         <p class="copyright">BookHive Kenya © <?php echo date("Y"); ?> bookhive.com. All rights reserved.</p>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        <p class="designby">Reliably by: <a href="http://reflexconcepts.co.ke" target="_blank" title="Reflex Concepts LTD | Difference, Delivery, Reliability">Reflex Concepts LTD</a></p>
+                        <p class="designby"><img src="images/logo/bookhive_logo.svg" width="60" alt="" /> | <a href="http://reflexconcepts.co.ke" target="_blank" title="Reflex Concepts LTD | Difference, Delivery, Reliability"><img src="images/logo/logo.svg" width="60" alt="" /></a></p>
                     </div>
                 </div>
             </div>
@@ -215,37 +214,6 @@
     </div>
 </div>
 <!-- End Wishlist Mask -->
-
-
-
-<div  id="boxes">
-    <div class="window" id="dialog">
-        <div class="window-popup text-center"> 
-            <div class="content-popup">
-                <a href="#" class="close-popup color"><i class="fa fa-times" aria-hidden="true"></i></a>
-                <h2 class="title30">Receive</h2>
-                <h2 class="title30">newsletters</h2>
-                <h3 class="title18">To not miss a good deal</h3>
-                <img src="images/shop/popup.jpg" alt="" class="image-popup" />
-                <form>
-                    <input type="text" value="Enter Your Email..." onfocus="if (this.value == this.defaultValue)
-                                                            this.value = ''" onblur="if (this.value == '')
-                                                                        this.value = this.defaultValue">
-                    <select class="select-location text-left">
-                        <option value="">--- Select your town ---</option>
-                        <option value="">Nairobi</option>
-                        <option value="">Kisumu</option>
-                    </select>
-                    <input type="submit" class="bg-color title18" value="become a member"/>
-                </form>
-                <div class="confirm-user clearfix">
-                    <a href="#" class="pull-left">Processing of personal data</a>
-                    <a href="#" class="pull-right">I am already a member</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="mask" ></div>
-</div>
+<?php //require_once 'modules/inc/newsletter.php'; ?>
 <!-- End Newsletter Popup -->
 <a href="#" class="radius scroll-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>

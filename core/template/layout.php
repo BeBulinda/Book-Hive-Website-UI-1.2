@@ -11,7 +11,7 @@ header('Content-Type: text/html; charset=UTF-8');
         <meta name="keywords" content="bookhive  kenya" />
         <meta name="robots" content="noodp,index,follow" />
         <meta name='revisit-after' content='1 days' />
-        
+
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="web/css/libs/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" href="web/css/libs/bootstrap.min.css"/>
@@ -24,7 +24,7 @@ header('Content-Type: text/html; charset=UTF-8');
         <link rel="stylesheet" type="text/css" href="web/css/libs/jquery.mCustomScrollbar.css"/>
         <link rel="stylesheet" type="text/css" href="web/css/libs/animate.css"/>
         <link rel="stylesheet" type="text/css" href="web/css/libs/hover.css"/>
-        <link rel="stylesheet" type="text/css" href="web/css/color-orange.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="web/css/color-red.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="web/css/theme.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="web/css/responsive.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="web/css/browser.css" media="all"/>
@@ -69,7 +69,11 @@ header('Content-Type: text/html; charset=UTF-8');
     <body style="background:#f4f4f4">
         <div class="wrap">
             <?php
-            require_once "header.php";
+            if (is_menu_set('quick-view') != "") {
+                
+            } else {
+                require_once "header.php";
+            }
             ?>
 
             <?php
@@ -77,7 +81,11 @@ header('Content-Type: text/html; charset=UTF-8');
             ?>
 
             <?php
-            require_once "footer.php";
+            if (is_menu_set('quick-view') != "") {
+                
+            } else {
+                require_once "footer.php";
+            }
             ?>
 
             <!-- Basic scripts -->  
@@ -86,7 +94,11 @@ header('Content-Type: text/html; charset=UTF-8');
             <script type="text/javascript" src="web/js/libs/jquery.fancybox.js"></script>
             <script type="text/javascript" src="web/js/libs/jquery-ui.min.js"></script>
             <script type="text/javascript" src="web/js/libs/owl.carousel.js"></script>
+            <script type="text/javascript" src="web/js/libs/jquery.jcarousellite.js"></script>
             <script type="text/javascript" src="web/js/libs/jquery.mCustomScrollbar.js"></script>
+            <script type="text/javascript" src="web/js/libs/jquery.flexslider.js"></script>
+            <script type="text/javascript" src="webjs/libs/jquery.elevatezoom.js"></script>
+            <script type="text/javascript" src="webjs/libs/TimeCircles.js"></script>
             <script type="text/javascript" src="web/js/libs/wow.js"></script>
             <script type="text/javascript" src="web/js/libs/popup.js"></script>
             <script type="text/javascript" src="web/js/theme.js"></script>
@@ -109,13 +121,13 @@ header('Content-Type: text/html; charset=UTF-8');
                 <?php
             }
             ?>
-            <?php if (!App::isLoggedIn()) { ?>
+<?php if (!App::isLoggedIn()) { ?>
                 <script>
                     jQuery(document).ready(function () {
                         App.initLogin();
                     });
                 </script>
-            <?php } else { ?>
+<?php } else { ?>
                 <script>
                     jQuery(document).ready(function () {
                         // initiate layout and plugins

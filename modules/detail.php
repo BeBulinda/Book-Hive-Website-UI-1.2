@@ -1,9 +1,7 @@
 <div id="content">
     <div class="content-page">
         <div class="container">
-            <div class="bread-crumb radius">
-                <a href="#">Home</a> <span>Fashion</span>
-            </div>
+             <?php require_once 'modules/inc/breadcrumbs.php'; ?>
             <!-- End Bread Crumb -->
             <div class="row">
                 <div class="col-md-9 col-sm-8 col-col-xs-12">

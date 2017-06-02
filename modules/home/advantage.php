@@ -7,7 +7,7 @@
                 </div>
                 <div class="adv-color-info">
                     <div class="inner-adv-color-info">
-                        <h2>Apple iPod</h2>
+                        <h2>E-Books</h2>
                         <p>Employment respond comed meaningful fight </p>
                         <a class="shopnow" href="#"><span>Shop now</span></a>
                     </div>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="adv-color-info">
                     <div class="inner-adv-color-info">
-                        <h2>iPod XKuti</h2>
+                        <h2>E-Learning</h2>
                         <p>Employment respond comed meaningful fight </p>
                         <a class="shopnow" href="#"><span>Shop now</span></a>
                     </div>

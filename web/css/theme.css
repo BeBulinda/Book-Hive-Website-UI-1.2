@@ -856,7 +856,7 @@ li.menu-item-has-children:hover > .sub-menu {
   top: 0;
   width: 40px;
   z-index: 9;
-  background-image: url("../images/theme/icon-search.png");
+  background-image: url("../icon-search.png");
   background-repeat: no-repeat;
   background-position: center center;
   transition: all 0.5s ease-out 0s;
@@ -3681,7 +3681,7 @@ li.menu-item-has-children:hover > .sub-menu {
   width: 61px;
 }
 .tab-detal {
-  margin-top: 50px;
+  margin-top: 0px;
 }
 .gallery-control {
   margin: auto;
@@ -14775,7 +14775,7 @@ a.protect-icon:hover {
   transition: all 0.5s ease-out 0s;
   -webkit-transition: all 0.5s ease-out 0s;
 }
-.form-contact input[type="text"] {
+.form-contact input[type="text"],input[type="number"],.form-magic {
   border: 1px solid #e5e5e5;
   color: #999;
   height: 42px;

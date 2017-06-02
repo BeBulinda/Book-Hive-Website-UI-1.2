@@ -5,7 +5,7 @@
         <?php require_once ('modules/home/best-sellers.php'); ?>
         <?php require_once ('modules/home/advantage.php'); ?>
         <?php require_once ('modules/home/new-arrivals.php'); ?>
-        <?php require_once ('modules/home/advantage-2.php'); ?>
+        <?php //require_once ('modules/home/advantage-2.php'); ?>
         <?php require_once ('modules/home/flagship-stores.php'); ?>
         <?php //require_once ('modules/home/advantage-3.php'); ?>
         <?php //require_once ('modules/home/fashion.php'); ?>

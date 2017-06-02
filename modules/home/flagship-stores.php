@@ -20,10 +20,10 @@
                         <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[1024,2],[1200,3]]" data-pagination="false">
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/fashion/15.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -31,19 +31,19 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/fashion/16.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -51,19 +51,19 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/fashion/13.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -71,10 +71,10 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
@@ -98,10 +98,10 @@
                         <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[1024,2],[1200,3]]" data-pagination="false">
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/beauty/2.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -109,19 +109,19 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/beauty/6.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -129,19 +129,19 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/beauty/4.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -149,10 +149,10 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
@@ -178,10 +178,10 @@
                         <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[1024,2],[1200,3]]" data-pagination="false">
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/fashion/9.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -189,19 +189,19 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/fashion/10.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -209,19 +209,19 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/fashion/2.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -229,10 +229,10 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
@@ -256,10 +256,10 @@
                         <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[1024,2],[1200,3]]" data-pagination="false">
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/homeware/1.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -267,19 +267,19 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/homeware/7.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -287,19 +287,19 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>
                             <div class="item-product4 item-product">
                                 <div class="product-thumb">
-                                    <a href="detail.html" class="product-thumb-link">
+                                    <a href="?product-page" class="product-thumb-link">
                                         <img src="images/photos/homeware/10.jpg" alt="" />
                                     </a>
-                                    <a href="quick-view.html" class="quickview-link plus fancybox.iframe">quick view</a>
+                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                     <div class="product-extra-link">
                                         <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                         <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -307,10 +307,10 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="detail.html">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                                     <div class="product-price">
-                                        <del><span>$400.00</span></del>
-                                        <ins><span>$360.00</span></ins>
+                                        <del><span>KES.400.00</span></del>
+                                        <ins><span>KES.360.00</span></ins>
                                     </div>
                                 </div>
                             </div>

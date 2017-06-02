@@ -1,9 +1,7 @@
 <div id="content">
     <div class="content-page">
         <div class="container">
-            <div class="bread-crumb radius">
-                <a href="#">Home</a> <span>Fashion</span>
-            </div>
+            <?php require_once 'modules/inc/breadcrumbs.php'; ?>
             <div class="content-404">
                 <img src="images/pages/404.png" alt="" />
             </div>
