@@ -11,7 +11,9 @@ header('Content-Type: text/html; charset=UTF-8');
         <meta name="keywords" content="bookhive  kenya" />
         <meta name="robots" content="noodp,index,follow" />
         <meta name='revisit-after' content='1 days' />
-
+        <link rel="icon" href="images/faviconr.ico" type="image/ico" sizes="16x16 32x32">
+        <link rel="icon" href="images/faviconr.png" type="image/png" sizes="16x16 32x32">
+        <link rel="icon" href="images/faviconr.svg" type="image/png" sizes="16x16 32x32">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="web/css/libs/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" href="web/css/libs/bootstrap.min.css"/>
