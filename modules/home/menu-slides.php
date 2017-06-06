@@ -5,8 +5,8 @@
                 <div class="cat-icon4">
                     <div class="wrap-cat-icon">
                         <ul class="list-cat-icon">
-                            <li class="has-cat-mega">
-                                <a href="?featured"><img src="images/cat-icon/cat1.png" alt=""><span>Featured Products</span></a>
+<!--                            <li class="has-cat-mega">
+                                <a href="?featured"><img src="images/cat-icon/cat1.png" alt=""><span>Featured Books</span></a>
                                 <div class="cat-mega-menu cat-mega-style1">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-3">
@@ -42,11 +42,11 @@
                                         </div>
                                     </div>
                                 </div> 
-                            </li>
+                            </li>-->
                             <li class="has-cat-mega">
-                                <a href="#"><img src="images/cat-icon/cat2.png" alt=""><span>Special Products</span></a>
+                                <a href="#"><img src="images/cat-icon/cat2.png" alt=""><span>Special Books</span></a>
                                 <div class="cat-mega-menu cat-mega-style2">
-                                    <h2 class="title-cat-mega-menu">Special products</h2>
+                                    <h2 class="title-cat-mega-menu">Special Books</h2>
                                     <div class="row">
                                         <div class="col-md-4 col-sm-3">
                                             <div class="item-product-ajax item-product first-item">
@@ -117,45 +117,43 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="?ecd"><img src="images/cat-icon/cat3.png" alt="" /><span>ECD Books</span></a></li>
-                            <li><a href="?primary"><img src="images/cat-icon/cat3.png" alt="" /><span>Primary Books</span></a></li>
-                            <li><a href="?secondary"><img src="images/cat-icon/cat4.png" alt="" /><span>Secondary Books</span></a></li>
-                            <li><a href="?lifestyle"><img src="images/cat-icon/cat8.png" alt="" /><span>Lifestyle Books</span></a></li>
-                            <li><a href="?religious"><img src="images/cat-icon/cat6.png" alt="" /><span>Religious Content</span></a></li>
-                        </ul>
+                            <li><a href="?ecd"><img src="images/cat-icon/cat3.png" alt="" /><span>English Books</span></a></li>
+                            <li><a href="?primary"><img src="images/cat-icon/cat4.png" alt="" /><span>Kiswahili Books</span></a></li>
+                            <li><a href="?secondary"><img src="images/cat-icon/cat6.png" alt="" /><span>Activity Books</span></a></li>
+                            </ul>
                     </div>
                 </div>
                 <div class="banner-slider banner-slider4 banner-direct-nav">
                     <div class="wrap-item" data-pagination="false" data-autoplay="true" data-navigation="true" data-itemscustom="[[0,1]]" data-transition="fade">
                         <div class="item-banner4">
                             <div class="banner-thumb">
-                                <a href="#"><img src="images/home4/slide1.jpg" alt="" /></a>
+                                <a href="#"><img src="modules/images/carousel/1.png" height="400" width="950" alt=""/></a>
                             </div>
-                            <div class="banner-info animated" data-animated="bounceInLeft">
+<!--                            <div class="banner-info animated" data-animated="bounceInLeft">
                                 <h2>Kids camping</h2>
                                 <h3>Longhorn</h3>
                                 <h3><strong>KES.450.00</strong></h3>
-                            </div>
+                            </div>-->
                         </div>
                         <div class="item-banner4">
                             <div class="banner-thumb">
-                                <a href="#"><img src="images/home4/slide2.jpg" alt="" /></a>
+                                <a href="#"><img src="modules/images/carousel/2.png" height="400" width="950" alt=""/></a>
                             </div>
-                            <div class="banner-info animated" data-animated="lightSpeedIn">
+<!--                            <div class="banner-info animated" data-animated="lightSpeedIn">
                                 <h2>The Littlest Bird</h2>
                                 <h3>100+ New Items</h3>
                                 <h3><strong>upto 50% off</strong></h3>
-                            </div>
+                            </div>-->
                         </div>
                         <div class="item-banner4">
                             <div class="banner-thumb">
-                                <a href="#"><img src="images/home4/slide3.jpg" alt="" /></a>
+                                <a href="#"><img src="modules/images/carousel/3.png" height="400" width="950" alt=""/></a>
                             </div>
-                            <div class="banner-info animated" data-animated="zoomInLeft">
+<!--                            <div class="banner-info animated" data-animated="zoomInLeft">
                                 <h2>The Littlest Bird</h2>
                                 <h3>Story Moja</h3>
                                 <h3><strong>KES.310.00</strong></h3>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -167,6 +165,7 @@
                     <div class="col-md-12 col-sm-6 col-xs-6">
                         <div class="item-adv item-adv4">
                             <div class="adv-thumb">
+                                <!--<a href="#"><img src="modules/images/books/adult/25473DF07130743085D22A51067566D6.JPG" alt="" /></a>-->
                                 <a href="#"><img src="images/photos/home4/ad-01.jpg" alt="" /></a>
                             </div>
                             <div class="adv-info">
@@ -177,6 +176,7 @@
                     <div class="col-md-12 col-sm-6 col-xs-6">
                         <div class="item-adv item-adv4">
                             <div class="adv-thumb">
+                                <!--<a href="#"><img src="modules/images/books/adult/D679CD205C3E9D3CFF6FD602B34D71E2.JPG" alt="" /></a>-->
                                 <a href="#"><img src="images/photos/home4/ad-02.jpg" alt="" /></a>
                             </div>
                             <div class="adv-info">

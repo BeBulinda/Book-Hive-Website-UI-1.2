@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="detail-info">
-                                    <h2 class="title-detail">New Favorite</h2>
+                                    <h2 class="title-detail">Book Title</h2>
                                     <div class="product-rate">
                                         <div style="width:90%" class="product-rating"></div>
                                     </div>

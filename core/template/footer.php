@@ -1,7 +1,7 @@
 <div id="footer">
     <div class="footer footer4">
         <div class="container">
-            <div class="service-footer">
+<!--            <div class="service-footer">
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="item-service-footer">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!-- End Service Footer -->
             <div class="footer-list-box">
                 <div class="row">
@@ -118,7 +118,7 @@
             <a href="#" class="wobble-vertical"><img src="images/home4/pay4.png" alt="" /></a>
         </div>
         <!-- End Payment -->
-        <div class="footer-tabs">
+<!--        <div class="footer-tabs">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -183,7 +183,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- End Footer Tab -->
         <div class="footer-copyright">
             <div class="container">
