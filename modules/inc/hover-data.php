@@ -27,27 +27,6 @@
                     </div>
                 </div>
             </li>
-            <li>
-                <div class="mini-cart-edit">
-                    <a class="delete-mini-cart-item" href="#"><i class="fa fa-trash-o"></i></a>
-                    <a class="edit-mini-cart-item" href="#"><i class="fa fa-pencil"></i></a>
-                </div>
-                <div class="mini-cart-thumb">
-                    <a href="#"><img alt="" src="images/home1/mini-cart-thumb.png"></a>
-                </div>
-                <div class="mini-cart-info">
-                    <h3><a href="#">Burberry Pink &amp; black</a></h3>
-                    <div class="info-price">
-                        <span>$59.52</span>
-                        <del>$17.96</del>
-                    </div>
-                    <div class="qty-product">
-                        <span class="qty-down">-</span>
-                        <span class="qty-num">1</span>
-                        <span class="qty-up">+</span>
-                    </div>
-                </div>
-            </li>
         </ul>
         <div class="mini-cart-total">
             <label>TOTAL</label>

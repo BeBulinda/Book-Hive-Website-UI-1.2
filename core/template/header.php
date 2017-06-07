@@ -5,44 +5,26 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="account-login">
-                            <a href="?verify_book">Verify Book</a>
-                            <a href="?report_piracy">Report Piracy</a>
-                            <a href="#">Register</a>
-                            <a href="?register_individual_user">Register1</a>
-                            <a href="?register_book_seller">Register2</a>
-                            <a href="?register_self_publisher">Register3</a>
-                            <!--                            <a href="?profile">My Account</a>
-                                                        <a href="?login">Login</a>
-                                                        <a href="?register">Register</a>
-                                                        <a href="?register_individual_user">Register1</a>
-                                                        <a href="?register_book_seller">Register2</a>
-                                                        <a href="?register_self_publisher">Register3</a>
-                                                        <a href="?report-piracy">Report Piracy</a>
-                                                        <a href="?tac">Privacy</a>-->
+                            <nav class="main-nav top-menu">
+                                <ul>
+                                    <li><a href="?verify_book">Verify Book</a></li>
+                                    <li><a href="?report_piracy">Report Piracy</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">Register</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="?register_individual_user">Register Individual User</a></li>
+                                            <li><a href="?register_book_seller">Register Book Seller</a></li>
+                                            <li><a href="?register_self_publisher">Register Self Publisher</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 hidden-xs">
                         <div class="currency-language">
                             <div class="currency-box">
-
-
-                                <a href="?login" class="currency-current"><span>Login</span></a>
-
-
-<!--                                <a href="#" class="language-current"><img src="images/flag/flag.png" alt="" /><span>English</span></a>
-<ul class="language-list list-unstyled">
-    <li><a href="#"><img src="images/flag/flag-en.png" alt="" /><span>English</span></a></li>
-    <li><a href="#"><img src="images/flag/flag-fr.png" alt="" /><span>French</span></a></li>
-    <li><a href="#"><img src="images/flag/flag-gm.png" alt="" /><span>German</span></a></li>
-</ul>
-</div>
-<div class="currency-box">
-<a href="#" class="currency-current"><span>KES</span></a>
-<ul class="currency-list list-unstyled">
-    <li><a href="#"><span class="currency-index">€</span>EUR</a></li>
-    <li><a href="#"><span class="currency-index">¥</span>JPY</a></li>
-    <li><a href="#"><span class="currency-index">KES.</span>USD</a></li>
-</ul>-->
+                                <a href="?login" class="currency-current">Login</a>
                             </div>
                             <div class="address-box">
                                 <a href="#" class="address-toggle"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
@@ -75,11 +57,6 @@
                                         <option value="all">All Categories</option>
                                         <option value="featured">Featured Products</option>
                                         <option value="ecd">ECD Books</option>
-
-                                        <!--                                    <li><a href="#">Primary Books</a></li>
-                                                                            <li><a href="#">Secondary Books</a></li>
-                                                                            <li><a href="#">Lifestyle Books</a></li>
-                                                                            <li><a href="#">Religious Books</a></li>-->
                                     </ul>
                                 </select>
                             </div>

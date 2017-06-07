@@ -808,7 +808,7 @@ li.menu-item-has-children:hover > .sub-menu {
 }
 .language-box .language-current::after,
 .currency-box .currency-current::after {
-  content: "";
+  /*content: "";*/
   display: inline-block;
   font-family: fontawesome;
   margin-left: 3px;
@@ -16225,4 +16225,7 @@ td.product-info-total .product-info .desc {
 }
 .desc-size-thumb .table-striped > tbody > tr > td {
   padding: 5px 20px;
+}
+.top-menu > ul > li > a {
+    padding: 2px 0px;
 }
