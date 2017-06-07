@@ -11,22 +11,22 @@
                                     <h2 class="title18">Billing Details</h2>
                                     <p class="clearfix box-col2">
                                         <input type="text" value="First Name *" onblur="if (this.value == '')
-                                                                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                                                                this.value = ''" />
+                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                                this.value = ''" />
                                         <input type="text" value="last name *" onblur="if (this.value == '')
-                                                                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                                                                this.value = ''" />
+                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                                this.value = ''" />
                                     </p>
                                     <p><input type="text" value="Company Name" onblur="if (this.value == '')
-                                                                                            this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                                                        this.value = ''" /></p>
+                                                this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                            this.value = ''" /></p>
                                     <p class="clearfix box-col2">
                                         <input type="text" value="Email *" onblur="if (this.value == '')
-                                                                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                                                                this.value = ''" />
+                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                                this.value = ''" />
                                         <input type="text" value="phone *" onblur="if (this.value == '')
-                                                                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                                                                this.value = ''" />
+                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                                this.value = ''" />
                                     </p>
                                     <p>
                                         <select name="country" id="country">
@@ -38,15 +38,15 @@
                                         </select>
                                     </p>
                                     <p><input type="text" value="Address *" onblur="if (this.value == '')
-                                                                                            this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                                                        this.value = ''" /></p>
+                                                this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                            this.value = ''" /></p>
                                     <p class="clearfix box-col2">
                                         <input type="text" value="Postcode / Zip" onblur="if (this.value == '')
-                                                                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                                                                this.value = ''" />
+                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                                this.value = ''" />
                                         <input type="text" value="Town / City *" onblur="if (this.value == '')
-                                                                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                                                                this.value = ''" />
+                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                                this.value = ''" />
                                     </p>
                                     <p>
                                         <input type="checkbox"  id="remember" /> <label for="remember">Create an account?</label>
@@ -62,8 +62,8 @@
                                     </p>
                                     <p>
                                         <textarea cols="30" rows="10" onblur="if (this.value == '')
-                                                                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                                                                this.value = ''">Order Notes</textarea>
+                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                                this.value = ''">Order Notes</textarea>
                                     </p>
                                 </form>
                             </div>		
@@ -154,7 +154,8 @@
                                 <li class="payment_method_paypal">
                                     <input type="radio" data-order_button_text="Proceed to PayPal" value="paypal" name="payment_method" class="input-radio" id="payment_method_paypal">
                                     <label for="payment_method_paypal">
-                                        PayPal <img alt="PayPal Acceptance Mark" src="images/shop/payment.png"><a title="What is PayPal?" onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup', 'WIPaypal', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;" class="about_paypal" href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">What is PayPal?</a>	
+                                        PayPal <img alt="PayPal Acceptance Mark" src="images/shop/payment.png"><a title="What is PayPal?" onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup', 'WIPaypal', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700');
+                                                return false;" class="about_paypal" href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">What is PayPal?</a>	
                                     </label>
                                     <div style="display:none;" class="payment_box payment_method_paypal">
                                         <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>

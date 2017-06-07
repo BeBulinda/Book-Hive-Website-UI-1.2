@@ -9,6 +9,62 @@
                                     <a href="list-full-width.html" class="list-view"></a>
                                 </div>-->
                 <div class="sort-paginav pull-right">
+
+                    <?php if (is_menu_set('publisher_books') != "") { ?>
+                        <!--<div class="smart-search smart-search4">-->
+                        <div class="select-category">
+                            <a class="category-toggle-link" href="#"><span>Filter By Book Category</span></a>
+                            <ul class="list-category-toggle list-unstyled">
+                                <li><a href="?ecd_books">ECD Books</a></li>
+                                <li><a href="?primary_books">Primary Books</a></li>
+                                <li><a href="?secondary_books">Secondary Books</a></li>
+                                <li><a href="?adult_books">Adult Reader Books</a></li>
+                                <li><a href="?english_books">English Books</a></li>
+                                <li><a href="?kiswahili_books">Kiswahili Books</a></li>
+                                <li><a href="?activity_books">Activity Books</a></li>
+                            </ul>
+                        </div>
+                        <!--</div>-->
+                    <?php } ?>
+
+                    <?php
+                    if (is_menu_set('english_books') != ""
+                            OR is_menu_set('kiswahili_books') != ""
+                            OR is_menu_set('activity_books') != ""
+                    ) {
+                        ?>
+                        <!--<div class="smart-search smart-search4">-->
+                        <div class="select-category">
+                            <a class="category-toggle-link" href="#"><span>Filter By Book Level</span></a>
+                            <ul class="list-category-toggle list-unstyled">
+                                <li><a href="?ecd_books">ECD Books</a></li>
+                                <li><a href="?primary_books">Primary Books</a></li>
+                                <li><a href="?secondary_books">Secondary Books</a></li>
+                                <li><a href="?adult_books">Adult Reader Books</a></li>
+                            </ul>
+                        </div>
+                        <!--</div>-->
+                    <?php } ?>
+
+                    <?php
+                    if (is_menu_set('ecd_books') != ""
+                            OR is_menu_set('primary_books') != ""
+                            OR is_menu_set('secondary_books') != ""
+                            OR is_menu_set('adult_books') != ""
+                    ) {
+                        ?>
+                        <!--<div class="smart-search smart-search4">-->
+                        <div class="select-category">
+                            <a class="category-toggle-link" href="#"><span>Filter By Book Type</span></a>
+                            <ul class="list-category-toggle list-unstyled">
+                                <li><a href="?english_books">English Books</a></li>
+                                <li><a href="?kiswahili_books">Kiswahili Books</a></li>
+                                <li><a href="?activity_books">Activity Books</a></li>
+                            </ul>
+                        </div>
+                        <!--</div>-->
+                    <?php } ?>
+
                     <div class="sort-bar select-box">
                         <label>Sort By:</label>
                         <select>
@@ -26,6 +82,7 @@
                     </div>
                 </div>
             </div>
+            <div></div>
             <!-- End Sort PagiBar -->
             <ul class="grid-product-ajax list-unstyled clearfix">
                 <li>

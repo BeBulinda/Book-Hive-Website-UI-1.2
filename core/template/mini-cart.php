@@ -15,10 +15,10 @@
                     <a href="#"><img alt="" src="images/home1/mini-cart-thumb.png"></a>
                 </div>
                 <div class="mini-cart-info">
-                    <h3><a href="#">Burberry Pink &amp; black</a></h3>
+                    <h3><a href="#">Book 1 Title</a></h3>
                     <div class="info-price">
-                        <span>$59.52</span>
-                        <del>$17.96</del>
+                        <span>KES 5952</span>
+                        <del>KES 1796</del>
                     </div>
                     <div class="qty-product">
                         <span class="qty-down">-</span>
@@ -36,10 +36,10 @@
                     <a href="#"><img alt="" src="images/home1/mini-cart-thumb.png"></a>
                 </div>
                 <div class="mini-cart-info">
-                    <h3><a href="#">Burberry Pink &amp; black</a></h3>
+                    <h3><a href="#">Book 2 Title</a></h3>
                     <div class="info-price">
-                        <span>$59.52</span>
-                        <del>$17.96</del>
+                        <span>KES 5952</span>
+                        <del>KES 1796</del>
                     </div>
                     <div class="qty-product">
                         <span class="qty-down">-</span>
@@ -51,7 +51,7 @@
         </ul>
         <div class="mini-cart-total">
             <label>TOTAL</label>
-            <span>$24.28</span>
+            <span>KES 2428</span>
         </div>
         <div class="mini-cart-button">
             <a class="mini-cart-view" href="?cart">view my cart </a>

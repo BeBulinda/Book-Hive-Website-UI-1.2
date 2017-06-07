@@ -27,7 +27,7 @@
                                 <a href="#">Luphen Caunoiteng kug </a>					
                             </td>
                             <td class="product-price">
-                                <span class="amount">$68.00</span>					
+                                <span class="amount">KES 6800</span>					
                             </td>
                             <td class="product-quantity">
                                 <div class="detail-qty border radius">
@@ -37,7 +37,7 @@
                                 </div>		
                             </td>
                             <td class="product-subtotal">
-                                <span class="amount">$68.00</span>					
+                                <span class="amount">KES 6800</span>					
                             </td>
                         </tr>
                         <tr class="cart_item">
@@ -51,7 +51,7 @@
                                 <a href="#">Cooc Huyinh Phale </a>					
                             </td>
                             <td class="product-price">
-                                <span class="amount">$19.00</span>					
+                                <span class="amount">KES 1900</span>					
                             </td>
                             <td class="product-quantity">
                                 <div class="detail-qty border radius">
@@ -61,10 +61,10 @@
                                 </div>			
                             </td>
                             <td class="product-subtotal">
-                                <span class="amount">$38.00</span>					
+                                <span class="amount">KES 3800</span>					
                             </td>
                         </tr>
-                        <tr>
+<!--                        <tr>
                             <td class="actions" colspan="6">
                                 <div class="coupon">
                                     <label for="coupon_code">Coupon:</label> 
@@ -73,7 +73,7 @@
                                 </div>
                                 <input type="submit" value="Update Cart" name="update_cart" class="button">			
                             </td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -87,7 +87,7 @@
                         <tbody>
                             <tr class="cart-subtotal">
                                 <th>Subtotal</th>
-                                <td><strong class="amount">$106.00</strong></td>
+                                <td><strong class="amount">KES 10600</strong></td>
                             </tr>
                             <tr class="shipping">
                                 <th>Shipping</th>
@@ -110,7 +110,7 @@
                             </tr>
                             <tr class="order-total">
                                 <th>Total</th>
-                                <td><strong><span class="amount">$106.00</span></strong> </td>
+                                <td><strong><span class="amount">KES 10600</span></strong> </td>
                             </tr>
                         </tbody>
                     </table>

@@ -6,14 +6,14 @@
                     <a href="#"><img src="images/mega-menu/fashion.jpg" alt="" /></a>
                 </div>
                 <div class="mega-adv-info">
-                    <h3 class="title18"><a href="#">Examplui coloniu tencaug</a></h3>
-                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h3 class="title18"><a href="#">Book Title</a></h3>
+                    <p class="desc">Brief book description Brief book description Brief book description Brief book description Brief book description Brief book description Brief book description </p>
                 </div>
             </div>
         </div>
         <div class="col-md-7 col-sm-8 col-xs-12">
             <div class="mega-new-arrival">
-                <h2 class="mega-menu-title">Featured Product</h2>
+                <h2 class="mega-menu-title">Featured Books</h2>
                 <div class="mega-new-arrival-slider">
                     <div class="wrap-item" data-pagination="false" data-navigation="true" data-itemscustom="[[0,1],[768,2]]">
                         <div class="item">
@@ -30,7 +30,7 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">Book 1 Title</a></h3>
                                     <div class="product-price">
                                         <del><span>KES.400.00</span></del>
                                         <ins><span>KES.360.00</span></ins>
@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">Book 2 Title</a></h3>
                                     <div class="product-price">
                                         <del><span>KES.400.00</span></del>
                                         <ins><span>KES.360.00</span></ins>
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">Book 3 Title</a></h3>
                                     <div class="product-price">
                                         <del><span>KES.400.00</span></del>
                                         <ins><span>KES.360.00</span></ins>
@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                                    <h3 class="product-title"><a href="?product-page">Book 4 Title</a></h3>
                                     <div class="product-price">
                                         <del><span>KES.400.00</span></del>
                                         <ins><span>KES.360.00</span></ins>

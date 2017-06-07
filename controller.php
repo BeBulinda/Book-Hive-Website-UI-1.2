@@ -8,148 +8,281 @@ if ( is_menu_set('logout') != "" )
 
 if ( is_menu_set('home') != ""){
     $currentPage = WPATH . "modules/home.php";
-    set_title("Bookhive Kenya | Home");
+    set_title("Bookhive | Home");
 }
 
 else if ( is_menu_set('?') != ""){
     $currentPage = WPATH . "modules/home.php";
-    set_title("Site Title | Home");
+    set_title("Bookhive | Home");
 }
 
 else if ( is_menu_set('cart') != ""){
     $currentPage = WPATH . "modules/cart.php";
-    set_title("Site Title | My Cart");
+    set_title("Bookhive | My Cart");
 }
 
 else if ( is_menu_set('checkout') != ""){
     $currentPage = WPATH . "modules/checkout.php";
-    set_title("Site Title | Checkout");
+    set_title("Bookhive | Checkout");
 }
 
 else if ( is_menu_set('contact') != ""){
     $currentPage = WPATH . "modules/contact.php";
-    set_title("Site Title | Contact Us");
+    set_title("Bookhive | Contact Us");
 }
 
 else if ( is_menu_set('report_piracy') != ""){
     $currentPage = WPATH . "modules/report_piracy.php";
-    set_title("Site Title | Report Piracy");
+    set_title("Bookhive | Report Piracy");
 }
 
 else if ( is_menu_set('tac') != ""){
     $currentPage = WPATH . "modules/tac.php";
-    set_title("Site Title | Term & Conditions");
+    set_title("Bookhive | Term & Conditions");
 }
 
 /** An alternative to product page **/
 //else if ( is_menu_set('detail') != ""){
 //    $currentPage = WPATH . "modules/detail.php";
-//    set_title("Site Title | Product Details");
+//    set_title("Bookhive | Product Details");
 //}
 
 else if ( is_menu_set('about') != ""){
     $currentPage = WPATH . "modules/about.php";
-    set_title("Site Title | About Us");
+    set_title("Bookhive | About Us");
 }
 
 else if ( is_menu_set('404') != ""){
     $currentPage = WPATH . "modules/404.php";
-    set_title("Site Title | Ooops Sorry");
+    set_title("Bookhive | Ooops Sorry");
 }
 
 else if ( is_menu_set('profile') != ""){
     $currentPage = WPATH . "modules/profile.php";
-    set_title("Site Title | My Profile");
+    set_title("Bookhive | My Profile");
 }
 
 else if ( is_menu_set('wishlist') != ""){
     $currentPage = WPATH . "modules/wishlist.php";
-    set_title("Site Title | My Wishlist");
+    set_title("Bookhive | My Wishlist");
 }
 
 else if ( is_menu_set('compare') != ""){
     $currentPage = WPATH . "modules/compare.php";
-    set_title("Site Title | Compare");
+    set_title("Bookhive | Compare");
 }
 
 else if ( is_menu_set('login') != ""){
     $currentPage = WPATH . "modules/login.php";
-    set_title("Site Title | Sign In");
+    set_title("Bookhive | Sign In");
 }
 
 else if ( is_menu_set('ecd') != ""){
     $currentPage = WPATH . "modules/ecd.php";
-    set_title("Site Title | ECD Books");
+    set_title("Bookhive | ECD Books");
 }
 
 else if ( is_menu_set('featured') != ""){
     $currentPage = WPATH . "modules/featured.php";
-    set_title("Site Title | Featured Books");
+    set_title("Bookhive | Featured Books");
 }
 
 else if ( is_menu_set('primary') != ""){
     $currentPage = WPATH . "modules/primary.php";
-    set_title("Site Title | Primary Books");
+    set_title("Bookhive | Primary Books");
 }
 
 else if ( is_menu_set('secondary') != ""){
     $currentPage = WPATH . "modules/secondary.php";
-    set_title("Site Title | Secondary Books");
+    set_title("Bookhive | Secondary Books");
 }
 
 else if ( is_menu_set('lifestyle') != ""){
     $currentPage = WPATH . "modules/lifestyle.php";
-    set_title("Site Title | Lifestyle Books");
+    set_title("Bookhive | Lifestyle Books");
 }
 
 else if ( is_menu_set('religious') != ""){
     $currentPage = WPATH . "modules/religious.php";
-    set_title("Site Title | Religious Books");
+    set_title("Bookhive | Religious Books");
 }
 
 else if ( is_menu_set('product-page') != ""){
     $currentPage = WPATH . "modules/product-page.php";
-    set_title("Site Title | Product Pages");
+    set_title("Bookhive | Product Pages");
 }
 
 else if ( is_menu_set('quick-view') != ""){
     $currentPage = WPATH . "modules/quick-view.php";
-    set_title("Site Title | Product Pages");
+    set_title("Bookhive | Product Pages");
 }
 
 else if ( is_menu_set('category-browse') != ""){
     $currentPage = WPATH . "modules/category-browse.php";
-    set_title("Site Title | Category");
+    set_title("Bookhive | Category");
 }
+
+else if ( is_menu_set('ecd_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | ECD Books");
+}
+
+else if ( is_menu_set('primary_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Primary Books");
+}
+
+else if ( is_menu_set('secondary_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Secondary Books");
+}
+
+else if ( is_menu_set('adult_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Adult Books");
+}
+
+else if ( is_menu_set('english_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | English Books");
+}
+
+else if ( is_menu_set('kiswahili_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Kiswahili Books");
+}
+
+else if ( is_menu_set('activity_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Activity Books");
+}
+
+else if ( is_menu_set('featured_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Featured Books");
+}
+
+else if ( is_menu_set('class_one_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Class One Books");
+}
+
+else if ( is_menu_set('class_two_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Class Two Books");
+}
+
+else if ( is_menu_set('class_three_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Class Three Books");
+}
+
+else if ( is_menu_set('class_four_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Class Four Books");
+}
+
+else if ( is_menu_set('class_five_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Class Five Books");
+}
+
+else if ( is_menu_set('class_six_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Class Six Books");
+}
+
+else if ( is_menu_set('class_seven_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Class Seven Books");
+}
+
+else if ( is_menu_set('class_eight_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Class Eight Books");
+}
+
+else if ( is_menu_set('form_one_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Form One Books");
+}
+
+else if ( is_menu_set('form_two_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Form Two Books");
+}
+
+else if ( is_menu_set('form_three_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Form Three Books");
+}
+
+else if ( is_menu_set('form_four_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Form Four Books");
+}
+
+else if ( is_menu_set('publisher_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Publisher Books");
+}
+
+
+
+
+
+
+//else if ( is_menu_set('adult_books') != ""){
+//    $currentPage = WPATH . "modules/category-browse.php";
+//    set_title("Bookhive | Adult Books");
+//}
+//
+//else if ( is_menu_set('english_books') != ""){
+//    $currentPage = WPATH . "modules/category-browse.php";
+//    set_title("Bookhive | English Books");
+//}
+//
+//else if ( is_menu_set('kiswahili_books') != ""){
+//    $currentPage = WPATH . "modules/category-browse.php";
+//    set_title("Bookhive | Kiswahili Books");
+//}
+//
+//else if ( is_menu_set('activity_books') != ""){
+//    $currentPage = WPATH . "modules/category-browse.php";
+//    set_title("Bookhive | Activity Books");
+//}
+
+
+
 
 else if ( is_menu_set('faq') != ""){
     $currentPage = WPATH . "modules/faq.php";
-    set_title("Site Title | FAQs");
+    set_title("Bookhive | FAQs");
 }
 
 else if ( is_menu_set('register') != ""){
     $currentPage = WPATH . "modules/register.php";
-    set_title("Site Title | Register");
+    set_title("Bookhive | Register");
 }
 
 else if ( is_menu_set('register_book_seller') != ""){
     $currentPage = WPATH . "modules/register_book_seller.php";
-    set_title("Site Title | Seller Registration");
+    set_title("Bookhive | Seller Registration");
 }
 
 else if ( is_menu_set('register_individual_user') != ""){
     $currentPage = WPATH . "modules/register_individual_user.php";
-    set_title("Site Title | User Registration");
+    set_title("Bookhive | User Registration");
 }
 
 else if ( is_menu_set('register_self_publisher') != ""){
     $currentPage = WPATH . "modules/register_self_publisher.php";
-    set_title("Site Title | Publisher Registration");
+    set_title("Bookhive | Publisher Registration");
 }
 
 else if ( is_menu_set('register_system_administrator') != ""){
     $currentPage = WPATH . "modules/register_system_administrator.php";
-    set_title("Site Title | Administrator Registration");
+    set_title("Bookhive | Administrator Registration");
 }
 
 else if ( is_menu_set('verify_book') != ""){
@@ -164,7 +297,7 @@ else if (!empty($_GET)) {
 else{
     $currentPage = WPATH . "modules/home.php";
     if ( App::isLoggedIn() ) {
-		set_title("Home | Site Title");                
+		set_title("Bookhive | Home");                
 	}        
 }
 

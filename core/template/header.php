@@ -71,12 +71,13 @@
                             <div class="select-category">
                                 <a class="category-toggle-link" href="#"><span>All Categories</span></a>
                                 <ul class="list-category-toggle list-unstyled">
-                                    <!--                                    <li><a href="#">Featured Products</a></li>-->
-                                    <li><a href="?category-browse">ECD Books</a></li>
-                                    <li><a href="?category-browse">Primary Books</a></li>
-                                    <li><a href="?category-browse">Secondary Books</a></li>
-                                    <li><a href="?category-browse">Adult Reader Books</a></li>
-                                    <!--                                    <li><a href="#">Religious Books</a></li>-->
+                                    <li><a href="?ecd_books">ECD Books</a></li>
+                                    <li><a href="?primary_books">Primary Books</a></li>
+                                    <li><a href="?secondary_books">Secondary Books</a></li>
+                                    <li><a href="?adult_books">Adult Reader Books</a></li>
+                                    <li><a href="?english_books">English Books</a></li>
+                                    <li><a href="?kiswahili_books">Kiswahili Books</a></li>
+                                    <li><a href="?activity_books">Activity Books</a></li>
                                 </ul>
                             </div>
                             <form class="smart-search-form ajax-search">
@@ -101,21 +102,6 @@
                     <div class="col-md-3 col-sm-3 col-xs-9">
                         <div class="check-cart check-cart4">
                             <?php require_once 'mini-cart.php'; ?>
-                            <div class="wishlist-box">
-                                <a href="?wishlist" class="wishlist-top-link"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                            </div>
-                            <!-- End Wishlist -->
-                            <div class="checkout-box">
-                                <a href="#" class="checkout-link"><i class="fa fa-lock" aria-hidden="true"></i></a>
-                                <ul class="list-checkout list-unstyled">
-                                    <li><a href="?profile"><i class="fa fa-user"></i> Account Info</a></li>
-                                    <li><a href="?wishlist"><i class="fa fa-heart-o"></i> Wish List</a></li>
-                                    <li><a href="?compare"><i class="fa fa-toggle-on"></i> Compare</a></li>
-                                    <li><a href="?login"><i class="fa fa-key" aria-hidden="true"></i>Sign in</a></li>
-                                    <li><a href="?checkout"><i class="fa fa-sign-in"></i> Checkout</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Check Out Box -->
                         </div>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-3">
@@ -125,35 +111,35 @@
                                     <a href="?">Home</a>
                                 </li>
                                 <li class="has-mega-menu">
-                                    <a href="?category-browse">Featured Books</a>
+                                    <a href="?featured_books">Featured Books</a>
                                     <!--Adds Pop up Menu with featured items.--> 
                                     <?php require_once 'modules/menu-inserts/featured-inserts.php'; ?>
                                 </li>
                                 <li class="has-mega-menu">
-                                    <a href="?category-browse">ECD</a>
+                                    <a href="?ecd_books">ECD</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">Primary</a>
                                     <ul class="sub-menu">
-                                        <li><a href="?category-browse">All Books</a></li>
-                                        <li><a href="?category-browse">Class One</a></li>
-                                        <li><a href="?category-browse">Class Two</a></li>
-                                        <li><a href="?category-browse">Class Three</a></li>
-                                        <li><a href="?category-browse">Class Four</a></li>
-                                        <li><a href="?category-browse">Class Five</a></li>
-                                        <li><a href="?category-browse">Class Six</a></li>
-                                        <li><a href="?category-browse">Class Seven</a></li>
-                                        <li><a href="?category-browse">Class Eight</a></li>
+                                        <li><a href="?primary_books">All Books</a></li>
+                                        <li><a href="?class_one_books">Class One</a></li>
+                                        <li><a href="?class_two_books">Class Two</a></li>
+                                        <li><a href="?class_three_books">Class Three</a></li>
+                                        <li><a href="?class_four_books">Class Four</a></li>
+                                        <li><a href="?class_five_books">Class Five</a></li>
+                                        <li><a href="?class_six_books">Class Six</a></li>
+                                        <li><a href="?class_seven_books">Class Seven</a></li>
+                                        <li><a href="?class_eight_books">Class Eight</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">Secondary</a>
                                     <ul class="sub-menu">
-                                        <li><a href="?category-browse">All Books</a></li>
-                                        <li><a href="?category-browse">Form One</a></li>
-                                        <li><a href="?category-browse">Form Two</a></li>
-                                        <li><a href="?category-browse">Form Three</a></li>
-                                        <li><a href="?category-browse">Form Four</a></li>
+                                        <li><a href="?secondary_books">All Books</a></li>
+                                        <li><a href="?form_one_books">Form One</a></li>
+                                        <li><a href="?form_two_books">Form Two</a></li>
+                                        <li><a href="?form_three_books">Form Three</a></li>
+                                        <li><a href="?form_four_books">Form Four</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-mega-menu">
@@ -162,11 +148,11 @@
                                 <li class="menu-item-has-children">
                                     <a href="#">PUBLISHERS</a>
                                     <ul class="sub-menu">
-                                        <li><a href="?category-browse">STORY MOJA</a></li>
-                                        <li><a href="?category-browse">LONGHORN</a></li>
-                                        <li><a href="?category-browse">KLB</a></li>
-                                        <li><a href="?category-browse">KIE</a></li>
-                                        <li><a href="?category-browse">LAUNGREHN</a></li>
+                                        <li><a href="?publisher_books">STORY MOJA</a></li>
+                                        <li><a href="?publisher_books">LONGHORN</a></li>
+                                        <li><a href="?publisher_books">KLB</a></li>
+                                        <li><a href="?publisher_books">KIE</a></li>
+                                        <li><a href="?publisher_books">LAUNGREHN</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-mega-menu">
@@ -175,21 +161,6 @@
                                 <li class="has-mega-menu">
                                     <a href="?contact">Contact Us</a>
                                 </li>
-                                <!--                                <li class="menu-item-has-children">
-                                                                    <a href="#">MORE</a>
-                                                                    <ul class="sub-menu">
-                                                                        <li class="menu-item-has-children">
-                                                                            <a href="#">PUBLISHERS</a>
-                                                                            <ul class="sub-menu">
-                                                                                <li><a href="#">LONGHORN</a></li>
-                                                                                <li><a href="#">KLB</a></li>
-                                                                                <li><a href="#">KIE</a></li>
-                                                                                <li><a href="#">STORY MOJA</a></li>
-                                                                                <li><a href="#">LAUNGREHN</a></li>
-                                                                            </ul>
-                                                                        </li>                                        
-                                                                    </ul>
-                                                                </li>-->
                             </ul>
                             <a href="#" class="toggle-mobile-menu"><span></span></a>
                         </nav>
