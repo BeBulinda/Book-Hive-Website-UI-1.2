@@ -55,15 +55,19 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="smart-search smart-search4">
                             <div class="select-category">
-                                <a class="category-toggle-link" href="#"><span>All Categories</span></a>
+                                <select class="category-toggle-link">
+<!--                                <a class="category-toggle-link" href="#"><span>All Categories</span></a>-->
                                 <ul class="list-category-toggle list-unstyled">
-                                    <li><a href="#">Featured Products</a></li>
-                                    <li><a href="#">ECD Books</a></li>
-                                    <li><a href="#">Primary Books</a></li>
+                                     <option value="all">All Categories</option>
+                                    <option value="featured">Featured Products</option>
+                                    <option value="ecd">ECD Books</option>
+                                    
+<!--                                    <li><a href="#">Primary Books</a></li>
                                     <li><a href="#">Secondary Books</a></li>
                                     <li><a href="#">Lifestyle Books</a></li>
-                                    <li><a href="#">Religious Books</a></li>
+                                    <li><a href="#">Religious Books</a></li>-->
                                 </ul>
+                                </select>
                             </div>
                             <form class="smart-search-form ajax-search">
                                 <input type="text" onblur="if (this.value == '')
