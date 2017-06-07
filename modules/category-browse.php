@@ -1,88 +1,86 @@
 <div id="content">
     <div class="content-page grid-ajax-infinite">
+        <?php //require_once 'modules/inc/breadcrumbs.php'; ?>
         <div class="container">
-            <?php require_once 'modules/inc/breadcrumbs.php'; ?>
+
             <!-- End Bread Crumb -->
             <div class="sort-pagi-bar clearfix">
-                <!--                <div class="view-type pull-left">
-                                    <a href="grid-ajax-infinite-scroll.html" class="grid-view active"></a>
-                                    <a href="list-full-width.html" class="list-view"></a>
-                                </div>-->
-                <div class="sort-paginav pull-right">
+                <div class="view-type pull-left">
+                    <a href="#" class="grid-view active"></a>
+                    <a href="#" class="list-view"></a>
+                </div>
+                <div class="pull-left">
+                    <div class=" select-box">
+                        <?php if (is_menu_set('publisher_books') != "") { ?>
+                            <!--<div class="smart-search smart-search4">-->
+                            <div style="right: inherit; margin-top: -20px; left: inherit; z-index: 99" class="select-category">
+                                <a class="category-toggle-link" href="#"><span>Book Category</span></a>
+                                <ul class="list-category-toggle list-unstyled">
+                                    <li><a href="?ecd_books">ECD Books</a></li>
+                                    <li><a href="?primary_books">Primary Books</a></li>
+                                    <li><a href="?secondary_books">Secondary Books</a></li>
+                                    <li><a href="?adult_books">Adult Reader Books</a></li>
+                                    <li><a href="?english_books">English Books</a></li>
+                                    <li><a href="?kiswahili_books">Kiswahili Books</a></li>
+                                    <li><a href="?activity_books">Activity Books</a></li>
+                                </ul>
+                            </div>
+                            <!--</div>-->
+                        <?php } ?>
 
-                    <?php if (is_menu_set('publisher_books') != "") { ?>
-                        <!--<div class="smart-search smart-search4">-->
-                        <div class="select-category">
-                            <a class="category-toggle-link" href="#"><span>Filter By Book Category</span></a>
-                            <ul class="list-category-toggle list-unstyled">
-                                <li><a href="?ecd_books">ECD Books</a></li>
-                                <li><a href="?primary_books">Primary Books</a></li>
-                                <li><a href="?secondary_books">Secondary Books</a></li>
-                                <li><a href="?adult_books">Adult Reader Books</a></li>
-                                <li><a href="?english_books">English Books</a></li>
-                                <li><a href="?kiswahili_books">Kiswahili Books</a></li>
-                                <li><a href="?activity_books">Activity Books</a></li>
-                            </ul>
-                        </div>
-                        <!--</div>-->
-                    <?php } ?>
+                        <?php
+                        if (is_menu_set('english_books') != ""
+                                OR is_menu_set('kiswahili_books') != ""
+                                OR is_menu_set('activity_books') != ""
+                        ) {
+                            ?>
+                            <!--<div class="smart-search smart-search4">-->
+                            <div style="right: inherit; margin-top: -20px; left: inherit; z-index: 99" class="select-category">
+                                <a class="category-toggle-link" href="#"><span>Book Level</span></a>
+                                <ul class="list-category-toggle list-unstyled">
+                                    <li><a href="?ecd_books">ECD Books</a></li>
+                                    <li><a href="?primary_books">Primary Books</a></li>
+                                    <li><a href="?secondary_books">Secondary Books</a></li>
+                                    <li><a href="?adult_books">Adult Reader Books</a></li>
+                                </ul>
+                            </div>
+                            <!--</div>-->
+                        <?php } ?>
 
-                    <?php
-                    if (is_menu_set('english_books') != ""
-                            OR is_menu_set('kiswahili_books') != ""
-                            OR is_menu_set('activity_books') != ""
-                    ) {
-                        ?>
-                        <!--<div class="smart-search smart-search4">-->
-                        <div class="select-category">
-                            <a class="category-toggle-link" href="#"><span>Filter By Book Level</span></a>
-                            <ul class="list-category-toggle list-unstyled">
-                                <li><a href="?ecd_books">ECD Books</a></li>
-                                <li><a href="?primary_books">Primary Books</a></li>
-                                <li><a href="?secondary_books">Secondary Books</a></li>
-                                <li><a href="?adult_books">Adult Reader Books</a></li>
-                            </ul>
-                        </div>
-                        <!--</div>-->
-                    <?php } ?>
-
-                    <?php
-                    if (is_menu_set('ecd_books') != ""
-                            OR is_menu_set('primary_books') != ""
-                            OR is_menu_set('secondary_books') != ""
-                            OR is_menu_set('adult_books') != ""
-                    ) {
-                        ?>
-                        <!--<div class="smart-search smart-search4">-->
-                        <div class="select-category">
-                            <a class="category-toggle-link" href="#"><span>Filter By Book Type</span></a>
-                            <ul class="list-category-toggle list-unstyled">
-                                <li><a href="?english_books">English Books</a></li>
-                                <li><a href="?kiswahili_books">Kiswahili Books</a></li>
-                                <li><a href="?activity_books">Activity Books</a></li>
-                            </ul>
-                        </div>
-                        <!--</div>-->
-                    <?php } ?>
-
-                    <div class="sort-bar select-box">
-                        <label>Sort By:</label>
-                        <select>
-                            <option value="">position</option>
-                            <option value="">price</option>
-                        </select>
+                        <?php
+                        if (is_menu_set('ecd_books') != ""
+                                OR is_menu_set('primary_books') != ""
+                                OR is_menu_set('secondary_books') != ""
+                                OR is_menu_set('adult_books') != ""
+                        ) {
+                            ?>
+                            <div style="right: inherit; margin-top: -20px; left: inherit; z-index: 99" class="select-category">
+                                <a class="category-toggle-link" href="#"><span> Book Type</span></a>
+                                <ul class="list-category-toggle list-unstyled">
+                                    <li><a href="?english_books">English Books</a></li>
+                                    <li><a href="?kiswahili_books">Kiswahili Books</a></li>
+                                    <li><a href="?activity_books">Activity Books</a></li>
+                                </ul>
+                            </div>
+                        <?php } ?>
                     </div>
-                    <div class="show-bar select-box">
-                        <label>Show:</label>
-                        <select>
-                            <option value="">20</option>
-                            <option value="">12</option>
-                            <option value="">24</option>
-                        </select>
-                    </div>
+                    <!--                    <div class="sort-bar select-box">
+                                            <label>Sort By:</label>
+                                            <select>
+                                                <option value="">position</option>
+                                                <option value="">price</option>
+                                            </select>
+                                        </div>
+                                        <div class="show-bar select-box">
+                                            <label>Show:</label>
+                                            <select>
+                                                <option value="">20</option>
+                                                <option value="">12</option>
+                                                <option value="">24</option>
+                                            </select>
+                                        </div>-->
                 </div>
             </div>
-            <div></div>
             <!-- End Sort PagiBar -->
             <ul class="grid-product-ajax list-unstyled clearfix">
                 <li>
@@ -91,8 +89,49 @@
                             <div class="product-label">
                                 <span class="sale-label">sale</span>
                             </div>
-                            <a class="product-thumb-link" href="?product-page">
+                            <a class="product-thumb-link" id="trigger" href="?product-page">
                                 <img alt="" src="images/photos/sport/6.jpg">
+                                <style type="text/css">
+
+                                    /* HOVER STYLES */
+                                    div#pop-up {
+                                        display: none;
+                                        position: absolute;
+                                        width: 280px;
+                                        padding: 10px;
+                                        background: #eeeeee;
+                                        color: #000000;
+                                        border: 1px solid #1a1a1a;
+                                        font-size: 90%;
+                                        z-index: 9999999
+                                    }
+                                </style>
+                                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        var moveLeft = 20;
+                                        var moveDown = 10;
+
+                                        $('a#trigger').hover(function (e) {
+                                            $('div#pop-up').show();
+                                        }, function () {
+                                            $('div#pop-up').hide();
+                                        });
+
+                                        $('a#trigger').mousemove(function (e) {
+                                            $("div#pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+                                        });
+
+                                    });
+                                </script>
+                                <!-- HIDDEN / POP-UP DIV -->
+                                <div id="pop-up">
+                                    <h3>Pop-up div Successfully Displayed</h3>
+                                    <p>
+                                        This div only appears when the trigger link is hovered over. Otherwise
+                                        it is hidden from view.
+                                    </p>
+                                </div>
                             </a>
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
@@ -614,7 +653,7 @@
                 </li>
                 <!-- End All -->
             </ul>
-            <div class="btn-loadmore"><a href="#"><i aria-hidden="true" class="fa fa-spinner fa-spin"></i></a></div>
+<!--            <div class="btn-loadmore"><a href="#"><i aria-hidden="true" class="fa fa-spinner fa-spin"></i></a></div>-->
         </div>
     </div>
 </div>
