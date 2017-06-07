@@ -31,7 +31,7 @@ if (!empty($_POST)) {
             <!-- End Map -->
             <?php require_once 'modules/inc/contact-details.php'; ?>
             <div class="contact-form-page">
-                <h2>contact from</h2>
+                <h2>contact form</h2>
                 <div class="form-contact">
                     <form method="post">
                         <input type="hidden" name="action" value="contact_us"/>

@@ -1,61 +1,9 @@
 <div id="footer">
     <div class="footer footer4">
         <div class="container">
-<!--            <div class="service-footer">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-footer">
-                            <div class="service-icon">
-                                <a href="#" class="wobble-horizontal"><img src="images/photos/piggy-bank.png" alt="" /></a>
-                            </div>
-                            <div class="service-info">
-                                <h2 class="title14">Business Identity</h2>
-                                <p>Get Verified, Build Trust</p>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Display your verification status</a></li>
-                                    <li><a href="#">Faster responses from suppliers when verified</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-footer">
-                            <div class="service-icon">
-                                <a href="#" class="wobble-horizontal"><img src="images/photos/investment.png" alt="" /></a>
-                            </div>
-                            <div class="service-info">
-                                <h2 class="title14">e - Credit Line</h2>
-                                <p>Buy Now, Pay Later</p>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Trusted local lenders</a></li>
-                                    <li><a href="#">Trade financing in minutes</a></li>
-                                    <li><a href="#">Competitive rates</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="item-service-footer">
-                            <div class="service-icon">
-                                <a href="#" class="wobble-horizontal"><img src="images/photos/telemarketer.png" alt="" /></a>
-                            </div>
-                            <div class="service-info">
-                                <h2 class="title14">Inspection Service</h2>
-                                <p>Have Your Order Inspected</p>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Independent inspectors</a></li>
-                                    <li><a href="#">Proven cost efficiency</a></li>
-                                    <li><a href="#">Competitive rates</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- End Service Footer -->
             <div class="footer-list-box">
                 <div class="row">
-                    <div class="col-md-5 col-sm-12 col-xs-12">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
                         <div class="newsletter-form footer-box">
                             <h2 class="title14">Subscription</h2>
                             <form>
@@ -71,20 +19,20 @@
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                <!--<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>-->
                                 <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="menu-footer-box footer-box">
                             <h2 class="title14">How to Buy</h2>
-                            <ul class="list-unstyled">
-                                <li><a href="?login">Create an Account</a></li>
-                                <li><a href="#">Making Payments</a></li>
-                                <li><a href="#">Delivery Options</a></li>
-                                <li><a href="#">Buyer Protection</a></li>
-                                <li><a href="#">New User Guide</a></li>
+                            <ul class="list-unstyled">                                
+                                <li><a href="#">Add items to shopping cart</a></li>
+                                <li><a href="#">Verify cart contents</a></li>
+                                <li><a href="#">Proceed to checkout</a></li>
+                                <li><a href="#">Make payment</a></li>
+                                <li><a href="#">Receive order delivery</a></li>
                             </ul>
                         </div>
                     </div>
@@ -92,8 +40,8 @@
                         <div class="menu-footer-box footer-box">
                             <h2 class="title14">Customer Service</h2>
                             <ul class="list-unstyled">
-                                <li><a href="#">Customer Support</a></li>
-                                <li><a href="#">Affiliate Program</a></li>
+                                <!--<li><a href="#">Customer Support</a></li>-->
+                                <!--<li><a href="#">Affiliate Program</a></li>-->
                                 <li><a href="?about">About us</a></li>
                                 <li><a href="?contact">Contact us</a></li>
                             </ul>

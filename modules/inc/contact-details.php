@@ -21,5 +21,5 @@
             </div>
         </div>
     </div>
-    <p class="desc">If the supplier fails to ship your products on time or the product quality does not meet the standards set in your contract, Aloshop will refund the covered amount of your payment.</p>
+    <p class="desc">We value your feedback. Please share with us below:</p>
 </div>

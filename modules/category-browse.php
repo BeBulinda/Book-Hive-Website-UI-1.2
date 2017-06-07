@@ -1,7 +1,7 @@
 <div id="content">
     <div class="content-page grid-ajax-infinite">
-        <div class="container">
             <?php require_once 'modules/inc/breadcrumbs.php'; ?>
+        <div class="container">
             <!-- End Bread Crumb -->
             <div class="sort-pagi-bar clearfix">
                 <!--                <div class="view-type pull-left">
@@ -97,7 +97,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -122,7 +122,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -151,7 +151,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -176,7 +176,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -201,7 +201,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -229,7 +229,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -254,7 +254,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -283,7 +283,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -308,7 +308,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -333,7 +333,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -361,7 +361,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -386,7 +386,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -415,7 +415,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -440,7 +440,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -465,7 +465,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -493,7 +493,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -518,7 +518,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -547,7 +547,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -572,7 +572,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
@@ -597,7 +597,7 @@
                             <a class="quickview-link fancybox.iframe" href="?quick-view"><span>quick view</span></a>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
+                            <h3 class="product-title"><a href="?product-page">Book Title</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
                             </div>
