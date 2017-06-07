@@ -3,7 +3,7 @@
         <div class="container">
             <div class="contact-form-page">
                 <div class="form-contact">
-                    <div class="col-md-6">
+<!--                    <div class="col-md-6">
                         <h2>REGISTER</h2>
                         <form method="post">
                             <input type="hidden" name="action" value="signup"/>
@@ -25,7 +25,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div>-->
 
                     <div class="col-md-6">
                         <h2>SIGN IN</h2>
@@ -41,7 +41,7 @@
                                     <input type="text" name="password" placeholder="Password">
                                 </div>                                
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <input type="submit" value="Sign Up" />
+                                    <input type="submit" value="Sign In" />
                                 </div>
                             </div>
                         </form>

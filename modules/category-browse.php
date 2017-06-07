@@ -43,7 +43,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -69,7 +68,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -99,7 +97,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -125,7 +122,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -151,7 +147,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -180,7 +175,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -206,7 +200,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -236,7 +229,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -262,7 +254,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -288,7 +279,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -317,7 +307,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -343,7 +332,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -373,7 +361,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -399,7 +386,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -425,7 +411,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -454,7 +439,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -480,7 +464,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -510,7 +493,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -536,7 +518,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>
@@ -562,7 +543,6 @@
                             <h3 class="product-title"><a href="?product-page">new favorite</a></h3>
                             <div class="product-price">
                                 <ins><span>KES.360.00</span></ins>
-                                <del><span>KES.400.00</span></del>
                             </div>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:90%"></div>

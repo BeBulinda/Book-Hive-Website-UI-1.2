@@ -31,8 +31,8 @@ else if ( is_menu_set('contact') != ""){
     set_title("Site Title | Contact Us");
 }
 
-else if ( is_menu_set('report-piracy') != ""){
-    $currentPage = WPATH . "modules/report-piracy.php";
+else if ( is_menu_set('report_piracy') != ""){
+    $currentPage = WPATH . "modules/report_piracy.php";
     set_title("Site Title | Report Piracy");
 }
 
@@ -130,6 +130,31 @@ else if ( is_menu_set('faq') != ""){
 else if ( is_menu_set('register') != ""){
     $currentPage = WPATH . "modules/register.php";
     set_title("Site Title | Register");
+}
+
+else if ( is_menu_set('register_book_seller') != ""){
+    $currentPage = WPATH . "modules/register_book_seller.php";
+    set_title("Site Title | Seller Registration");
+}
+
+else if ( is_menu_set('register_individual_user') != ""){
+    $currentPage = WPATH . "modules/register_individual_user.php";
+    set_title("Site Title | User Registration");
+}
+
+else if ( is_menu_set('register_self_publisher') != ""){
+    $currentPage = WPATH . "modules/register_self_publisher.php";
+    set_title("Site Title | Publisher Registration");
+}
+
+else if ( is_menu_set('register_system_administrator') != ""){
+    $currentPage = WPATH . "modules/register_system_administrator.php";
+    set_title("Site Title | Administrator Registration");
+}
+
+else if ( is_menu_set('verify_book') != ""){
+    $currentPage = WPATH . "modules/verify_book.php";
+    set_title("Bookhive | Verify Book");
 }
 
 else if (!empty($_GET)) {

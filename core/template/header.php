@@ -5,30 +5,44 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="account-login">
-                            <a href="?profile">My Account</a>
-                            <a href="?login">Login</a>
-                            <a href="?register">Register</a>
-                            <a href="?report-piracy">Report Piracy</a>
-                            <a href="?tac">Privacy</a>
+                            <a href="?verify_book">Verify Book</a>
+                            <a href="?report_piracy">Report Piracy</a>
+                            <a href="#">Register</a>
+                            <a href="?register_individual_user">Register1</a>
+                            <a href="?register_book_seller">Register2</a>
+                            <a href="?register_self_publisher">Register3</a>
+                            <!--                            <a href="?profile">My Account</a>
+                                                        <a href="?login">Login</a>
+                                                        <a href="?register">Register</a>
+                                                        <a href="?register_individual_user">Register1</a>
+                                                        <a href="?register_book_seller">Register2</a>
+                                                        <a href="?register_self_publisher">Register3</a>
+                                                        <a href="?report-piracy">Report Piracy</a>
+                                                        <a href="?tac">Privacy</a>-->
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 hidden-xs">
                         <div class="currency-language">
-                            <div class="language-box">
-                                <a href="#" class="language-current"><img src="images/flag/flag.png" alt="" /><span>English</span></a>
-                                <ul class="language-list list-unstyled">
-                                    <li><a href="#"><img src="images/flag/flag-en.png" alt="" /><span>English</span></a></li>
-<!--                                    <li><a href="#"><img src="images/flag/flag-fr.png" alt="" /><span>French</span></a></li>
-                                    <li><a href="#"><img src="images/flag/flag-gm.png" alt="" /><span>German</span></a></li>-->
-                                </ul>
-                            </div>
                             <div class="currency-box">
-                                <a href="#" class="currency-current"><span>KES</span></a>
-                                <ul class="currency-list list-unstyled">
-                                    <li><a href="#"><span class="currency-index">€</span>EUR</a></li>
-                                    <li><a href="#"><span class="currency-index">¥</span>JPY</a></li>
-                                    <li><a href="#"><span class="currency-index">KES.</span>USD</a></li>
-                                </ul>
+
+
+                                <a href="?login" class="currency-current"><span>Login</span></a>
+
+
+<!--                                <a href="#" class="language-current"><img src="images/flag/flag.png" alt="" /><span>English</span></a>
+<ul class="language-list list-unstyled">
+    <li><a href="#"><img src="images/flag/flag-en.png" alt="" /><span>English</span></a></li>
+    <li><a href="#"><img src="images/flag/flag-fr.png" alt="" /><span>French</span></a></li>
+    <li><a href="#"><img src="images/flag/flag-gm.png" alt="" /><span>German</span></a></li>
+</ul>
+</div>
+<div class="currency-box">
+<a href="#" class="currency-current"><span>KES</span></a>
+<ul class="currency-list list-unstyled">
+    <li><a href="#"><span class="currency-index">€</span>EUR</a></li>
+    <li><a href="#"><span class="currency-index">¥</span>JPY</a></li>
+    <li><a href="#"><span class="currency-index">KES.</span>USD</a></li>
+</ul>-->
                             </div>
                             <div class="address-box">
                                 <a href="#" class="address-toggle"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
@@ -57,16 +71,16 @@
                             <div class="select-category">
                                 <select class="category-toggle-link">
 <!--                                <a class="category-toggle-link" href="#"><span>All Categories</span></a>-->
-                                <ul class="list-category-toggle list-unstyled">
-                                     <option value="all">All Categories</option>
-                                    <option value="featured">Featured Products</option>
-                                    <option value="ecd">ECD Books</option>
-                                    
-<!--                                    <li><a href="#">Primary Books</a></li>
-                                    <li><a href="#">Secondary Books</a></li>
-                                    <li><a href="#">Lifestyle Books</a></li>
-                                    <li><a href="#">Religious Books</a></li>-->
-                                </ul>
+                                    <ul class="list-category-toggle list-unstyled">
+                                        <option value="all">All Categories</option>
+                                        <option value="featured">Featured Products</option>
+                                        <option value="ecd">ECD Books</option>
+
+                                        <!--                                    <li><a href="#">Primary Books</a></li>
+                                                                            <li><a href="#">Secondary Books</a></li>
+                                                                            <li><a href="#">Lifestyle Books</a></li>
+                                                                            <li><a href="#">Religious Books</a></li>-->
+                                    </ul>
                                 </select>
                             </div>
                             <form class="smart-search-form ajax-search">
@@ -115,24 +129,49 @@
                                     <a href="?">Home</a>
                                 </li>
                                 <li class="has-mega-menu">
-                                    <a href="?featured">Feature Products</a>
-                                    <!--Adds Pop up Menu with featured items. -->
+                                    <a href="?category-browse">Featured Books</a>
+                                    <!--Adds Pop up Menu with featured items.--> 
                                     <?php require_once 'modules/menu-inserts/featured-inserts.php'; ?>
                                 </li>
                                 <li class="has-mega-menu">
-                                    <a href="?ecd">ECD</a>
+                                    <a href="?category-browse">ECD</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Primary</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="?category-browse">All Books</a></li>
+                                        <li><a href="?category-browse">Class One</a></li>
+                                        <li><a href="?category-browse">Class Two</a></li>
+                                        <li><a href="?category-browse">Class Three</a></li>
+                                        <li><a href="?category-browse">Class Four</a></li>
+                                        <li><a href="?category-browse">Class Five</a></li>
+                                        <li><a href="?category-browse">Class Six</a></li>
+                                        <li><a href="?category-browse">Class Seven</a></li>
+                                        <li><a href="?category-browse">Class Eight</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Secondary</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="?category-browse">All Books</a></li>
+                                        <li><a href="?category-browse">Form One</a></li>
+                                        <li><a href="?category-browse">Form Two</a></li>
+                                        <li><a href="?category-browse">Form Three</a></li>
+                                        <li><a href="?category-browse">Form Four</a></li>
+                                    </ul>
                                 </li>
                                 <li class="has-mega-menu">
-                                    <a href="?primary">Primary</a>
+                                    <a href="?adult_books">Adult Readers</a>
                                 </li>
-                                <li class="has-mega-menu">
-                                    <a href="?secondary">Secondary</a>
-                                </li>
-                                <li class="has-mega-menu">
-                                    <a href="?lifestyle">Lifestyle</a>
-                                </li>
-                                <li class="has-mega-menu">
-                                    <a href="?religious">Religious</a>
+                                <li class="menu-item-has-children">
+                                    <a href="#">PUBLISHERS</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="?category-browse">STORY MOJA</a></li>
+                                        <li><a href="?category-browse">LONGHORN</a></li>
+                                        <li><a href="?category-browse">KLB</a></li>
+                                        <li><a href="?category-browse">KIE</a></li>
+                                        <li><a href="?category-browse">LAUNGREHN</a></li>
+                                    </ul>
                                 </li>
                                 <li class="has-mega-menu">
                                     <a href="?about">About Us</a>
@@ -140,21 +179,21 @@
                                 <li class="has-mega-menu">
                                     <a href="?contact">Contact Us</a>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">MORE</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item-has-children">
-                                            <a href="#">PUBLISHERS</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="#">LONGHORN</a></li>
-                                                <li><a href="#">KLB</a></li>
-                                                <li><a href="#">KIE</a></li>
-                                                <li><a href="#">STORY MOJA</a></li>
-                                                <li><a href="#">LAUNGREHN</a></li>
-                                            </ul>
-                                        </li>                                        
-                                    </ul>
-                                </li>
+                                <!--                                <li class="menu-item-has-children">
+                                                                    <a href="#">MORE</a>
+                                                                    <ul class="sub-menu">
+                                                                        <li class="menu-item-has-children">
+                                                                            <a href="#">PUBLISHERS</a>
+                                                                            <ul class="sub-menu">
+                                                                                <li><a href="#">LONGHORN</a></li>
+                                                                                <li><a href="#">KLB</a></li>
+                                                                                <li><a href="#">KIE</a></li>
+                                                                                <li><a href="#">STORY MOJA</a></li>
+                                                                                <li><a href="#">LAUNGREHN</a></li>
+                                                                            </ul>
+                                                                        </li>                                        
+                                                                    </ul>
+                                                                </li>-->
                             </ul>
                             <a href="#" class="toggle-mobile-menu"><span></span></a>
                         </nav>
