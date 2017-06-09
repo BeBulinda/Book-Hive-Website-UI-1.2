@@ -8,7 +8,7 @@
                             <div class="mid">
                                 <img src="images/photos/homeware/8.jpg" alt=""/>
                             </div>
-                            <div class="gallery-control">
+<!--                            <div class="gallery-control">
                                 <a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
                                 <div class="carousel">
                                     <ul>
@@ -21,7 +21,7 @@
                                     </ul>
                                 </div>
                                 <a href="#" class="next"><i class="fa fa-angle-right"></i></a>
-                            </div>
+                            </div>-->
                         </div>
                         <!-- End Gallery -->
                         <?php require_once 'modules/inc/social-plug.php'; ?>
@@ -39,23 +39,25 @@
                                 <strong>Availability: </strong>
                                 <span class="in-stock">In Stock</span>
                             </div>
-                            <a class="mail-to-friend" href="mailto:">Email to a Friend</a>
+                            <!--<a class="mail-to-friend" href="mailto:">Email to a Friend</a>-->
                             <div class="attr-detail attr-color">
                                 <div class="attr-title">
-                                    <strong><sup>*</sup>Details:</strong>
+                                    <strong><sup>*</sup>Description:</strong>
                                 </div>
                                 <ul class="list-filter color-filter">
-                                    <li>Book Details</li>
+                                    <li>Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description Book Description </li>
                                    
                                 </ul>
                             </div>	
                             <div class="attr-detail attr-size">
                                 <div class="attr-title">
-                                    <strong><sup>*</sup>Publisher:</strong>
+                                    <strong><sup>*</sup>ISBN Number : 2222222222222</strong>
+                                    <br /><strong><sup>*</sup>Author : MMMMMMMMMMMM</strong>
+                                    <br /><strong><sup>*</sup>Publisher : KKKKKKKKKKKK</strong>
                                 </div>
-                                <ul class="list-filter size-filter">
+<!--                                <ul class="list-filter size-filter">
                                     <li><a href="#">LONGHORN</a></li>
-                                </ul>
+                                </ul>-->
                             </div>	
                             <div class="detail-extralink">
                                 <div class="detail-qty border radius">
@@ -65,8 +67,8 @@
                                 </div>
                                 <div class="product-extra-link2">
                                     <a class="addcart-link" href="#">Add to Cart</a>
-                                    <a class="wishlist-link" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>
-                                    <a class="compare-link" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>
+                                    <!--<a class="wishlist-link" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>-->
+                                    <!--<a class="compare-link" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>-->
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,14 @@
 <div class="detail-social">
     <ul class="list-social-detail list-inline-block">
+        <li><a href="#" class="soci-fa soc-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a href="#" class="soci-fa soc-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a href="#" class="soci-fa soc-print"><i class="fa fa-print" aria-hidden="true"></i></a></li>
+    </ul>
+</div>
+
+
+<!--<div class="detail-social">
+    <ul class="list-social-detail list-inline-block">
         <li><a href="#" class="soci-fa soc-tumblr"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
         <li><a href="#" class="soci-fa soc-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
         <li><a href="#" class="soci-fa soc-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -19,4 +28,4 @@
             </div>
         </li>
     </ul>
-</div>
+</div>-->

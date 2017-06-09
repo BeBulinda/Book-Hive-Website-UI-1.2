@@ -77,36 +77,6 @@ else if ( is_menu_set('login') != ""){
     set_title("Bookhive | Sign In");
 }
 
-else if ( is_menu_set('ecd') != ""){
-    $currentPage = WPATH . "modules/ecd.php";
-    set_title("Bookhive | ECD Books");
-}
-
-else if ( is_menu_set('featured') != ""){
-    $currentPage = WPATH . "modules/featured.php";
-    set_title("Bookhive | Featured Books");
-}
-
-else if ( is_menu_set('primary') != ""){
-    $currentPage = WPATH . "modules/primary.php";
-    set_title("Bookhive | Primary Books");
-}
-
-else if ( is_menu_set('secondary') != ""){
-    $currentPage = WPATH . "modules/secondary.php";
-    set_title("Bookhive | Secondary Books");
-}
-
-else if ( is_menu_set('lifestyle') != ""){
-    $currentPage = WPATH . "modules/lifestyle.php";
-    set_title("Bookhive | Lifestyle Books");
-}
-
-else if ( is_menu_set('religious') != ""){
-    $currentPage = WPATH . "modules/religious.php";
-    set_title("Bookhive | Religious Books");
-}
-
 else if ( is_menu_set('product-page') != ""){
     $currentPage = WPATH . "modules/product-page.php";
     set_title("Bookhive | Product Pages");

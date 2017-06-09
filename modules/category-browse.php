@@ -1,3 +1,70 @@
+<?php
+require_once WPATH . "modules/classes/Users.php";
+require_once WPATH . "modules/classes/System_Administration.php";
+require_once WPATH . "modules/classes/Books.php";
+$books = new Books();
+$system_administration = new System_Administration();
+$users = new Users();
+
+//unset($_SESSION['searched_books']);
+$item_total = 0;
+
+if (isset($_SESSION["cart_item"])) {
+    $_SESSION["cart_number_of_items"] = count($_SESSION["cart_item"]);
+    foreach ($_SESSION["cart_item"] as $item) {
+        $item_total += ($item["price"] * $item["quantity"]);
+        $_SESSION["cart_total_cost"] = $item_total;
+    }
+} else {
+    $_SESSION["cart_number_of_items"] = 0;
+    $_SESSION["cart_total_cost"] = 0;
+}
+
+if (!empty($_POST)) {
+    if ($_POST['action'] == "register_usertype") {
+        if ($_POST['user_type'] === "individual_user") {
+            App::redirectTo("?register_individual_user");
+        } else if ($_POST['user_type'] === "book_seller") {
+            App::redirectTo("?register_book_seller");
+        } else if ($_POST['user_type'] === "self_publisher") {
+            App::redirectTo("?register_self_publisher");
+        }
+    } else if ($_POST['action'] == "search") {
+        $searched_books[] = $books->getAllSearchedBooks($_POST['search_by'], $_POST['search_value']);
+        $_SESSION['searched_books'] = $searched_books;
+        if ($_POST['search_by'] === "none") {
+            App::redirectTo("?home2");
+        } else if ($_POST['search_by'] === "all") {
+            App::redirectTo("?search_all_books");
+        } else if ($_POST['search_by'] === "publishers") {
+            App::redirectTo("?search_all_books");
+        } else if ($_POST['search_by'] === "book_titles") {
+            App::redirectTo("?search_individual_books");
+        } else if ($_POST['search_by'] === "publication_years") {
+            App::redirectTo("?search_individual_books");
+        } else if ($_POST['search_by'] === "isbn_numbers") {
+            App::redirectTo("?search_individual_books");
+        } else if ($_POST['search_by'] === "book_types") {
+            App::redirectTo("?search_all_books");
+        } else if ($_POST['search_by'] === "book_levels") {
+            App::redirectTo("?search_book_levels");
+        }
+    } else if ($_POST['action'] == "login") {
+        $success = $users->execute();
+        if (is_bool($success) && $success == true) {
+            $user_details = $users->fetchLoggedInUserDetails($_SESSION['userid']);
+            if ($user_details['status'] == 1) {
+                $_SESSION['account_blocked'] = true;
+            }
+            if ($user_details['password_new'] == 0) {
+                App::redirectTo("?update_password");
+            }
+            App::redirectTo("?home");
+        }
+    }
+}
+?>
+
 <div id="content">
     <div class="content-page grid-ajax-infinite">
         <?php require_once 'modules/inc/breadcrumbs.php'; ?>
@@ -9,68 +76,84 @@
                     <a href="#" class="list-view"></a>
                 </div>
                 <div class="pull-left">
-                    <div class=" select-box">
-                        <?php if (is_menu_set('publisher_books') != "") { ?>
-                            <!--<div class="smart-search smart-search4">-->
-                            <div style="right: inherit; margin-top: -20px; left: inherit; z-index: 99" class="select-category">
-                                <a class="category-toggle-link" href="#"><span>Book Category</span></a>
-                                <ul class="list-category-toggle list-unstyled">
-                                    <li><a href="?ecd_books">ECD Books</a></li>
-                                    <li><a href="?primary_books">Primary Books</a></li>
-                                    <li><a href="?secondary_books">Secondary Books</a></li>
-                                    <li><a href="?adult_books">Adult Reader Books</a></li>
-                                    <li><a href="?english_books">English Books</a></li>
-                                    <li><a href="?kiswahili_books">Kiswahili Books</a></li>
-                                    <li><a href="?activity_books">Activity Books</a></li>
-                                </ul>
-                            </div>
-                            <!--</div>-->
-                        <?php } ?>
+                    <!--                    <div class=" select-box">
+                    <?php // if (is_menu_set('publisher_books') != "") { ?>
+                                                <div class="smart-search smart-search4">
+                                                <div style="right: inherit; margin-top: -20px; left: inherit; z-index: 99" class="select-category">
+                                                    <a class="category-toggle-link" href="#"><span>Book Category</span></a>
+                                                    <ul class="list-category-toggle list-unstyled">
+                                                        <li><a href="?ecd_books">ECD Books</a></li>
+                                                        <li><a href="?primary_books">Primary Books</a></li>
+                                                        <li><a href="?secondary_books">Secondary Books</a></li>
+                                                        <li><a href="?adult_books">Adult Reader Books</a></li>
+                                                        <li><a href="?english_books">English Books</a></li>
+                                                        <li><a href="?kiswahili_books">Kiswahili Books</a></li>
+                                                        <li><a href="?activity_books">Activity Books</a></li>
+                                                    </ul>
+                                                </div>
+                                                </div>
+                    <?php // } ?>
+                    
+                    <?php
+//                        if (is_menu_set('english_books') != ""
+//                                OR is_menu_set('kiswahili_books') != ""
+//                                OR is_menu_set('activity_books') != ""
+//                        ) {
+                    ?>
+                                                <div class="smart-search smart-search4">
+                                                <div style="right: inherit; margin-top: -20px; left: inherit; z-index: 99" class="select-category">
+                                                    <a class="category-toggle-link" href="#"><span>Book Level</span></a>
+                                                    <ul class="list-category-toggle list-unstyled">
+                                                        <li><a href="?ecd_books">ECD Books</a></li>
+                                                        <li><a href="?primary_books">Primary Books</a></li>
+                                                        <li><a href="?secondary_books">Secondary Books</a></li>
+                                                        <li><a href="?adult_books">Adult Reader Books</a></li>
+                                                    </ul>
+                                                </div>
+                                                </div>
+                    <?php // } ?>
+                    
+                    <?php
+//                        if (is_menu_set('ecd_books') != ""
+//                                OR is_menu_set('primary_books') != ""
+//                                OR is_menu_set('secondary_books') != ""
+//                                OR is_menu_set('adult_books') != ""
+//                        ) {
+                    ?>
+                                                <div style="right: inherit; margin-top: -20px; left: inherit; z-index: 99" class="select-category">
+                                                    <a class="category-toggle-link" href="#"><span> Book Type</span></a>
+                                                    <ul class="list-category-toggle list-unstyled">
+                                                        <li><a href="?english_books">English Books</a></li>
+                                                        <li><a href="?kiswahili_books">Kiswahili Books</a></li>
+                                                        <li><a href="?activity_books">Activity Books</a></li>
+                                                    </ul>
+                                                </div>
+                    <?php // } ?>
+                                        </div>-->
 
-                        <?php
-                        if (is_menu_set('english_books') != ""
-                                OR is_menu_set('kiswahili_books') != ""
-                                OR is_menu_set('activity_books') != ""
-                        ) {
-                            ?>
-                            <!--<div class="smart-search smart-search4">-->
-                            <div style="right: inherit; margin-top: -20px; left: inherit; z-index: 99" class="select-category">
-                                <a class="category-toggle-link" href="#"><span>Book Level</span></a>
-                                <ul class="list-category-toggle list-unstyled">
-                                    <li><a href="?ecd_books">ECD Books</a></li>
-                                    <li><a href="?primary_books">Primary Books</a></li>
-                                    <li><a href="?secondary_books">Secondary Books</a></li>
-                                    <li><a href="?adult_books">Adult Reader Books</a></li>
-                                </ul>
-                            </div>
-                            <!--</div>-->
-                        <?php } ?>
+                    <div class="sort-bar select-box">
+                        <form method="post">
+                            <input type="hidden" name="action" value="filter_books"/>
+                            <label>FILTER BY:</label>
+                            <select name="publisher">  
+                                <?php echo $users->getPublishers(); ?>
+                            </select>
+                            <select name="book_level">
+                                <?php echo $system_administration->getBookLevels(); ?>
+                            </select>
+                            <select name="book_type">  
+                                <?php echo $system_administration->getBookTypes(); ?>
+                            </select>
+                            <select name="print_type">
+                                <option value="ALL">ALL PRINT TYPES</option>
+                                <option value="PRINTED">PRINTED BOOKS</option>
+                                <option value="DIGITAL">DIGITAL BOOKS</option>
+                            </select>
+                            <button type="submit" id="submitButton" class="btn btn-primary">Filter</button>
+                        </form>
 
-                        <?php
-                        if (is_menu_set('ecd_books') != ""
-                                OR is_menu_set('primary_books') != ""
-                                OR is_menu_set('secondary_books') != ""
-                                OR is_menu_set('adult_books') != ""
-                        ) {
-                            ?>
-                            <div style="right: inherit; margin-top: -20px; left: inherit; z-index: 99" class="select-category">
-                                <a class="category-toggle-link" href="#"><span> Book Type</span></a>
-                                <ul class="list-category-toggle list-unstyled">
-                                    <li><a href="?english_books">English Books</a></li>
-                                    <li><a href="?kiswahili_books">Kiswahili Books</a></li>
-                                    <li><a href="?activity_books">Activity Books</a></li>
-                                </ul>
-                            </div>
-                        <?php } ?>
                     </div>
-                    <!--                    <div class="sort-bar select-box">
-                                            <label>Sort By:</label>
-                                            <select>
-                                                <option value="">position</option>
-                                                <option value="">price</option>
-                                            </select>
-                                        </div>
-                                        <div class="show-bar select-box">
+                    <!--                    <div class="show-bar select-box">
                                             <label>Show:</label>
                                             <select>
                                                 <option value="">20</option>
