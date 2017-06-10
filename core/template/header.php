@@ -60,6 +60,8 @@
                                     <li><a href="?english_books">English Books</a></li>
                                     <li><a href="?kiswahili_books">Kiswahili Books</a></li>
                                     <li><a href="?activity_books">Activity Books</a></li>
+                                    <li><a href="?printed_books">Printed Books</a></li>
+                                    <li><a href="?digital_books">Digital Books</a></li>
                                 </ul>
                             </div>
                             <form class="smart-search-form ajax-search">
@@ -97,9 +99,7 @@
                                     <!--Adds Pop up Menu with featured items.--> 
                                     <?php require_once 'modules/menu-inserts/featured-inserts.php'; ?>
                                 </li>
-                                <li class="has-mega-menu">
-                                    <a href="?ecd_books">ECD</a>
-                                </li>
+                                <li><a href="?ecd_books">ECD</a></li>
                                 <li class="menu-item-has-children">
                                     <a href="#">Primary</a>
                                     <ul class="sub-menu">
@@ -114,6 +114,82 @@
                                         <li><a href="?class_eight_books">Class Eight</a></li>
                                     </ul>
                                 </li>
+<!--                                <li class="menu-item-has-children">
+                                    <a href="#">ECD</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="?ecd_books">All Books</a></li>
+                                        <li><a href="?printed_books">Printed Books</a></li>
+                                        <li><a href="?digital_books">Digital Books</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Primary</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item-has-children">
+                                            <a href="?primary_books">All Books</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="?printed_books">Printed Books</a></li>
+                                                <li><a href="?digital_books">Digital Books</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="?class_one_books">Class One</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="?printed_books">Printed Books</a></li>
+                                                <li><a href="?digital_books">Digital Books</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="?class_two_books">Class Two</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="?printed_books">Printed Books</a></li>
+                                                <li><a href="?digital_books">Digital Books</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="?class_three_books">Class Three</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="?printed_books">Printed Books</a></li>
+                                                <li><a href="?digital_books">Digital Books</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="?class_four_books">Class Four</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="?printed_books">Printed Books</a></li>
+                                                <li><a href="?digital_books">Digital Books</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="?class_five_books">Class Five</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="?printed_books">Printed Books</a></li>
+                                                <li><a href="?digital_books">Digital Books</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="?class_six_books">Class Six</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="?printed_books">Printed Books</a></li>
+                                                <li><a href="?digital_books">Digital Books</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="?class_seven_books">Class Seven</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="?printed_books">Printed Books</a></li>
+                                                <li><a href="?digital_books">Digital Books</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="?class_eight_books">Class Eight</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="?printed_books">Printed Books</a></li>
+                                                <li><a href="?digital_books">Digital Books</a></li>
+                                            </ul>
+                                        </li>                                        
+                                    </ul>
+                                </li>-->
                                 <li class="menu-item-has-children">
                                     <a href="#">Secondary</a>
                                     <ul class="sub-menu">
@@ -130,11 +206,18 @@
                                 <li class="menu-item-has-children">
                                     <a href="#">PUBLISHERS</a>
                                     <ul class="sub-menu">
-                                        <li><a href="?publisher_books">STORY MOJA</a></li>
-                                        <li><a href="?publisher_books">LONGHORN</a></li>
+                                        <li><a href="?publisher_books">STORYMOJA</a></li>
                                         <li><a href="?publisher_books">KLB</a></li>
-                                        <li><a href="?publisher_books">KIE</a></li>
-                                        <li><a href="?publisher_books">LAUNGREHN</a></li>
+                                        <li><a href="?publisher_books">PHOENIX</a></li>
+                                        <li><a href="?publisher_books">LONGHORN</a></li>
+                                        <li><a href="?publisher_books">MORAN</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Book Version</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="?printed_books">Printed Books</a></li>
+                                        <li><a href="?digital_books">Digital Books</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-mega-menu">

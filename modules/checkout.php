@@ -13,15 +13,12 @@
                                         <input type="text" value="First Name *" onblur="if (this.value == '')
                                                     this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                                 this.value = ''" />
-                                        <input type="text" value="last name *" onblur="if (this.value == '')
+                                        <input type="text" value="Last name *" onblur="if (this.value == '')
                                                     this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                                 this.value = ''" />
                                     </p>
-                                    <p><input type="text" value="Company Name" onblur="if (this.value == '')
-                                                this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                            this.value = ''" /></p>
                                     <p class="clearfix box-col2">
-                                        <input type="text" value="Email *" onblur="if (this.value == '')
+                                        <input type="text" value="ID/Passport Number " onblur="if (this.value == '')
                                                     this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                                 this.value = ''" />
                                         <input type="text" value="phone *" onblur="if (this.value == '')
@@ -29,6 +26,21 @@
                                                                 this.value = ''" />
                                     </p>
                                     <p>
+                                        <input type="text" value="Email *" onblur="if (this.value == '')
+                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                                this.value = ''" />
+                                    </p>    
+                                    <p class="clearfix box-col2">    
+                                        <select name="gender" id="gender">
+                                            <option value="none">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </p>
+                                    <p><input type="text" value="Company Name" onblur="if (this.value == '')
+                                                this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
+                                                            this.value = ''" /></p>
+<!--                                    <p>
                                         <select name="country" id="country">
                                             <option value="">Country*</option>
                                             <option value="">United State</option>
@@ -47,7 +59,7 @@
                                         <input type="text" value="Town / City *" onblur="if (this.value == '')
                                                     this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                                 this.value = ''" />
-                                    </p>
+                                    </p>-->
                                     <p>
                                         <input type="checkbox"  id="remember" /> <label for="remember">Create an account?</label>
                                     </p>
@@ -58,7 +70,7 @@
                             <div class="check-address">
                                 <form class="form-my-account">
                                     <p class="ship-address">
-                                        <input type="checkbox"  id="address" /> <label for="address">Ship to a different address?</label>
+                                        <input type="checkbox"  id="address" /> <label for="address">Deliver to a different address?</label>
                                     </p>
                                     <p>
                                         <textarea cols="30" rows="10" onblur="if (this.value == '')
@@ -82,48 +94,52 @@
                                 <tbody>
                                     <tr class="cart_item">
                                         <td class="product-name">
-                                            Luphen Caunoiteng kug&nbsp; <span class="product-quantity">× 1</span>
+                                            Book 1 Title &nbsp; <span class="product-quantity">× 1</span>
                                         </td>
                                         <td class="product-total">
-                                            <span class="amount">$68.00</span>						
+                                            <span class="amount">KES 6800</span>						
                                         </td>
                                     </tr>
                                     <tr class="cart_item">
                                         <td class="product-name">
-                                            Cooc Huyinh Phale&nbsp;	<span class="product-quantity">× 2</span>
+                                            Book 2 Title &nbsp;	<span class="product-quantity">× 2</span>
                                         </td>
                                         <td class="product-total">
-                                            <span class="amount">$38.00</span>
+                                            <span class="amount">KES 3800</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="cart_item">
+                                        <td class="product-name">
+                                            Delivery Charge &nbsp;	<span class="product-quantity"> (XXXXXX To YYYYYY)</span>
+                                        </td>
+                                        <td class="product-total">
+                                            <span class="amount">KES 2000</span>
                                         </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
-                                    <tr class="cart-subtotal">
+<!--                                    <tr class="cart-subtotal">
                                         <th>Subtotal</th>
-                                        <td><strong class="amount">$106.00</strong></td>
-                                    </tr>
-                                    <tr class="shipping">
-                                        <th>Shipping</th>
+                                        <td><strong class="amount">KES 10600</strong></td>
+                                    </tr>-->
+<!--                                    <tr class="shipping">
+                                        <th>Delivery Method</th>
                                         <td>
                                             <ul id="shipping_method" class="list-none">
                                                 <li>
-                                                    <input type="radio" class="shipping_method" checked="checked" value="free_shipping" id="shipping_method_0_free_shipping" data-index="0" name="shipping_method[0]">
-                                                    <label for="shipping_method_0_free_shipping">Free Shipping</label>
+                                                    <input type="radio" class="shipping_method" checked="checked" value="by_seller" id="shipping_method_0_free_shipping" data-index="0" name="shipping_method[0]">
+                                                    <label for="shipping_method_0_free_shipping">Delivery by Seller(Charged)</label>
                                                 </li>
                                                 <li>
-                                                    <input type="radio" class="shipping_method" value="local_delivery" id="shipping_method_0_local_delivery" data-index="0" name="shipping_method[0]">
-                                                    <label for="shipping_method_0_local_delivery">Local Delivery (Free)</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" class="shipping_method" value="local_pickup" id="shipping_method_0_local_pickup" data-index="0" name="shipping_method[0]">
-                                                    <label for="shipping_method_0_local_pickup">Local Pickup (Free)</label>
+                                                    <input type="radio" class="shipping_method" value="by_buyer" id="shipping_method_0_local_pickup" data-index="0" name="shipping_method[0]">
+                                                    <label for="shipping_method_0_local_pickup">Pickup by Buyer(Free)</label>
                                                 </li>
                                             </ul>
                                         </td>
-                                    </tr>
+                                    </tr>-->
                                     <tr class="order-total">
                                         <th>Total</th>
-                                        <td><strong><span class="amount">$106.00</span></strong> </td>
+                                        <td><strong><span class="amount">KES 12600</span></strong> </td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -131,35 +147,24 @@
                         <div class="woocommerce-checkout-payment" id="payment">
                             <ul class="payment_methods methods list-none">
                                 <li class="payment_method_bacs">
-                                    <input type="radio" data-order_button_text="" value="bacs" name="payment_method" class="input-radio" id="payment_method_bacs" checked="checked">
-                                    <label for="payment_method_bacs">Direct Bank Transfer 	</label>
-                                    <div style="" class="payment_box payment_method_bacs">
-                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                                    </div>
+                                    <input type="radio" data-order_button_text="" value="mpesa" name="payment_method" class="input-radio" id="payment_method_bacs" checked="checked">
+                                    <label for="payment_method_bacs">M-Pesa</label>
+                                </li>
+                                <li class="payment_method_bacs">
+                                    <input type="radio" data-order_button_text="" value="bacs" name="payment_method" class="input-radio" id="payment_method_bacs">
+                                    <label for="payment_method_bacs">Direct Bank Transfer</label>
                                 </li>
                                 <li class="payment_method_cheque">
                                     <input type="radio" data-order_button_text="" value="cheque" name="payment_method" class="input-radio" id="payment_method_cheque">
-                                    <label for="payment_method_cheque">Cheque Payment 	</label>
-                                    <div style="display:none;" class="payment_box payment_method_cheque">
-                                        <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                    </div>
+                                    <label for="payment_method_cheque">Cheque Payment</label>
                                 </li>
                                 <li class="payment_method_cod">
                                     <input type="radio" data-order_button_text="" value="cod" name="payment_method" class="input-radio" id="payment_method_cod">
-                                    <label for="payment_method_cod">Cash on Delivery 	</label>
-                                    <div style="display:none;" class="payment_box payment_method_cod">
-                                        <p>Pay with cash upon delivery.</p>
-                                    </div>
+                                    <label for="payment_method_cod">Cash on Delivery</label>
                                 </li>
                                 <li class="payment_method_paypal">
                                     <input type="radio" data-order_button_text="Proceed to PayPal" value="paypal" name="payment_method" class="input-radio" id="payment_method_paypal">
-                                    <label for="payment_method_paypal">
-                                        PayPal <img alt="PayPal Acceptance Mark" src="images/shop/payment.png"><a title="What is PayPal?" onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup', 'WIPaypal', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700');
-                                                return false;" class="about_paypal" href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">What is PayPal?</a>	
-                                    </label>
-                                    <div style="display:none;" class="payment_box payment_method_paypal">
-                                        <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-                                    </div>
+                                    <label for="payment_method_paypal">Credit Card</label>
                                 </li>
                             </ul>
                             <div class="form-row place-order">

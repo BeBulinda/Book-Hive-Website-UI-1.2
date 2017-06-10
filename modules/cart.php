@@ -90,20 +90,16 @@
                                 <td><strong class="amount">KES 10600</strong></td>
                             </tr>
                             <tr class="shipping">
-                                <th>Shipping</th>
+                                <th>Delivery Method</th>
                                 <td>
                                     <ul id="shipping_method">
                                         <li>
-                                            <input type="radio" class="shipping_method" checked="checked" value="free_shipping" id="shipping_method_0_free_shipping" data-index="0" name="shipping_method[0]">
-                                            <label for="shipping_method_0_free_shipping">Free Shipping</label>
+                                            <input type="radio" class="shipping_method" checked="checked" value="by_buyer" id="shipping_method_0_local_pickup" data-index="0" name="shipping_method[0]">
+                                            <label for="shipping_method_0_local_pickup">Pickup by Buyer(Free)</label>
                                         </li>
                                         <li>
-                                            <input type="radio" class="shipping_method" value="local_delivery" id="shipping_method_0_local_delivery" data-index="0" name="shipping_method[0]">
-                                            <label for="shipping_method_0_local_delivery">Local Delivery (Free)</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" class="shipping_method" value="local_pickup" id="shipping_method_0_local_pickup" data-index="0" name="shipping_method[0]">
-                                            <label for="shipping_method_0_local_pickup">Local Pickup (Free)</label>
+                                            <input type="radio" class="shipping_method" value="by_seller" id="shipping_method_0_free_shipping" data-index="0" name="shipping_method[0]">
+                                            <label for="shipping_method_0_free_shipping">Delivery by Seller(Charged)</label>
                                         </li>
                                     </ul>
                                 </td>
@@ -116,7 +112,7 @@
                     </table>
                 </div>
                 <div class="wc-proceed-to-checkout">
-                    <a class="checkout-button button alt wc-forward" href="checkout.html">Proceed to Checkout</a>
+                    <a class="checkout-button button alt wc-forward" href="?checkout">Proceed to Checkout</a>
                 </div>
             </div>
         </div>
