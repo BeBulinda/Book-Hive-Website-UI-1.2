@@ -18,13 +18,16 @@
                     <h3><a href="#">Book 1 Title</a></h3>
                     <div class="info-price">
                         <span>KES 5952</span>
-                        <del>KES 1796</del>
-                    </div>
-                    <div class="qty-product">
-                        <span class="qty-down">-</span>
-                        <span class="qty-num">1</span>
-                        <span class="qty-up">+</span>
-                    </div>
+                                            </div>
+                    <form role="form">
+                        <div class="">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <input type="button" class="btn btn-secondary btn-danger" onclick="decrementValue()" value="-" />
+                                <input type="text" class="btn btn-secondary" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" readonly="" />
+                                <input type="button" class="btn btn-secondary btn-info" onclick="incrementValue()" value="+" />
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </li>
         </ul>

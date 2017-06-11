@@ -51,7 +51,7 @@ require_once "core/template/header.php";
 <div id="content">
     <div class="content-page">
         <div class="container">
-              <?php // require_once 'modules/inc/breadcrumbs.php'; ?>
+            <?php //require_once 'modules/inc/breadcrumbs.php'; ?>
             <!-- End Bread Crumb -->
             <div class="row">
                 <div class="col-md-12">
@@ -77,22 +77,11 @@ require_once "core/template/header.php";
                                         <strong>Availability: </strong>
                                         <span class="in-stock">In Stock</span>
                                     </div>
-<!--                                    <a href="#" class="mail-to-friend">Email to a Friend</a>-->
-                                    <div class="detail-extralink">
-                                        <div class="detail-qty border radius">
-                                            <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                                            <span class="qty-val">1</span>
-                                            <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                                        </div>
-                                        <div class="product-extra-link2">
-                                            <a class="addcart-link" href="#">Add to Cart</a>
-                                            <!--<a class="wishlist-link" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>-->
-                                            <!--<a class="compare-link" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>-->
-                                        </div>
-                                    </div>
+                                    <!--                                    <a href="#" class="mail-to-friend">Email to a Friend</a>-->
+                                    <?php require_once 'modules/cart/increase-decrease.php'; ?>
                                 </div>
                                 <!-- Detail Info -->
-                               <?php require_once 'modules/inc/social-plug.php'; ?>
+                                <?php require_once 'modules/inc/social-plug.php'; ?>
                             </div>
                         </div>
                         <div class="tab-detal hoz-tab-detail">

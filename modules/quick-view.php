@@ -81,7 +81,6 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                 </div>
                                 <ul class="list-filter color-filter">
                                     <li><?php echo $book_details['description']; ?></li>
-                                   
                                 </ul>
                             </div>	
                             <div class="attr-detail attr-size">
@@ -90,17 +89,8 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                     <br /><strong><sup>*</sup>Author : <?php echo $book_details['author']; ?></strong>
                                     <br /><strong><sup>*</sup>Publisher : <?php echo $book_publisher_details['company_name']; ?></strong>
                                 </div>
-                            </div>	
-                            <div class="detail-extralink">
-                                <div class="detail-qty border radius">
-                                    <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                                    <span class="qty-val">1</span>
-                                    <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="product-extra-link2">
-                                    <a class="addcart-link" href="#">Add to Cart</a>
-                                </div>
                             </div>
+                            <?php require_once 'modules/cart/increase-decrease.php'; ?>
                         </div>
                     </div>
                 </div>	

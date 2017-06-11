@@ -16229,3 +16229,6 @@ td.product-info-total .product-info .desc {
 .top-menu > ul > li > a {
     padding: 2px 0px;
 }
+.addcart {
+    float: right;
+}
