@@ -91,7 +91,8 @@ header('Content-Type: text/html; charset=UTF-8');
             ?>
 
             <!-- Basic scripts -->  
-            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+            <script type="text/javascript" src='web/js/libs/jquery.min.js'></script>
+            <script type="text/javascript" src="web/js/libs/jquery.js"></script>
             <script type="text/javascript" src="web/js/libs/bootstrap.min.js"></script>
             <script type="text/javascript" src="web/js/libs/jquery.fancybox.js"></script>
             <script type="text/javascript" src="web/js/libs/jquery-ui.min.js"></script>
@@ -99,11 +100,33 @@ header('Content-Type: text/html; charset=UTF-8');
             <script type="text/javascript" src="web/js/libs/jquery.jcarousellite.js"></script>
             <script type="text/javascript" src="web/js/libs/jquery.mCustomScrollbar.js"></script>
             <script type="text/javascript" src="web/js/libs/jquery.flexslider.js"></script>
-            <script type="text/javascript" src="webjs/libs/jquery.elevatezoom.js"></script>
-            <script type="text/javascript" src="webjs/libs/TimeCircles.js"></script>
+            <script type="text/javascript" src="web/js/libs/jquery.elevatezoom.js"></script>
+            <script type="text/javascript" src="web/js/libs/TimeCircles.js"></script>
             <script type="text/javascript" src="web/js/libs/wow.js"></script>
             <script type="text/javascript" src="web/js/libs/popup.js"></script>
             <script type="text/javascript" src="web/js/theme.js"></script>
+            <script type="text/javascript" src="web/js/incrementing.js"></script>
+            <script type="text/javascript">
+                function incrementValue()
+                {
+                    var value = parseInt(document.getElementById('number').value, 10);
+                    value = isNaN(value) ? 0 : value;
+                    if (value < 10) {
+                        value++;
+                        document.getElementById('number').value = value;
+                    }
+                }
+                function decrementValue()
+                {
+                    var value = parseInt(document.getElementById('number').value, 10);
+                    value = isNaN(value) ? 0 : value;
+                    if (value > 1) {
+                        value--;
+                        document.getElementById('number').value = value;
+                    }
+
+                }
+            </script>
             <!-- End of basic scripts -->
             <?php
             /*             * *
@@ -123,13 +146,13 @@ header('Content-Type: text/html; charset=UTF-8');
                 <?php
             }
             ?>
-<?php if (!App::isLoggedIn()) { ?>
+            <?php if (!App::isLoggedIn()) { ?>
                 <script>
-                    jQuery(document).ready(function () {
-                        App.initLogin();
-                    });
+                jQuery(document).ready(function () {
+                    App.initLogin();
+                });
                 </script>
-<?php } else { ?>
+            <?php } else { ?>
                 <script>
                     jQuery(document).ready(function () {
                         // initiate layout and plugins

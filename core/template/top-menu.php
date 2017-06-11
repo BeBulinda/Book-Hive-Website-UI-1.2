@@ -13,7 +13,7 @@
                                     <a href="?">Home</a>
                                 </li>
                                 <li class="has-mega-menu">
-                                    <a href="?featured_books">Featured Books</a>
+                                    <a href="?featured_books">Featured</a>
                                     <!--Adds Pop up Menu with featured items.--> 
                                     <?php require_once 'modules/menu-inserts/featured-inserts.php'; ?>
                                 </li>
@@ -45,7 +45,7 @@
                                     </ul>
                                 </li>
                                 <li class="has-mega-menu">
-                                    <a href="?adult_books">Adult Readers</a>
+                                    <a href="?adult_books">Adults</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">PUBLISHERS</a>
