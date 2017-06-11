@@ -10,10 +10,10 @@ class Books extends Database {
         if ($_POST['action'] == "filter_books") {
             return $this->getAllFilteredBooks();
         } else if ($_POST['action'] == "search") {
-            return $this->getAllFilteredBooks();
-        } 
+            return $this->getAllSearchedBooks();
+        }
     }
-    
+
     public function fetchBookDetails($code) {
         $sql = "SELECT * FROM books WHERE id=:code";
         $stmt = $this->prepareQuery($sql);
@@ -22,11 +22,10 @@ class Books extends Database {
         $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $info[0];
     }
-     
-    public function getAllSearchedBooks($search_by, $search_value) {
-        
-        if ($search_by === "none") {
-            $sql = "SELECT * FROM books WHERE title LIKE '%{$search_value}%' "
+
+    public function getAllSearchedBooks($search_value) {
+
+        $sql = "SELECT * FROM books WHERE title LIKE '%{$search_value}%' "
                 . "OR description LIKE '%{$search_value}%' "
                 . "OR author LIKE '%{$search_value}%' "
                 . "OR publisher LIKE '%{$search_value}%' "
@@ -36,31 +35,6 @@ class Books extends Database {
                 . "OR level_id LIKE '%{$search_value}%' "
                 . "OR price LIKE '%{$search_value}%' "
                 . " ORDER BY id ASC";
-        } else if ($search_by === "all") {
-             $sql = "SELECT * FROM books WHERE title LIKE '%{$search_value}%' "
-                . "OR description LIKE '%{$search_value}%' "
-                . "OR author LIKE '%{$search_value}%' "
-                . "OR publisher LIKE '%{$search_value}%' "
-                . "OR publication_year LIKE '%{$search_value}%' "
-                . "OR isbn_number LIKE '%{$search_value}%' "
-                . "OR type_id LIKE '%{$search_value}%' "
-                . "OR level_id LIKE '%{$search_value}%' "
-                . "OR price LIKE '%{$search_value}%' "
-                . " ORDER BY id ASC";
-        } else if ($search_by === "publishers") {
-             $sql = "SELECT * FROM books WHERE publisher LIKE '%{$search_value}%' ORDER BY id ASC";
-        } else if ($search_by === "book_titles") {
-             $sql = "SELECT * FROM books WHERE title LIKE '%{$search_value}%' ORDER BY id ASC";
-        } else if ($search_by === "publication_years") {
-             $sql = "SELECT * FROM books WHERE publication_year LIKE '%{$search_value}%' ORDER BY id ASC";
-        } else if ($search_by === "isbn_numbers") {
-             $sql = "SELECT * FROM books WHERE isbn_number LIKE '%{$search_value}%' ORDER BY id ASC";
-        } else if ($search_by === "book_types") {
-             $sql = "SELECT * FROM books WHERE type_id LIKE '%{$search_value}%' ORDER BY id ASC";
-        } else if ($search_by === "book_levels") {
-            $sql = "SELECT * FROM books WHERE level_id LIKE '%{$search_value}%' ORDER BY id ASC";
-        }
-        
         $stmt = $this->prepareQuery($sql);
         $stmt->execute();
         $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -78,7 +52,63 @@ class Books extends Database {
 //            return json_encode($values2);
         }
     }
-     
+
+//    public function getAllSearchedBooks($search_by, $search_value) {
+//        
+//        if ($search_by === "none") {
+//            $sql = "SELECT * FROM books WHERE title LIKE '%{$search_value}%' "
+//                . "OR description LIKE '%{$search_value}%' "
+//                . "OR author LIKE '%{$search_value}%' "
+//                . "OR publisher LIKE '%{$search_value}%' "
+//                . "OR publication_year LIKE '%{$search_value}%' "
+//                . "OR isbn_number LIKE '%{$search_value}%' "
+//                . "OR type_id LIKE '%{$search_value}%' "
+//                . "OR level_id LIKE '%{$search_value}%' "
+//                . "OR price LIKE '%{$search_value}%' "
+//                . " ORDER BY id ASC";
+//        } else if ($search_by === "all") {
+//             $sql = "SELECT * FROM books WHERE title LIKE '%{$search_value}%' "
+//                . "OR description LIKE '%{$search_value}%' "
+//                . "OR author LIKE '%{$search_value}%' "
+//                . "OR publisher LIKE '%{$search_value}%' "
+//                . "OR publication_year LIKE '%{$search_value}%' "
+//                . "OR isbn_number LIKE '%{$search_value}%' "
+//                . "OR type_id LIKE '%{$search_value}%' "
+//                . "OR level_id LIKE '%{$search_value}%' "
+//                . "OR price LIKE '%{$search_value}%' "
+//                . " ORDER BY id ASC";
+//        } else if ($search_by === "publishers") {
+//             $sql = "SELECT * FROM books WHERE publisher LIKE '%{$search_value}%' ORDER BY id ASC";
+//        } else if ($search_by === "book_titles") {
+//             $sql = "SELECT * FROM books WHERE title LIKE '%{$search_value}%' ORDER BY id ASC";
+//        } else if ($search_by === "publication_years") {
+//             $sql = "SELECT * FROM books WHERE publication_year LIKE '%{$search_value}%' ORDER BY id ASC";
+//        } else if ($search_by === "isbn_numbers") {
+//             $sql = "SELECT * FROM books WHERE isbn_number LIKE '%{$search_value}%' ORDER BY id ASC";
+//        } else if ($search_by === "book_types") {
+//             $sql = "SELECT * FROM books WHERE type_id LIKE '%{$search_value}%' ORDER BY id ASC";
+//        } else if ($search_by === "book_levels") {
+//            $sql = "SELECT * FROM books WHERE level_id LIKE '%{$search_value}%' ORDER BY id ASC";
+//        }
+//        
+//        $stmt = $this->prepareQuery($sql);
+//        $stmt->execute();
+//        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//
+//        if (count($info) == 0) {
+//            $_SESSION['no_searched_records'] = true;
+//        } else {
+//            $_SESSION['yes_searched_records'] = true;
+//            $values2 = array();
+//            foreach ($info as $data) {
+//                $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
+//                array_push($values2, $values);
+//            }
+//            return $values2;
+////            return json_encode($values2);
+//        }
+//    }
+//     
     private function getAllFilteredBooks() {
         $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id ORDER BY id ASC";
         $stmt = $this->prepareQuery($sql);
@@ -99,21 +129,6 @@ class Books extends Database {
             return json_encode($values2);
         }
     }
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     public function getBookLevelRefTypeId($level) {
         $sql = "SELECT id, status FROM book_levels WHERE name=:level";
@@ -173,7 +188,51 @@ class Books extends Database {
             return json_encode($values2);
         }
     }
-    
+
+    public function getBookPublisherRefTypeId($publisher) {
+        $users = new Users();
+        return $users->getPublisherRefTypeId($publisher);
+    }
+
+    public function getAllPublisherBooks($publisher) {
+
+        $publisher_code = $this->getBookPublisherRefTypeId($publisher);
+
+        $sql = "SELECT * FROM books WHERE publisher=:publisher ORDER BY id ASC";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("publisher", $publisher);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($info) == 0) {
+            if ($publisher === "STORY MOJA") {
+                $_SESSION['no_1_records'] = true;
+            } else if ($publisher === "KENYA LITERATURE BUREAU") {
+                $_SESSION['no_2_records'] = true;
+            } else if ($publisher === "LONGHORN") {
+                $_SESSION['no_3_records'] = true;
+            } else if ($publisher === "MORAN") {
+                $_SESSION['no_4_records'] = true;
+            }
+        } else {
+            if ($publisher === "STORY MOJA") {
+                $_SESSION['yes_1_records'] = true;
+            } else if ($publisher === "KENYA LITERATURE BUREAU") {
+                $_SESSION['yes_2_records'] = true;
+            } else if ($publisher === "LONGHORN") {
+                $_SESSION['yes_3_records'] = true;
+            } else if ($publisher === "MORAN") {
+                $_SESSION['yes_4_records'] = true;
+            }
+            $values2 = array();
+            foreach ($info as $data) {
+                $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
+                array_push($values2, $values);
+            }
+            return json_encode($values2);
+        }
+    }
+
     public function getPublisherLevelBooks($publisher, $level) {
 
         $level_code = $this->getBookLevelRefTypeId($level);
@@ -215,7 +274,7 @@ class Books extends Database {
     }
 
     public function getAllTypeBooks($type) {
-        
+
         $type_code = $this->getBookTypeRefTypeId($type);
 
         $sql = "SELECT * FROM books WHERE type_id=:type ORDER BY id ASC";
@@ -266,34 +325,6 @@ class Books extends Database {
             $values2 = array();
             foreach ($info as $data) {
                 $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
-                array_push($values2, $values);
-            }
-            return json_encode($values2);
-        }
-    }
-
-    public function fetchDocumentTypeDetails($code) {
-        $sql = "SELECT * FROM document_types WHERE id=:code";
-        $stmt = $this->prepareQuery($sql);
-        $stmt->bindParam("code", $code);
-        $stmt->execute();
-        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $info[0];
-    }
-
-    public function getAllDocumentTypes() {
-        $sql = "SELECT * FROM document_types ORDER BY id ASC";
-        $stmt = $this->prepareQuery($sql);
-        $stmt->execute();
-        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        if (count($info) == 0) {
-            $_SESSION['no_records'] = true;
-        } else {
-            $_SESSION['yes_records'] = true;
-            $values2 = array();
-            foreach ($info as $data) {
-                $values = array("id" => $data['id'], "category" => $data['category'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby']);
                 array_push($values2, $values);
             }
             return json_encode($values2);

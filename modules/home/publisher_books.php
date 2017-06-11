@@ -6,7 +6,7 @@ $books = new Books();
 ?>
 
 <div class="flagship-store">
-    <h2 class="title18">SECONDARY BOOKS</h2>
+    <h2 class="title18">PUBLISHER BOOKS</h2>
     <div class="list-flagship-box">
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -27,19 +27,20 @@ $books = new Books();
                     <div class="flagship-content">
                         <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[1024,2],[1200,3]]" data-pagination="false">
 
+
                             <?php
                             if (!empty($_POST) AND $_POST['action'] == "filter_books") {
-                                $secondary_books_data[] = $books->execute();
+                                $one_books_data[] = $books->execute();
                             } else {
-                                $secondary_books_data[] = $books->getAllLevelBooks("SECONDARY LEVEL");
+                                $one_books_data[] = $books->getAllPublisherBooks("STORY MOJA");
                             }
-                            if (isset($_SESSION['no_secondary_records']) AND $_SESSION['no_secondary_records'] == true) {
+                            if (isset($_SESSION['no_1_records']) AND $_SESSION['no_1_records'] == true) {
                                 ?>
                                 <div style="text-align:left"><strong>No book found in this category...</strong></div>
                                 <?php
-                                unset($_SESSION['no_secondary_records']);
-                            } else if (isset($_SESSION['yes_secondary_records']) AND $_SESSION['yes_secondary_records'] == true) {
-                                foreach ($secondary_books_data as $key => $value) {
+                                unset($_SESSION['no_1_records']);
+                            } else if (isset($_SESSION['yes_1_records']) AND $_SESSION['yes_1_records'] == true) {
+                                foreach ($one_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
                                         $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
@@ -60,9 +61,9 @@ $books = new Books();
                                         <div class="item-product4 item-product">
                                             <div class="product-thumb">
                                                 <a href="?product-page&code=<?php echo $value2['id']; ?>" class="product-thumb-link">
-                                                    <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
+                                                    <img src="images/photos/fashion/15.jpg" alt="" />
                                                 </a>
-                                                <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
+                                                <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                                 <div class="product-extra-link">
                                                     <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                                     <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -70,9 +71,9 @@ $books = new Books();
                                                 </div>
                                             </div>
                                             <div class="product-info">
-                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
+                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>">book title</a></h3>
                                                 <div class="product-price">
-                                                    <ins><span><?php echo "KES " . $value2['price']; ?></span></ins>
+                                                    <ins><span>KES.360.00</span></ins>
                                                 </div>
                                             </div>
                                         </div>
@@ -80,7 +81,7 @@ $books = new Books();
                                         <?php
                                     }
                                 }
-                                unset($_SESSION['yes_secondary_records']);
+                                unset($_SESSION['yes_1_records']);
                             }
                             ?>
                         </div>
@@ -92,17 +93,17 @@ $books = new Books();
 
                             <?php
                             if (!empty($_POST) AND $_POST['action'] == "filter_books") {
-                                $secondary_books_data[] = $books->execute();
+                                $two_books_data[] = $books->execute();
                             } else {
-                                $secondary_books_data[] = $books->getAllLevelBooks("SECONDARY LEVEL");
+                                $two_books_data[] = $books->getAllPublisherBooks("KENYA LITERATURE BUREAU");
                             }
-                            if (isset($_SESSION['no_secondary_records']) AND $_SESSION['no_secondary_records'] == true) {
+                            if (isset($_SESSION['no_2_records']) AND $_SESSION['no_2_records'] == true) {
                                 ?>
                                 <div style="text-align:left"><strong>No book found in this category...</strong></div>
                                 <?php
-                                unset($_SESSION['no_secondary_records']);
-                            } else if (isset($_SESSION['yes_secondary_records']) AND $_SESSION['yes_secondary_records'] == true) {
-                                foreach ($secondary_books_data as $key => $value) {
+                                unset($_SESSION['no_2_records']);
+                            } else if (isset($_SESSION['yes_2_records']) AND $_SESSION['yes_2_records'] == true) {
+                                foreach ($two_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
                                         $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
@@ -123,9 +124,9 @@ $books = new Books();
                                         <div class="item-product4 item-product">
                                             <div class="product-thumb">
                                                 <a href="?product-page&code=<?php echo $value2['id']; ?>" class="product-thumb-link">
-                                                    <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
+                                                    <img src="images/photos/fashion/15.jpg" alt="" />
                                                 </a>
-                                                <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
+                                                <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                                 <div class="product-extra-link">
                                                     <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                                     <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -133,9 +134,9 @@ $books = new Books();
                                                 </div>
                                             </div>
                                             <div class="product-info">
-                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
+                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>">book title</a></h3>
                                                 <div class="product-price">
-                                                    <ins><span><?php echo "KES " . $value2['price']; ?></span></ins>
+                                                    <ins><span>KES.360.00</span></ins>
                                                 </div>
                                             </div>
                                         </div>
@@ -143,7 +144,7 @@ $books = new Books();
                                         <?php
                                     }
                                 }
-                                unset($_SESSION['yes_secondary_records']);
+                                unset($_SESSION['yes_2_records']);
                             }
                             ?>
                         </div>
@@ -167,19 +168,20 @@ $books = new Books();
                     <div class="flagship-content">
                         <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[1024,2],[1200,3]]" data-pagination="false">
 
+
                             <?php
                             if (!empty($_POST) AND $_POST['action'] == "filter_books") {
-                                $secondary_books_data[] = $books->execute();
+                                $three_books_data[] = $books->execute();
                             } else {
-                                $secondary_books_data[] = $books->getAllLevelBooks("SECONDARY LEVEL");
+                                $three_books_data[] = $books->getAllPublisherBooks("LONGHORN");
                             }
-                            if (isset($_SESSION['no_secondary_records']) AND $_SESSION['no_secondary_records'] == true) {
+                            if (isset($_SESSION['no_3_records']) AND $_SESSION['no_3_records'] == true) {
                                 ?>
                                 <div style="text-align:left"><strong>No book found in this category...</strong></div>
                                 <?php
-                                unset($_SESSION['no_secondary_records']);
-                            } else if (isset($_SESSION['yes_secondary_records']) AND $_SESSION['yes_secondary_records'] == true) {
-                                foreach ($secondary_books_data as $key => $value) {
+                                unset($_SESSION['no_3_records']);
+                            } else if (isset($_SESSION['yes_3_records']) AND $_SESSION['yes_3_records'] == true) {
+                                foreach ($three_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
                                         $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
@@ -200,9 +202,9 @@ $books = new Books();
                                         <div class="item-product4 item-product">
                                             <div class="product-thumb">
                                                 <a href="?product-page&code=<?php echo $value2['id']; ?>" class="product-thumb-link">
-                                                    <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
+                                                    <img src="images/photos/fashion/15.jpg" alt="" />
                                                 </a>
-                                                <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
+                                                <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                                 <div class="product-extra-link">
                                                     <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                                     <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -210,9 +212,9 @@ $books = new Books();
                                                 </div>
                                             </div>
                                             <div class="product-info">
-                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
+                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>">book title</a></h3>
                                                 <div class="product-price">
-                                                    <ins><span><?php echo "KES " . $value2['price']; ?></span></ins>
+                                                    <ins><span>KES.360.00</span></ins>
                                                 </div>
                                             </div>
                                         </div>
@@ -220,7 +222,7 @@ $books = new Books();
                                         <?php
                                     }
                                 }
-                                unset($_SESSION['yes_secondary_records']);
+                                unset($_SESSION['yes_3_records']);
                             }
                             ?>
                         </div>
@@ -232,17 +234,17 @@ $books = new Books();
 
                             <?php
                             if (!empty($_POST) AND $_POST['action'] == "filter_books") {
-                                $secondary_books_data[] = $books->execute();
+                                $four_books_data[] = $books->execute();
                             } else {
-                                $secondary_books_data[] = $books->getAllLevelBooks("SECONDARY LEVEL");
+                                $four_books_data[] = $books->getAllPublisherBooks("MORAN");
                             }
-                            if (isset($_SESSION['no_secondary_records']) AND $_SESSION['no_secondary_records'] == true) {
+                            if (isset($_SESSION['no_4_records']) AND $_SESSION['no_4_records'] == true) {
                                 ?>
                                 <div style="text-align:left"><strong>No book found in this category...</strong></div>
                                 <?php
-                                unset($_SESSION['no_secondary_records']);
-                            } else if (isset($_SESSION['yes_secondary_records']) AND $_SESSION['yes_secondary_records'] == true) {
-                                foreach ($secondary_books_data as $key => $value) {
+                                unset($_SESSION['no_4_records']);
+                            } else if (isset($_SESSION['yes_4_records']) AND $_SESSION['yes_4_records'] == true) {
+                                foreach ($four_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
                                         $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
@@ -263,9 +265,9 @@ $books = new Books();
                                         <div class="item-product4 item-product">
                                             <div class="product-thumb">
                                                 <a href="?product-page&code=<?php echo $value2['id']; ?>" class="product-thumb-link">
-                                                    <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
+                                                    <img src="images/photos/fashion/15.jpg" alt="" />
                                                 </a>
-                                                <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
+                                                <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
                                                 <div class="product-extra-link">
                                                     <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                                     <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -273,9 +275,9 @@ $books = new Books();
                                                 </div>
                                             </div>
                                             <div class="product-info">
-                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
+                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>">book title</a></h3>
                                                 <div class="product-price">
-                                                    <ins><span><?php echo "KES " . $value2['price']; ?></span></ins>
+                                                    <ins><span>KES.360.00</span></ins>
                                                 </div>
                                             </div>
                                         </div>
@@ -283,7 +285,7 @@ $books = new Books();
                                         <?php
                                     }
                                 }
-                                unset($_SESSION['yes_secondary_records']);
+                                unset($_SESSION['yes_4_records']);
                             }
                             ?>
                         </div>

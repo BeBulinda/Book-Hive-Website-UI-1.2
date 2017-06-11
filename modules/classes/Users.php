@@ -569,30 +569,30 @@ class Users extends Database {
 
         return true;
     }
-
-    public function menuPublishers() {
-        $sql = "SELECT id, company_name, status FROM publishers WHERE status=1021 "
-                . " ORDER BY company_name ASC";
-        $stmt = $this->prepareQuery($sql);
-        $stmt->execute();
-        $currentGroup = null;
-        $html = "";
-        while ($row = $stmt->fetch()) {
-            if (is_null($currentGroup)) {
-                $currentGroup = $row['company_name'];
-//                $html .= "<option value=\"0\" selected>Select Publisher</option>";
-                $html .= "<option value=\"111111111111\">ALL PUBLISHERS</option>";
-                $html .= "<option value=\"{$row['id']}\">{$row['company_name']}</option>";
-            } else {
-                $html .= "<option value=\"{$row['id']}\">{$row['company_name']}</option>";
-            }
-        }
-        if ($html == "")
-            $html = "<option value=\"\">No publisher entered into the database!</option>";
-        echo $html;
-        return $currentGroup;
-    }
-
+    
+//    public function menuPublishers() {
+//        $sql = "SELECT id, company_name, status FROM publishers WHERE status=1021 "
+//                . " ORDER BY company_name ASC";
+//        $stmt = $this->prepareQuery($sql);
+//        $stmt->execute();
+//        $currentGroup = null;
+//        $html = "";
+//        while ($row = $stmt->fetch()) {
+//            if (is_null($currentGroup)) {
+//                $currentGroup = $row['company_name'];
+////                $html .= "<option value=\"0\" selected>Select Publisher</option>";
+//                $html .= "<option value=\"111111111111\">ALL PUBLISHERS</option>";
+//                $html .= "<option value=\"{$row['id']}\">{$row['company_name']}</option>";
+//            } else {
+//                $html .= "<option value=\"{$row['id']}\">{$row['company_name']}</option>";
+//            }
+//        }
+//        if ($html == "")
+//            $html = "<option value=\"\">No publisher entered into the database!</option>";
+//        echo $html;
+//        return $currentGroup;
+//    }
+    
     public function getPublishers() {
         $sql = "SELECT id, company_name, status FROM publishers WHERE status=1021 "
                 . " ORDER BY id ASC";
@@ -970,6 +970,16 @@ class Users extends Database {
             }
         }
         return true;
+    }
+
+    public function getPublisherRefTypeId($publisher) {
+        $sql = "SELECT id, status FROM publishers WHERE company_name=:publisher";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("publisher", $publisher);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data = $data[0];
+        return strtoupper($data['id']);
     }
 
     public function getUserRefTypeId($user_type) {

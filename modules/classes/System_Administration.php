@@ -205,6 +205,24 @@ class System_Administration extends Database {
             return false;
     }
     
+    public function fetchBookTypeDetails($code) {
+        $sql = "SELECT * FROM book_types WHERE id=:code";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("code", $code);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $info[0];
+    }
+     
+    public function fetchBookLevelDetails($code) {
+        $sql = "SELECT * FROM book_levels WHERE id=:code";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("code", $code);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $info[0];
+    }
+         
     public function fetchSystemPrivilegeDetails($code) {
         $sql = "SELECT * FROM system_privileges WHERE id=:code";
         $stmt = $this->prepareQuery($sql);
