@@ -603,8 +603,7 @@ class Users extends Database {
         while ($row = $stmt->fetch()) {
             if (is_null($currentGroup)) {
                 $currentGroup = $row['company_name'];
-//                $html .= "<option value=\"0\" selected>Select Publisher</option>";
-                $html .= "<option value=\"111111111111\">ALL PUBLISHERS</option>";
+                $html .= "<option value=\"ALL\">ALL PUBLISHERS</option>";
                 $html .= "<option value=\"{$row['id']}\">{$row['company_name']}</option>";
             } else {
                 $html .= "<option value=\"{$row['id']}\">{$row['company_name']}</option>";

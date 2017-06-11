@@ -6,14 +6,6 @@ require_once WPATH . "modules/classes/Users.php";
 
 class Books extends Database {
 
-    public function execute() {
-        if ($_POST['action'] == "filter_books") {
-            return $this->getAllFilteredBooks();
-        } else if ($_POST['action'] == "search") {
-            return $this->getAllSearchedBooks();
-        }
-    }
-
     public function fetchBookDetails($code) {
         $sql = "SELECT * FROM books WHERE id=:code";
         $stmt = $this->prepareQuery($sql);
@@ -49,84 +41,262 @@ class Books extends Database {
                 array_push($values2, $values);
             }
             return $values2;
-//            return json_encode($values2);
         }
     }
 
-//    public function getAllSearchedBooks($search_by, $search_value) {
-//        
-//        if ($search_by === "none") {
-//            $sql = "SELECT * FROM books WHERE title LIKE '%{$search_value}%' "
-//                . "OR description LIKE '%{$search_value}%' "
-//                . "OR author LIKE '%{$search_value}%' "
-//                . "OR publisher LIKE '%{$search_value}%' "
-//                . "OR publication_year LIKE '%{$search_value}%' "
-//                . "OR isbn_number LIKE '%{$search_value}%' "
-//                . "OR type_id LIKE '%{$search_value}%' "
-//                . "OR level_id LIKE '%{$search_value}%' "
-//                . "OR price LIKE '%{$search_value}%' "
-//                . " ORDER BY id ASC";
-//        } else if ($search_by === "all") {
-//             $sql = "SELECT * FROM books WHERE title LIKE '%{$search_value}%' "
-//                . "OR description LIKE '%{$search_value}%' "
-//                . "OR author LIKE '%{$search_value}%' "
-//                . "OR publisher LIKE '%{$search_value}%' "
-//                . "OR publication_year LIKE '%{$search_value}%' "
-//                . "OR isbn_number LIKE '%{$search_value}%' "
-//                . "OR type_id LIKE '%{$search_value}%' "
-//                . "OR level_id LIKE '%{$search_value}%' "
-//                . "OR price LIKE '%{$search_value}%' "
-//                . " ORDER BY id ASC";
-//        } else if ($search_by === "publishers") {
-//             $sql = "SELECT * FROM books WHERE publisher LIKE '%{$search_value}%' ORDER BY id ASC";
-//        } else if ($search_by === "book_titles") {
-//             $sql = "SELECT * FROM books WHERE title LIKE '%{$search_value}%' ORDER BY id ASC";
-//        } else if ($search_by === "publication_years") {
-//             $sql = "SELECT * FROM books WHERE publication_year LIKE '%{$search_value}%' ORDER BY id ASC";
-//        } else if ($search_by === "isbn_numbers") {
-//             $sql = "SELECT * FROM books WHERE isbn_number LIKE '%{$search_value}%' ORDER BY id ASC";
-//        } else if ($search_by === "book_types") {
-//             $sql = "SELECT * FROM books WHERE type_id LIKE '%{$search_value}%' ORDER BY id ASC";
-//        } else if ($search_by === "book_levels") {
-//            $sql = "SELECT * FROM books WHERE level_id LIKE '%{$search_value}%' ORDER BY id ASC";
+    public function getAllFilteredBooks($publisher, $book_level, $book_type, $print_type) {
+
+//        if ($publisher === "ALL" AND $book_level === "ALL" AND $book_type === "ALL" AND $print_type === "ALL") {
+//            $sql = "SELECT * FROM books ORDER BY id ASC";
+//        } else if ($publisher === "ALL" AND $book_level === "ALL" AND $book_type === "ALL" AND $print_type !== "ALL") {
+//            $sql = "SELECT * FROM books WHERE print_type=:print_type ORDER BY id ASC";
+//        } else if ($publisher === "ALL" AND $book_level === "ALL" AND $book_type !== "ALL" AND $print_type === "ALL") {
+//            $sql = "SELECT * FROM books WHERE type_id=:type_id ORDER BY id ASC";
+//        } else if ($publisher === "ALL" AND $book_level === "ALL" AND $book_type !== "ALL" AND $print_type !== "ALL") {
+//            $sql = "SELECT * FROM books WHERE type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+//        } else if ($publisher === "ALL" AND $book_level !== "ALL" AND $book_type === "ALL" AND $print_type === "ALL") {
+//            $sql = "SELECT * FROM books WHERE level_id=:level_id ORDER BY id ASC";
+//        } else if ($publisher === "ALL" AND $book_level !== "ALL" AND $book_type === "ALL" AND $print_type !== "ALL") {
+//            $sql = "SELECT * FROM books WHERE level_id=:level_id AND print_type=:print_type ORDER BY id ASC";
+//        } else if ($publisher === "ALL" AND $book_level !== "ALL" AND $book_type !== "ALL" AND $print_type === "ALL") {
+//            $sql = "SELECT * FROM books WHERE level_id=:level_id AND type_id=:type_id ORDER BY id ASC";
+//        } else if ($publisher === "ALL" AND $book_level !== "ALL" AND $book_type !== "ALL" AND $print_type !== "ALL") {
+//            $sql = "SELECT * FROM books WHERE level_id=:level_id AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+//        } else if ($publisher !== "ALL" AND $book_level === "ALL" AND $book_type === "ALL" AND $print_type === "ALL") {
+//            $sql = "SELECT * FROM books WHERE publisher=:publisher ORDER BY id ASC";
+//        } else if ($publisher !== "ALL" AND $book_level === "ALL" AND $book_type === "ALL" AND $print_type !== "ALL") {
+//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND print_type=:print_type ORDER BY id ASC";
+//        } else if ($publisher !== "ALL" AND $book_level === "ALL" AND $book_type !== "ALL" AND $print_type === "ALL") {
+//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND type_id=:type_id ORDER BY id ASC";
+//        } else if ($publisher !== "ALL" AND $book_level === "ALL" AND $book_type !== "ALL" AND $print_type !== "ALL") {
+//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+//        } else if ($publisher !== "ALL" AND $book_level !== "ALL" AND $book_type === "ALL" AND $print_type === "ALL") {
+//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id ORDER BY id ASC";
+//        } else if ($publisher !== "ALL" AND $book_level !== "ALL" AND $book_type === "ALL" AND $print_type !== "ALL") {
+//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND print_type=:print_type ORDER BY id ASC";
+//        } else if ($publisher !== "ALL" AND $book_level !== "ALL" AND $book_type !== "ALL" AND $print_type === "ALL") {
+//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND type_id=:type_id ORDER BY id ASC";
+//        } else if ($publisher !== "ALL" AND $book_level !== "ALL" AND $book_type !== "ALL" AND $print_type !== "ALL") {
+//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
 //        }
-//        
-//        $stmt = $this->prepareQuery($sql);
-//        $stmt->execute();
-//        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//
-//        if (count($info) == 0) {
-//            $_SESSION['no_searched_records'] = true;
-//        } else {
-//            $_SESSION['yes_searched_records'] = true;
-//            $values2 = array();
-//            foreach ($info as $data) {
-//                $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
-//                array_push($values2, $values);
-//            }
-//            return $values2;
-////            return json_encode($values2);
-//        }
-//    }
-//     
-    private function getAllFilteredBooks() {
-        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id ORDER BY id ASC";
+
+
+        if ($publisher === "ALL") {
+            if ($book_level === "ALL") {
+                if ($book_type === "ALL") {
+                    if ($print_type === "ALL") {
+                        $sql = "SELECT * FROM books ORDER BY id ASC";
+                    } else {
+                        $sql = "SELECT * FROM books WHERE print_type=:print_type ORDER BY id ASC";
+                    }
+                } else {
+                    if ($print_type === "ALL") {
+                        $sql = "SELECT * FROM books WHERE type_id=:type_id ORDER BY id ASC";
+                    } else {
+                        $sql = "SELECT * FROM books WHERE type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+                    }
+                }
+            } else {
+                if ($book_type === "ALL") {
+                    if ($print_type === "ALL") {
+                        $sql = "SELECT * FROM books WHERE level_id=:level_id ORDER BY id ASC";
+                    } else {
+                        $sql = "SELECT * FROM books WHERE level_id=:level_id AND print_type=:print_type ORDER BY id ASC";
+                    }
+                } else {
+                    if ($print_type === "ALL") {
+                        $sql = "SELECT * FROM books WHERE level_id=:level_id AND type_id=:type_id ORDER BY id ASC";
+                    } else {
+                        $sql = "SELECT * FROM books WHERE level_id=:level_id AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+                    }
+                }
+            }
+        } else {
+            if ($book_level === "ALL") {
+                if ($book_type === "ALL") {
+                    if ($print_type === "ALL") {
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher ORDER BY id ASC";
+                    } else {
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND print_type=:print_type ORDER BY id ASC";
+                    }
+                } else {
+                    if ($print_type === "ALL") {
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND type_id=:type_id ORDER BY id ASC";
+                    } else {
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+                    }
+                }
+            } else {
+                if ($book_type === "ALL") {
+                    if ($print_type === "ALL") {
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id ORDER BY id ASC";
+                    } else {
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND print_type=:print_type ORDER BY id ASC";
+                    }
+                } else {
+                    if ($print_type === "ALL") {
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND type_id=:type_id ORDER BY id ASC";
+                    } else {
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+                    }
+                }
+            }
+        }
+
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindParam("publisher", $_POST['publisher']);
-        $stmt->bindParam("level_id", $_POST['book_level']);
+        if ($publisher !== "ALL") {
+            $stmt->bindParam("publisher", $publisher);
+        }
+        if ($book_level !== "ALL") {
+            $stmt->bindParam("level_id", $book_level);
+        }
+        if ($book_type !== "ALL") {
+            $stmt->bindParam("type_id", $book_type);
+        }
+        if ($print_type !== "ALL") {
+            $stmt->bindParam("print_type", $print_type);
+        }
+
         $stmt->execute();
         $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if (count($info) == 0) {
-            $_SESSION['no_records'] = true;
+            $_SESSION['no_filtered_records'] = true;
         } else {
-            $_SESSION['yes_records'] = true;
+            $_SESSION['yes_filtered_records'] = true;
             $values2 = array();
             foreach ($info as $data) {
                 $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
                 array_push($values2, $values);
             }
-            return json_encode($values2);
+            return $values2;
+        }
+    }
+
+    public function getAllPrimaryCategoryBooks($class) {
+        $category_code = $this->getBookLevelRefTypeId("PRIMARY LEVEL");
+        if ($class === "class_one_books") {
+            $class_code = 1;
+        } else if ($class === "class_two_books") {
+            $class_code = 2;
+        } else if ($class === "class_three_books") {
+            $class_code = 3;
+        } else if ($class === "class_four_books") {
+            $class_code = 4;
+        } else if ($class === "class_five_books") {
+            $class_code = 5;
+        } else if ($class === "class_six_books") {
+            $class_code = 6;
+        } else if ($class === "class_seven_books") {
+            $class_code = 7;
+        } else if ($class === "class_eight_books") {
+            $class_code = 8;
+        }
+        $sql = "SELECT * FROM books WHERE level_id=:category_code AND class=:class_code ORDER BY id ASC";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("category_code", $category_code);
+        $stmt->bindParam("class_code", $class_code);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($info) == 0) {
+            $_SESSION['no_category_records'] = true;
+        } else {
+            $_SESSION['yes_category_records'] = true;
+            $values2 = array();
+            foreach ($info as $data) {
+                $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
+                array_push($values2, $values);
+            }
+            return $values2;
+        }
+    }
+
+    public function getAllSecondaryCategoryBooks($class) {
+        $category_code = $this->getBookLevelRefTypeId("SECONDARY LEVEL");
+        if ($class === "form_one_books") {
+            $class_code = 1;
+        } else if ($class === "form_two_books") {
+            $class_code = 2;
+        } else if ($class === "form_three_books") {
+            $class_code = 3;
+        } else if ($class === "form_four_books") {
+            $class_code = 4;
+        } 
+        $sql = "SELECT * FROM books WHERE level_id=:category_code AND class=:class_code ORDER BY id ASC";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("category_code", $category_code);
+        $stmt->bindParam("class_code", $class_code);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($info) == 0) {
+            $_SESSION['no_category_records'] = true;
+        } else {
+            $_SESSION['yes_category_records'] = true;
+            $values2 = array();
+            foreach ($info as $data) {
+                $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
+                array_push($values2, $values);
+            }
+            return $values2;
+        }
+    }
+
+    public function getAllCategoryLevelBooks($category) {
+        if ($category === "ecd_books") {
+            $category_code = $this->getBookLevelRefTypeId("ECD");
+        } else if ($category === "primary_books") {
+            $category_code = $this->getBookLevelRefTypeId("PRIMARY LEVEL");
+        } else if ($category === "secondary_books") {
+            $category_code = $this->getBookLevelRefTypeId("SECONDARY LEVEL");
+        } else if ($category === "adult_books") {
+            $category_code = $this->getBookLevelRefTypeId("ADULT READER");
+        }
+        $sql = "SELECT * FROM books WHERE level_id=:category_code ORDER BY id ASC";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("category_code", $category_code);
+
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($info) == 0) {
+            $_SESSION['no_category_records'] = true;
+        } else {
+            $_SESSION['yes_category_records'] = true;
+            $values2 = array();
+            foreach ($info as $data) {
+                $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
+                array_push($values2, $values);
+            }
+            return $values2;
+        }
+    }
+
+    public function getAllCategoryTypeBooks($category) {
+        if ($category === "english_books") {
+            $category_code = $this->getBookTypeRefTypeId("ENGLISH READER");
+        } else if ($category === "kiswahili_books") {
+            $category_code = $this->getBookTypeRefTypeId("KISWAHILI READER");
+        } else if ($category === "activity_books") {
+            $category_code = $this->getBookTypeRefTypeId("ACTIVITY");
+        }
+        $sql = "SELECT * FROM books WHERE type_id=:category_code ORDER BY id ASC";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("category_code", $category_code);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($info) == 0) {
+            $_SESSION['no_category_records'] = true;
+        } else {
+            $_SESSION['yes_category_records'] = true;
+            $values2 = array();
+            foreach ($info as $data) {
+                $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
+                array_push($values2, $values);
+            }
+            return $values2;
         }
     }
 
