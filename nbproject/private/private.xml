@@ -3,17 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/web/css/theme.css</file>
-            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/modules/inc/hover-data.php</file>
-            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/core/template/top-menu.php</file>
-            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/modules/category-browse.php</file>
-            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/core/template/layout.php</file>
             <file>file:/C:/wamp64/www/bookhive_v1.2_ui/modules/product-page.php</file>
-            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/controller.php</file>
-            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/core/template/mini-cart.php</file>
-            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/core/database/include.php</file>
+            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/core/template/layout.php</file>
             <file>file:/C:/wamp64/www/bookhive_v1.2_ui/modules/quick-view.php</file>
-            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/core/template/header.php</file>
+            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/modules/cart/increase-decrease.php</file>
+            <file>file:/C:/wamp64/www/bookhive_v1.2_ui/web/js/libs/jquery.min.js</file>
         </group>
     </open-files>
 </project-private>
