@@ -8,6 +8,7 @@ $users = new Users();
 $books = new Books();
 
 $code = $_GET['code'];
+$_SESSION["selected_book_id"] = $code;
 $book_details = $books->fetchBookDetails($code);
 $book_type_details = $system_administration->fetchBookTypeDetails($book_details['type_id']);
 $book_level_details = $system_administration->fetchBookLevelDetails($book_details['level_id']);

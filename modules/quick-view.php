@@ -8,6 +8,7 @@ $users = new Users();
 $books = new Books();
 
 $code = $_GET['code'];
+$_SESSION["selected_book_id"] = $code;
 $book_details = $books->fetchBookDetails($code);
 $book_type_details = $system_administration->fetchBookTypeDetails($book_details['type_id']);
 $book_level_details = $system_administration->fetchBookLevelDetails($book_details['level_id']);
@@ -23,27 +24,27 @@ if ($book_details['level_id'] == 1) {
     $location = 'modules/images/books/adult/';
 }
 
-if (!empty($_POST) AND $_POST['action'] == "add") {
-    $productByCode = $books->fetchBookDetails($_POST["code"]);
-    $itemArray = array($productByCode["id"] => array('id' => $productByCode["id"], 'title' => $productByCode["title"], 'price' => $productByCode["price"], 'quantity' => $_POST["quantity"]));
-
-    if (!empty($_SESSION["cart_item"])) {
-        if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
-            foreach ($_SESSION["cart_item"] as $k => $v) {
-                if ($productByCode["id"] == $k) {
-                    if (empty($_SESSION["cart_item"][$k]["quantity"])) {
-                        $_SESSION["cart_item"][$k]["quantity"] = 0;
-                    }
-                    $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
-                }
-            }
-        } else {
-            $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
-        }
-    } else {
-        $_SESSION["cart_item"] = $itemArray;
-    }
-}
+//if (!empty($_POST) AND $_POST['action'] == "add") {
+//    $productByCode = $books->fetchBookDetails($_POST["code"]);
+//    $itemArray = array($productByCode["id"] => array('id' => $productByCode["id"], 'title' => $productByCode["title"], 'price' => $productByCode["price"], 'quantity' => $_POST["quantity"]));
+//
+//    if (!empty($_SESSION["cart_item"])) {
+//        if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
+//            foreach ($_SESSION["cart_item"] as $k => $v) {
+//                if ($productByCode["id"] == $k) {
+//                    if (empty($_SESSION["cart_item"][$k]["quantity"])) {
+//                        $_SESSION["cart_item"][$k]["quantity"] = 0;
+//                    }
+//                    $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+//                }
+//            }
+//        } else {
+//            $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
+//        }
+//    } else {
+//        $_SESSION["cart_item"] = $itemArray;
+//    }
+//}
 
 ?>
 
