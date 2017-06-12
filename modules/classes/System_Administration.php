@@ -205,6 +205,24 @@ class System_Administration extends Database {
             return false;
     }
     
+    public function fetchBookTypeDetails($code) {
+        $sql = "SELECT * FROM book_types WHERE id=:code";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("code", $code);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $info[0];
+    }
+     
+    public function fetchBookLevelDetails($code) {
+        $sql = "SELECT * FROM book_levels WHERE id=:code";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("code", $code);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $info[0];
+    }
+         
     public function fetchSystemPrivilegeDetails($code) {
         $sql = "SELECT * FROM system_privileges WHERE id=:code";
         $stmt = $this->prepareQuery($sql);
@@ -514,7 +532,7 @@ class System_Administration extends Database {
         while ($row = $stmt->fetch()) {
             if (is_null($currentGroup)) {
                 $currentGroup = $row['name'];
-                $html .= "<option value=\"111111111111\" selected>ALL BOOK TYPES</option>";
+                $html .= "<option value=\"ALL\" selected>ALL BOOK TYPES</option>";
                 $html .= "<option value=\"{$row['id']}\">{$row['name']}</option>";
             } else {
                 $html .= "<option value=\"{$row['id']}\">{$row['name']}</option>";
@@ -536,8 +554,7 @@ class System_Administration extends Database {
         while ($row = $stmt->fetch()) {
             if (is_null($currentGroup)) {
                 $currentGroup = $row['name'];
-//                $html .= "<option value=\"0\" selected>Select Book Level</option>";
-                $html .= "<option value=\"111111111111\">ALL BOOK LEVELS</option>";
+                $html .= "<option value=\"ALL\">ALL BOOK LEVELS</option>";
                 $html .= "<option value=\"{$row['id']}\">{$row['name']}</option>";
             } else {
                 $html .= "<option value=\"{$row['id']}\">{$row['name']}</option>";

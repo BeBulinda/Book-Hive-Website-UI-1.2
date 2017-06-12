@@ -1,3 +1,54 @@
+
+<?php
+require_once WPATH . "modules/classes/Books.php";
+require_once WPATH . "modules/classes/Users.php";
+require_once WPATH . "modules/classes/System_Administration.php";
+$system_administration = new System_Administration();
+$users = new Users();
+$books = new Books();
+
+$code = $_GET['code'];
+$_SESSION["selected_book_id"] = $code;
+$book_details = $books->fetchBookDetails($code);
+$book_type_details = $system_administration->fetchBookTypeDetails($book_details['type_id']);
+$book_level_details = $system_administration->fetchBookLevelDetails($book_details['level_id']);
+$book_publisher_details = $users->fetchPublisherDetails($book_details['publisher']);
+
+if ($book_details['level_id'] == 1) {
+    $location = 'modules/images/books/ecd/';
+} else if ($book_details['level_id'] == 2) {
+    $location = 'modules/images/books/primary/';
+} else if ($book_details['level_id'] == 3) {
+    $location = 'modules/images/books/secondary/';
+} else if ($book_details['level_id'] == 4) {
+    $location = 'modules/images/books/adult/';
+}
+
+if (!empty($_POST) AND $_POST['action'] == "add") {
+    $productByCode = $books->fetchBookDetails($_POST["code"]);
+    $itemArray = array($productByCode["id"] => array('id' => $productByCode["id"], 'title' => $productByCode["title"], 'price' => $productByCode["price"], 'quantity' => $_POST["quantity"]));
+
+    if (!empty($_SESSION["cart_item"])) {
+        if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
+            foreach ($_SESSION["cart_item"] as $k => $v) {
+                if ($productByCode["id"] == $k) {
+                    if (empty($_SESSION["cart_item"][$k]["quantity"])) {
+                        $_SESSION["cart_item"][$k]["quantity"] = 0;
+                    }
+                    $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+                }
+            }
+        } else {
+            $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
+        }
+    } else {
+        $_SESSION["cart_item"] = $itemArray;
+    }
+}
+
+require_once "core/template/header.php";
+?>
+
 <div id="content">
     <div class="content-page">
         <div class="container">
@@ -8,20 +59,20 @@
                     <div class="product-detail detail-without-sidebar border radius">
                         <div class="row">
                             <div class="col-md-5 col-sm-12 col-xs-12">
-                                <div class="slider flexslider">
-                                    <img src="images/photos/homeware/8.jpg" alt=""/>
-                                </div>
+                                    <div class="slider flexslider">
+                                        <img src="<?php echo $location . $book_details['cover_photo']; ?>" alt="<?php echo $book_details['title'] . " COVER PHOTO"; ?>"/>
+                                    </div>
                                 <!-- End Gallery -->
                             </div>
                             <div class="col-md-7 col-sm-12 col-xs-12">
                                 <div class="detail-info">
-                                    <h2 class="title-detail">Book Title</h2>
+                                    <h2 class="title-detail"><?php echo $book_details['title']; ?></h2>
                                     <div class="product-rate">
                                         <div style="width:90%" class="product-rating"></div>
                                     </div>
-                                    <p class="desc">Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details </p>
+                                    <p class="desc"><?php echo $book_details['description']; ?></p>
                                     <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
+                                        <ins><span><?php echo "KES. " . $book_details['price']; ?></span></ins>
                                     </div>	
                                     <div class="available">
                                         <strong>Availability: </strong>
@@ -47,14 +98,14 @@
                                     <div class="hoz-tab-content">
                                         <div class="content-detail-tab">
                                             <div class="detail-tab-thumb">
-                                                <img src="images/shop/tab-img.png" alt="" />
+                                                <img src="<?php echo $location . $book_details['cover_photo']; ?>" alt="<?php echo $book_details['title'] . " COVER PHOTO"; ?>"/>
                                             </div>
                                             <div class="detail-tab-info">
                                                 <ul>
-                                                    <li>ISBN Number - XXXXXXXXXX</li>
-                                                    <li>Title - YYYYYYYYYYY</li>
+                                                    <li>ISBN Number - <?php echo $book_details['isbn_number']; ?></li>
+                                                    <li>Title - <?php echo $book_details['title']; ?></li>
                                                 </ul>
-                                                <p class="desc">Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details Book Book details Book details Book details Book details Book details Book details Book details Book details Book details Book details</p>
+                                                <p class="desc"><?php echo $book_details['description']; ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -63,12 +114,12 @@
                                     <div class="hoz-tab-content">
                                         <div class="content-detail-tab">
                                             <div class="detail-tab-thumb">
-                                                <img src="images/shop/tab-img.png" alt="" />
+                                                <img src="<?php echo $location . $book_details['cover_photo']; ?>" alt="<?php echo $book_details['title'] . " COVER PHOTO"; ?>"/>
                                             </div>
                                             <div class="detail-tab-info">
                                                 <ul>
-                                                    <li>Book Type - YYYYYYYYYYY</li>
-                                                    <li>Book Level - ZZZZZZZZZZZ</li>
+                                                    <li>Book Type - <?php echo $book_type_details['name']; ?></li>
+                                                    <li>Book Level - <?php echo $book_level_details['name']; ?></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -78,13 +129,13 @@
                                     <div class="hoz-tab-content">
                                         <div class="content-detail-tab">
                                             <div class="detail-tab-thumb">
-                                                <img src="images/shop/tab-img.png" alt="" />
+                                                <img src="<?php echo $location . $book_details['cover_photo']; ?>" alt="<?php echo $book_details['title'] . " COVER PHOTO"; ?>"/>
                                             </div>
                                             <div class="detail-tab-info">
                                                 <ul>
-                                                    <li>Author - AAAAAAAAAAAA</li>
-                                                    <li>Publisher - BBBBBBBBBBBB</li>
-                                                    <li>Publication Year - 0000</li>
+                                                    <li>Author - <?php echo $book_details['author']; ?></li>
+                                                    <li>Publisher - <?php echo $book_publisher_details['company_name']; ?></li>
+                                                    <li>Publication Year - <?php echo $book_details['publication_year']; ?></li>
                                                 </ul>
                                             </div>
                                         </div>

@@ -1,10 +1,10 @@
 <div class="mini-cart-box">
     <a class="mini-cart-link" href="?cart">
         <span class="mini-cart-icon"><i class="fa fa-shopping-basket" aria-hidden="true"></i></span>
-        <span class="mini-cart-number">0</span>
+        <span class="mini-cart-number"><?php echo $_SESSION["cart_number_of_items"]; ?></span>
     </a>
     <div class="mini-cart-content">
-        <h2>(2) ITEMS IN MY CART</h2>
+        <h2>(<?php echo $_SESSION["cart_number_of_items"]; ?>) ITEMS IN MY CART</h2>
         <ul class="list-mini-cart-item list-unstyled">
             <li>
                 <div class="mini-cart-edit">

@@ -1,3 +1,49 @@
+
+<?php
+require_once WPATH . "modules/classes/Books.php";
+require_once WPATH . "modules/classes/Users.php";
+require_once WPATH . "modules/classes/System_Administration.php";
+require_once WPATH . "modules/classes/Transactions.php";
+$transactions = new Transactions();
+$system_administration = new System_Administration();
+$users = new Users();
+$books = new Books();
+
+require_once "core/template/header.php";
+
+if (isset($_SESSION["cart_number_of_items"]) AND $_SESSION["cart_number_of_items"] == 0) {
+    ?>
+    <div class="alert alert-block alert-error fade in">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>No items added to cart. <a href="?home"> Click here </a> to add items to your shopping cart before proceeding.</strong>
+    </div>
+    <?php
+}
+
+if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
+    if (isset($_SESSION["cart_item"])) {
+        $_SESSION["transactedby"] = 01; // $_SESSION["user_id"];
+        $_SESSION["payment_option"] = $_POST["payment_method"];
+        $_SESSION["book_version"] = $_POST["book_version"];
+        $_SESSION["transaction_id"] = $transactions->getTransactionId($_SESSION["payment_option"], $_SESSION["transactedby"], $_SESSION["cart_total_cost"]);
+        $transaction = $transactions->addTransaction();
+        if (is_bool($transaction) && $transaction == true) {
+            foreach ($_SESSION["cart_item"] as $item) {
+                $_SESSION["book_id"] = $item["id"];
+                $_SESSION["unit_price"] = $item["price"];
+                $_SESSION["quantity"] = $item["quantity"];
+                $transaction_details = $transactions->addTransactionDetails();
+            }
+            unset($_SESSION['cart_item']);
+            $_SESSION["transaction_status"] = "success";
+        } else {
+            $_SESSION["transaction_status"] = "process_error";
+        }
+        App::redirectTo("?home");
+    }
+}
+?>
+
 <div id="content">
     <div class="content-page woocommerce">
         <div class="container">
@@ -40,26 +86,6 @@
                                     <p><input type="text" value="Company Name" onblur="if (this.value == '')
                                                 this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                             this.value = ''" /></p>
-<!--                                    <p>
-                                        <select name="country" id="country">
-                                            <option value="">Country*</option>
-                                            <option value="">United State</option>
-                                            <option value="">England</option>
-                                            <option value="">Germany</option>
-                                            <option value="">France</option>
-                                        </select>
-                                    </p>
-                                    <p><input type="text" value="Address *" onblur="if (this.value == '')
-                                                this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                            this.value = ''" /></p>
-                                    <p class="clearfix box-col2">
-                                        <input type="text" value="Postcode / Zip" onblur="if (this.value == '')
-                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                this.value = ''" />
-                                        <input type="text" value="Town / City *" onblur="if (this.value == '')
-                                                    this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                this.value = ''" />
-                                    </p>-->
                                     <p>
                                         <input type="checkbox"  id="remember" /> <label for="remember">Create an account?</label>
                                     </p>
@@ -84,65 +110,43 @@
                     <h3 class="order_review_heading">Your order</h3>
                     <div class="woocommerce-checkout-review-order" id="order_review">
                         <div class="table-responsive">
-                            <table class="shop_table woocommerce-checkout-review-order-table">
-                                <thead>
-                                    <tr>
-                                        <th class="product-name">Product</th>
-                                        <th class="product-total">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="cart_item">
-                                        <td class="product-name">
-                                            Book 1 Title &nbsp; <span class="product-quantity">× 1</span>
-                                        </td>
-                                        <td class="product-total">
-                                            <span class="amount">KES 6800</span>						
-                                        </td>
-                                    </tr>
-                                    <tr class="cart_item">
-                                        <td class="product-name">
-                                            Book 2 Title &nbsp;	<span class="product-quantity">× 2</span>
-                                        </td>
-                                        <td class="product-total">
-                                            <span class="amount">KES 3800</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="cart_item">
-                                        <td class="product-name">
-                                            Delivery Charge &nbsp;	<span class="product-quantity"> (XXXXXX To YYYYYY)</span>
-                                        </td>
-                                        <td class="product-total">
-                                            <span class="amount">KES 2000</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-<!--                                    <tr class="cart-subtotal">
-                                        <th>Subtotal</th>
-                                        <td><strong class="amount">KES 10600</strong></td>
-                                    </tr>-->
-<!--                                    <tr class="shipping">
-                                        <th>Delivery Method</th>
-                                        <td>
-                                            <ul id="shipping_method" class="list-none">
-                                                <li>
-                                                    <input type="radio" class="shipping_method" checked="checked" value="by_seller" id="shipping_method_0_free_shipping" data-index="0" name="shipping_method[0]">
-                                                    <label for="shipping_method_0_free_shipping">Delivery by Seller(Charged)</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" class="shipping_method" value="by_buyer" id="shipping_method_0_local_pickup" data-index="0" name="shipping_method[0]">
-                                                    <label for="shipping_method_0_local_pickup">Pickup by Buyer(Free)</label>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>-->
-                                    <tr class="order-total">
-                                        <th>Total</th>
-                                        <td><strong><span class="amount">KES 12600</span></strong> </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                            <?php
+                            if (isset($_SESSION["cart_item"])) {
+                                $item_total = 0;
+                                ?>                            
+                                <table class="shop_table woocommerce-checkout-review-order-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-total">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php
+                                        foreach ($_SESSION["cart_item"] as $item) {
+                                            $sub_item_total = ($item["price"] * $item["quantity"]);
+                                            $book_details = $books->fetchBookDetails($item["id"]);
+                                            ?>
+
+                                            <tr class="cart_item">
+                                                <td class="product-name">
+                                                   <?php echo $book_details['title']; ?> &nbsp; <span class="product-quantity">× <?php echo $item["quantity"]; ?></span>
+                                                </td>
+                                                <td class="product-total">
+                                                    <span class="amount"><?php echo $sub_item_total; ?></span>						
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="order-total">
+                                                <th>Total</th>
+                                                <td><strong><span class="amount">KES 12600</span></strong> </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                <?php } ?>
                         </div>
                         <div class="woocommerce-checkout-payment" id="payment">
                             <ul class="payment_methods methods list-none">

@@ -1,5 +1,12 @@
+<?php
+require_once WPATH . "modules/classes/Books.php";
+require_once WPATH . "modules/classes/Users.php";
+$users = new Users();
+$books = new Books();
+?>
+
 <div class="flagship-store">
-    <h2 class="title18">ADULT BOOKS</h2>
+    <h2 class="title18">ADULT READER BOOKS</h2>
     <div class="list-flagship-box">
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -16,140 +23,129 @@
                             <a href="#">Website</a>
                         </div>
                     </div>
+
                     <div class="flagship-content">
                         <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[1024,2],[1200,3]]" data-pagination="false">
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/fashion/15.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/fashion/16.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/fashion/13.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <?php
+                            if (!empty($_POST) AND $_POST['action'] == "filter_books") {
+                                $adult_books_data[] = $books->execute();
+                            } else {
+                                $adult_books_data[] = $books->getAllLevelBooks("ADULT READER");
+                            }
+                            if (isset($_SESSION['no_adult_records']) AND $_SESSION['no_adult_records'] == true) {
+                                ?>
+                                <div style="text-align:left"><strong>No book found in this category...</strong></div>
+                                <?php
+                                unset($_SESSION['no_adult_records']);
+                            } else if (isset($_SESSION['yes_adult_records']) AND $_SESSION['yes_adult_records'] == true) {
+                                foreach ($adult_books_data as $key => $value) {
+                                    $inner_array[$key] = json_decode($value, true); // this will give key val pair array
+                                    foreach ((array) $inner_array[$key] as $key2 => $value2) {
+                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+
+                                        $url = "http://localhost/bookhive_ui/";
+//                                      $url = "http://live_url/bookhive_ui/"; 
+
+                                        if ($value2['level_id'] == 1) {
+                                            $location = 'modules/images/books/ecd/';
+                                        } else if ($value2['level_id'] == 2) {
+                                            $location = 'modules/images/books/primary/';
+                                        } else if ($value2['level_id'] == 3) {
+                                            $location = 'modules/images/books/secondary/';
+                                        } else if ($value2['level_id'] == 4) {
+                                            $location = 'modules/images/books/adult/';
+                                        }
+                                        ?>
+                                        <div class="item-product4 item-product">
+                                            <div class="product-thumb">
+                                                <a href="?product-page&code=<?php echo $value2['id']; ?>" class="product-thumb-link">
+                                                    <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
+                                                </a>
+                                                <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
+                                                <div class="product-extra-link">
+                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
+                                                <div class="product-price">
+                                                    <ins><span><?php echo "KES " . $value2['price']; ?></span></ins>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                    }
+                                }
+                                unset($_SESSION['yes_adult_records']);
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
                 <div class="flagship-box">
-<!--                    <div class="flagship-header">
-                        <div class="flagship-brand">
-                            <a href="#"><img src="images/home4/pn3.png" alt="" /></a>
-                        </div>
-                        <div class="flagship-info">
-                            <h2><span style="color:#e62e04">supershop</span> official flagship store</h2>
-                            <p>Do eiusmod tempor incididunt</p>
-                        </div>
-                        <div class="flagship-link">
-                            <a href="#">Browse Store</a>
-                        </div>
-                    </div>-->
                     <div class="flagship-content">
                         <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[1024,2],[1200,3]]" data-pagination="false">
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/beauty/2.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/beauty/6.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/beauty/4.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <?php
+                            if (!empty($_POST) AND $_POST['action'] == "filter_books") {
+                                $adult_books_data[] = $books->execute();
+                            } else {
+                                $adult_books_data[] = $books->getAllLevelBooks("ADULT READER");
+                            }
+                            if (isset($_SESSION['no_adult_records']) AND $_SESSION['no_adult_records'] == true) {
+                                ?>
+                                <div style="text-align:left"><strong>No book found in this category...</strong></div>
+                                <?php
+                                unset($_SESSION['no_adult_records']);
+                            } else if (isset($_SESSION['yes_adult_records']) AND $_SESSION['yes_adult_records'] == true) {
+                                foreach ($adult_books_data as $key => $value) {
+                                    $inner_array[$key] = json_decode($value, true); // this will give key val pair array
+                                    foreach ((array) $inner_array[$key] as $key2 => $value2) {
+                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+
+                                        $url = "http://localhost/bookhive_ui/";
+//                              $url = "http://live_url/bookhive_ui/"; 
+
+                                        if ($value2['level_id'] == 1) {
+                                            $location = 'modules/images/books/ecd/';
+                                        } else if ($value2['level_id'] == 2) {
+                                            $location = 'modules/images/books/primary/';
+                                        } else if ($value2['level_id'] == 3) {
+                                            $location = 'modules/images/books/secondary/';
+                                        } else if ($value2['level_id'] == 4) {
+                                            $location = 'modules/images/books/adult/';
+                                        }
+                                        ?>
+                                        <div class="item-product4 item-product">
+                                            <div class="product-thumb">
+                                                <a href="?product-page&code=<?php echo $value2['id']; ?>" class="product-thumb-link">
+                                                    <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
+                                                </a>
+                                                <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
+                                                <div class="product-extra-link">
+                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
+                                                <div class="product-price">
+                                                    <ins><span><?php echo "KES " . $value2['price']; ?></span></ins>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                    }
+                                }
+                                unset($_SESSION['yes_adult_records']);
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -170,138 +166,126 @@
                     </div>
                     <div class="flagship-content">
                         <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[1024,2],[1200,3]]" data-pagination="false">
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/fashion/9.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/fashion/10.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/fashion/2.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <?php
+                            if (!empty($_POST) AND $_POST['action'] == "filter_books") {
+                                $adult_books_data[] = $books->execute();
+                            } else {
+                                $adult_books_data[] = $books->getAllLevelBooks("ADULT READER");
+                            }
+                            if (isset($_SESSION['no_adult_records']) AND $_SESSION['no_adult_records'] == true) {
+                                ?>
+                                <div style="text-align:left"><strong>No book found in this category...</strong></div>
+                                <?php
+                                unset($_SESSION['no_adult_records']);
+                            } else if (isset($_SESSION['yes_adult_records']) AND $_SESSION['yes_adult_records'] == true) {
+                                foreach ($adult_books_data as $key => $value) {
+                                    $inner_array[$key] = json_decode($value, true); // this will give key val pair array
+                                    foreach ((array) $inner_array[$key] as $key2 => $value2) {
+                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+
+                                        $url = "http://localhost/bookhive_ui/";
+//                              $url = "http://live_url/bookhive_ui/"; 
+
+                                        if ($value2['level_id'] == 1) {
+                                            $location = 'modules/images/books/ecd/';
+                                        } else if ($value2['level_id'] == 2) {
+                                            $location = 'modules/images/books/primary/';
+                                        } else if ($value2['level_id'] == 3) {
+                                            $location = 'modules/images/books/secondary/';
+                                        } else if ($value2['level_id'] == 4) {
+                                            $location = 'modules/images/books/adult/';
+                                        }
+                                        ?>
+                                        <div class="item-product4 item-product">
+                                            <div class="product-thumb">
+                                                <a href="?product-page&code=<?php echo $value2['id']; ?>" class="product-thumb-link">
+                                                    <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
+                                                </a>
+                                                <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
+                                                <div class="product-extra-link">
+                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
+                                                <div class="product-price">
+                                                    <ins><span><?php echo "KES " . $value2['price']; ?></span></ins>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                    }
+                                }
+                                unset($_SESSION['yes_adult_records']);
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
                 <div class="flagship-box">
-<!--                    <div class="flagship-header">
-                        <div class="flagship-brand">
-                            <a href="#"><img src="images/home4/pn4.png" alt="" /></a>
-                        </div>
-                        <div class="flagship-info">
-                            <h2><span style="color:#eb0136">Oppo</span> official flagship store</h2>
-                            <p>Do eiusmod tempor incididunt</p>
-                        </div>
-                        <div class="flagship-link">
-                            <a href="#">Browse Store</a>
-                        </div>
-                    </div>-->
                     <div class="flagship-content">
                         <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[1024,2],[1200,3]]" data-pagination="false">
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/homeware/1.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/homeware/7.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-product4 item-product">
-                                <div class="product-thumb">
-                                    <a href="?product-page" class="product-thumb-link">
-                                        <img src="images/photos/homeware/10.jpg" alt="" />
-                                    </a>
-                                    <a href="?quick-view" class="quickview-link plus fancybox.iframe">quick view</a>
-                                    <div class="product-extra-link">
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="?product-page">book title</a></h3>
-                                    <div class="product-price">
-                                        <ins><span>KES.360.00</span></ins>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <?php
+                            if (!empty($_POST) AND $_POST['action'] == "filter_books") {
+                                $adult_books_data[] = $books->execute();
+                            } else {
+                                $adult_books_data[] = $books->getAllLevelBooks("ADULT READER");
+                            }
+                            if (isset($_SESSION['no_adult_records']) AND $_SESSION['no_adult_records'] == true) {
+                                ?>
+                                <div style="text-align:left"><strong>No book found in this category...</strong></div>
+                                <?php
+                                unset($_SESSION['no_adult_records']);
+                            } else if (isset($_SESSION['yes_adult_records']) AND $_SESSION['yes_adult_records'] == true) {
+                                foreach ($adult_books_data as $key => $value) {
+                                    $inner_array[$key] = json_decode($value, true); // this will give key val pair array
+                                    foreach ((array) $inner_array[$key] as $key2 => $value2) {
+                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+
+                                        $url = "http://localhost/bookhive_ui/";
+//                              $url = "http://live_url/bookhive_ui/"; 
+
+                                        if ($value2['level_id'] == 1) {
+                                            $location = 'modules/images/books/ecd/';
+                                        } else if ($value2['level_id'] == 2) {
+                                            $location = 'modules/images/books/primary/';
+                                        } else if ($value2['level_id'] == 3) {
+                                            $location = 'modules/images/books/secondary/';
+                                        } else if ($value2['level_id'] == 4) {
+                                            $location = 'modules/images/books/adult/';
+                                        }
+                                        ?>
+                                        <div class="item-product4 item-product">
+                                            <div class="product-thumb">
+                                                <a href="?product-page&code=<?php echo $value2['id']; ?>" class="product-thumb-link">
+                                                    <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
+                                                </a>
+                                                <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
+                                                <div class="product-extra-link">
+                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
+                                                <div class="product-price">
+                                                    <ins><span><?php echo "KES " . $value2['price']; ?></span></ins>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                    }
+                                }
+                                unset($_SESSION['yes_adult_records']);
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
