@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/wamp/www/bookhive_web/modules/classes/Books.php</file>
             <file>file:/C:/wamp/www/bookhive_web/modules/classes/Users.php</file>
             <file>file:/C:/wamp/www/bookhive_web/modules/category-browse.php</file>
             <file>file:/C:/wamp/www/bookhive_web/core/template/header.php</file>
             <file>file:/C:/wamp/www/bookhive_web/controller.php</file>
             <file>file:/C:/wamp/www/bookhive_web/modules/inc/breadcrumbs.php</file>
+=======
+>>>>>>> 3d570ed73e03d7d07e20dc2ca7059d6ef200dcc5
         </group>
     </open-files>
 </project-private>
