@@ -197,33 +197,45 @@ else if ( is_menu_set('publisher_books') != ""){
     set_title("Bookhive | Publisher Books");
 }
 
+else if ( is_menu_set('storymoja_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Storymoja Books");
+}
 
+else if ( is_menu_set('klb_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | KLB Books");
+}
 
+else if ( is_menu_set('phoenix_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Phoenix Books");
+}
 
+else if ( is_menu_set('longhorn_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Longhorn Books");
+}
 
+else if ( is_menu_set('moran_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Moran Books");
+}
 
-//else if ( is_menu_set('adult_books') != ""){
-//    $currentPage = WPATH . "modules/category-browse.php";
-//    set_title("Bookhive | Adult Books");
-//}
-//
-//else if ( is_menu_set('english_books') != ""){
-//    $currentPage = WPATH . "modules/category-browse.php";
-//    set_title("Bookhive | English Books");
-//}
-//
-//else if ( is_menu_set('kiswahili_books') != ""){
-//    $currentPage = WPATH . "modules/category-browse.php";
-//    set_title("Bookhive | Kiswahili Books");
-//}
-//
-//else if ( is_menu_set('activity_books') != ""){
-//    $currentPage = WPATH . "modules/category-browse.php";
-//    set_title("Bookhive | Activity Books");
-//}
+else if ( is_menu_set('self_publisher_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Self Publisher Books");
+}
 
+else if ( is_menu_set('printed_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Printed Books");
+}
 
-
+else if ( is_menu_set('digital_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Digital Books");
+}
 
 else if ( is_menu_set('faq') != ""){
     $currentPage = WPATH . "modules/faq.php";

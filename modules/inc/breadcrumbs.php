@@ -121,6 +121,46 @@ else if ( is_menu_set('publisher_books') != ""){
     $url_name = "Publisher Books";
 }
 
+else if ( is_menu_set('storymoja_books') != ""){
+    $url_link = "?storymoja_books";
+    $url_name = "Storymoja Books";
+}
+
+else if ( is_menu_set('klb_books') != ""){
+    $url_link = "?klb_books";
+    $url_name = "KLB Books";
+}
+
+else if ( is_menu_set('phoenix_books') != ""){
+    $url_link = "?phoenix_books";
+    $url_name = "Phoenix Books";
+}
+
+else if ( is_menu_set('longhorn_books') != ""){
+    $url_link = "?longhorn_books";
+    $url_name = "Longhorn Books";
+}
+
+else if ( is_menu_set('moran_books') != ""){
+    $url_link = "?moran_books";
+    $url_name = "Moran Books";
+}
+
+else if ( is_menu_set('self_publisher_books') != ""){
+    $url_link = "?self_publisher_books";
+    $url_name = "Self Publisher Books";
+}
+
+else if ( is_menu_set('printed_books') != ""){
+    $url_link = "?printed_books";
+    $url_name = "Printed Books";
+}
+
+else if ( is_menu_set('digital_books') != ""){
+    $url_link = "?digital_books";
+    $url_name = "Digital Books";
+}
+
 ?>
 
 

@@ -53,37 +53,38 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-ms-12">
                             <div class="check-billing">
-                                <form class="form-my-account">
+                                <form class="form-my-account" method="post">                    
+                                    <input type="hidden" name="action" value="checkout_transaction"/>
                                     <h2 class="title18">Billing Details</h2>
                                     <p class="clearfix box-col2">
-                                        <input type="text" value="First Name *" onblur="if (this.value == '')
+                                        <input type="text" value="First Name *" name="firstname" onblur="if (this.value == '')
                                                     this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                                 this.value = ''" />
-                                        <input type="text" value="Last name *" onblur="if (this.value == '')
+                                        <input type="text" value="Last Name *" name="lastname" onblur="if (this.value == '')
                                                     this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                                 this.value = ''" />
                                     </p>
                                     <p class="clearfix box-col2">
-                                        <input type="text" value="ID/Passport Number " onblur="if (this.value == '')
+                                        <input type="text" value="ID/Passport Number " name="idnumber" onblur="if (this.value == '')
                                                     this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                                 this.value = ''" />
-                                        <input type="text" value="phone *" onblur="if (this.value == '')
+                                        <input type="text" value="phone *" name="phone_number" onblur="if (this.value == '')
                                                     this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                                 this.value = ''" />
                                     </p>
                                     <p>
-                                        <input type="text" value="Email *" onblur="if (this.value == '')
+                                        <input type="text" value="Email *" name="email_address" onblur="if (this.value == '')
                                                     this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                                 this.value = ''" />
                                     </p>    
                                     <p class="clearfix box-col2">    
-                                        <select name="gender" id="gender">
+                                        <select name="gender">
                                             <option value="none">Select Gender</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                         </select>
                                     </p>
-                                    <p><input type="text" value="Company Name" onblur="if (this.value == '')
+                                    <p><input type="text" value="Company Name" name="company_name" onblur="if (this.value == '')
                                                 this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                             this.value = ''" /></p>
                                     <p>
@@ -131,22 +132,22 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
 
                                             <tr class="cart_item">
                                                 <td class="product-name">
-                                                   <?php echo $book_details['title']; ?> &nbsp; <span class="product-quantity">× <?php echo $item["quantity"]; ?></span>
+                                                    <?php echo $book_details['title']; ?> &nbsp; <span class="product-quantity">× <?php echo $item["quantity"]; ?></span>
                                                 </td>
                                                 <td class="product-total">
                                                     <span class="amount"><?php echo $sub_item_total; ?></span>						
                                                 </td>
                                             </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr class="order-total">
-                                                <th>Total</th>
-                                                <td><strong><span class="amount">KES 12600</span></strong> </td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                <?php } ?>
+                                        <?php } ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="order-total">
+                                            <th>Total</th>
+                                            <td><strong><span class="amount">KES 12600</span></strong> </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            <?php } ?>
                         </div>
                         <div class="woocommerce-checkout-payment" id="payment">
                             <ul class="payment_methods methods list-none">
