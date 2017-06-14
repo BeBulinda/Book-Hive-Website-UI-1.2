@@ -15278,7 +15278,7 @@ a.protect-icon:hover {
   float: left;
   width: 47.5%;
 }
-.form-my-account input[type="text"] {
+.form-my-account input[type="text"], input[type="email"] {
   border: 1px solid #e5e5e5;
   color: #999;
   height: 40px;
