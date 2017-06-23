@@ -84,7 +84,7 @@ if (isset($_SESSION["cart_number_of_items"]) AND $_SESSION["cart_number_of_items
 
                                 <tr class="cart_item">
                                     <td class="product-remove">
-                                        <a class="remove" href="?checkout&cart_action=remove&code=<?php echo $item["id"]; ?>" ><i class="fa fa-times"></i>Remove Item</a>
+                                        <a class="remove" href="?cart&cart_action=remove&code=<?php echo $item["id"]; ?>" ><i class="fa fa-times"></i>Remove Item</a>
                                     </td>
                                     <td class="product-thumbnail">
                                         <img src="<?php echo $location . $book_details['cover_photo']; ?>" width="120" alt="<?php echo $book_details['title'] . " COVER PHOTO"; ?>"/>

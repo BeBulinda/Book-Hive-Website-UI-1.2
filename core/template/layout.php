@@ -11,7 +11,7 @@ header('Content-Type: text/html; charset=UTF-8');
         <meta name="keywords" content="bookhive  kenya" />
         <meta name="robots" content="noodp,index,follow" />
         <meta name='revisit-after' content='1 days' />
-        <meta http-equiv="refresh" content="0">
+        <!--<meta http-equiv="refresh" content="0">-->
         <link rel="icon" href="images/faviconr.ico" type="image/ico" sizes="16x16 32x32">
         <link rel="icon" href="images/faviconr.png" type="image/png" sizes="16x16 32x32">
         <link rel="icon" href="images/faviconr.svg" type="image/png" sizes="16x16 32x32">
