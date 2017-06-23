@@ -1,4 +1,3 @@
-
 <?php
 require_once WPATH . "modules/classes/Books.php";
 require_once WPATH . "modules/classes/Users.php";
@@ -45,10 +44,8 @@ if ($book_details['level_id'] == 1) {
 //        $_SESSION["cart_item"] = $itemArray;
 //    }
 //}
-
 ?>
-
-<div id="content">
+<div id="content quick_view">
     <div class="content-page">
         <div class="container">
             <div class="product-quickview">
@@ -56,7 +53,7 @@ if ($book_details['level_id'] == 1) {
                     <div class="col-md-5 col-sm-6 col-xs-12">
                         <div class="detail-gallery">
                             <div class="mid">
-                                        <img src="<?php echo $location . $book_details['cover_photo']; ?>" alt="<?php echo $book_details['title'] . " COVER PHOTO"; ?>"/>
+                                <img src="<?php echo $location . $book_details['cover_photo']; ?>" alt="<?php echo $book_details['title'] . " COVER PHOTO"; ?>"/>
                             </div>
                         </div>
                         <!-- End Gallery -->
@@ -87,8 +84,8 @@ if ($book_details['level_id'] == 1) {
                             <div class="attr-detail attr-size">
                                 <div class="attr-title">
                                     <strong><sup>*</sup>ISBN Number : <?php echo $book_details['isbn_number']; ?></strong>
-                                    <br /><strong><sup>*</sup>Author : <?php echo $book_details['author']; ?></strong>
-                                    <br /><strong><sup>*</sup>Publisher : <?php echo $book_publisher_details['company_name']; ?></strong>
+                                    <br/><strong><sup>*</sup>Author : <?php echo $book_details['author']; ?></strong>
+                                    <br/><strong><sup>*</sup>Publisher : <?php echo $book_publisher_details['company_name']; ?></strong>
                                 </div>
                             </div>
                             <?php require_once 'modules/cart/increase-decrease.php'; ?>

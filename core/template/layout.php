@@ -135,6 +135,13 @@ header('Content-Type: text/html; charset=UTF-8');
             <script type="text/javascript" src="web/js/noty/jquery.noty.packaged.js"></script>
             <script type="text/javascript" src="web/js/noty/notification_html.js"></script>
             <!--End Notifications-->
+            <script type="text/javascript">
+                $('#fancy_button').click(function ()
+                {
+                   jQuery.fancybox.close();
+                    
+                });
+            </script>
             <?php
             /*             * *
              * Specify the scripts that are to be added.
@@ -155,9 +162,9 @@ header('Content-Type: text/html; charset=UTF-8');
             ?>
             <?php if (!App::isLoggedIn()) { ?>
                 <script>
-                jQuery(document).ready(function () {
-                    App.initLogin();
-                });
+                    jQuery(document).ready(function () {
+                        App.initLogin();
+                    });
                 </script>
             <?php } else { ?>
                 <script>

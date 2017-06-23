@@ -26,7 +26,11 @@ if (!empty($_POST)) {
     <div class="content-page">
         <div class="container">
             <div class="contact-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d151986.00533938778!2d-2.3636687929445515!3d53.472367954780005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a4d4c5226f5db%3A0xd9be143804fe6baa!2sManchester%2C+UK!5e0!3m2!1sen!2s!4v1472467262148" width="1200" height="400" style="border:0" allowfullscreen></iframe>
+                <iframe src="//www.google.com/maps/embed/v1/place?q=Reflex%20Concepts%20LTD
+                        &zoom=13
+                        &attribution_source=Google+Maps+Embed+API
+                        &attribution_web_url=https://developers.google.com/maps/documentation/embed/
+                        &key=AIzaSyDGJGqlWDQzM6wkBKerScg5uEG5tv09xyQ" width="1200" height="400" style="border:0" allowfullscreen></iframe>
             </div>
             <!-- End Map -->
             <?php require_once 'modules/inc/contact-details.php'; ?>

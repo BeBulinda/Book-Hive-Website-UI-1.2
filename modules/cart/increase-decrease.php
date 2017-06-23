@@ -1,5 +1,6 @@
 
 <?php
+$previous_url = $_SERVER['HTTP_REFERER']; 
 if (!empty($_POST) AND $_POST['action'] == "add") {
     $productByCode = $books->fetchBookDetails($_POST["code"]);
     $itemArray = array($productByCode["id"] => array('id' => $productByCode["id"], 'title' => $productByCode["title"], 'price' => $productByCode["price"], 'quantity' => $_POST["quantity"]));
@@ -23,7 +24,7 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
 }
 ?>
 
-<form role="form" method="post">
+<form role="form" method="post" target="parent" action="<?php echo $previous_url; ?>">
     <input type="hidden" name="action" value="add"/>
     <input type="hidden" name="code" value="<?php echo $_SESSION["selected_book_id"]; ?>"/>
     <div class="">
@@ -32,6 +33,6 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
             <input type="text" class="btn btn-secondary" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" readonly="" />
             <input type="button" class="btn btn-secondary btn-info" onclick="incrementValue()" value="+" />
         </div>
-        <input type="submit" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+        <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" onclick="close();" value="Add to Cart" />
     </div>
 </form>

@@ -134,7 +134,7 @@ if (!empty($_POST)) {
 
 <div id="content">
     <div class="content-page grid-ajax-infinite">
-        <?php require_once 'modules/inc/breadcrumbs.php'; ?>
+        <?php //require_once 'modules/inc/breadcrumbs.php'; ?>
         <div class="container">
             <!-- End Bread Crumb -->            
             <div class="pull-left">
