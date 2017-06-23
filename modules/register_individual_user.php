@@ -5,24 +5,17 @@
 require_once WPATH . "modules/classes/Users.php";
 $users = new Users();
 if (!empty($_POST)) {
-    $success = $users->execute();
-    if (is_bool($success) && $success == true) {
-        $_SESSION['add_success'] = true;
-        ?>
-        <div class="alert alert-info fade in">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>Your registration was successful. Please check your email for login credentials.</strong> 
-        </div>
-        <?php
+    if ($_POST["terms_and_conditions"] != "Yes") {
+        $_SESSION['terms_and_conditions'] = false;
     } else {
-        ?>
-        <div class="alert alert-block alert-error fade in">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>Your registration was unsuccessful. Please try again.</strong>
-        </div>
-        <?php
+        $success = $users->execute();
+        if (is_bool($success) && $success == true) {
+            $_SESSION['add_success'] = true;
+        } else {
+            $_SESSION['add_error'] = true;
+        }
     }
-//    App::redirectTo("?home");
+    App::redirectTo("?process_feedback");
 }
 ?>
 <div id="content">
@@ -32,7 +25,7 @@ if (!empty($_POST)) {
                 <h2>User Registration</h2>
                 <div class="form-contact">
                     <form method="post">  
-                    <input type="hidden" name="action" value="add_individual_user"/>
+                        <input type="hidden" name="action" value="add_individual_user"/>
                         <div class="row">
                             <div class="col-md-3 col-sm-4 col-xs-12">
                                 <label class="control-label" for="firstname">Firstname<sup>*</sup></label>
@@ -60,6 +53,9 @@ if (!empty($_POST)) {
                             <div class="col-md-3 col-sm-4 col-xs-12">
                                 <label class="control-label" for="email">Email<sup>*</sup></label>
                                 <input type="email" name="email" placeholder="Email Address" required="true">
+                            </div>
+                            <div class="col-md-6 col-sm-4 col-xs-12">
+                                <input type="checkbox" name="terms_and_conditions" value="Yes" /> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <input type="submit" value="Register" />

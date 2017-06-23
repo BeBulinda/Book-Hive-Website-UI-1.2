@@ -63,11 +63,9 @@ $books = new Books();
                                                     <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
                                                 </a>
                                                 <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
-                                                <div class="product-extra-link">
+<!--                                                <div class="product-extra-link">
                                                     <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="product-info">
                                                 <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
@@ -126,11 +124,9 @@ $books = new Books();
                                                     <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
                                                 </a>
                                                 <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
-                                                <div class="product-extra-link">
+<!--                                                <div class="product-extra-link">
                                                     <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="product-info">
                                                 <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
@@ -203,11 +199,9 @@ $books = new Books();
                                                     <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
                                                 </a>
                                                 <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
-                                                <div class="product-extra-link">
+<!--                                                <div class="product-extra-link">
                                                     <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="product-info">
                                                 <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
@@ -266,11 +260,9 @@ $books = new Books();
                                                     <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
                                                 </a>
                                                 <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
-                                                <div class="product-extra-link">
+<!--                                                <div class="product-extra-link">
                                                     <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="product-info">
                                                 <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>

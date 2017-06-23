@@ -16,6 +16,16 @@ else if ( is_menu_set('category-browse') != ""){
     $url_name = "Category Books";
 }
 
+else if ( is_menu_set('filtered_books') != ""){
+    $url_link = "?filtered_books";
+    $url_name = "Filtered Books";
+}
+
+else if ( is_menu_set('searched_books') != ""){
+    $url_link = "?searched_books";
+    $url_name = "Searched Books";
+}
+
 else if ( is_menu_set('ecd_books') != ""){
     $url_link = "?ecd_books";
     $url_name = "ECD Books";
@@ -101,6 +111,16 @@ else if ( is_menu_set('form_one_books') != ""){
     $url_name = "Form One Books";
 }
 
+else if ( is_menu_set('primary_revision_books') != ""){
+    $url_link = "?primary_revision_books";
+    $url_name = "Primary Revision Books";
+}
+
+else if ( is_menu_set('secondary_revision_books') != ""){
+    $url_link = "?secondary_revision_books";
+    $url_name = "Secondary Revision Books";
+}
+
 else if ( is_menu_set('form_two_books') != ""){
     $url_link = "?form_two_books";
     $url_name = "Form Two Books";
@@ -119,6 +139,51 @@ else if ( is_menu_set('form_four_books') != ""){
 else if ( is_menu_set('publisher_books') != ""){
     $url_link = "?publisher_books";
     $url_name = "Publisher Books";
+}
+
+else if ( is_menu_set('storymoja_books') != ""){
+    $url_link = "?storymoja_books";
+    $url_name = "Storymoja Books";
+}
+
+else if ( is_menu_set('klb_books') != ""){
+    $url_link = "?klb_books";
+    $url_name = "KLB Books";
+}
+
+else if ( is_menu_set('phoenix_books') != ""){
+    $url_link = "?phoenix_books";
+    $url_name = "Phoenix Books";
+}
+
+else if ( is_menu_set('longhorn_books') != ""){
+    $url_link = "?longhorn_books";
+    $url_name = "Longhorn Books";
+}
+
+else if ( is_menu_set('moran_books') != ""){
+    $url_link = "?moran_books";
+    $url_name = "Moran Books";
+}
+
+else if ( is_menu_set('self_publisher_books') != ""){
+    $url_link = "?self_publisher_books";
+    $url_name = "Self Publisher Books";
+}
+
+else if ( is_menu_set('printed_books') != ""){
+    $url_link = "?printed_books";
+    $url_name = "Printed Books";
+}
+
+else if ( is_menu_set('digital_books') != ""){
+    $url_link = "?digital_books";
+    $url_name = "Digital Books";
+}
+
+else if ( is_menu_set('audio_books') != ""){
+    $url_link = "?audio_books";
+    $url_name = "Audio Books";
 }
 
 ?>

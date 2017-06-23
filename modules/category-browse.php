@@ -10,25 +10,25 @@ $item_total = 0;
 
 
 if (is_menu_set('ecd_books') != "") {
-    $category_books[] = $books->getAllCategoryLevelBooks("ecd_books");
+    $category_books[] = $books->getAllCategoryBooks("level", "ecd_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('primary_books') != "") {
-    $category_books[] = $books->getAllCategoryLevelBooks("primary_books");
+    $category_books[] = $books->getAllCategoryBooks("level", "primary_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('secondary_books') != "") {
-    $category_books[] = $books->getAllCategoryLevelBooks("secondary_books");
+    $category_books[] = $books->getAllCategoryBooks("level", "secondary_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('adult_books') != "") {
-    $category_books[] = $books->getAllCategoryLevelBooks("adult_books");
+    $category_books[] = $books->getAllCategoryBooks("level", "adult_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('english_books') != "") {
-    $category_books[] = $books->getAllCategoryTypeBooks("english_books");
+    $category_books[] = $books->getAllCategoryBooks("type", "english_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('kiswahili_books') != "") {
-    $category_books[] = $books->getAllCategoryTypeBooks("kiswahili_books");
+    $category_books[] = $books->getAllCategoryBooks("type", "kiswahili_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('activity_books') != "") {
-    $category_books[] = $books->getAllCategoryTypeBooks("activity_books");
+    $category_books[] = $books->getAllCategoryBooks("type", "activity_books");
     $_SESSION['category_books'] = $category_books;
 }
 
@@ -37,47 +37,79 @@ if (is_menu_set('ecd_books') != "") {
 //    $category_books[] = $books->getAllCategoryBooks("ecd_books");
 //    $_SESSION['category_books'] = $category_books;
 //}
-
-
 else if (is_menu_set('class_one_books') != "") {
-    $category_books[] = $books->getAllPrimaryCategoryBooks("class_one_books");
+    $category_books[] = $books->getAllCategoryBooks("primary_class", "class_one_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('class_two_books') != "") {
-    $category_books[] = $books->getAllPrimaryCategoryBooks("class_two_books");
+    $category_books[] = $books->getAllCategoryBooks("primary_class", "class_two_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('class_three_books') != "") {
-    $category_books[] = $books->getAllPrimaryCategoryBooks("class_three_books");
+    $category_books[] = $books->getAllCategoryBooks("primary_class", "class_three_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('class_four_books') != "") {
-    $category_books[] = $books->getAllPrimaryCategoryBooks("class_four_books");
+    $category_books[] = $books->getAllCategoryBooks("primary_class", "class_four_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('class_five_books') != "") {
-    $category_books[] = $books->getAllPrimaryCategoryBooks("class_five_books");
+    $category_books[] = $books->getAllCategoryBooks("primary_class", "class_five_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('class_six_books') != "") {
-    $category_books[] = $books->getAllPrimaryCategoryBooks("class_six_books");
+    $category_books[] = $books->getAllCategoryBooks("primary_class", "class_six_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('class_seven_books') != "") {
-    $category_books[] = $books->getAllPrimaryCategoryBooks("class_seven_books");
+    $category_books[] = $books->getAllCategoryBooks("primary_class", "class_seven_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('class_eight_books') != "") {
-    $category_books[] = $books->getAllPrimaryCategoryBooks("class_eight_books");
+    $category_books[] = $books->getAllCategoryBooks("primary_class", "class_eight_books");
+    $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('primary_revision_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("primary_class", "primary_revision_books");
+    $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('secondary_revision_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("secondary_class", "secondary_revision_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('form_one_books') != "") {
-    $category_books[] = $books->getAllSecondaryCategoryBooks("form_one_books");
+    $category_books[] = $books->getAllCategoryBooks("secondary_class", "form_one_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('form_two_books') != "") {
-    $category_books[] = $books->getAllSecondaryCategoryBooks("form_two_books");
+    $category_books[] = $books->getAllCategoryBooks("secondary_class", "form_two_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('form_three_books') != "") {
-    $category_books[] = $books->getAllSecondaryCategoryBooks("form_three_books");
+    $category_books[] = $books->getAllCategoryBooks("secondary_class", "form_three_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('form_four_books') != "") {
-    $category_books[] = $books->getAllSecondaryCategoryBooks("form_four_books");
+    $category_books[] = $books->getAllCategoryBooks("secondary_class", "form_four_books");
     $_SESSION['category_books'] = $category_books;
-} else if (is_menu_set('publisher_books') != "") {
-    $category_books[] = $books->getAllCategoryBooks("publisher_books");
+} else if (is_menu_set('storymoja_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("publisher", "storymoja_books");
     $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('klb_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("publisher", "klb_books");
+    $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('phoenix_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("publisher", "phoenix_books");
+    $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('longhorn_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("publisher", "longhorn_books");
+    $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('moran_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("publisher", "moran_books");
+    $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('self_publisher_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("publisher", "self_publisher_books");
+    $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('printed_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("print_type", "printed_books");
+    $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('digital_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("print_type", "digital_books");
+    $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('audio_books') != "") {
+    $category_books[] = $books->getAllCategoryBooks("print_type", "audio_books");
+    $_SESSION['category_books'] = $category_books;
+} else if (is_menu_set('filtered_books') != "") {
+    $_SESSION['category_books'] = $_SESSION['filtered_books'];
+} else if (is_menu_set('searched_books') != "") {
+    $_SESSION['category_books'] = $_SESSION['searched_books'];
 }
 
 if (isset($_SESSION["cart_item"])) {
@@ -96,6 +128,7 @@ if (!empty($_POST)) {
         $filtered_books[] = $books->getAllFilteredBooks($_POST['publisher'], $_POST['book_level'], $_POST['book_type'], $_POST['print_type']);
         $_SESSION['filtered_books'] = $filtered_books;
     }
+    App::redirectTo("?filtered_books");
 }
 ?>
 
@@ -103,12 +136,26 @@ if (!empty($_POST)) {
     <div class="content-page grid-ajax-infinite">
         <?php require_once 'modules/inc/breadcrumbs.php'; ?>
         <div class="container">
-            <!-- End Bread Crumb -->
-            <div class="sort-pagi-bar clearfix">
-                <div class="view-type pull-left">
-                    <a href="#" class="grid-view active"></a>
-                    <a href="#" class="list-view"></a>
-                </div>
+            <!-- End Bread Crumb -->            
+            <div class="pull-left">
+                <?php if (is_menu_set('storymoja_books') != "") { ?>
+                    <a href="?"><img src="modules/images/logos/publishers/2843147YUO3FD5485628BEB798FF3ECF.png" width="150" alt="Publisher's Logo" /></a>
+                <?php } else if (is_menu_set('klb_books') != "") { ?>
+                    <a href="?"><img src="modules/images/logos/publishers/284331A7593FD5485628BEB798FF3ECF.jpg" width="150" alt="Publisher's Logo" /></a>
+                <?php } else if (is_menu_set('phoenix_books') != "") { ?>
+                    <a href="?"><img src="modules/images/logos/publishers/284ACF58993FD5485628BEB798FF3ECF.jpg" width="150" alt="Publisher's Logo" /></a>
+                <?php } else if (is_menu_set('longhorn_books') != "") { ?>
+                    <a href="?"><img src="modules/images/logos/publishers/112ERTA7593FD5485628BEB798FF3ECF.jpg" width="150" alt="Publisher's Logo" /></a>
+                <?php } else if (is_menu_set('moran_books') != "") { ?>
+                    <a href="?"><img src="modules/images/logos/publishers/284331A7593FD5485628BEB798ABC456.jpg" width="150" alt="Publisher's Logo" /></a>
+                <?php } 
+                
+//                else { ?>
+                    <!--<a class="view-type" href="#" class="grid-view active"></a>-->
+                    <!--<a class="view-type" href="#" class="list-view"></a>-->
+                <?php // } ?>                    
+            </div>
+            <div class="clearfix">
                 <div class="pull-left">
                     <div class="sort-bar select-box">
                         <form method="post">
@@ -127,6 +174,7 @@ if (!empty($_POST)) {
                                 <option value="ALL">ALL PRINT TYPES</option>
                                 <option value="PRINTED">PRINTED BOOKS</option>
                                 <option value="DIGITAL">DIGITAL BOOKS</option>
+                                <option value="AUDIO">AUDIO BOOKS</option>
                             </select>
                             <button type="submit" id="submitButton" class="btn btn-primary">Filter</button>
                         </form>
@@ -136,7 +184,6 @@ if (!empty($_POST)) {
             <!-- End Sort PagiBar -->
             <ul class="grid-product-ajax list-unstyled clearfix">                
                 <?php
-                
                 if (isset($_SESSION["category_books"])) {
                     if (isset($_SESSION['no_category_records']) AND $_SESSION['no_category_records'] == true) {
                         ?>
@@ -189,47 +236,47 @@ if (!empty($_POST)) {
                                 <?php
                             }
                         }
-                        unset($_SESSION['yes_category_records']);
+//                        unset($_SESSION['yes_category_records']);
                     }
-                    unset($_SESSION['category_books']);
+//                    unset($_SESSION['category_books']);
                 }
-                
-                
-                if (isset($_SESSION["filtered_books"])) {
-                    if (isset($_SESSION['no_filtered_records']) AND $_SESSION['no_filtered_records'] == true) {
-                        ?>
-                        <div style="text-align:left"><strong>No book found in this category...</strong></div>
-                        <?php
-                        unset($_SESSION['no_filtered_records']);
-                    } else if (isset($_SESSION['yes_filtered_records']) AND $_SESSION['yes_filtered_records'] == true) {
-                        foreach ($_SESSION["filtered_books"] as $key => $value) {
-                            $inner_array[$key] = $value; // json_decode($value, true); // this will give key val pair array
-                            foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
 
-                                if ($value2['level_id'] == 1) {
-                                    $location = 'modules/images/books/ecd/';
-                                } else if ($value2['level_id'] == 2) {
-                                    $location = 'modules/images/books/primary/';
-                                } else if ($value2['level_id'] == 3) {
-                                    $location = 'modules/images/books/secondary/';
-                                } else if ($value2['level_id'] == 4) {
-                                    $location = 'modules/images/books/adult/';
-                                }
+
+//                if (isset($_SESSION["filtered_books"])) {
+//                    if (isset($_SESSION['no_filtered_records']) AND $_SESSION['no_filtered_records'] == true) {
+//                        ?>
+                        <!--<div style="text-align:left"><strong>No book found in this category...</strong></div>-->
+                        <?php
+//                        unset($_SESSION['no_filtered_records']);
+//                    } else if (isset($_SESSION['yes_filtered_records']) AND $_SESSION['yes_filtered_records'] == true) {
+//                        foreach ($_SESSION["filtered_books"] as $key => $value) {
+//                            $inner_array[$key] = $value; // json_decode($value, true); // this will give key val pair array
+//                            foreach ((array) $inner_array[$key] as $key2 => $value2) {
+//                                $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+//
+//                                if ($value2['level_id'] == 1) {
+//                                    $location = 'modules/images/books/ecd/';
+//                                } else if ($value2['level_id'] == 2) {
+//                                    $location = 'modules/images/books/primary/';
+//                                } else if ($value2['level_id'] == 3) {
+//                                    $location = 'modules/images/books/secondary/';
+//                                } else if ($value2['level_id'] == 4) {
+//                                    $location = 'modules/images/books/adult/';
+//                                }
                                 ?>
 
-                                <li>
+<!--                                <li>
                                     <div class="item-pro-ajax">
                                         <div class="product-thumb">
-                                            <a class="product-thumb-link" href="?product-page&code=<?php echo $value2['id']; ?>">
-                                                <img src="<?php echo $location . $value2['cover_photo']; ?>" height="400" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
+                                            <a class="product-thumb-link" href="?product-page&code=//<?php // echo $value2['id']; ?>">
+                                                <img src="<?php // echo $location . $value2['cover_photo']; ?>" height="400" alt="<?php // echo $value2['title'] . " COVER PHOTO"; ?>"/>
                                             </a>
-                                            <a class="quickview-link fancybox.iframe" href="?quick-view&code=<?php echo $value2['id']; ?>"><span>quick view</span></a>
+                                            <a class="quickview-link fancybox.iframe" href="?quick-view&code=//<?php // echo $value2['id']; ?>"><span>quick view</span></a>
                                         </div>
                                         <div class="product-info">
-                                            <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
+                                            <h3 class="product-title"><a href="?product-page&code=//<?php // echo $value2['id']; ?>"><?php // echo $value2['title']; ?></a></h3>
                                             <div class="product-price">
-                                                <ins><span><?php echo "KES " . $value2['price']; ?></span></ins>
+                                                <ins><span><?php // echo "KES " . $value2['price']; ?></span></ins>
                                             </div>
                                             <div class="product-rate">
                                                 <div class="product-rating" style="width:90%"></div>
@@ -241,52 +288,52 @@ if (!empty($_POST)) {
                                             </div>
                                         </div>
                                     </div>
-                                </li>
+                                </li>-->
                                 <!-- End Item -->
 
                                 <?php
-                            }
-                        }
-                        unset($_SESSION['yes_filtered_records']);
-                    }
-                    unset($_SESSION['filtered_books']);
-                }
-
-                if (isset($_SESSION["searched_books"])) {
-                    if (isset($_SESSION['no_searched_records']) AND $_SESSION['no_searched_records'] == true) {
-                        ?>
-                        <div style="text-align:left"><strong>No book found in this category...</strong></div>
+//                            }
+//                        }
+//                        unset($_SESSION['yes_filtered_records']);
+//                    }
+//                    unset($_SESSION['filtered_books']);
+//                }
+//
+//                if (isset($_SESSION["searched_books"])) {
+//                    if (isset($_SESSION['no_searched_records']) AND $_SESSION['no_searched_records'] == true) {
+//                        ?>
+                        <!--<div style="text-align:left"><strong>No book found in this category...</strong></div>-->
                         <?php
-                        unset($_SESSION['no_searched_records']);
-                    } else if (isset($_SESSION['yes_searched_records']) AND $_SESSION['yes_searched_records'] == true) {
-                        foreach ($_SESSION["searched_books"] as $key => $value) {
-                            $inner_array[$key] = $value; // json_decode($value, true); // this will give key val pair array
-                            foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+//                        unset($_SESSION['no_searched_records']);
+//                    } else if (isset($_SESSION['yes_searched_records']) AND $_SESSION['yes_searched_records'] == true) {
+//                        foreach ($_SESSION["searched_books"] as $key => $value) {
+//                            $inner_array[$key] = $value; // json_decode($value, true); // this will give key val pair array
+//                            foreach ((array) $inner_array[$key] as $key2 => $value2) {
+//                                $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+//
+//                                if ($value2['level_id'] == 1) {
+//                                    $location = 'modules/images/books/ecd/';
+//                                } else if ($value2['level_id'] == 2) {
+//                                    $location = 'modules/images/books/primary/';
+//                                } else if ($value2['level_id'] == 3) {
+//                                    $location = 'modules/images/books/secondary/';
+//                                } else if ($value2['level_id'] == 4) {
+//                                    $location = 'modules/images/books/adult/';
+//                                }
+//                                ?>
 
-                                if ($value2['level_id'] == 1) {
-                                    $location = 'modules/images/books/ecd/';
-                                } else if ($value2['level_id'] == 2) {
-                                    $location = 'modules/images/books/primary/';
-                                } else if ($value2['level_id'] == 3) {
-                                    $location = 'modules/images/books/secondary/';
-                                } else if ($value2['level_id'] == 4) {
-                                    $location = 'modules/images/books/adult/';
-                                }
-                                ?>
-
-                                <li>
+<!--                                <li>
                                     <div class="item-pro-ajax">
                                         <div class="product-thumb">
-                                            <a class="product-thumb-link" href="?product-page&code=<?php echo $value2['id']; ?>">
-                                                <img src="<?php echo $location . $value2['cover_photo']; ?>" height="400" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
+                                            <a class="product-thumb-link" href="?product-page&code=//<?php // echo $value2['id']; ?>">
+                                                <img src="//<?php // echo $location . $value2['cover_photo']; ?>" height="400" alt="<?php // echo $value2['title'] . " COVER PHOTO"; ?>"/>
                                             </a>
-                                            <a class="quickview-link fancybox.iframe" href="?quick-view&code=<?php echo $value2['id']; ?>"><span>quick view</span></a>
+                                            <a class="quickview-link fancybox.iframe" href="?quick-view&code=//<?php // echo $value2['id']; ?>"><span>quick view</span></a>
                                         </div>
                                         <div class="product-info">
-                                            <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
+                                            <h3 class="product-title"><a href="?product-page&code=//<?php // echo $value2['id']; ?>"><?php // echo $value2['title']; ?></a></h3>
                                             <div class="product-price">
-                                                <ins><span><?php echo "KES " . $value2['price']; ?></span></ins>
+                                                <ins><span>//<?php // echo "KES " . $value2['price']; ?></span></ins>
                                             </div>
                                             <div class="product-rate">
                                                 <div class="product-rating" style="width:90%"></div>
@@ -298,16 +345,16 @@ if (!empty($_POST)) {
                                             </div>
                                         </div>
                                     </div>
-                                </li>
+                                </li>-->
                                 <!-- End Item -->
 
                                 <?php
-                            }
-                        }
-                        unset($_SESSION['yes_searched_records']);
-                    }
-                    unset($_SESSION['searched_books']);
-                }
+//                            }
+//                        }
+//                        unset($_SESSION['yes_searched_records']);
+//                    }
+//                    unset($_SESSION['searched_books']);
+//                }
                 ?>
 
             </ul>

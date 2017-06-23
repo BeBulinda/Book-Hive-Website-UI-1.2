@@ -92,6 +92,16 @@ else if ( is_menu_set('category-browse') != ""){
     set_title("Bookhive | Category");
 }
 
+else if ( is_menu_set('filtered_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Filtered Books");
+}
+
+else if ( is_menu_set('searched_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Searched Books");
+}
+
 else if ( is_menu_set('ecd_books') != ""){
     $currentPage = WPATH . "modules/category-browse.php";
     set_title("Bookhive | ECD Books");
@@ -172,6 +182,16 @@ else if ( is_menu_set('class_eight_books') != ""){
     set_title("Bookhive | Class Eight Books");
 }
 
+else if ( is_menu_set('primary_revision_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Primary Revision Books");
+}
+
+else if ( is_menu_set('secondary_revision_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Secondary Revision Books");
+}
+
 else if ( is_menu_set('form_one_books') != ""){
     $currentPage = WPATH . "modules/category-browse.php";
     set_title("Bookhive | Form One Books");
@@ -197,33 +217,50 @@ else if ( is_menu_set('publisher_books') != ""){
     set_title("Bookhive | Publisher Books");
 }
 
+else if ( is_menu_set('storymoja_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Storymoja Books");
+}
 
+else if ( is_menu_set('klb_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | KLB Books");
+}
 
+else if ( is_menu_set('phoenix_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Phoenix Books");
+}
 
+else if ( is_menu_set('longhorn_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Longhorn Books");
+}
 
+else if ( is_menu_set('moran_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Moran Books");
+}
 
-//else if ( is_menu_set('adult_books') != ""){
-//    $currentPage = WPATH . "modules/category-browse.php";
-//    set_title("Bookhive | Adult Books");
-//}
-//
-//else if ( is_menu_set('english_books') != ""){
-//    $currentPage = WPATH . "modules/category-browse.php";
-//    set_title("Bookhive | English Books");
-//}
-//
-//else if ( is_menu_set('kiswahili_books') != ""){
-//    $currentPage = WPATH . "modules/category-browse.php";
-//    set_title("Bookhive | Kiswahili Books");
-//}
-//
-//else if ( is_menu_set('activity_books') != ""){
-//    $currentPage = WPATH . "modules/category-browse.php";
-//    set_title("Bookhive | Activity Books");
-//}
+else if ( is_menu_set('self_publisher_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Self Publisher Books");
+}
 
+else if ( is_menu_set('printed_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Printed Books");
+}
 
+else if ( is_menu_set('digital_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Digital Books");
+}
 
+else if ( is_menu_set('audio_books') != ""){
+    $currentPage = WPATH . "modules/category-browse.php";
+    set_title("Bookhive | Audio Books");
+}
 
 else if ( is_menu_set('faq') != ""){
     $currentPage = WPATH . "modules/faq.php";
@@ -240,6 +277,11 @@ else if ( is_menu_set('register_book_seller') != ""){
     set_title("Bookhive | Seller Registration");
 }
 
+else if ( is_menu_set('register_corporate') != ""){
+    $currentPage = WPATH . "modules/register_corporate.php";
+    set_title("Bookhive | Corporate Registration");
+}
+
 else if ( is_menu_set('register_individual_user') != ""){
     $currentPage = WPATH . "modules/register_individual_user.php";
     set_title("Bookhive | User Registration");
@@ -250,14 +292,19 @@ else if ( is_menu_set('register_self_publisher') != ""){
     set_title("Bookhive | Publisher Registration");
 }
 
-else if ( is_menu_set('register_system_administrator') != ""){
-    $currentPage = WPATH . "modules/register_system_administrator.php";
+else if ( is_menu_set('add_system_administrator') != ""){
+    $currentPage = WPATH . "modules/add_system_administrator.php";
     set_title("Bookhive | Administrator Registration");
 }
 
 else if ( is_menu_set('verify_book') != ""){
     $currentPage = WPATH . "modules/verify_book.php";
     set_title("Bookhive | Verify Book");
+}
+
+else if ( is_menu_set('process_feedback') != ""){
+    $currentPage = WPATH . "modules/process_feedback.php";
+    set_title("Bookhive | Feedback");
 }
 
 else if (!empty($_GET)) {

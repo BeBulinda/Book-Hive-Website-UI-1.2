@@ -24,13 +24,12 @@ if (!empty($_POST)) {
     $_SESSION['receipt_photo'] = $receipt_photo;
     $location2 = 'modules/images/piracy/receipts/';
 
-    if (move_uploaded_file($tmp_name_book, $location1 . $book_photo) AND move_uploaded_file($tmp_name_receipt, $location2 . $receipt_photo)) {
-        $success = $transactions->execute();
-        if (is_bool($success) && $success == true) {
-            $_SESSION['add_success'] = true;
-        }
-    } else {
-        $_SESSION['create_error'] = "Error uploading attachments. Kindly create account holder again.";
+    move_uploaded_file($tmp_name_book, $location1 . $book_photo);
+    move_uploaded_file($tmp_name_receipt, $location2 . $receipt_photo);
+    
+    $success = $transactions->execute();
+    if (is_bool($success) && $success == true) {
+        $_SESSION['add_success'] = true;
     }
 }
 ?>
@@ -44,7 +43,7 @@ if (!empty($_POST)) {
                     <form method="post" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="add_piracy_report"/>
                         <input type="hidden" name="reporter_type" value="2"/>
-                        <input type="hidden" name="createdby" value="<?php echo 01; //  echo $_SESSION['userid'];         ?>"/>
+                        <input type="hidden" name="createdby" value="<?php echo 01; //  echo $_SESSION['userid'];          ?>"/>
                         <h5>Kindly fill in the below details:</h5>
                         <div class="row">
                             <div class="col-md-3 col-sm-4 col-xs-12">

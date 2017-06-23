@@ -39,28 +39,6 @@ if (isset($_SESSION["cart_number_of_items"]) AND $_SESSION["cart_number_of_items
     <?php
 }
 
-if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
-    if (isset($_SESSION["cart_item"])) {
-        $_SESSION["transactedby"] = 01; // $_SESSION["user_id"];
-        $_SESSION["payment_option"] = $_POST["payment_method"];
-        $_SESSION["book_version"] = $_POST["book_version"];
-        $_SESSION["transaction_id"] = $transactions->getTransactionId($_SESSION["payment_option"], $_SESSION["transactedby"], $_SESSION["cart_total_cost"]);
-        $transaction = $transactions->addTransaction();
-        if (is_bool($transaction) && $transaction == true) {
-            foreach ($_SESSION["cart_item"] as $item) {
-                $_SESSION["book_id"] = $item["id"];
-                $_SESSION["unit_price"] = $item["price"];
-                $_SESSION["quantity"] = $item["quantity"];
-                $transaction_details = $transactions->addTransactionDetails();
-            }
-            unset($_SESSION['cart_item']);
-            $_SESSION["transaction_status"] = "success";
-        } else {
-            $_SESSION["transaction_status"] = "process_error";
-        }
-        App::redirectTo("?home");
-    }
-}
 ?>
 
 <div class="container">
