@@ -38,7 +38,12 @@ else if ( is_menu_set('report_piracy') != ""){
 
 else if ( is_menu_set('tac') != ""){
     $currentPage = WPATH . "modules/tac.php";
-    set_title("Bookhive | Term & Conditions");
+    set_title("Bookhive | Terms & Conditions");
+}
+
+else if ( is_menu_set('privacy_policy') != ""){
+    $currentPage = WPATH . "modules/privacy_policy.php";
+    set_title("Bookhive | Privacy Policy");
 }
 
 /** An alternative to product page **/
@@ -75,6 +80,16 @@ else if ( is_menu_set('compare') != ""){
 else if ( is_menu_set('login') != ""){
     $currentPage = WPATH . "modules/login.php";
     set_title("Bookhive | Sign In");
+}
+
+else if ( is_menu_set('forgot_password') != ""){
+    $currentPage = WPATH . "modules/forgot_password.php";
+    set_title("StaqPesa | Update Password");
+}
+
+else if ( is_menu_set('forgot_password_next') != ""){
+    $currentPage = WPATH . "modules/forgot_password_next.php";
+    set_title("StaqPesa | Update Password");
 }
 
 else if ( is_menu_set('product-page') != ""){

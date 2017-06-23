@@ -347,6 +347,20 @@ class Books extends Database {
         return json_encode($values2);
     }
 
+    public function getAllBestSellerBooks() {
+        $sql = "SELECT * FROM books ORDER BY id DESC LIMIT 10";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $values2 = array();
+        foreach ($info as $data) {
+            $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
+            array_push($values2, $values);
+        }
+        return json_encode($values2);
+    }
+
     public function getMainFeaturedBook() {
         $sql = "SELECT * FROM books ORDER BY id DESC LIMIT 1";
         $stmt = $this->prepareQuery($sql);

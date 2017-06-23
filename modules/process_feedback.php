@@ -36,7 +36,31 @@ $books = new Books();
                         </div>
                     <?php 
                     unset($_SESSION['terms_and_conditions']);
-                    } ?>
+                    }
+                    if (isset($_SESSION['account_blocked']) AND $_SESSION['account_blocked'] == true) { ?>
+                        <div class="alert alert-block alert-error fade in">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Sorry, your account has been blocked. Kindly contact your system administrator.</strong>
+                        </div>
+                    <?php 
+                    unset($_SESSION['account_blocked']);
+                    }
+                    if (isset($_SESSION['update_pass_forgot']) AND $_SESSION['update_pass_forgot'] == true) { ?>
+                        <div class="alert alert-block alert-error fade in">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>To proceed with this action, you must accept Book Hive Kenya's terms and conditions.</strong>
+                        </div>
+                    <?php 
+                    unset($_SESSION['update_pass_forgot']);
+                    } else if (isset($_SESSION['update_pass_forgot']) AND $_SESSION['update_pass_forgot'] == false) { ?>
+                        <div class="alert alert-block alert-error fade in">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>To proceed with this action, you must accept Book Hive Kenya's terms and conditions.</strong>
+                        </div>
+                    <?php 
+                    unset($_SESSION['update_pass_forgot']);
+                    }
+                    ?>
                 </div>	
             </div>	
         </div>	

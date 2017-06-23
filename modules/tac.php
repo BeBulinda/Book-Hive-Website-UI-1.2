@@ -7,36 +7,46 @@
                         <div class="row">
 
                             <!-- End Map -->
-                            <h3> Terms and Conditions</h3>	
+                            <h3> Bookhive Kenya Online Bookstore Website Terms of Use</h3>
+                            <p>
+                                Use of the BOOKHIVE KENYA Online Bookstore website (the "Site") and the content contained herein (the "Site") is governed by the terms of this Agreement (the "Agreement") between you and BOOKHIVE KENYA Online Bookstore ("Bookstore"). Your use of this Site constitutes your unconditional agreement to be bound by the terms of this Agreement.
+                            </p>
+                            <p>
+                                If you do not agree with the terms and conditions of this Agreement, you must immediately cease using this Site.
+                            </p>
                             <hr class="soft"/>
-                            <h5>Lorem ipsum dolor sit amet</h5><br/>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam elementum varius dapibus. Sed hendrerit porta felis at sollicitudin. Sed at nunc ac neque semper fermentum. Proin diam sem, semper fermentum eleifend nec, viverra ac est. Sed ultricies, lectus et vehicula imperdiet, felis tortor vehicula turpis, non fermentum enim est et sapien. Nam justo mi, dignissim a euismod ut, pretium sed leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In viverra porta est, consequat elementum metus tristique a. Mauris tempus tellus a metus dapibus faucibus egestas lectus consectetur. Integer libero dolor, luctus non congue vitae, tempus ut neque. Nunc eleifend lorem quis diam pharetra sagittis. Aliquam ut dolor dui. Fusce dictum facilisis ipsum eu porttitor. In ultricies rhoncus tortor vitae tincidunt.
+                                1. The Site is subject to protection under copyrights, trademarks and/or other intellectual property rights owned, controlled or licensed by Bookstore and its affiliates or by third parties. These rights are protected by common law, Kenya’s law. And international laws. Book hive Kenya online Bookstore expressly reserves all rights, titles, and interests in and to all copyrights, trade names, logos, patents and other intellectual property and proprietary rights in and to the Site, including but not limited to any images, photographs, animations, video, audio, music, text, and "applets"; the overall "look and feel", processes, software, technology, and other materials which appear on this Site; and the business processes used to market products and services. You agree that your rights are limited to those granted herein, and you will not acquire any rights except as expressly set forth in this Agreement.
                             </p>
-                            <h5>Lorem ipsum dolor sit amet</h5><br/>
+                            <hr class="soft"/>
                             <p>
-                                Nullam a vulputate leo. Nulla tristique metus eros. Curabitur ultrices commodo mauris, sit amet faucibus lectus fermentum in. Nulla eleifend, augue hendrerit tempus faucibus, diam lacus aliquet urna, eget facilisis turpis risus quis arcu. Cras placerat suscipit sem, ac consequat dui iaculis eu. Cras elit enim, adipiscing lobortis rutrum ac, vehicula nec massa. Praesent pharetra ligula ac erat venenatis feugiat. Quisque id nulla mi. Mauris at orci nec nisi eleifend auctor. Mauris placerat consectetur tincidunt. Nam eu tellus vitae dolor vestibulum commodo. Etiam tristique, urna ac convallis laoreet, enim enim aliquet neque, id cursus risus nulla sed ligula. Nunc quam libero, accumsan vitae consequat at, sollicitudin eget mi. Phasellus in molestie diam. Aliquam enim purus, tempor id sodales non, volutpat eu diam. Donec eu nisl lacinia leo semper lobortis sed sit amet elit.
+                                2. You are prohibited from violating or attempting to violate the security of the Site, including, without limitation, (a) accessing data not intended for your use or logging onto a server or an account which you are not authorized to access; (b) attempting to probe, scan or test the vulnerability of a system or network or to breach security or authentication measures without proper authorization; (c) attempting to interfere with service to any user, host or network, including without limitation, via means of submitting a virus to the Site, overloading, "flooding," "spamming," "mail bombing" or "crashing;" or (d) sending unsolicited email, including promotions and/or advertising of products or services. Violations of system or network security may result in civil or criminal liability.
                             </p>
-                            <h5>Lorem ipsum dolor sit amet</h5><br/>
+                            <hr class="soft"/>
                             <p>
-                                Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristique sapien urna vel purus. Pellentesque in dictum urna. Sed feugiat libero sit amet arcu malesuada eu convallis dui convallis. Donec facilisis massa a ipsum aliquam lobortis. Praesent ac lectus sed leo aliquam egestas. Sed ante neque, volutpat ac tempor et, bibendum at ligula. Nunc porta vestibulum sodales.
+                                3. The Site may contain robot exclusion headers. Much of the information on the Site is updated on a regular basis and is proprietary or is licensed to Book hive Kenya Online Bookstore by our suppliers and other third parties. You agree not to use any device, technique, software, system or routine to interfere or attempt to interfere with, or to otherwise circumvent the proper working of this Site or any activity being conducted on this Site. You agree, further, not to use or attempt to use any engine, device, technique, software, tool, agent or other device or mechanism (including without limitation browsers, spiders, robots, scrapers, avatars or intelligent agents) to navigate, access or search this Site, other than generally available third party web browsers such as Microsoft Internet Explorer™, Netscape Navigator™, and Mozilla Firefox™. Additionally, you agree that you will not take any action that imposes or may impose (in the sole discretion of us or our suppliers affected by your action) an unreasonable or disproportionately large load on our infrastructure, or the bandwidth or infrastructure of the company that hosts this Site, or bypass the robot exclusion headers or other measures on this Site or on the host servers that may be used to prevent or restrict access.
                             </p>
-                            <h5>Lorem ipsum dolor sit amet</h5><br/>
+                            <hr class="soft"/>
                             <p>
-                                Nullam a vulputate leo. Nulla tristique metus eros. Curabitur ultrices commodo mauris, sit amet faucibus lectus fermentum in. Nulla eleifend, augue hendrerit tempus faucibus, diam lacus aliquet urna, eget facilisis turpis risus quis arcu. Cras placerat suscipit sem, ac consequat dui iaculis eu. Cras elit enim, adipiscing lobortis rutrum ac, vehicula nec massa. Praesent pharetra ligula ac erat venenatis feugiat. Quisque id nulla mi. Mauris at orci nec nisi eleifend auctor. Mauris placerat consectetur tincidunt. Nam eu tellus vitae dolor vestibulum commodo. Etiam tristique, urna ac convallis laoreet, enim enim aliquet neque, id cursus risus nulla sed ligula. Nunc quam libero, accumsan vitae consequat at, sollicitudin eget mi. Phasellus in molestie diam. Aliquam enim purus, tempor id sodales non, volutpat eu diam. Donec eu nisl lacinia leo semper lobortis sed sit amet elit.
+                                4. Book Hive Kenya Online Bookstore will not be liable for damages resulting from any failure caused by events beyond its control, by any act of God, such as a power failure, or by any other cause not within the control of Bookstore.
                             </p>
-                            <h5>Lorem ipsum dolor sit amet</h5><br/>
+                            <hr class="soft"/>
                             <p>
-                                Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristique sapien urna vel purus. Pellentesque in dictum urna. Sed feugiat libero sit amet arcu malesuada eu convallis dui convallis. Donec facilisis massa a ipsum aliquam lobortis. Praesent ac lectus sed leo aliquam egestas. Sed ante neque, volutpat ac tempor et, bibendum at ligula. Nunc porta vestibulum sodales.
+                                5. If you violate any of the terms or conditions of this Agreement, this Agreement terminates immediately without notice. Book Hive Kenya Online Bookstore may deny access to the Site to you and anyone claiming by or through you without liability to anyone. Book Hive Kenya Online Bookstore shall have all additional rights and remedies at law and in equity arising from such violation. Further, you agree to indemnify, defend and hold Bookstore, and its affiliates, suppliers, employees and agents harmless from all claims, actions, losses, liabilities, damages, costs and expenses (including attorney’s fees) arising out of or relating to any such prohibited use of the Site. If you violate or infringe upon the rights of any third party, they have all remedies at law and in equity to enforce their rights against you to the extent applicable arising from your actions.
                             </p>
-                            <h5>Lorem ipsum dolor sit amet</h5><br/>
+                            <hr class="soft"/>
                             <p>
-                                Nullam a vulputate leo. Nulla tristique metus eros. Curabitur ultrices commodo mauris, sit amet faucibus lectus fermentum in. Nulla eleifend, augue hendrerit tempus faucibus, diam lacus aliquet urna, eget facilisis turpis risus quis arcu. Cras placerat suscipit sem, ac consequat dui iaculis eu. Cras elit enim, adipiscing lobortis rutrum ac, vehicula nec massa. Praesent pharetra ligula ac erat venenatis feugiat. Quisque id nulla mi. Mauris at orci nec nisi eleifend auctor. Mauris placerat consectetur tincidunt. Nam eu tellus vitae dolor vestibulum commodo. Etiam tristique, urna ac convallis laoreet, enim enim aliquet neque, id cursus risus nulla sed ligula. Nunc quam libero, accumsan vitae consequat at, sollicitudin eget mi. Phasellus in molestie diam. Aliquam enim purus, tempor id sodales non, volutpat eu diam. Donec eu nisl lacinia leo semper lobortis sed sit amet elit.
+                                6. Any delay or failure to act with respect to a breach of this Agreement by you or others does not constitute a waiver and shall not limit such rights with respect to such breach or any subsequent breaches. This Agreement shall be governed by and construed in accordance with the laws of the Kenya in which Book Hive Kenya Online Bookstore resides. If any provision of this Agreement is held to be invalid or unenforceable, such invalidity or unenforceability shall not affect the remainder of this Agreement, which shall be given full effect without regard to the invalid portions.
                             </p>
-                            <h5>Lorem ipsum dolor sit amet</h5><br/>
+                            <hr class="soft"/>
                             <p>
-                                Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristique sapien urna vel purus. Pellentesque in dictum urna. Sed feugiat libero sit amet arcu malesuada eu convallis dui convallis. Donec facilisis massa a ipsum aliquam lobortis. Praesent ac lectus sed leo aliquam egestas. Sed ante neque, volutpat ac tempor et, bibendum at ligula. Nunc porta vestibulum sodales.
-                            </p></div>
+                                7. This Agreement represents the entire agreement between you and Bookstore regarding the use of the Site.
+                            </p>
+                            <hr class="soft"/><br />
+                             <p>
+                                Copyright (c) 2017 BOOKHIVE KENYA Online Bookstore. All rights reserved.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <?php require_once 'modules/inc/best-sellers-widget.php'; ?>

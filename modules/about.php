@@ -4,11 +4,6 @@
             <div class="about-banner banner-image">
                 <a href="#"><img src="modules/images/carousel/1.png" height="380" width="1170" alt=""/></a>
             </div>
-            <!--            <ul class="about-menu">
-                            <li><a href="#">Introduction </a></li>
-                            <li><a href="#">Protection</a></li>
-                            <li><a href="#"> Customer Reviews</a></li>
-                        </ul>-->
             <div class="contact-info-page about-info-page">
                 <div class="list-contact-info">
                     <div class="row">
@@ -33,6 +28,34 @@
                     </div>
                 </div>
                 <p class="desc">Welcome to your convenient <strong>One Stop Book Store</strong></p>
+                <br/>
+                <hr class="soft"/>
+                <br/>
+                <p>
+                    We like to think of ourselves as a small team comprising of young professionals in different fields who share a common objective of uplifting literacy levels in society by focusing on making great and useful products that promotes this cause.
+                </p>
+
+                <br/>
+                <p>
+                    Bookhive Kenya is the first online bookstore of its kind representing a new way of accessing books in different types and formats to young readers and book lovers in Kenya and all over the world. Coming up with this product would not have been possible without a dedicated that believed in us.
+                </p>
+
+                <br/>
+                <p>
+                    You might look at various functions that include book verification and the fight against piracy and deem it a bit capricious but the scale and sophistication of unauthorized reproduction, sale and use of copyrighted material has gotten the industry players worried. To us, it’s all about solving interesting problems and delighting our customers. This is our guiding light.
+                </p>
+
+                <br/>
+                <p>
+                    While our story may seem unique, the world now more than ever has allowed for such a story to be possible. We love to share our experiences that will hopefully inspire others to forge to forge similar paths.
+                </p>
+
+                <br/>
+                <p>
+                    Thanks to our amazing customers and backers for your continued support.
+                    <br />#Team Bookhive
+                </p>
+                <hr class="soft"/>
             </div>
             <div class="protect-video">
                 <div class="row">
