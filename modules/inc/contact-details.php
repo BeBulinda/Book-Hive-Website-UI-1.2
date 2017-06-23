@@ -16,7 +16,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="item-contact-info last-item">
                     <a class="contact-icon icon-email" href="mailto:hello@bookhive.com"><i class="fa fa-envelope"></i></a>
-                    <h2><a href="mailto:hello@bookhive.com">hello@bookhive.com</a></h2>
+                    <h2><a href="mailto:hello@bookhive.com">hello@bookhivekenya.com</a></h2>
                 </div>
             </div>
         </div>

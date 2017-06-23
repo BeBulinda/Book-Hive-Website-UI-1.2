@@ -12,9 +12,15 @@ class Users extends Database {
 
 //           else if ($_POST['action'] == "update_password") {
 //            return $this->updatePassword();
-//        } else if ($_POST['action'] == "forgot_password") {
-//            return $this->forgotPassword();
-//        } else 
+//        } 
+//        
+//        
+        else if ($_POST['action'] == "forgot_password") {
+            return $this->forgotPassword();
+        } 
+//        
+//        
+//        else 
 //        if ($_POST['action'] == "add_publisher") {
 //            return $this->addPublisher();
 //        } else if ($_POST['action'] == "edit_publisher") {
@@ -202,13 +208,12 @@ class Users extends Database {
         $stmt_userlogs->bindValue("password", sha1($_SESSION['admin_lastname'] . "123"));
         $stmt_userlogs->execute();
 
-        $sender = "info@staqpesa.com";
-        $headers = "From: Book Hives Kenya <$sender>\r\n";
+        $sender = "hello@bookhivekenya.com";
+        $headers = "From: Bookhive Kenya <$sender>\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
         $subject = "Account Creation";
         $message = "<html><body>"
-//                . "<img src='http://www.bookhives.staqpesa.com/images/logo/bookhive_logo_dark.png' width='80' alt='Kitambulisho Yetu Logo'><br/>"
                 . "<p><b>Hello " . $_POST['firstname'] . ",</b><br/>"
                 . "Thank you for signing up on Book Hive Kenya as the " . strtoupper($_SESSION['company_name']) . " administrator. Your login credentials are: <br/>"
                 . "<ul>"
@@ -220,7 +225,7 @@ class Users extends Database {
                 . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                 . "</body></html>";
 
-//        mail(strtoupper($_POST['admin_email']), $subject, $message, $headers);
+        mail(strtoupper($_POST['admin_email']), $subject, $message, $headers);
 
         return true;
     }
@@ -285,13 +290,12 @@ class Users extends Database {
         $stmt_userlogs->bindValue("password", sha1($_SESSION['admin_lastname'] . "123"));
         $stmt_userlogs->execute();
 
-        $sender = "info@staqpesa.com";
-        $headers = "From: Book Hives Kenya <$sender>\r\n";
+        $sender = "hello@bookhivekenya.com";
+        $headers = "From: Bookhive Kenya <$sender>\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
         $subject = "Account Creation";
         $message = "<html><body>"
-//                . "<img src='http://www.bookhives.staqpesa.com/images/logo/bookhive_logo_dark.png' width='80' alt='Kitambulisho Yetu Logo'><br/>"
                 . "<p><b>Hello " . $_POST['firstname'] . ",</b><br/>"
                 . "Thank you for signing up on Book Hive Kenya as the " . strtoupper($_SESSION['company_name']) . " administrator. Your login credentials are: <br/>"
                 . "<ul>"
@@ -303,7 +307,7 @@ class Users extends Database {
                 . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                 . "</body></html>";
 
-//        mail(strtoupper($_POST['admin_email']), $subject, $message, $headers);
+        mail(strtoupper($_POST['admin_email']), $subject, $message, $headers);
 
         return true;
     }
@@ -358,13 +362,12 @@ class Users extends Database {
         $stmt_userlogs->bindValue("password", sha1($_POST['lastname'] . "123"));
         $stmt_userlogs->execute();
 
-        $sender = "info@staqpesa.com";
-        $headers = "From: Book Hives Kenya <$sender>\r\n";
+        $sender = "hello@bookhivekenya.com";
+        $headers = "From: Bookhive Kenya <$sender>\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
         $subject = "Account Creation";
         $message = "<html><body>"
-//                . "<img src='http://www.bookhives.staqpesa.com/images/logo/bookhive_logo_dark.png' width='80' alt='Kitambulisho Yetu Logo'><br/>"
                 . "<p><b>Hello " . $_POST['firstname'] . ",</b><br/>"
                 . "Thank you for signing up on Book Hive Kenya. Your login credentials are: <br/>"
                 . "<ul>"
@@ -376,7 +379,7 @@ class Users extends Database {
                 . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                 . "</body></html>";
 
-//        mail(strtoupper($_POST['email']), $subject, $message, $headers);
+        mail(strtoupper($_POST['email']), $subject, $message, $headers);
 
         return true;
     }
@@ -420,13 +423,12 @@ class Users extends Database {
         $stmt_userlogs->bindValue("password", sha1($_POST['lastname'] . "123"));
         $stmt_userlogs->execute();
 
-        $sender = "info@staqpesa.com";
-        $headers = "From: Book Hives Kenya <$sender>\r\n";
+        $sender = "hello@bookhivekenya.com";
+        $headers = "From: Bookhive Kenya <$sender>\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
         $subject = "Account Creation";
         $message = "<html><body>"
-//                . "<img src='http://www.bookhives.staqpesa.com/images/logo/bookhive_logo_dark.png' width='80' alt='Kitambulisho Yetu Logo'><br/>"
                 . "<p><b>Hello " . $_POST['firstname'] . ",</b><br/>"
                 . "Thank you for signing up on Book Hive Kenya as a Self Publisher. Your login credentials are: <br/>"
                 . "<ul>"
@@ -438,7 +440,7 @@ class Users extends Database {
                 . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                 . "</body></html>";
 
-//        mail(strtoupper($_POST['email']), $subject, $message, $headers);
+        mail(strtoupper($_POST['email']), $subject, $message, $headers);
 
         return true;
     }
@@ -676,13 +678,12 @@ class Users extends Database {
         $stmt_userlogs->bindValue("password", sha1($_SESSION['admin_lastname'] . "123"));
         $stmt_userlogs->execute();
 
-        $sender = "info@staqpesa.com";
-        $headers = "From: Book Hives Kenya <$sender>\r\n";
+        $sender = "hello@bookhivekenya.com";
+        $headers = "From: Bookhive Kenya <$sender>\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
         $subject = "Account Creation";
         $message = "<html><body>"
-//                . "<img src='http://www.bookhives.staqpesa.com/images/logo/bookhive_logo_dark.png' width='80' alt='Kitambulisho Yetu Logo'><br/>"
                 . "<p><b>Hello " . $_SESSION['admin_firstname'] . ",</b><br/>"
                 . "Thank you for signing up on Book Hive Kenya as the " . strtoupper($_SESSION['publisher_company_name']) . " administrator. Your login credentials are: <br/>"
                 . "<ul>"
@@ -694,7 +695,7 @@ class Users extends Database {
                 . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                 . "</body></html>";
 
-//        mail(strtoupper($_SESSION['admin_email']), $subject, $message, $headers);
+        mail(strtoupper($_SESSION['admin_email']), $subject, $message, $headers);
 
         return true;
     }
@@ -810,10 +811,10 @@ class Users extends Database {
     }
 
     private function forgotPassword() {
-        $url = "http://pesa.staqpesa.com";
-        $phone_number = "+254 710 534013";
-        $email_address = "info@reflexconcepts.co.ke";
-        $sql = "SELECT s.firstname, s.middlename, s.lastname, c.email, c.ref_id FROM staff s LEFT JOIN contacts c ON s.id=c.ref_id WHERE s.firstname=:firstname AND (s.middlename=:lastname OR s.lastname=:lastname) AND c.email=:email";
+        $url = "http://bookhivekenya.com?login";
+        $phone_number = "+254 726 771144";
+        $email_address = "hello@bookhivekenya.com";
+        $sql = "SELECT s.firstname, s.middlename, s.lastname, c.email, c.ref_id FROM individual_users s LEFT JOIN contacts c ON s.id=c.ref_id WHERE s.firstname=:firstname AND (s.middlename=:lastname OR s.lastname=:lastname) AND c.email=:email";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindValue("firstname", $_POST['firstname']);
         $stmt->bindValue("lastname", $_POST['lastname']);
@@ -824,27 +825,27 @@ class Users extends Database {
             $code = $this->randomString(20);
             $password = $this->randomString(10);
             $ref_id = $data[0]['ref_id'];
-            $username = $this->fetchLoggedInUserDetails($ref_id);
+//            $username = $this->fetchLoggedInUserDetails($ref_id);
 
-            $sender = "info@staqpesa.co.ke";
-            $headers = "From: StaqPesa <$sender>\r\n";
+            $sender = "hello@bookhivekenya.com";
+            $headers = "From: Bookhive Kenya <$sender>\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-            $subject = "Staqpesa Password Update";
+            $subject = "Bookhive Password Update";
             $message = "<html><body>"
                     . "<p><b>Hello " . $_POST['firstname'] . ",</b><br/>"
                     . "Your request for the reset of your account login credentials has been effected successfully. <br/>"
                     . "<ul>"
-                    . "<li><b>Username: </b>" . $username . "</li>"
+                    . "<li><b>Username: </b>" . $_POST['email'] . "</li>"
                     . "<li><b>Password: </b>" . $password . "</li>"
                     . "</ul>"
-                    . "Click on this link: <a href=' " . $url . "'>Staqpesa Login</a> to proceed with the login. <br/>"
+                    . "Click on this link: <a href=' " . $url . "'>Bookhive Login</a> to proceed with the login. <br/>"
                     . "For any enquiries, kindly contact us on:   <br/>"
                     . "<ul>"
                     . "<li><b>Telephone Number(s): </b>" . $phone_number . "</li>"
                     . "<li><b>Email Address: </b>" . $email_address . "</li>"
                     . "</ul>"
-                    . "Visit <a href='http://www.staqpesa.com'>staqpesa.com</a> for more information.<br/>"
+                    . "Visit <a href='http://bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
                     . "</body></html>";
 
             $sql2 = "UPDATE user_logs SET password=:password, password_new=:new_password_state, password_code=:password_code WHERE ref_id=:ref_id";

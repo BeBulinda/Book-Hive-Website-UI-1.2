@@ -40,9 +40,9 @@
                         <div class="menu-footer-box footer-box">
                             <h2 class="title14">Customer Service</h2>
                             <ul class="list-unstyled">
-                                <!--<li><a href="#">Customer Support</a></li>-->
-                                <!--<li><a href="#">Affiliate Program</a></li>-->
                                 <li><a href="?about">About us</a></li>
+                                <li><a href="?tac">Terms and Conditions</a></li>
+                                <li><a href="?privacy_policy">Privacy Policy</a></li>
                                 <li><a href="?contact">Contact us</a></li>
                             </ul>
                         </div>

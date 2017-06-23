@@ -65,10 +65,11 @@ if (isset($_SESSION['account_blocked'])) {
                                 </div>
                             </div>
                         </form>
+                        <h5><a href="?forgot_password">Forgot Password?</a></h5>
                     </div>
                 </div>
             </div>
-            <?php //require_once 'modules/inc/contact-details.php';  ?>
+            <?php // require_once 'modules/inc/contact-details.php';  ?>
         </div>
     </div>
 </div>
