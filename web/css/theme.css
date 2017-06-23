@@ -14775,7 +14775,7 @@ a.protect-icon:hover {
   transition: all 0.5s ease-out 0s;
   -webkit-transition: all 0.5s ease-out 0s;
 }
-.form-contact input[type="text"],input[type="number"],.form-magic {
+.form-contact input[type="text"],input[type="number"], input[type="password"], .form-magic {
   border: 1px solid #e5e5e5;
   color: #999;
   height: 42px;
@@ -14797,6 +14797,7 @@ a.protect-icon:hover {
   width: 110px;
   transition: all 0.5s ease-out 0s;
   -webkit-transition: all 0.5s ease-out 0s;
+  margin-top: 20px
 }
 .form-contact input[type="submit"]:hover {
   background: #333;
@@ -15250,8 +15251,8 @@ a.protect-icon:hover {
 }
 .title-shop-page {
   font-weight: 700;
-  margin: 0 0 35px;
-  text-align: center;
+  margin: 20px 0 35px;
+  //text-align: center;
   text-transform: uppercase;
 }
 .cart-content-page ul {
@@ -15278,7 +15279,7 @@ a.protect-icon:hover {
   float: left;
   width: 47.5%;
 }
-.form-my-account input[type="text"], input[type="email"] {
+.form-my-account input[type="text"], input[type="email"], input[type="tel"], input[type="file"] {
   border: 1px solid #e5e5e5;
   color: #999;
   height: 40px;

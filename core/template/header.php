@@ -253,6 +253,6 @@ if (!empty($_POST)) {
         </div>
         <!-- End Main Header -->
     </div>
-    <?php require_once 'top-menu.php'; ?>
+    <?php //require_once 'top-menu.php'; ?>
 </div>
 <!-- End Header -->
