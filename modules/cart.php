@@ -176,10 +176,11 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                     <a class="checkout-button button alt wc-forward" href="?cart&cart_action=empty">Empty Cart</a>
                 </div>
                 <div class="wc-proceed-to-checkout">
-                    <a class="checkout-button button alt wc-forward" href="?home">Continue Shopping</a>
+                    <a class=" go-button" href="?home">Continue Shopping</a>
+                    <a style="float: right;" class=" go-button" href="?checkout">Proceed to Checkout</a>
                 </div>
                 <div class="wc-proceed-to-checkout">
-                    <a class="checkout-button button alt wc-forward" href="?checkout">Proceed to Checkout</a>
+                    
                 </div>
             </div>
         </div>
