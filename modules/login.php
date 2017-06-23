@@ -2,11 +2,6 @@
 require_once WPATH . "modules/classes/Users.php";
 $users = new Users();
 
-//argDump($_SERVER['PHP_SELF']);
-//argDump(__FILE__);
-//argDump($_SERVER['SCRIPT_FILENAME']);
-//exit();
-
 if (!empty($_POST)) {
     $success = $users->execute();
     if (is_bool($success) && $success == true) {
@@ -17,10 +12,11 @@ if (!empty($_POST)) {
         if ($user_details['password_new'] == 0) {
             App::redirectTo("?update_password");
         }
-        App::redirectTo("?home");
+        
+        header("Location: {$_POST['previous_page']}");
+        exit();
     }
 }
-
 
 if (isset($_SESSION['login_error'])) {
     ?>
@@ -51,6 +47,7 @@ if (isset($_SESSION['account_blocked'])) {
                         <h2>SIGN IN</h2>
                         <form method="post">
                             <input type="hidden" name="action" value="login"/>
+                            <input type="hidden" name="previous_page" value="<?php echo $_SERVER['HTTP_REFERER']; ?>"/>
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="controls">

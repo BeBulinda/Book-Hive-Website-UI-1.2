@@ -73,10 +73,6 @@ class Users extends Database {
             return false;
         } else {
             $data = $data[0];
-//            $_SESSION['userid'] = $data['id'];
-//            $_SESSION['user_ref'] = $data['ref_id'];
-//            $_SESSION['login_user_type'] = $data['ref_type'];
-
             $_SESSION['userid'] = App::cleanText($data['id']);
             $_SESSION['login_user_type'] = $data['ref_type'];
             $_SESSION['login_user_ref_id'] = $data['ref_id'];
