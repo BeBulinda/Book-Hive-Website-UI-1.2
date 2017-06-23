@@ -7,6 +7,9 @@ $books = new Books();
 $system_administration = new System_Administration();
 $users = new Users();
 
+//if (isset($_SESSION['user'])) {
+//    $details = $users->fetchSubscribedUserDetails($_SESSION['user']);
+//}
 //unset($_SESSION['searched_books']);
 $item_total = 0;
 
@@ -25,7 +28,7 @@ if (!empty($_POST)) {
     if ($_POST['action'] == "search") {
         $searched_books[] = $books->getAllSearchedBooks($_POST['search_value']);
         $_SESSION['searched_books'] = $searched_books;
-        App::redirectTo("?category-browse");
+        App::redirectTo("?searched_books");
     }
 }
 ?>
@@ -41,12 +44,14 @@ if (!empty($_POST)) {
                                 <ul>
                                     <li><a href="?verify_book">Verify Book</a></li>
                                     <li><a href="?report_piracy">Report Piracy</a></li>
+                                    <li><a href="?register_self_publisher">Submit My Book</a></li>
                                     <li class="menu-item-has-children">
                                         <a href="#">Register</a>
                                         <ul class="sub-menu">
-                                            <li><a href="?register_individual_user">Register Individual User</a></li>
-                                            <li><a href="?register_book_seller">Register Book Seller</a></li>
-                                            <li><a href="?register_self_publisher">Register Self Publisher</a></li>
+                                            <h5><li><a href="?register_individual_user">As An Individual User</a></li>
+                                                <li><a href="?register_book_seller">As A Book Seller</a></li>
+                                                <li><a href="?register_corporate">As A Corporate</a></li>
+                                            </h5>
                                         </ul>
                                     </li>
                                 </ul>
@@ -55,9 +60,49 @@ if (!empty($_POST)) {
                     </div>
                     <div class="col-md-6 col-sm-6 hidden-xs">
                         <div class="currency-language">
-                            <div class="currency-box">
-                                <a href="?login" class="currency-current">Login</a>
-                            </div>
+                            <?php if (App::isLoggedIn()) { ?>
+                                <div class="currency-box">
+                                    <a href="#" class="currency-current">
+
+                                        <?php
+                                        if (App::isLoggedIn()) {
+                                            $user_type_details = $users->fetchUserTypeDetails($_SESSION['login_user_type']);
+                                            if ($user_type_details['name'] == "STAFF") {
+                                                $profile_link = "?view_staff_individual&code=" . $_SESSION['userid'];
+                                            } else if ($user_type_details['name'] == "PUBLISHER") {
+                                                $profile_link = "?view_publishers_individual&code=" . $_SESSION['userid'];
+                                            } else if ($user_type_details['name'] == "BOOK SELLER") {
+                                                $profile_link = "?view_book_sellers_individual&code=" . $_SESSION['userid'];
+                                            } else if ($user_type_details['name'] == "INDIVIDUAL USER") {
+                                                $profile_link = "?view_individual_users_individual&code=" . $_SESSION['userid'];
+                                            } else if ($user_type_details['name'] == "CORPORATE") {
+                                                $profile_link = "?view_corporates_individual&code=" . $_SESSION['userid'];
+                                            } else if ($user_type_details['name'] == "GUEST USER") {
+                                                $profile_link = "?view_guest_users_individual&code=" . $_SESSION['userid'];
+                                            }
+                                            ?> 
+
+<!--                                            <a data-toggle="modal" href="<?php // echo $profile_link; ?>">
+                                                <i class="fa fa-user fa-fw pull-right"></i>
+                                                Profile
+                                            </a>-->
+                                        <?php
+                                        }
+
+                                        if (isset($_SESSION['user'])) {
+                                            echo $_SESSION['user'];
+                                        }
+                                        ?>
+                                    </a>
+                                </div>
+                                <div class="currency-box">
+                                    <a href="?logout" class="currency-current">Logout</a>
+                                </div>
+                            <?php } else { ?>                            
+                                <div class="currency-box">
+                                    <a href="?login" class="currency-current">Login</a>
+                                </div>
+                            <?php } ?>
                             <div class="address-box">
                                 <a href="#" class="address-toggle"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
                                 <ul class="address-list list-unstyled">
@@ -77,7 +122,8 @@ if (!empty($_POST)) {
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <div class="logo logo4">
                             <h1 class="hidden">BookHive Kenya</h1>
-                            <a href="?"><img src="images/logo/bookhive_logo_dark.png" width="140" alt="" /></a>
+                            <a href="?"><img src="images/logo/logowhite.png" width="200" alt="" /></a>
+                            <!--<p>One Stop Book Store</p>--> 
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -94,6 +140,7 @@ if (!empty($_POST)) {
                                     <li><a href="?activity_books">Activity Books</a></li>
                                     <li><a href="?printed_books">Printed Books</a></li>
                                     <li><a href="?digital_books">Digital Books</a></li>
+                                    <li><a href="?audio_books">Audio Books</a></li>
                                 </ul>
                             </div>
                             <form class="smart-search-form ajax-search" method="post">
@@ -102,23 +149,17 @@ if (!empty($_POST)) {
                                             this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
                                                         this.value = ''" value="Search...">
                                 <input type="submit" value="">
-                                <div class="list-product-search">
-                                    <div class="item-search-pro">
-                                        <div class="search-ajax-thumb product-thumb">
-                                            <a href="#" class="product-thumb-link"><img src="images/photos/fashion/5.jpg" alt="" /></a>
-                                        </div>
-                                        <div class="search-ajax-title"><h3 class="title14"><a href="?product-page">The Littlest Bird</a></h3></div>
-                                        <div class="search-ajax-price">
-                                            <span>KES.350.00</span>
-                                        </div>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-9">
+                    <div class="col-md-2 col-sm-3 col-xs-9">
                         <div class="check-cart check-cart4">
                             <?php require_once 'mini-cart.php'; ?>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-sm-3 col-xs-9">
+                        <div>
+                            <a href="?checkout" title="Proceed to checkout"><img src="images/logo/checkout1.jpg" width="60" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-3">
@@ -128,7 +169,7 @@ if (!empty($_POST)) {
                                     <a href="?">Home</a>
                                 </li>
                                 <li class="has-mega-menu">
-                                    <a href="?featured_books">Featured Books</a>
+                                    <a href="#">Featured Books</a>
                                     <!--Adds Pop up Menu with featured items.--> 
                                     <?php require_once 'modules/menu-inserts/featured-inserts.php'; ?>
                                 </li>
@@ -137,6 +178,7 @@ if (!empty($_POST)) {
                                     <a href="#">Primary</a>
                                     <ul class="sub-menu">
                                         <li><a href="?primary_books">All Books</a></li>
+                                        <li><a href="?primary_revision_books">Revision Books</a></li>
                                         <li><a href="?class_one_books">Class One</a></li>
                                         <li><a href="?class_two_books">Class Two</a></li>
                                         <li><a href="?class_three_books">Class Three</a></li>
@@ -151,6 +193,7 @@ if (!empty($_POST)) {
                                     <a href="#">Secondary</a>
                                     <ul class="sub-menu">
                                         <li><a href="?secondary_books">All Books</a></li>
+                                        <li><a href="?secondary_revision_books">Revision Books</a></li>
                                         <li><a href="?form_one_books">Form One</a></li>
                                         <li><a href="?form_two_books">Form Two</a></li>
                                         <li><a href="?form_three_books">Form Three</a></li>
@@ -162,8 +205,23 @@ if (!empty($_POST)) {
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">PUBLISHERS</a>
+                                    <?php
+//                                    $publishers[] = $users->getAllPublishers();
+//                                    if (isset($_SESSION['no_records']) AND $_SESSION['no_records'] == true) {
+//                                        echo "<li><a href='?storymoja_books'>STORYMOJA</a></li>";
+//                                        unset($_SESSION['no_records']);
+//                                    } else if (isset($_SESSION['yes_records']) AND $_SESSION['yes_records'] == true) {
+//                                        foreach ($publishers as $key => $value) {
+//                                            $inner_array[$key] = json_decode($value, true); // this will give key val pair array
+//                                            foreach ((array) $inner_array[$key] as $key2 => $value2) {
+//                                                echo "<li><a href='?storymoja_books'>STORYMOJA</a></li>";
+//                                            }
+//                                        }
+//                                        unset($_SESSION['yes_records']);
+//                                    }
+                                    ?>
                                     <ul class="sub-menu">
-                                        <li><a href="?storymoja_books">STORYMOJA</a></li>
+                                        <li><a href='?storymoja_books'>STORYMOJA</a></li>
                                         <li><a href="?klb_books">KLB</a></li>
                                         <li><a href="?phoenix_books">PHOENIX</a></li>
                                         <li><a href="?longhorn_books">LONGHORN</a></li>
@@ -176,6 +234,7 @@ if (!empty($_POST)) {
                                     <ul class="sub-menu">
                                         <li><a href="?printed_books">Printed Books</a></li>
                                         <li><a href="?digital_books">Digital Books</a></li>
+                                        <li><a href="?audio_books">Audio Books</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-mega-menu">

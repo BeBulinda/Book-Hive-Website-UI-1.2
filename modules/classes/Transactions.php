@@ -1,15 +1,11 @@
 <?php
 
 date_default_timezone_set("Africa/Nairobi");
+require_once WPATH . "modules/classes/Users.php";
 
 class Transactions extends Database {
 
     public function execute() {
-//        if ($_POST['action'] == "add_transaction") {
-//            return $this->addTransaction();
-//        } else 
-
-
         if ($_POST['action'] == "add_piracy_report") {
             return $this->addPiracyReport();
         } else if ($_POST['action'] == "contact_us") {
@@ -32,6 +28,52 @@ class Transactions extends Database {
         $stmt->bindValue("transactedby", $_SESSION["transactedby"]);
         $stmt->bindValue("payment_option", $_SESSION['payment_option']);
         $stmt->execute();
+
+        //Add individual user
+        $createdby = "WEBSITE USER";
+        $users = new Users();
+        $individual_user_id = $users->getNextIndividualUserId();
+        $user_type = 'INDIVIDUAL USER';
+
+        //individual details
+        $sql = "INSERT INTO individual_users (firstname, lastname, gender, idnumber, createdby, lastmodifiedby)"
+                . " VALUES (:firstname, :lastname, :gender, :idnumber, :createdby, :lastmodifiedby)";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("firstname", strtoupper($_SESSION["billing_firstname"]));
+        $stmt->bindValue("lastname", strtoupper($_SESSION["billing_lastname"]));
+        $stmt->bindValue("gender", strtoupper($_SESSION["billing_gender"]));
+        $stmt->bindValue("idnumber", strtoupper($_SESSION["billing_id_passport_number"]));
+        $stmt->bindValue("createdby", $createdby);
+        $stmt->bindValue("lastmodifiedby", $createdby); //  echo $_SESSION['userid']);
+        $stmt->execute();
+
+        //individual contact details
+        $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, lastmodifiedby)"
+                . " VALUES (:reference_type, :reference_id, :phone_number, :email, :lastmodifiedby)";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("reference_type", strtoupper($user_type));
+        $stmt->bindValue("reference_id", $individual_user_id);
+        $stmt->bindValue("phone_number", strtoupper($_SESSION["billing_phone_number"]));
+        $stmt->bindValue("email", strtoupper($_SESSION["billing_email_address"]));
+        $stmt->bindValue("lastmodifiedby", $createdby);
+        $stmt->execute();
+
+        //user login details
+        //        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password, lastmodifiedat, lastmodifiedby)"
+//                . " VALUES (:ref_type, :ref_id, :username, :password, :lastmodifiedat, :lastmodifiedby)";
+//
+//        $stmt_userlogs = $this->prepareQuery($sql_userlogs);
+//        $stmt_userlogs->bindValue("ref_type", strtoupper($_POST['user_type']));
+//        $stmt_userlogs->bindValue("ref_id", $user_id);
+//        $stmt_userlogs->bindValue("username", $_POST['firstname']);
+//        $stmt_userlogs->bindValue("password", sha1($_POST['lastname']));
+//        $stmt_userlogs->bindValue("lastmodifiedby", $_POST['createdby']); //  echo $_SESSION['userid']);
+//        $stmt_userlogs->bindValue("lastmodifiedat", date("Y-m-d H:i:s"));
+//        $stmt_userlogs->execute();
+//
+//        $this->addUserToRole(strtoupper($_POST['user_type']), $user_id);
+//        $this->addPrivilegesToUser(strtoupper($_POST['user_type']), $user_id);
+
         return true;
     }
 

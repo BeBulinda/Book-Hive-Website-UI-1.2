@@ -9,6 +9,15 @@ if (!empty($_POST)) {
     $_SESSION['admin_idnumber'] = $_POST['idnumber'];
     $_SESSION['admin_phone_number'] = $_POST['phone_number'];
     $_SESSION['admin_email'] = $_POST['email'];
+    
+    $success = $users->execute();
+    if (is_bool($success) && $success == true) {
+        $_SESSION['add_success'] = true;
+    } else {
+        $_SESSION['add_error'] = true;
+    }
+    App::redirectTo("?process_feedback");
+    
 
 //    if ($ref_type == "PUBLISHER") {
 //        $success = $users->execute();
@@ -18,15 +27,23 @@ if (!empty($_POST)) {
 //        App::redirectTo("?home");
 //    } else 
 
-    if ($ref_type == "BOOK SELLER") {
-        $success = $users->execute();
-        if (is_bool($success) && $success == true) {
-            $_SESSION['added_book_seller'] = true;
-        } else {
-            $_SESSION['added_book_seller'] = false;
-        }
-        App::redirectTo("?register_book_seller");
-    }
+//    if ($ref_type == "BOOK SELLER") {
+//        $success = $users->execute();
+//        if (is_bool($success) && $success == true) {
+//            $_SESSION['added_book_seller'] = true;
+//        } else {
+//            $_SESSION['added_book_seller'] = false;
+//        }
+//        App::redirectTo("?register_book_seller");
+//    } else if ($ref_type == "CORPORATE") {
+//        $success = $users->execute();
+//        if (is_bool($success) && $success == true) {
+//            $_SESSION['added_corporate'] = true;
+//        } else {
+//            $_SESSION['added_corporate'] = false;
+//        }
+//        App::redirectTo("?register_corporate");        
+//    }
 }
 ?>
 
@@ -36,8 +53,13 @@ if (!empty($_POST)) {
             <div class="contact-form-page">
                 <h2>Administrator Registration</h2>
                 <div class="form-contact">
-                    <form method="post">                   
-                        <input type="hidden" name="action" value="register_book_seller"/>
+                    <form method="post">  
+                        <?php if ($ref_type == "BOOK SELLER") { ?>
+                            <input type="hidden" name="action" value="register_book_seller"/>
+                        <?php } else if ($ref_type == "CORPORATE") { ?>
+                            <input type="hidden" name="action" value="register_corporate"/>
+                        <?php } ?>
+                        
                         <div class="row">
                             <div class="col-md-3 col-sm-4 col-xs-12">
                                 <label class="control-label" for="firstname">Firstname<sup>*</sup></label>

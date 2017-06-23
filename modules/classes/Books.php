@@ -32,9 +32,9 @@ class Books extends Database {
         $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if (count($info) == 0) {
-            $_SESSION['no_searched_records'] = true;
+            $_SESSION['no_category_records'] = true;
         } else {
-            $_SESSION['yes_searched_records'] = true;
+            $_SESSION['yes_category_records'] = true;
             $values2 = array();
             foreach ($info as $data) {
                 $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
@@ -161,9 +161,9 @@ class Books extends Database {
         $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if (count($info) == 0) {
-            $_SESSION['no_filtered_records'] = true;
+            $_SESSION['no_category_records'] = true;
         } else {
-            $_SESSION['yes_filtered_records'] = true;
+            $_SESSION['yes_category_records'] = true;
             $values2 = array();
             foreach ($info as $data) {
                 $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
@@ -226,6 +226,8 @@ class Books extends Database {
                 $category_code = "PRINTED";
             } else if ($category_value === "digital_books") {
                 $category_code = "DIGITAL";
+            } else if ($category_value === "audio_books") {
+                $category_code = "AUDIO";
             }
             $category = $category_type;
             $value = $category_code;
@@ -250,6 +252,8 @@ class Books extends Database {
                 $class_code = 7;
             } else if ($category_value === "class_eight_books") {
                 $class_code = 8;
+            } else if ($category_value === "primary_revision_books") {
+                $class_code = "revision";
             }
             $category = $category_code;
             $value = $class_code;
@@ -266,6 +270,8 @@ class Books extends Database {
                 $class_code = 3;
             } else if ($category_value === "form_four_books") {
                 $class_code = 4;
+            } else if ($category_value === "secondary_revision_books") {
+                $class_code = "revision";
             }
             $category = $category_code;
             $value = $class_code;
@@ -311,6 +317,48 @@ class Books extends Database {
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $data = $data[0];
         return strtoupper($data['id']);
+    }
+
+    public function getAllSpecialBooks() {
+        $sql = "SELECT * FROM books ORDER BY id ASC LIMIT 3";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $values2 = array();
+        foreach ($info as $data) {
+            $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
+            array_push($values2, $values);
+        }
+        return json_encode($values2);
+    }
+
+    public function getAllFeaturedBooks() {
+        $sql = "SELECT * FROM books ORDER BY id DESC LIMIT 5";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $values2 = array();
+        foreach ($info as $data) {
+            $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
+            array_push($values2, $values);
+        }
+        return json_encode($values2);
+    }
+
+    public function getMainFeaturedBook() {
+        $sql = "SELECT * FROM books ORDER BY id DESC LIMIT 1";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $values2 = array();
+        foreach ($info as $data) {
+            $values = array("id" => $data['id'], "title" => $data['title'], "description" => $data['description'], "publisher_type" => $data['publisher_type'], "publisher" => $data['publisher'], "type_id" => $data['type_id'], "level_id" => $data['level_id'], "price" => $data['price'], "cover_photo" => $data['cover_photo'], "status" => $data['status'], "createdat" => $data['createdat'], "createdby" => $data['createdby'], "lastmodifiedat" => $data['lastmodifiedat'], "lastmodifiedby" => $data['lastmodifiedby']);
+            array_push($values2, $values);
+        }
+        return json_encode($values2);
     }
 
     public function getAllLevelBooks($level) {
