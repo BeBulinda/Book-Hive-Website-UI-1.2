@@ -11,11 +11,14 @@ if (!empty($_POST)) {
         $success = $users->execute();
         if (is_bool($success) && $success == true) {
             $_SESSION['add_success'] = true;
+            require_once 'modules/noty/registration-true.php';
         } else {
             $_SESSION['add_error'] = true;
+            require_once 'modules/noty/registration-false.php';
         }
     }
-    App::redirectTo("?process_feedback");
+    //App::redirectTo("?process_feedback");
+   
 }
 ?>
 <div id="content">
@@ -55,10 +58,11 @@ if (!empty($_POST)) {
                                 <input type="email" name="email" placeholder="Email Address" required="true">
                             </div>
                             <div class="col-md-6 col-sm-4 col-xs-12">
-                                <input type="checkbox" name="terms_and_conditions" value="Yes" /> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
+
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input type="submit" value="Register" />
+                                <input type="checkbox" name="terms_and_conditions" value="Yes" required=""/> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
+                                <input style="float:right;" type="submit" value="Register" />
                             </div>
                         </div>
                     </form>

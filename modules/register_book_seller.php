@@ -10,7 +10,7 @@ $users = new Users();
 if (!empty($_POST)) {
     if ($_POST["terms_and_conditions"] != "Yes") {
         $_SESSION['terms_and_conditions'] = false;
-        App::redirectTo("?process_feedback");
+        //App::redirectTo("?process_feedback");
     } else {
         $_SESSION['company_name'] = $_POST['company_name'];
         $_SESSION['company_pin'] = $_POST['company_pin'];
@@ -31,22 +31,11 @@ if (!empty($_POST)) {
         }
     }
 }
-
 if (isset($_SESSION['added_book_seller']) && $_SESSION['added_book_seller'] == true) {
-    ?>
-    <div class="alert alert-info fade in">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>Your registration was successful. Please check your email for login credentials.</strong> 
-    </div>
-    <?php
+    require_once 'modules/noty/registration-true.php';
     unset($_SESSION['added_book_seller']);
 } else if (isset($_SESSION['added_book_seller']) && $_SESSION['added_book_seller'] == false) {
-    ?>
-    <div class="alert alert-block alert-error fade in">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>Your registration was unsuccessful. Please try again.</strong>
-    </div>
-    <?php
+    require_once 'modules/noty/registration-false.php';
     unset($_SESSION['added_book_seller']);
 }
 ?>
@@ -114,10 +103,11 @@ if (isset($_SESSION['added_book_seller']) && $_SESSION['added_book_seller'] == t
                                 <textarea name="description" cols="30" rows="8" placeholder="Description"></textarea>
                             </div>
                             <div class="col-md-6 col-sm-4 col-xs-12">
-                                <input type="checkbox" name="terms_and_conditions" value="Yes" /> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
+
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input type="submit" value="Register" />
+                                <input type="checkbox" name="terms_and_conditions" value="Yes" required=""/> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
+                                <input style="float:right;" type="submit" value="Register" />
                             </div>
                         </div>
                     </form>
