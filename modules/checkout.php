@@ -54,12 +54,83 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
 
                     $transaction_details = $transactions->addTransactionDetails();
                 }
+
+
+                $sender = "hello@bookhivekenya.com";
+                $headers = "From: Bookhive Kenya <$sender>\r\n";
+                $headers .= "MIME-Version: 1.0\r\n";
+                $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+                $subject = "Transaction Acknowledgement";
+                $message = "<html><body>"
+                        . "<p><b>Hello " . $_SESSION["billing_firstname"] . " " . $_SESSION["billing_lastname"] . ",</b><br/>"
+                        . "Thank you for transacting with us on Book Hive Kenya.<br/>"
+                ?>
+
+
+                <h3 class="order_review_heading">Your purchased items are as follows:</h3>
+                <div class="woocommerce-checkout-review-order" id="order_review">
+                    <div class="table-responsive">
+                        <?php
+                        if (isset($_SESSION["cart_item"])) {
+                            $item_total = 0;
+                            ?>                            
+                            <table class="shop_table woocommerce-checkout-review-order-table">
+                                <thead>
+                                    <tr>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-total">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <?php
+                                    foreach ($_SESSION["cart_item"] as $item) {
+                                        $sub_item_total = ($item["price"] * $item["quantity"]);
+                                        $book_details = $books->fetchBookDetails($item["id"]);
+                                        ?>
+                                        <tr class="cart_item">
+                                            <td class="product-name">
+                                                <?php echo $book_details['title']; ?> &nbsp; <span class="product-quantity">× <?php echo $item["quantity"]; ?></span>
+                                            </td>
+                                            <td class="product-total">
+                                                <span class="amount"><?php echo $sub_item_total; ?></span>						
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="order-total">
+                                        <th>Payment Option</th>
+                                        <td><strong><?php echo $_SESSION["payment_option"]; ?></strong> </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        <?php } ?>
+                    </div>
+                </div>
+                Your delivery will be made within the next 24 hours. <br/>
+                </body></html>
+                <?php
+//                . "<ul>"
+//                        . "<li><b>Username: </b>" . $_POST['email'] . "</li>"
+//                        . "<li><b>Password: </b>" . $_POST['lastname'] . "123" . "</li>"
+//                        . "</ul>"
+//                        . "Your delivery will be made within the next 24 hours. <br/>"
+//                        . "Kindly contact us on +254 710 534013 for any further assistance/enquiries. <br/>"
+//                        . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
+////                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
+//                        . "</body></html>";
+
+                mail(strtoupper($_SESSION['billing_email_address']), $subject, $message, $headers);
+
+
                 unset($_SESSION['cart_item']);
+                unset($_SESSION["item_total"]);
                 $_SESSION["transaction_status"] = "success";
             } else {
                 $_SESSION["transaction_status"] = "process_error";
             }
-            App::redirectTo("?home");
+            App::redirectTo("?process_feedback");
         }
     }
 }
@@ -199,12 +270,12 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
-                                        <tfoot>
+    <!--                                        <tfoot>
                                             <tr class="order-total">
                                                 <th>Total</th>
                                                 <td><strong><span class="amount">KES 12600</span></strong> </td>
                                             </tr>
-                                        </tfoot>
+                                        </tfoot>-->
                                     </table>
                                 <?php } ?>
                             </div>
@@ -232,7 +303,7 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                     </li>
                                 </ul>
                                 <div class="form-row">
-                                    <input type="checkbox" name="terms_and_conditions" value="Yes" /> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
+                                    <input type="checkbox" name="terms_and_conditions" value="Yes" required=""/> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
                                 </div>
                                 <div class="form-row place-order">
                                     <input type="submit" data-value="Place order" value="Place order" id="place_order" name="woocommerce_checkout_place_order" class="button alt">

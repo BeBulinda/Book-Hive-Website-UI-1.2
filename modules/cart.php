@@ -97,11 +97,11 @@ if (isset($_SESSION["cart_number_of_items"]) AND $_SESSION["cart_number_of_items
                                     </td>
                                     <td class="product-quantity">
                                         <div class="detail-qty border radius">
-                                            <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            <!--<a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>-->
                                             <span class="qty-val"><?php echo $item["quantity"]; ?></span>
-                                            <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                                            <!--<a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>-->
                                         </div>		
-                                        <input type="submit" value="Update Quantity" name="update_cart" class="button">
+                                        <!--<input type="submit" value="Update Quantity" name="update_cart" class="button">-->
                                     </td>
                                     <td class="product-subtotal">
                                         <span class="amount"><?php echo "KES " . $sub_item_total; ?></span>					

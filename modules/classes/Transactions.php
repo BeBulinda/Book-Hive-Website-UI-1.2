@@ -12,6 +12,11 @@ class Transactions extends Database {
             return $this->sendMessage();
         }
     }
+    
+    public function deliverResponse($response) {
+        header("HTTP/1.1 $response");
+        echo $response;
+    }
 
     public function getTransactionId($payment_option, $transactedby, $total_amount) {
         $transaction_id = md5($payment_option . $transactedby . $total_amount . time());
@@ -26,7 +31,7 @@ class Transactions extends Database {
         $stmt->bindValue("transaction_type", 01);
         $stmt->bindValue("amount", $_SESSION["cart_total_cost"]);
         $stmt->bindValue("transactedby", $_SESSION["transactedby"]);
-        $stmt->bindValue("payment_option", $_SESSION['payment_option']);
+        $stmt->bindValue("payment_option", strtoupper($_SESSION['payment_option']));
         $stmt->execute();
 
         //Add individual user

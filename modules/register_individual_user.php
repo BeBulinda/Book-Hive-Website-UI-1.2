@@ -61,7 +61,7 @@ if (!empty($_POST)) {
 
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input type="checkbox" name="terms_and_conditions" value="Yes" required=""/> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
+                                <input type="checkbox" name="terms_and_conditions" value="Yes" required="yes"/> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
                                 <input style="float:right;" type="submit" value="Register" />
                             </div>
                         </div>

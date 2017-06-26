@@ -18,47 +18,71 @@ $books = new Books();
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <strong>Your registration was successful. Please check your email for login credentials.</strong> 
                         </div>
-                    <?php 
-                    unset($_SESSION['add_success']);
-                    } 
-                    if (isset($_SESSION['add_error']) && $_SESSION['add_error'] == true) { ?>
+                        <?php
+                        unset($_SESSION['add_success']);
+                    }
+                    if (isset($_SESSION['add_error']) && $_SESSION['add_error'] == true) {
+                        ?>
                         <div class="alert alert-block alert-error fade in">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <strong>Your registration was unsuccessful. Please try again.</strong>
                         </div>
-                    <?php 
-                    unset($_SESSION['add_error']);
-                    } 
-                    if (isset($_SESSION['terms_and_conditions']) && $_SESSION['terms_and_conditions'] == false) { ?>
+                        <?php
+                        unset($_SESSION['add_error']);
+                    }
+                    if (isset($_SESSION['terms_and_conditions']) && $_SESSION['terms_and_conditions'] == false) {
+                        ?>
                         <div class="alert alert-block alert-error fade in">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <strong>To proceed with this action, you must accept Book Hive Kenya's terms and conditions.</strong>
                         </div>
-                    <?php 
-                    unset($_SESSION['terms_and_conditions']);
+                        <?php
+                        unset($_SESSION['terms_and_conditions']);
                     }
-                    if (isset($_SESSION['account_blocked']) AND $_SESSION['account_blocked'] == true) { ?>
+                    if (isset($_SESSION['account_blocked']) AND $_SESSION['account_blocked'] == true) {
+                        ?>
                         <div class="alert alert-block alert-error fade in">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <strong>Sorry, your account has been blocked. Kindly contact your system administrator.</strong>
                         </div>
-                    <?php 
-                    unset($_SESSION['account_blocked']);
+                        <?php
+                        unset($_SESSION['account_blocked']);
                     }
-                    if (isset($_SESSION['update_pass_forgot']) AND $_SESSION['update_pass_forgot'] == true) { ?>
+                    if (isset($_SESSION['update_pass_forgot']) AND $_SESSION['update_pass_forgot'] == true) {
+                        ?>
                         <div class="alert alert-block alert-error fade in">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <strong>To proceed with this action, you must accept Book Hive Kenya's terms and conditions.</strong>
                         </div>
-                    <?php 
-                    unset($_SESSION['update_pass_forgot']);
-                    } else if (isset($_SESSION['update_pass_forgot']) AND $_SESSION['update_pass_forgot'] == false) { ?>
+                        <?php
+                        unset($_SESSION['update_pass_forgot']);
+                    } else if (isset($_SESSION['update_pass_forgot']) AND $_SESSION['update_pass_forgot'] == false) {
+                        ?>
                         <div class="alert alert-block alert-error fade in">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <strong>To proceed with this action, you must accept Book Hive Kenya's terms and conditions.</strong>
                         </div>
-                    <?php 
-                    unset($_SESSION['update_pass_forgot']);
+                        <?php
+                        unset($_SESSION['update_pass_forgot']);
+                    }
+                    if (isset($_SESSION['transaction_status']) AND $_SESSION['transaction_status'] == "success") {
+                        ?>
+                        <div class="alert alert-block alert-error fade in">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Transaction processed successfully.</strong>
+                        </div>
+                        <?php
+                        unset($_SESSION["cart_item"]);
+                        unset($_SESSION["item_total"]);
+                        unset($_SESSION['transaction_status']);
+                    } else if (isset($_SESSION['transaction_status']) AND $_SESSION['transaction_status'] == "process_error") {
+                        ?>
+                        <div class="alert alert-block alert-error fade in">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Error processing transaction. Please try again later.</strong>
+                        </div>
+                        <?php
+                        unset($_SESSION['transaction_status']);
                     }
                     ?>
                 </div>	

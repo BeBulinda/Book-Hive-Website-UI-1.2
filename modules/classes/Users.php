@@ -217,8 +217,8 @@ class Users extends Database {
                 . "<li><b>Password: </b>" . $_SESSION['admin_lastname'] . "123" . "</li>"
                 . "</ul>"
                 . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
-                . "Visit <a href='http://www.bookhiveskenya.com'>bookhiveskenya.com</a> for more information.<br/>"
-                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
+                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
+//                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                 . "</body></html>";
 
         mail(strtoupper($_POST['admin_email']), $subject, $message, $headers);
@@ -299,8 +299,8 @@ class Users extends Database {
                 . "<li><b>Password: </b>" . $_SESSION['admin_lastname'] . "123" . "</li>"
                 . "</ul>"
                 . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
-                . "Visit <a href='http://www.bookhiveskenya.com'>bookhiveskenya.com</a> for more information.<br/>"
-                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
+                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
+//                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                 . "</body></html>";
 
         mail(strtoupper($_POST['admin_email']), $subject, $message, $headers);
@@ -371,8 +371,8 @@ class Users extends Database {
                 . "<li><b>Password: </b>" . $_POST['lastname'] . "123" . "</li>"
                 . "</ul>"
                 . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
-                . "Visit <a href='http://www.bookhiveskenya.com'>bookhiveskenya.com</a> for more information.<br/>"
-                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
+                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
+//                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                 . "</body></html>";
 
         mail(strtoupper($_POST['email']), $subject, $message, $headers);
@@ -432,8 +432,8 @@ class Users extends Database {
                 . "<li><b>Password: </b>" . $_POST['lastname'] . "123" . "</li>"
                 . "</ul>"
                 . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
-                . "Visit <a href='http://www.bookhiveskenya.com'>bookhiveskenya.com</a> for more information.<br/>"
-                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
+                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
+//                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                 . "</body></html>";
 
         mail(strtoupper($_POST['email']), $subject, $message, $headers);
@@ -687,8 +687,8 @@ class Users extends Database {
                 . "<li><b>Password: </b>" . $_SESSION['admin_lastname'] . "123" . "</li>"
                 . "</ul>"
                 . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
-                . "Visit <a href='http://www.bookhiveskenya.com'>bookhiveskenya.com</a> for more information.<br/>"
-                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
+                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
+//                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                 . "</body></html>";
 
         mail(strtoupper($_SESSION['admin_email']), $subject, $message, $headers);
@@ -810,7 +810,7 @@ class Users extends Database {
         $url = "http://bookhivekenya.com?login";
         $phone_number = "+254 726 771144";
         $email_address = "hello@bookhivekenya.com";
-        $sql = "SELECT s.firstname, s.middlename, s.lastname, c.email, c.ref_id FROM individual_users s LEFT JOIN contacts c ON s.id=c.ref_id WHERE s.firstname=:firstname AND (s.middlename=:lastname OR s.lastname=:lastname) AND c.email=:email";
+        $sql = "SELECT s.firstname, s.lastname, c.email, c.ref_id FROM individual_users s LEFT JOIN contacts c ON s.id=c.ref_id WHERE s.firstname=:firstname AND s.lastname=:lastname AND c.email=:email";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindValue("firstname", $_POST['firstname']);
         $stmt->bindValue("lastname", $_POST['lastname']);
