@@ -3,9 +3,11 @@
 require "Database.php";
 
 Database::setUp(array(
-	'dsn' => 'mysql:host=localhost;dbname=bookhive;',
+<<<<<<< HEAD
+	'dsn' => 'mysql:host=localhost;dbname=bookhive_v0.5;',
 	'username' => 'root',
-	'password' => ''
+	'password' => 'sogoni1608'
+
     ));
 
                             
