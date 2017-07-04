@@ -10,9 +10,33 @@ class Transactions extends Database {
             return $this->addPiracyReport();
         } else if ($_POST['action'] == "contact_us") {
             return $this->sendMessage();
+        } else if ($_POST['action'] == "verify_book") {
+            return $this->verifyBook();
         }
     }
     
+        private function verifyBook() {
+//        $sql = "SELECT * FROM book_codes WHERE publisher=:publisher AND number=:number AND status=:status";
+        $sql = "SELECT * FROM book_codes WHERE publisher_name=:publisher_name AND code=:code";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("publisher_name", strtoupper($_POST['publisher_name']));
+        $stmt->bindValue("code", strtoupper($_POST['code']));
+//        $stmt->bindValue("status", 1021);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (count($data) == 0) {
+            return false;
+        } else {
+            $data = $data[0];
+            $sql2 = "UPDATE book_codes SET status=:status WHERE id=:code_id";
+            $stmt2 = $this->prepareQuery($sql2);
+            $stmt2->bindValue("code_id", $data['id']);
+            $stmt2->bindValue("status", 1002);
+            $stmt2->execute();
+            return true;
+        }
+    }
+
     public function deliverResponse($response) {
         header("HTTP/1.1 $response");
         echo $response;
@@ -24,17 +48,84 @@ class Transactions extends Database {
     }
 
     public function addTransaction() {
-        $sql = "INSERT INTO transactions (id, transaction_type, amount, transactedby, payment_option)"
-                . " VALUES (:transaction_id, :transaction_type, :amount, :transactedby, :payment_option)";
-        $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("transaction_id", $_SESSION["transaction_id"]);
-        $stmt->bindValue("transaction_type", 01);
-        $stmt->bindValue("amount", $_SESSION["cart_total_cost"]);
-        $stmt->bindValue("transactedby", $_SESSION["transactedby"]);
-        $stmt->bindValue("payment_option", strtoupper($_SESSION['payment_option']));
-        $stmt->execute();
-
-        //Add individual user
+        
+//        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//        
+//        $sql = "INSERT INTO transactions (id, transaction_type, amount, transactedby, payment_option)"
+//                . " VALUES (:transaction_id, :transaction_type, :amount, :transactedby, :payment_option)";
+//        $stmt = $this->prepareQuery($sql);
+//        $stmt->bindValue("transaction_id", $_SESSION["transaction_id"]);
+//        $stmt->bindValue("transaction_type", 01);
+//        $stmt->bindValue("amount", $_SESSION["cart_total_cost"]);
+//        $stmt->bindValue("transactedby", $_SESSION["transactedby"]);
+//        $stmt->bindValue("payment_option", strtoupper($_SESSION['payment_option']));
+//        $stmt->execute();
+//
+//        //Add individual user
+//                $createdby = "WEBSITE USER";
+//        $individual_user_id = $this->getNextIndividualUserId();
+////        $user_type = "INDIVIDUAL USER";
+//        $user_type_ref_id = $this->getUserTypeRefId("INDIVIDUAL USER");
+//
+//        //individual details
+//        $sql = "INSERT INTO individual_users (firstname, lastname, gender, idnumber, createdby, lastmodifiedby)"
+//                . " VALUES (:firstname, :lastname, :gender, :idnumber, :createdby, :lastmodifiedby)";
+//        $stmt = $this->prepareQuery($sql);
+//        $stmt->bindValue("firstname", strtoupper($_POST['firstname']));
+//        $stmt->bindValue("lastname", strtoupper($_POST['lastname']));
+//        $stmt->bindValue("gender", strtoupper($_POST['gender']));
+//        $stmt->bindValue("idnumber", strtoupper($_POST['idnumber']));
+//        $stmt->bindValue("createdby", $createdby);
+//        $stmt->bindValue("lastmodifiedby", $createdby); //  echo $_SESSION['userid']);
+//        $stmt->execute();
+//
+//        //individual contact details
+//        $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, lastmodifiedby)"
+//                . " VALUES (:reference_type, :reference_id, :phone_number, :email, :lastmodifiedby)";
+//        $stmt = $this->prepareQuery($sql);
+//        $stmt->bindValue("reference_type", $user_type_ref_id);
+//        $stmt->bindValue("reference_id", $individual_user_id);
+//        $stmt->bindValue("phone_number", strtoupper($_POST['phone_number']));
+//        $stmt->bindValue("email", strtoupper($_POST['email']));
+//        $stmt->bindValue("lastmodifiedby", $createdby);
+//        $stmt->execute();
+//
+//        //User Login details
+//        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
+//                . " VALUES (:ref_type, :ref_id, :username, :password)";
+//
+//        $stmt_userlogs = $this->prepareQuery($sql_userlogs);
+//        $stmt_userlogs->bindValue("ref_type", strtoupper($user_type_ref_id));
+//        $stmt_userlogs->bindValue("ref_id", $individual_user_id);
+//        $stmt_userlogs->bindValue("username", strtoupper($_POST['email']));
+//        $stmt_userlogs->bindValue("password", sha1($_POST['lastname'] . "123"));
+//        $stmt_userlogs->execute();
+//
+//        $sender = "hello@bookhivekenya.com";
+//        $headers = "From: Bookhive Kenya <$sender>\r\n";
+//        $headers .= "MIME-Version: 1.0\r\n";
+//        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+//        $subject = "Account Creation";
+//        $message = "<html><body>"
+//                . "<p><b>Hello " . $_POST['firstname'] . ",</b><br/>"
+//                . "Thank you for signing up on Book Hive Kenya. Your login credentials are: <br/>"
+//                . "<ul>"
+//                . "<li><b>Username: </b>" . $_POST['email'] . "</li>"
+//                . "<li><b>Password: </b>" . $_POST['lastname'] . "123" . "</li>"
+//                . "</ul>"
+//                . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
+//                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
+////                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
+//                . "</body></html>";
+//
+//        mail(strtoupper($_POST['email']), $subject, $message, $headers);
+//        
+//        
+//        ....................................................................................................................................................................
+//        
+//        
+        
+        
         $createdby = "WEBSITE USER";
         $users = new Users();
         $individual_user_id = $users->getNextIndividualUserId();
@@ -96,8 +187,8 @@ class Transactions extends Database {
     }
 
     private function addPiracyReport() {
-        $sql = "INSERT INTO piracy_reports (reporter_type, reported_by, seller_type, seller_name, book_title, book_photo, receipt_photo, description)"
-                . " VALUES (:reporter_type, :reported_by, :seller_type, :seller_name, :book_title, :book_photo, :receipt_photo, :description)";
+        $sql = "INSERT INTO piracy_reports (reporter_type, reported_by, seller_type, seller_name, book_title, book_photo, receipt_photo, county, sub_county, location, description)"
+                . " VALUES (:reporter_type, :reported_by, :seller_type, :seller_name, :book_title, :book_photo, :receipt_photo, :county, :sub_county, :location, :description)";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindValue("reporter_type", strtoupper($_POST['reporter_type']));
         $stmt->bindValue("reported_by", strtoupper($_POST['reported_by']));
@@ -106,6 +197,9 @@ class Transactions extends Database {
         $stmt->bindValue("book_title", strtoupper($_POST['book_title']));
         $stmt->bindValue("book_photo", $_SESSION['book_photo']);
         $stmt->bindValue("receipt_photo", $_SESSION['receipt_photo']);
+        $stmt->bindValue("county", $_POST['county']);
+        $stmt->bindValue("sub_county", $_POST['sub_county']);
+        $stmt->bindValue("location", $_POST['location']);
         $stmt->bindValue("description", strtoupper($_POST['description']));
         $stmt->execute();
         return true;

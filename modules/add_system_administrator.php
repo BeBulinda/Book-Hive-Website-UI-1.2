@@ -58,6 +58,8 @@ if (!empty($_POST)) {
                             <input type="hidden" name="action" value="register_book_seller"/>
                         <?php } else if ($ref_type == "CORPORATE") { ?>
                             <input type="hidden" name="action" value="register_corporate"/>
+                        <?php } else if ($ref_type == "SCHOOL") { ?>
+                            <input type="hidden" name="action" value="register_school"/>
                         <?php } ?>
                         
                         <div class="row">

@@ -30,11 +30,45 @@ $books = new Books();
                         <?php
                         unset($_SESSION['add_error']);
                     }
+                    if (isset($_SESSION['verify_success']) && $_SESSION['verify_success'] == true) { ?>
+                        <div class="alert alert-info fade in">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Your verification was processed successfully. Your book is one of our products.</strong> 
+                        </div>
+                        <?php
+                        unset($_SESSION['verify_success']);
+                    }
+                    if (isset($_SESSION['verify_error']) && $_SESSION['verify_error'] == true) {
+                        ?>
+                        <div class="alert alert-block alert-error fade in">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>The book code entered is wrong/does not exist among our the selected publisher's books. Please try the verification process again. If it persists request for a replacement from the book seller.</strong>
+                        </div>
+                        <?php
+                        unset($_SESSION['verify_error']);
+                    }
+                    if (isset($_SESSION['report_success']) && $_SESSION['report_success'] == true) { ?>
+                        <div class="alert alert-info fade in">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Your piracy report has been successfully logged and is being looked into. The necessary action shall be taken in due time. Thank you for taking part in the war against piracy.</strong> 
+                        </div>
+                        <?php
+                        unset($_SESSION['report_success']);
+                    }
+                    if (isset($_SESSION['report_error']) && $_SESSION['report_error'] == true) {
+                        ?>
+                        <div class="alert alert-block alert-error fade in">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Your piracy report was not successfully submitted. Please submit the report again.</strong>
+                        </div>
+                        <?php
+                        unset($_SESSION['report_error']);
+                    }
                     if (isset($_SESSION['terms_and_conditions']) && $_SESSION['terms_and_conditions'] == false) {
                         ?>
                         <div class="alert alert-block alert-error fade in">
                             <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>To proceed with this action, you must accept Book Hive Kenya's terms and conditions.</strong>
+                            <strong>To proceed with this action, you must accept Bookhive Kenya's <a href="?tac">terms and conditions</a>.</strong>
                         </div>
                         <?php
                         unset($_SESSION['terms_and_conditions']);
@@ -52,7 +86,7 @@ $books = new Books();
                         ?>
                         <div class="alert alert-block alert-error fade in">
                             <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>To proceed with this action, you must accept Book Hive Kenya's terms and conditions.</strong>
+                            <strong>To proceed with this action, you must accept Bookhive Kenya's <a href="?tac">terms and conditions</a>.</strong>
                         </div>
                         <?php
                         unset($_SESSION['update_pass_forgot']);
@@ -60,7 +94,7 @@ $books = new Books();
                         ?>
                         <div class="alert alert-block alert-error fade in">
                             <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>To proceed with this action, you must accept Book Hive Kenya's terms and conditions.</strong>
+                            <strong>To proceed with this action, you must accept Bookhive Kenya's <a href="?tac">terms and conditions</a>.</strong>
                         </div>
                         <?php
                         unset($_SESSION['update_pass_forgot']);

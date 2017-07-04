@@ -31,13 +31,15 @@ if (!empty($_POST)) {
         }
     }
 }
-if (isset($_SESSION['added_book_seller']) && $_SESSION['added_book_seller'] == true) {
-    require_once 'modules/noty/registration-true.php';
-    unset($_SESSION['added_book_seller']);
-} else if (isset($_SESSION['added_book_seller']) && $_SESSION['added_book_seller'] == false) {
-    require_once 'modules/noty/registration-false.php';
-    unset($_SESSION['added_book_seller']);
-}
+
+//if (isset($_SESSION['added_book_seller']) && $_SESSION['added_book_seller'] == true) {
+//    require_once 'modules/noty/registration-true.php';
+//    unset($_SESSION['added_book_seller']);
+//} else if (isset($_SESSION['added_book_seller']) && $_SESSION['added_book_seller'] == false) {
+//    require_once 'modules/noty/registration-false.php';
+//    unset($_SESSION['added_book_seller']);
+//}
+
 ?>
 
 <div id="content">
@@ -106,7 +108,7 @@ if (isset($_SESSION['added_book_seller']) && $_SESSION['added_book_seller'] == t
 
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input type="checkbox" name="terms_and_conditions" value="Yes" required="yes"/> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
+                                <input type="checkbox" name="terms_and_conditions" value="Yes" required="yes"/> <label for="remember"> &nbsp I accept Bookhive Kenya's <a href="?tac">terms and conditions</a></label>
                                 <input style="float:right;" type="submit" value="Register" />
                             </div>
                         </div>

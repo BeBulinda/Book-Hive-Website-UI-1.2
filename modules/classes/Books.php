@@ -203,21 +203,8 @@ class Books extends Database {
         }
 
         if ($category_type === "publisher") {
-            if ($category_value === "storymoja_books") {
-                $category_code = $this->getBookPublisherRefTypeId("STORYMOJA");
-            } else if ($category_value === "klb_books") {
-                $category_code = $this->getBookPublisherRefTypeId("KENYA LITERATURE BUREAU");
-            } else if ($category_value === "longhorn_books") {
-                $category_code = $this->getBookPublisherRefTypeId("LONGHORN");
-            } else if ($category_value === "phoenix_books") {
-                $category_code = $this->getBookPublisherRefTypeId("PHOENIX");
-            } else if ($category_value === "moran_books") {
-                $category_code = $this->getBookPublisherRefTypeId("MORAN");
-            } else if ($category_value === "self_publisher_books") {
-                $category_code = $this->getBookPublisherRefTypeId("SELF PUBLISHER");
-            }
             $category = $category_type;
-            $value = $category_code;
+            $value = $category_value;
             $sql = "SELECT * FROM books WHERE publisher=:category_value ORDER BY id ASC";
         }
 
