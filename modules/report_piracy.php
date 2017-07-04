@@ -26,11 +26,14 @@ if (!empty($_POST)) {
 
     move_uploaded_file($tmp_name_book, $location1 . $book_photo);
     move_uploaded_file($tmp_name_receipt, $location2 . $receipt_photo);
-    
+
     $success = $transactions->execute();
     if (is_bool($success) && $success == true) {
-        $_SESSION['add_success'] = true;
+        $_SESSION['report_success'] = true;
+    } else {
+        $_SESSION['report_error'] = true;
     }
+    App::redirectTo("?process_feedback");
 }
 ?>
 ﻿
@@ -43,7 +46,7 @@ if (!empty($_POST)) {
                     <form method="post" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="add_piracy_report"/>
                         <input type="hidden" name="reporter_type" value="2"/>
-                        <input type="hidden" name="createdby" value="<?php echo 01; //  echo $_SESSION['userid'];          ?>"/>
+                        <input type="hidden" name="createdby" value="<?php echo 01; //  echo $_SESSION['userid'];            ?>"/>
                         <h5>Kindly fill in the below details:</h5>
                         <div class="row">
                             <div class="col-md-3 col-sm-4 col-xs-12">
@@ -74,6 +77,26 @@ if (!empty($_POST)) {
                                 <label class="control-label" for="receipt_photo">Receipt Photo</label>
                                 <input type="file" name="receipt_photo">
                             </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <label class="control-label" for="county">County<sup>*</sup></label>
+                                <select class="form-magic" name="county">
+                                    <?php echo $system_administration->getCounties(); ?>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <label class="control-label" for="sub_county">Sub-County<sup>*</sup></label>
+                                <select class="form-magic" name="sub_county">
+                                    <?php echo $system_administration->getSubCounties(); ?>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <label class="control-label" for="location">Location<sup>*</sup></label>
+                                <select class="form-magic" name="location">
+                                    <?php echo $system_administration->getLocations(); ?>
+                                </select>
+                            </div>
+
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <label class="control-label" for="description">Description</label>
                                 <textarea name="description" cols="30" rows="8" placeholder="Description"></textarea>

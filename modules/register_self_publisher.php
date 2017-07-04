@@ -59,8 +59,11 @@ if (!empty($_POST)) {
                                 <label class="control-label" for="email">Email<sup>*</sup></label>
                                 <input type="email" name="email" placeholder="Email Address" required="true">
                             </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <textarea name="description" cols="30" rows="8" placeholder="Description"></textarea>
+                            </div>
                             <div class="col-md-6 col-sm-4 col-xs-12">
-                                <input type="checkbox" name="terms_and_conditions" value="Yes" required="yes"/> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
+                                <input type="checkbox" name="terms_and_conditions" value="Yes" required="yes"/> <label for="remember"> &nbsp I accept Bookhive Kenya's <a href="?tac">terms and conditions</a></label>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <input type="submit" value="Register" />

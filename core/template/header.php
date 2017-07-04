@@ -44,12 +44,13 @@ if (!empty($_POST)) {
                                 <ul>
                                     <li><a href="?verify_book">Verify Book</a></li>
                                     <li><a href="?report_piracy">Report Piracy</a></li>
-                                    <li><a href="?register_self_publisher">Submit My Book</a></li>
+                                    <li><a href="?register_self_publisher">Self Publisher Registration</a></li>
                                     <li class="menu-item-has-children">
                                         <a href="#">Register</a>
                                         <ul class="sub-menu">
                                             <h5><li><a href="?register_individual_user">As An Individual User</a></li>
                                                 <li><a href="?register_book_seller">As A Book Seller</a></li>
+                                                <li><a href="?register_school">As A School</a></li>
                                                 <li><a href="?register_corporate">As A Corporate</a></li>
                                             </h5>
                                         </ul>
@@ -221,12 +222,13 @@ if (!empty($_POST)) {
 //                                    }
                                     ?>
                                     <ul class="sub-menu">
-                                        <li><a href='?storymoja_books'>STORYMOJA</a></li>
+                                        <?php echo $users->menuPublishers(); ?>
+<!--                                        <li><a href='?storymoja_books'>STORYMOJA</a></li>
                                         <li><a href="?klb_books">KLB</a></li>
                                         <li><a href="?phoenix_books">PHOENIX</a></li>
                                         <li><a href="?longhorn_books">LONGHORN</a></li>
                                         <li><a href="?moran_books">MORAN</a></li>
-                                        <li><a href="?self_publisher_books">SELF PUBLISHERS</a></li>
+                                        <li><a href="?self_publisher_books">SELF PUBLISHERS</a></li>-->
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">

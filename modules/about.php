@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="about-info">
                                     <h3><a href="#">Maurice Mugeni </a></h3>
-                                    <p>Book Hives Kenya has really improved my shop's book-buying experience. I can now comfortably order for my books online, make the payment online and wait for them to be delivered at my shop.</p>
+                                    <p>Bookhive Kenya has really improved my shop's book-buying experience. I can now comfortably order for my books online, make the payment online and wait for them to be delivered at my shop.</p>
                                 </div>
                             </div>
                         </div>

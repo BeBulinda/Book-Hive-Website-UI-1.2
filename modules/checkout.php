@@ -63,7 +63,7 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                 $subject = "Transaction Acknowledgement";
                 $message = "<html><body>"
                         . "<p><b>Hello " . $_SESSION["billing_firstname"] . " " . $_SESSION["billing_lastname"] . ",</b><br/>"
-                        . "Thank you for transacting with us on Book Hive Kenya.<br/>"
+                        . "Thank you for transacting with us on Bookhive Kenya.<br/>"
                 ?>
 
 
@@ -297,13 +297,13 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                         <input type="radio" data-order_button_text="Proceed to PayPal" value="credit_card" name="payment_method" class="input-radio" id="payment_method_paypal">
                                         <label for="payment_method_card">Credit Card</label>
                                     </li>
-                                    <li class="payment_method_cod">
+<!--                                    <li class="payment_method_cod">
                                         <input type="radio" data-order_button_text="" value="cash" name="payment_method" class="input-radio" id="payment_method_cod">
                                         <label for="payment_method_cod">Cash on Delivery</label>
-                                    </li>
+                                    </li>-->
                                 </ul>
                                 <div class="form-row">
-                                    <input type="checkbox" name="terms_and_conditions" value="Yes" required=""/> <label for="remember"> &nbsp I accept Book Hive Kenya's terms and conditions</label>
+                                    <input type="checkbox" name="terms_and_conditions" value="Yes" required=""/> <label for="remember"> &nbsp I accept Bookhive Kenya's <a href="?tac">terms and conditions</a></label>
                                 </div>
                                 <div class="form-row place-order">
                                     <input type="submit" data-value="Place order" value="Place order" id="place_order" name="woocommerce_checkout_place_order" class="button alt">

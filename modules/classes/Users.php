@@ -17,7 +17,7 @@ class Users extends Database {
 //        
         else if ($_POST['action'] == "forgot_password") {
             return $this->forgotPassword();
-        } 
+        }
 //        
 //        
 //        else 
@@ -31,6 +31,8 @@ class Users extends Database {
 
         if ($_POST['action'] == "register_corporate") {
             return $this->addCorporate();
+        } elseif ($_POST['action'] == "register_school") {
+            return $this->addSchool();
         } else if ($_POST['action'] == "register_corporate") {
             return $this->editCorporate();
         } else if ($_POST['action'] == "register_book_seller") {
@@ -226,6 +228,89 @@ class Users extends Database {
         return true;
     }
 
+    private function addSchool() {
+        $createdby = "WEBSITE USER";
+        $school_id = $this->getNextSchoolId();
+        $user_type_ref_id = $this->getUserTypeRefId("SCHOOL");
+
+        //corporate details
+        $sql = "INSERT INTO schools (school_name, school_type, description, logo, createdby, lastmodifiedby)"
+                . " VALUES (:school_name, :school_type, :description, :logo, :createdby, :lastmodifiedby)";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("school_name", strtoupper($_SESSION['school_name']));
+        $stmt->bindValue("school_type", strtoupper($_SESSION['school_type']));
+        $stmt->bindValue("description", strtoupper($_SESSION['description']));
+        $stmt->bindValue("logo", $_SESSION['logo_photo']);
+        $stmt->bindValue("createdby", $createdby);
+        $stmt->bindValue("lastmodifiedby", $createdby);
+        $stmt->execute();
+
+        //corporate contact details
+        $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, website, postal_number, postal_code, town, county, sub_county, location, lastmodifiedby)"
+                . " VALUES (:reference_type, :reference_id, :phone_number, :email, :website, :postal_number, :postal_code, :town, :county, :sub_county, :location, :lastmodifiedby)";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("reference_type", $user_type_ref_id);
+        $stmt->bindValue("reference_id", $school_id);
+        $stmt->bindValue("phone_number", strtoupper($_SESSION['phone_number']));
+        $stmt->bindValue("email", strtoupper($_SESSION['email']));
+        $stmt->bindValue("website", strtoupper($_SESSION['website']));
+        $stmt->bindValue("postal_number", $_SESSION['postal_number']);
+        $stmt->bindValue("postal_code", $_SESSION['postal_code']);
+        $stmt->bindValue("town", strtoupper($_SESSION['town']));
+        $stmt->bindValue("county", $_SESSION['county']);
+        $stmt->bindValue("sub_county", $_SESSION['sub_county']);
+        $stmt->bindValue("location", $_SESSION['location']);
+        $stmt->bindValue("lastmodifiedby", $createdby);
+        $stmt->execute();
+
+        //system administrator (corporate) details
+        $sql = "INSERT INTO system_administrators (level, reference_id, firstname, lastname, idnumber, phone_number, email, createdby, lastmodifiedby)"
+                . " VALUES (:level, :reference_id, :firstname, :lastname, :idnumber, :phone_number, :email, :createdby, :lastmodifiedby)";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("level", $user_type_ref_id);
+        $stmt->bindValue("reference_id", $school_id);
+        $stmt->bindValue("firstname", strtoupper($_SESSION['admin_firstname']));
+        $stmt->bindValue("lastname", strtoupper($_SESSION['admin_lastname']));
+        $stmt->bindValue("idnumber", strtoupper($_SESSION['admin_idnumber']));
+        $stmt->bindValue("phone_number", strtoupper($_SESSION['admin_phone_number']));
+        $stmt->bindValue("email", strtoupper($_SESSION['admin_email']));
+        $stmt->bindValue("createdby", $createdby);
+        $stmt->bindValue("lastmodifiedby", $createdby);
+        $stmt->execute();
+
+        //User Login details
+        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
+                . " VALUES (:ref_type, :ref_id, :username, :password)";
+
+        $stmt_userlogs = $this->prepareQuery($sql_userlogs);
+        $stmt_userlogs->bindValue("ref_type", $user_type_ref_id);
+        $stmt_userlogs->bindValue("ref_id", $school_id);
+        $stmt_userlogs->bindValue("username", strtoupper($_SESSION['admin_email']));
+        $stmt_userlogs->bindValue("password", sha1($_SESSION['admin_lastname'] . "123"));
+        $stmt_userlogs->execute();
+
+        $sender = "hello@bookhivekenya.com";
+        $headers = "From: Bookhive Kenya <$sender>\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $subject = "Account Creation";
+        $message = "<html><body>"
+                . "<p><b>Hello " . $_POST['admin_firstname'] . ",</b><br/>"
+                . "Thank you for signing up on Book Hive Kenya as the " . strtoupper($_SESSION['school_name']) . " administrator. Your login credentials are: <br/>"
+                . "<ul>"
+                . "<li><b>Username: </b>" . $_SESSION['admin_email'] . "</li>"
+                . "<li><b>Password: </b>" . $_SESSION['admin_lastname'] . "123" . "</li>"
+                . "</ul>"
+                . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
+                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
+//                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
+                . "</body></html>";
+
+        mail(strtoupper($_POST['admin_email']), $subject, $message, $headers);
+
+        return true;
+    }
+
     private function addBookSeller() {
         $createdby = "WEBSITE USER";
         $seller_id = $this->getNextBookSellerId();
@@ -386,13 +471,14 @@ class Users extends Database {
         $user_type_ref_id = $this->getUserTypeRefId("SELF PUBLISHER");
 
         //individual details
-        $sql = "INSERT INTO self_publishers (firstname, lastname, gender, idnumber, createdby, lastmodifiedby)"
-                . " VALUES (:firstname, :lastname, :gender, :idnumber, :createdby, :lastmodifiedby)";
+        $sql = "INSERT INTO self_publishers (firstname, lastname, gender, idnumber, description, createdby, lastmodifiedby)"
+                . " VALUES (:firstname, :lastname, :gender, :idnumber, :description, :createdby, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindValue("firstname", strtoupper($_POST['firstname']));
         $stmt->bindValue("lastname", strtoupper($_POST['lastname']));
         $stmt->bindValue("gender", strtoupper($_POST['gender']));
         $stmt->bindValue("idnumber", strtoupper($_POST['idnumber']));
+        $stmt->bindValue("description", strtoupper($_POST['description']));
         $stmt->bindValue("createdby", $createdby);
         $stmt->bindValue("lastmodifiedby", $createdby); //  echo $_SESSION['userid']);
         $stmt->execute();
@@ -451,6 +537,12 @@ class Users extends Database {
         $corporate_id = $this->executeQuery("SELECT max(id) as corporate_id_max FROM corporates");
         $corporate_id = $corporate_id[0]['corporate_id_max'] + 1;
         return strtoupper($corporate_id);
+    }
+
+    public function getNextSchoolId() {
+        $school_id = $this->executeQuery("SELECT max(id) as school_id FROM schools");
+        $school_id = $school_id[0]['school_id_max'] + 1;
+        return strtoupper($school_id);
     }
 
     public function getNextBookSellerId() {
@@ -705,16 +797,13 @@ class Users extends Database {
         $html = "";
         while ($row = $stmt->fetch()) {
             if (is_null($currentGroup)) {
-                $currentGroup = $row['company_name'];
-//                $html .= "<option value=\"0\" selected>Select Publisher</option>";
-                $html .= "<option value=\"111111111111\">ALL PUBLISHERS</option>";
-                $html .= "<option value=\"{$row['id']}\">{$row['company_name']}</option>";
+                $html .= "<li><a href='?publisher_books&id={$row['id']}'>{$row['company_name']}</a></li>";
             } else {
-                $html .= "<option value=\"{$row['id']}\">{$row['company_name']}</option>";
+                $html .= "<li><a href='??publisher_books&id={$row['id']}'>{$row['company_name']}</a></li>";
             }
         }
         if ($html == "")
-            $html = "<option value=\"\">No publisher entered into the database!</option>";
+            $html = "<option value=\"\">No Publishers</option>";
         echo $html;
         return $currentGroup;
     }
@@ -945,4 +1034,5 @@ class Users extends Database {
             return json_encode($values2);
         }
     }
+
 }
