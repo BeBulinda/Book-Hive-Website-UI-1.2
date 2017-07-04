@@ -80,7 +80,7 @@ else if (is_menu_set('class_one_books') != "") {
     $category_books[] = $books->getAllCategoryBooks("secondary_class", "form_four_books");
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('publisher_books') != "") {
-    $id = $_GET['id'];    
+    $id = $_GET['id'];
     $category_books[] = $books->getAllCategoryBooks("publisher", $id);
     $_SESSION['category_books'] = $category_books;
 } else if (is_menu_set('printed_books') != "") {
@@ -109,12 +109,35 @@ if (isset($_SESSION["cart_item"])) {
     $_SESSION["cart_total_cost"] = 0;
 }
 
+$previous_url = $_SERVER['HTTP_REFERER'];
 if (!empty($_POST)) {
     if ($_POST['action'] == "filter_books") {
         $filtered_books[] = $books->getAllFilteredBooks($_POST['publisher'], $_POST['book_level'], $_POST['book_type'], $_POST['print_type']);
         $_SESSION['filtered_books'] = $filtered_books;
+    } else if ($_POST['action'] == "add") {
+        $productByCode = $books->fetchBookDetails($_POST["code"]);
+        $itemArray = array($productByCode["id"] => array('id' => $productByCode["id"], 'title' => $productByCode["title"], 'price' => $productByCode["price"], 'quantity' => $_POST["quantity"]));
+
+        if (!empty($_SESSION["cart_item"])) {
+            if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
+                foreach ($_SESSION["cart_item"] as $k => $v) {
+                    if ($productByCode["id"] == $v['id']) {
+                        if (empty($_SESSION["cart_item"][$k]["quantity"])) {
+                            $_SESSION["cart_item"][$k]["quantity"] = 0;
+                        }
+                        $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+                    }
+                }
+            } else {
+                $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
+            }
+        } else {
+            $_SESSION["cart_item"] = $itemArray;
+        }
+        App::redirectTo("{$previous_url}");
     }
-    App::redirectTo("?filtered_books");
+
+//    App::redirectTo("?filtered_books");
 }
 ?>
 
@@ -134,12 +157,13 @@ if (!empty($_POST)) {
                     <a href="?"><img src="modules/images/logos/publishers/112ERTA7593FD5485628BEB798FF3ECF.jpg" width="150" alt="Publisher's Logo" /></a>
                 <?php } else if (is_menu_set('moran_books') != "") { ?>
                     <a href="?"><img src="modules/images/logos/publishers/284331A7593FD5485628BEB798ABC456.jpg" width="150" alt="Publisher's Logo" /></a>
-                <?php } 
-                
-//                else { ?>
-                    <!--<a class="view-type" href="#" class="grid-view active"></a>-->
-                    <!--<a class="view-type" href="#" class="list-view"></a>-->
-                <?php // } ?>                    
+                <?php }
+
+//                else { 
+                ?>
+                <!--<a class="view-type" href="#" class="grid-view active"></a>-->
+                <!--<a class="view-type" href="#" class="list-view"></a>-->
+<?php // }  ?>                    
             </div>
             <div class="clearfix">
                 <div class="pull-left">
@@ -148,13 +172,13 @@ if (!empty($_POST)) {
                             <input type="hidden" name="action" value="filter_books"/>
                             <label>FILTER BY:</label>
                             <select name="publisher">  
-                                <?php echo $users->getPublishers(); ?>
+<?php echo $users->getPublishers(); ?>
                             </select>
                             <select name="book_level">
-                                <?php echo $system_administration->getBookLevels(); ?>
+<?php echo $system_administration->getBookLevels(); ?>
                             </select>
                             <select name="book_type">  
-                                <?php echo $system_administration->getBookTypes(); ?>
+<?php echo $system_administration->getBookTypes(); ?>
                             </select>
                             <select name="print_type">
                                 <option value="ALL">ALL PRINT TYPES</option>
@@ -210,9 +234,17 @@ if (!empty($_POST)) {
                                                 <div class="product-rating" style="width:90%"></div>
                                             </div>
                                             <div class="product-extra-link2">
-                                                <a class="addcart-link" href="#">Add to Cart</a>
-                                                <a class="wishlist-link" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>
-                                                <a class="compare-link" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>
+
+                                                <form role="form" method="post">
+                                                    <input type="hidden" name="action" value="add"/>
+                                                    <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
+                                                    <input type="hidden" name="quantity" value="1"/>
+                                                    <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                </form>
+
+                                                <!--                                                <a class="addcart-link" href="#">Add to Cart</a>
+                                                                                                <a class="wishlist-link" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>
+                                                                                                <a class="compare-link" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>-->
                                             </div>
                                         </div>
                                     </div>
@@ -230,9 +262,10 @@ if (!empty($_POST)) {
 
 //                if (isset($_SESSION["filtered_books"])) {
 //                    if (isset($_SESSION['no_filtered_records']) AND $_SESSION['no_filtered_records'] == true) {
-//                        ?>
+//                        
+                ?>
                         <!--<div style="text-align:left"><strong>No book found in this category...</strong></div>-->
-                        <?php
+                <?php
 //                        unset($_SESSION['no_filtered_records']);
 //                    } else if (isset($_SESSION['yes_filtered_records']) AND $_SESSION['yes_filtered_records'] == true) {
 //                        foreach ($_SESSION["filtered_books"] as $key => $value) {
@@ -249,35 +282,35 @@ if (!empty($_POST)) {
 //                                } else if ($value2['level_id'] == 4) {
 //                                    $location = 'modules/images/books/adult/';
 //                                }
-                                ?>
+                ?>
 
-<!--                                <li>
-                                    <div class="item-pro-ajax">
-                                        <div class="product-thumb">
-                                            <a class="product-thumb-link" href="?product-page&code=//<?php // echo $value2['id']; ?>">
-                                                <img src="<?php // echo $location . $value2['cover_photo']; ?>" height="400" alt="<?php // echo $value2['title'] . " COVER PHOTO"; ?>"/>
-                                            </a>
-                                            <a class="quickview-link fancybox.iframe" href="?quick-view&code=//<?php // echo $value2['id']; ?>"><span>quick view</span></a>
-                                        </div>
-                                        <div class="product-info">
-                                            <h3 class="product-title"><a href="?product-page&code=//<?php // echo $value2['id']; ?>"><?php // echo $value2['title']; ?></a></h3>
-                                            <div class="product-price">
-                                                <ins><span><?php // echo "KES " . $value2['price']; ?></span></ins>
-                                            </div>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:90%"></div>
-                                            </div>
-                                            <div class="product-extra-link2">
-                                                <a class="addcart-link" href="#">Add to Cart</a>
-                                                <a class="wishlist-link" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>
-                                                <a class="compare-link" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>-->
-                                <!-- End Item -->
+                <!--                                <li>
+                                                    <div class="item-pro-ajax">
+                                                        <div class="product-thumb">
+                                                            <a class="product-thumb-link" href="?product-page&code=//<?php // echo $value2['id'];  ?>">
+                                                                <img src="<?php // echo $location . $value2['cover_photo'];  ?>" height="400" alt="<?php // echo $value2['title'] . " COVER PHOTO";  ?>"/>
+                                                            </a>
+                                                            <a class="quickview-link fancybox.iframe" href="?quick-view&code=//<?php // echo $value2['id'];  ?>"><span>quick view</span></a>
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <h3 class="product-title"><a href="?product-page&code=//<?php // echo $value2['id'];  ?>"><?php // echo $value2['title'];  ?></a></h3>
+                                                            <div class="product-price">
+                                                                <ins><span><?php // echo "KES " . $value2['price'];  ?></span></ins>
+                                                            </div>
+                                                            <div class="product-rate">
+                                                                <div class="product-rating" style="width:90%"></div>
+                                                            </div>
+                                                            <div class="product-extra-link2">
+                                                                <a class="addcart-link" href="#">Add to Cart</a>
+                                                                <a class="wishlist-link" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>
+                                                                <a class="compare-link" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>-->
+                <!-- End Item -->
 
-                                <?php
+                <?php
 //                            }
 //                        }
 //                        unset($_SESSION['yes_filtered_records']);
@@ -287,9 +320,10 @@ if (!empty($_POST)) {
 //
 //                if (isset($_SESSION["searched_books"])) {
 //                    if (isset($_SESSION['no_searched_records']) AND $_SESSION['no_searched_records'] == true) {
-//                        ?>
+//                        
+                ?>
                         <!--<div style="text-align:left"><strong>No book found in this category...</strong></div>-->
-                        <?php
+                <?php
 //                        unset($_SESSION['no_searched_records']);
 //                    } else if (isset($_SESSION['yes_searched_records']) AND $_SESSION['yes_searched_records'] == true) {
 //                        foreach ($_SESSION["searched_books"] as $key => $value) {
@@ -306,35 +340,36 @@ if (!empty($_POST)) {
 //                                } else if ($value2['level_id'] == 4) {
 //                                    $location = 'modules/images/books/adult/';
 //                                }
-//                                ?>
+//                                
+                ?>
 
-<!--                                <li>
-                                    <div class="item-pro-ajax">
-                                        <div class="product-thumb">
-                                            <a class="product-thumb-link" href="?product-page&code=//<?php // echo $value2['id']; ?>">
-                                                <img src="//<?php // echo $location . $value2['cover_photo']; ?>" height="400" alt="<?php // echo $value2['title'] . " COVER PHOTO"; ?>"/>
-                                            </a>
-                                            <a class="quickview-link fancybox.iframe" href="?quick-view&code=//<?php // echo $value2['id']; ?>"><span>quick view</span></a>
-                                        </div>
-                                        <div class="product-info">
-                                            <h3 class="product-title"><a href="?product-page&code=//<?php // echo $value2['id']; ?>"><?php // echo $value2['title']; ?></a></h3>
-                                            <div class="product-price">
-                                                <ins><span>//<?php // echo "KES " . $value2['price']; ?></span></ins>
-                                            </div>
-                                            <div class="product-rate">
-                                                <div class="product-rating" style="width:90%"></div>
-                                            </div>
-                                            <div class="product-extra-link2">
-                                                <a class="addcart-link" href="#">Add to Cart</a>
-                                                <a class="wishlist-link" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>
-                                                <a class="compare-link" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>-->
-                                <!-- End Item -->
+                <!--                                <li>
+                                                    <div class="item-pro-ajax">
+                                                        <div class="product-thumb">
+                                                            <a class="product-thumb-link" href="?product-page&code=//<?php // echo $value2['id'];  ?>">
+                                                                <img src="//<?php // echo $location . $value2['cover_photo'];  ?>" height="400" alt="<?php // echo $value2['title'] . " COVER PHOTO";  ?>"/>
+                                                            </a>
+                                                            <a class="quickview-link fancybox.iframe" href="?quick-view&code=//<?php // echo $value2['id'];  ?>"><span>quick view</span></a>
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <h3 class="product-title"><a href="?product-page&code=//<?php // echo $value2['id'];  ?>"><?php // echo $value2['title'];  ?></a></h3>
+                                                            <div class="product-price">
+                                                                <ins><span>//<?php // echo "KES " . $value2['price'];  ?></span></ins>
+                                                            </div>
+                                                            <div class="product-rate">
+                                                                <div class="product-rating" style="width:90%"></div>
+                                                            </div>
+                                                            <div class="product-extra-link2">
+                                                                <a class="addcart-link" href="#">Add to Cart</a>
+                                                                <a class="wishlist-link" href="#"><i aria-hidden="true" class="fa fa-heart"></i></a>
+                                                                <a class="compare-link" href="#"><i aria-hidden="true" class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>-->
+                <!-- End Item -->
 
-                                <?php
+                <?php
 //                            }
 //                        }
 //                        unset($_SESSION['yes_searched_records']);
