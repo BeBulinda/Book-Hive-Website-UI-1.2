@@ -131,7 +131,7 @@ header('Content-Type: text/html; charset=UTF-8');
             <!-- End of basic scripts -->
 
             <!--Notifications-->
-            <script src="web/js/noty/jquery-1.7.2.min.js"></script>
+            <!--<script src="web/js/noty/jquery-1.7.2.min.js"></script>-->
             <!-- noty -->
             <script type="text/javascript" src="web/js/noty/jquery.noty.packaged.js"></script>
             <script type="text/javascript" src="web/js/noty/notification_html.js"></script>
