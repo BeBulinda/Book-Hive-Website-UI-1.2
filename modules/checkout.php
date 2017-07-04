@@ -49,8 +49,10 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                     $_SESSION["unit_price"] = $item["price"];
                     $_SESSION["quantity"] = $item["quantity"];
 
-                    $book_details = $books->fetchBookDetails($item["id"]);
-                    $_SESSION['book_version'] = $book_details["print_type"];
+                    $_SESSION['book_details'] = $books->fetchBookDetails($item["id"]);
+                            
+//                    $book_details = $books->fetchBookDetails($item["id"]);
+//                    $_SESSION['book_version'] = $book_details["print_type"];
 
                     $transaction_details = $transactions->addTransactionDetails();
                 }
@@ -215,7 +217,7 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                                 </select>
                                             </p>
                                             <p>
-                                                <input type="text" name="company_name" placeholder="Company Name *" required=""/>
+                                                <input type="text" name="company_name" placeholder="Company Name *"/>
                                             </p>
                                             <p>
                                                 <input type="checkbox" name="create_account" value="Yes" /> <label for="remember">Create an account?</label>
