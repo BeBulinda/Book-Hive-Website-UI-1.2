@@ -3,20 +3,20 @@
 date_default_timezone_set("Africa/Nairobi");
 
 /** Mail Script * */
-require WPATH . "modules/phpmailer/PHPMailerAutoload.php";
-
-$mail = new PHPMailer;
-
-//$mail->SMTPDebug = 3;                               // Enable verbose debug output
-//$mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'mail.staqpesa.com;smtp.staqpesa.com';  // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'do@staqpesa.com';                 // SMTP username
-$mail->Password = '#do@1234';                           // SMTP password
-$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 465;                                    // TCP port to connect to
-
-$mail->setFrom('do@staqpesa.com', 'Staqpesa Information');
+//require WPATH . "modules/phpmailer/PHPMailerAutoload.php";
+//
+//$mail = new PHPMailer;
+//
+////$mail->SMTPDebug = 3;                               // Enable verbose debug output
+////$mail->isSMTP();                                      // Set mailer to use SMTP
+//$mail->Host = 'mail.staqpesa.com;smtp.staqpesa.com';  // Specify main and backup SMTP servers
+//$mail->SMTPAuth = true;                               // Enable SMTP authentication
+//$mail->Username = 'do@staqpesa.com';                 // SMTP username
+//$mail->Password = '#do@1234';                           // SMTP password
+//$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+//$mail->Port = 465;                                    // TCP port to connect to
+//
+//$mail->setFrom('do@staqpesa.com', 'Staqpesa Information');
 
 /** Mail Script END * */
 class Users extends Database {
@@ -489,44 +489,44 @@ class Users extends Database {
         $recipient = $_POST['email'];
         $names = $_POST['firstname'].", ".$_POST['firstname'];
         
-        $mail->addAddress($recipient, $names);     // Add a recipient
-        $mail->addAddress('bellarmine16@live.com');               // Name is optional
-        $mail->addAddress('bmugeni@reflexconcepts.co.ke');               // Name is optional
-        $mail->addAddress('eugean@reflexconcepts.co.ke');               // Name is optional
-        $mail->addReplyTo('do@staqpesa.com', 'Staqpesa Information');
-        $mail->addCC('help@reflexconecpts.co.ke');
-        $mail->isHTML(true);                                  // Set email format to HTML
-
-        $mail->Subject = 'Account Creation';
-        $mail->Body = "<html><body>"
-                . "<p><b>Hello " . $_POST['firstname'] . ",</b><br/>"
-                . "Thank you for signing up on Book Hive Kenya as the " . strtoupper($_SESSION['company_name']) . " administrator. Your login credentials are: <br/>"
-                . "<ul>"
-                . "<li><b>Username: </b>" . $_POST['email'] . "</li>"
-                . "<li><b>Password: </b>" . $_POST['lastname'] . "123" . "</li>"
-                . "</ul>"
-                . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
-                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
-                . "</body></html>";
-
-//        $sender = "hello@bookhivekenya.com";
-//        $headers = "From: Bookhive Kenya <$sender>\r\n";
-//        $headers .= "MIME-Version: 1.0\r\n";
-//        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-//        $subject = "Account Creation";
-//        $message = "<html><body>"
+//        $mail->addAddress($recipient, $names);     // Add a recipient
+//        $mail->addAddress('bellarmine16@live.com');               // Name is optional
+//        $mail->addAddress('bmugeni@reflexconcepts.co.ke');               // Name is optional
+//        $mail->addAddress('eugean@reflexconcepts.co.ke');               // Name is optional
+//        $mail->addReplyTo('do@staqpesa.com', 'Staqpesa Information');
+//        $mail->addCC('help@reflexconecpts.co.ke');
+//        $mail->isHTML(true);                                  // Set email format to HTML
+//
+//        $mail->Subject = 'Account Creation';
+//        $mail->Body = "<html><body>"
 //                . "<p><b>Hello " . $_POST['firstname'] . ",</b><br/>"
-//                . "Thank you for signing up on Book Hive Kenya. Your login credentials are: <br/>"
+//                . "Thank you for signing up on Book Hive Kenya as the " . strtoupper($_SESSION['company_name']) . " administrator. Your login credentials are: <br/>"
 //                . "<ul>"
 //                . "<li><b>Username: </b>" . $_POST['email'] . "</li>"
 //                . "<li><b>Password: </b>" . $_POST['lastname'] . "123" . "</li>"
 //                . "</ul>"
 //                . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
 //                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
-////                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
 //                . "</body></html>";
-//
-//        mail(strtoupper($_POST['email']), $subject, $message, $headers);
+
+        $sender = "hello@bookhivekenya.com";
+        $headers = "From: Bookhive Kenya <$sender>\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $subject = "Account Creation";
+        $message = "<html><body>"
+                . "<p><b>Hello " . $_POST['firstname'] . ",</b><br/>"
+                . "Thank you for signing up on Book Hive Kenya. Your login credentials are: <br/>"
+                . "<ul>"
+                . "<li><b>Username: </b>" . $_POST['email'] . "</li>"
+                . "<li><b>Password: </b>" . $_POST['lastname'] . "123" . "</li>"
+                . "</ul>"
+                . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
+                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
+//                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
+                . "</body></html>";
+
+        mail(strtoupper($_POST['email']), $subject, $message, $headers);
 
         return true;
     }

@@ -4,7 +4,9 @@ require_once WPATH . "modules/classes/Users.php";
 $users = new Users();
 $books = new Books();
 
-$previous_url = $_SERVER['HTTP_REFERER'];
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $previous_url = $_SERVER['HTTP_REFERER'];
+}
 if (!empty($_POST) AND $_POST['action'] == "add") {
     $productByCode = $books->fetchBookDetails($_POST["code"]);
     $itemArray = array($productByCode["id"] => array('id' => $productByCode["id"], 'title' => $productByCode["title"], 'price' => $productByCode["price"], 'quantity' => $_POST["quantity"]));

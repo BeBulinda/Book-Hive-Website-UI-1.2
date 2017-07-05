@@ -7,8 +7,9 @@ $books = new Books();
 $main_featured_book[] = $books->getMainFeaturedBook();
 $featured_books[] = $books->getAllFeaturedBooks();
 
-
-$previous_url = $_SERVER['HTTP_REFERER'];
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $previous_url = $_SERVER['HTTP_REFERER'];
+}
 if (!empty($_POST) AND $_POST['action'] == "add") {
     $productByCode = $books->fetchBookDetails($_POST["code"]);
     $itemArray = array($productByCode["id"] => array('id' => $productByCode["id"], 'title' => $productByCode["title"], 'price' => $productByCode["price"], 'quantity' => $_POST["quantity"]));
@@ -99,17 +100,17 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                             <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
                                             <div class="product-extra-link">
 
-                                                    <form role="form" method="post">
-                                                        <input type="hidden" name="action" value="add"/>
-                                                        <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
-                                                        <input type="hidden" name="quantity" value="1"/>
-                                                        <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
-                                                    </form>
+                                                <form role="form" method="post">
+                                                    <input type="hidden" name="action" value="add"/>
+                                                    <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
+                                                    <input type="hidden" name="quantity" value="1"/>
+                                                    <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                </form>
 
-<!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
-                                                </div>
+        <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                                                            <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                                            <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
+                                            </div>
                                         </div>
                                         <div class="product-info">
                                             <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
