@@ -239,7 +239,7 @@ if (!empty($_POST)) {
                                                     <input type="hidden" name="action" value="add"/>
                                                     <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
                                                     <input type="hidden" name="quantity" value="1"/>
-                                                    <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                    <input type="submit" class="addcart-link" value="Add to Cart" />
                                                 </form>
 
                                                 <!--                                                <a class="addcart-link" href="#">Add to Cart</a>

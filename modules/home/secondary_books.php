@@ -93,7 +93,7 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                                         <input type="hidden" name="action" value="add"/>
                                                         <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
                                                         <input type="hidden" name="quantity" value="1"/>
-                                                        <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                        <button type="submit" id="fancy_view" class="add-cart-front"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Add to Cart</button>
                                                     </form>
 
             <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
@@ -164,7 +164,7 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                                         <input type="hidden" name="action" value="add"/>
                                                         <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
                                                         <input type="hidden" name="quantity" value="1"/>
-                                                        <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                         <button type="submit" id="fancy_view" class="add-cart-front"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Add to Cart</button>
                                                     </form>
 
             <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
@@ -249,7 +249,7 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                                         <input type="hidden" name="action" value="add"/>
                                                         <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
                                                         <input type="hidden" name="quantity" value="1"/>
-                                                        <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                         <button type="submit" id="fancy_view" class="add-cart-front"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Add to Cart</button>
                                                     </form>
 
             <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
@@ -320,7 +320,7 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                                         <input type="hidden" name="action" value="add"/>
                                                         <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
                                                         <input type="hidden" name="quantity" value="1"/>
-                                                        <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                         <button type="submit" id="fancy_view" class="add-cart-front"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Add to Cart</button>
                                                     </form>
 
             <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
