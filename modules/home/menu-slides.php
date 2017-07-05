@@ -80,17 +80,17 @@ $special_books[] = $books->getAllSpecialBooks();
                     <div class="wrap-item" data-pagination="false" data-autoplay="true" data-navigation="true" data-itemscustom="[[0,1]]" data-transition="fade">
                         <div class="item-banner4">
                             <div class="banner-thumb">
-                                <a href="#"><img src="modules/images/carousel/1.png" height="400" width="950" alt=""/></a>
+                                <a href="http://localhost:8081/bookhive_v1.2_ui/?product-page&code=7"><img src="modules/images/carousel/1.png" height="400" width="950" alt=""/></a>
                             </div>
                         </div>
                         <div class="item-banner4">
                             <div class="banner-thumb">
-                                <a href="#"><img src="modules/images/carousel/2.png" height="400" width="950" alt=""/></a>
+                                <a href="http://localhost:8081/bookhive_v1.2_ui/?product-page&code=8"><img src="modules/images/carousel/2.png" height="400" width="950" alt=""/></a>
                             </div>
                         </div>
                         <div class="item-banner4">
                             <div class="banner-thumb">
-                                <a href="#"><img src="modules/images/carousel/3.png" height="400" width="950" alt=""/></a>
+                                <a href="http://localhost:8081/bookhive_v1.2_ui/?product-page&code=13"><img src="modules/images/carousel/3.png" height="400" width="950" alt=""/></a>
                             </div>
                         </div>
                     </div>
