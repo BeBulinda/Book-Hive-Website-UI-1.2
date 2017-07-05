@@ -14,8 +14,8 @@ class Transactions extends Database {
             return $this->verifyBook();
         }
     }
-    
-        private function verifyBook() {
+
+    private function verifyBook() {
 //        $sql = "SELECT * FROM book_codes WHERE publisher=:publisher AND number=:number AND status=:status";
         $sql = "SELECT * FROM book_codes WHERE publisher_name=:publisher_name AND code=:code";
         $stmt = $this->prepareQuery($sql);
@@ -48,140 +48,95 @@ class Transactions extends Database {
     }
 
     public function addTransaction() {
-        
-//        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-//        
-//        $sql = "INSERT INTO transactions (id, transaction_type, amount, transactedby, payment_option)"
-//                . " VALUES (:transaction_id, :transaction_type, :amount, :transactedby, :payment_option)";
-//        $stmt = $this->prepareQuery($sql);
-//        $stmt->bindValue("transaction_id", $_SESSION["transaction_id"]);
-//        $stmt->bindValue("transaction_type", 01);
-//        $stmt->bindValue("amount", $_SESSION["cart_total_cost"]);
-//        $stmt->bindValue("transactedby", $_SESSION["transactedby"]);
-//        $stmt->bindValue("payment_option", strtoupper($_SESSION['payment_option']));
-//        $stmt->execute();
-//
-//        //Add individual user
-//                $createdby = "WEBSITE USER";
-//        $individual_user_id = $this->getNextIndividualUserId();
-////        $user_type = "INDIVIDUAL USER";
-//        $user_type_ref_id = $this->getUserTypeRefId("INDIVIDUAL USER");
-//
-//        //individual details
-//        $sql = "INSERT INTO individual_users (firstname, lastname, gender, idnumber, createdby, lastmodifiedby)"
-//                . " VALUES (:firstname, :lastname, :gender, :idnumber, :createdby, :lastmodifiedby)";
-//        $stmt = $this->prepareQuery($sql);
-//        $stmt->bindValue("firstname", strtoupper($_POST['firstname']));
-//        $stmt->bindValue("lastname", strtoupper($_POST['lastname']));
-//        $stmt->bindValue("gender", strtoupper($_POST['gender']));
-//        $stmt->bindValue("idnumber", strtoupper($_POST['idnumber']));
-//        $stmt->bindValue("createdby", $createdby);
-//        $stmt->bindValue("lastmodifiedby", $createdby); //  echo $_SESSION['userid']);
-//        $stmt->execute();
-//
-//        //individual contact details
-//        $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, lastmodifiedby)"
-//                . " VALUES (:reference_type, :reference_id, :phone_number, :email, :lastmodifiedby)";
-//        $stmt = $this->prepareQuery($sql);
-//        $stmt->bindValue("reference_type", $user_type_ref_id);
-//        $stmt->bindValue("reference_id", $individual_user_id);
-//        $stmt->bindValue("phone_number", strtoupper($_POST['phone_number']));
-//        $stmt->bindValue("email", strtoupper($_POST['email']));
-//        $stmt->bindValue("lastmodifiedby", $createdby);
-//        $stmt->execute();
-//
-//        //User Login details
-//        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
-//                . " VALUES (:ref_type, :ref_id, :username, :password)";
-//
-//        $stmt_userlogs = $this->prepareQuery($sql_userlogs);
-//        $stmt_userlogs->bindValue("ref_type", strtoupper($user_type_ref_id));
-//        $stmt_userlogs->bindValue("ref_id", $individual_user_id);
-//        $stmt_userlogs->bindValue("username", strtoupper($_POST['email']));
-//        $stmt_userlogs->bindValue("password", sha1($_POST['lastname'] . "123"));
-//        $stmt_userlogs->execute();
-//
-//        $sender = "hello@bookhivekenya.com";
-//        $headers = "From: Bookhive Kenya <$sender>\r\n";
-//        $headers .= "MIME-Version: 1.0\r\n";
-//        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-//        $subject = "Account Creation";
-//        $message = "<html><body>"
-//                . "<p><b>Hello " . $_POST['firstname'] . ",</b><br/>"
-//                . "Thank you for signing up on Book Hive Kenya. Your login credentials are: <br/>"
-//                . "<ul>"
-//                . "<li><b>Username: </b>" . $_POST['email'] . "</li>"
-//                . "<li><b>Password: </b>" . $_POST['lastname'] . "123" . "</li>"
-//                . "</ul>"
-//                . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
-//                . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
-////                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
-//                . "</body></html>";
-//
-//        mail(strtoupper($_POST['email']), $subject, $message, $headers);
-//        
-//        
-//        ....................................................................................................................................................................
-//        
-//        
-        
-        
-        $createdby = "WEBSITE USER";
-        $users = new Users();
-        $individual_user_id = $users->getNextIndividualUserId();
-        $user_type = 'INDIVIDUAL USER';
-
-        //individual details
-        $sql = "INSERT INTO individual_users (firstname, lastname, gender, idnumber, createdby, lastmodifiedby)"
-                . " VALUES (:firstname, :lastname, :gender, :idnumber, :createdby, :lastmodifiedby)";
+        $sql = "INSERT INTO transactions (id, transaction_type, amount, buyer_type, buyer_id, payment_option)"
+                . " VALUES (:transaction_id, :transaction_type, :amount, :buyer_type, :buyer_id, :payment_option)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("firstname", strtoupper($_SESSION["billing_firstname"]));
-        $stmt->bindValue("lastname", strtoupper($_SESSION["billing_lastname"]));
-        $stmt->bindValue("gender", strtoupper($_SESSION["billing_gender"]));
-        $stmt->bindValue("idnumber", strtoupper($_SESSION["billing_id_passport_number"]));
-        $stmt->bindValue("createdby", $createdby);
-        $stmt->bindValue("lastmodifiedby", $createdby); //  echo $_SESSION['userid']);
+        $stmt->bindValue("transaction_id", $_SESSION["transaction_id"]);
+        $stmt->bindValue("transaction_type", 01);
+        $stmt->bindValue("amount", $_SESSION["cart_total_cost"]);
+        $stmt->bindValue("buyer_type", 5);
+        $stmt->bindValue("buyer_id", 20);
+        $stmt->bindValue("payment_option", strtoupper($_SESSION['payment_option']));
         $stmt->execute();
 
-        //individual contact details
-        $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, lastmodifiedby)"
-                . " VALUES (:reference_type, :reference_id, :phone_number, :email, :lastmodifiedby)";
-        $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("reference_type", strtoupper($user_type));
-        $stmt->bindValue("reference_id", $individual_user_id);
-        $stmt->bindValue("phone_number", strtoupper($_SESSION["billing_phone_number"]));
-        $stmt->bindValue("email", strtoupper($_SESSION["billing_email_address"]));
-        $stmt->bindValue("lastmodifiedby", $createdby);
-        $stmt->execute();
+        if (!App::isLoggedIn()) {
+            $users = new Users();
+            $username_check = $users->checkIfUsernameExists(strtoupper($_SESSION["billing_email_address"]));
+            $email_check = $users->checkIfUserEmailExists(strtoupper($_SESSION["billing_email_address"]));
 
-        //user login details
-        //        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password, lastmodifiedat, lastmodifiedby)"
-//                . " VALUES (:ref_type, :ref_id, :username, :password, :lastmodifiedat, :lastmodifiedby)";
-//
-//        $stmt_userlogs = $this->prepareQuery($sql_userlogs);
-//        $stmt_userlogs->bindValue("ref_type", strtoupper($_POST['user_type']));
-//        $stmt_userlogs->bindValue("ref_id", $user_id);
-//        $stmt_userlogs->bindValue("username", $_POST['firstname']);
-//        $stmt_userlogs->bindValue("password", sha1($_POST['lastname']));
-//        $stmt_userlogs->bindValue("lastmodifiedby", $_POST['createdby']); //  echo $_SESSION['userid']);
-//        $stmt_userlogs->bindValue("lastmodifiedat", date("Y-m-d H:i:s"));
-//        $stmt_userlogs->execute();
-//
-//        $this->addUserToRole(strtoupper($_POST['user_type']), $user_id);
-//        $this->addPrivilegesToUser(strtoupper($_POST['user_type']), $user_id);
+            if ($username_check == false && $email_check == false) {
+                //Add individual user
+                $createdby = "WEBSITE USER";
+                $individual_user_id = $users->getNextIndividualUserId();
+                $user_type_ref_id = $users->getUserTypeRefId("INDIVIDUAL USER");
 
+                //individual details
+                $sql = "INSERT INTO individual_users (firstname, lastname, gender, idnumber, createdby, lastmodifiedby)"
+                        . " VALUES (:firstname, :lastname, :gender, :idnumber, :createdby, :lastmodifiedby)";
+                $stmt = $this->prepareQuery($sql);
+                $stmt->bindValue("firstname", strtoupper($_SESSION["billing_firstname"]));
+                $stmt->bindValue("lastname", strtoupper($_SESSION["billing_lastname"]));
+                $stmt->bindValue("gender", strtoupper($_SESSION["billing_gender"]));
+                $stmt->bindValue("idnumber", strtoupper($_SESSION["billing_id_passport_number"]));
+                $stmt->bindValue("createdby", $createdby);
+                $stmt->bindValue("lastmodifiedby", $createdby); //  echo $_SESSION['userid']);
+                $stmt->execute();
+
+                //individual contact details
+                $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, lastmodifiedby)"
+                        . " VALUES (:reference_type, :reference_id, :phone_number, :email, :lastmodifiedby)";
+                $stmt = $this->prepareQuery($sql);
+                $stmt->bindValue("reference_type", $user_type_ref_id);
+                $stmt->bindValue("reference_id", $individual_user_id);
+                $stmt->bindValue("phone_number", strtoupper($_SESSION["billing_phone_number"]));
+                $stmt->bindValue("email", strtoupper($_SESSION["billing_email_address"]));
+                $stmt->bindValue("lastmodifiedby", $createdby);
+                $stmt->execute();
+
+                //User Login details
+                $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
+                        . " VALUES (:ref_type, :ref_id, :username, :password)";
+
+                $stmt_userlogs = $this->prepareQuery($sql_userlogs);
+                $stmt_userlogs->bindValue("ref_type", strtoupper($user_type_ref_id));
+                $stmt_userlogs->bindValue("ref_id", $individual_user_id);
+                $stmt_userlogs->bindValue("username", strtoupper($_SESSION["billing_email_address"]));
+                $stmt_userlogs->bindValue("password", sha1($_SESSION["billing_lastname"] . "123"));
+                $stmt_userlogs->execute();
+
+                $sender = "hello@bookhivekenya.com";
+                $headers = "From: Bookhive Kenya <$sender>\r\n";
+                $headers .= "MIME-Version: 1.0\r\n";
+                $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+                $subject = "Account Creation";
+                $message = "<html><body>"
+                        . "<p><b>Hello " . $_SESSION["billing_firstname"] . ",</b><br/>"
+                        . "Thank you for signing up on Book Hive Kenya. Your login credentials are: <br/>"
+                        . "<ul>"
+                        . "<li><b>Username: </b>" . $_SESSION["billing_email_address"] . "</li>"
+                        . "<li><b>Password: </b>" . $_SESSION["billing_lastname"] . "123" . "</li>"
+                        . "</ul>"
+                        . "Kindly contact us on +254 710 534013 for any assistance. <br/>"
+                        . "Visit <a href='http://www.bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
+//                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
+                        . "</body></html>";
+                mail(strtoupper($_SESSION["billing_email_address"]), $subject, $message, $headers);
+            }
+        }
         return true;
     }
 
     public function addTransactionDetails() {
-        $sql = "INSERT INTO transaction_details (transaction_id, book_id, quantity, unit_price, book_version)"
-                . " VALUES (:transaction_id, :book_id, :quantity, :unit_price, :book_version)";
+        $sql = "INSERT INTO transaction_details (transaction_id, book_id, quantity, unit_price, print_type, publisher_type, publisher)"
+                . " VALUES (:transaction_id, :book_id, :quantity, :unit_price, :print_type, :publisher_type, :publisher)";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindValue("transaction_id", $_SESSION["transaction_id"]);
         $stmt->bindValue("book_id", $_SESSION["book_id"]);
         $stmt->bindValue("quantity", $_SESSION["quantity"]);
         $stmt->bindValue("unit_price", $_SESSION['unit_price']);
-        $stmt->bindValue("book_version", $_SESSION['book_version']);
+        $stmt->bindValue("book_version", $_SESSION['book_details']['print_type']);
+        $stmt->bindValue("publisher_type", $_SESSION['book_details']['publisher_type']);
+        $stmt->bindValue("publisher", $_SESSION['book_details']['publisher']);
         $stmt->execute();
         return true;
     }

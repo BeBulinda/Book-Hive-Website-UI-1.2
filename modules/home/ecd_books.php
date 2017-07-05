@@ -3,6 +3,30 @@ require_once WPATH . "modules/classes/Books.php";
 require_once WPATH . "modules/classes/Users.php";
 $users = new Users();
 $books = new Books();
+
+$previous_url = $_SERVER['HTTP_REFERER'];
+if (!empty($_POST) AND $_POST['action'] == "add") {
+    $productByCode = $books->fetchBookDetails($_POST["code"]);
+    $itemArray = array($productByCode["id"] => array('id' => $productByCode["id"], 'title' => $productByCode["title"], 'price' => $productByCode["price"], 'quantity' => $_POST["quantity"]));
+
+    if (!empty($_SESSION["cart_item"])) {
+        if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
+            foreach ($_SESSION["cart_item"] as $k => $v) {
+                if ($productByCode["id"] == $v['id']) {
+                    if (empty($_SESSION["cart_item"][$k]["quantity"])) {
+                        $_SESSION["cart_item"][$k]["quantity"] = 0;
+                    }
+                    $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+                }
+            }
+        } else {
+            $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
+        }
+    } else {
+        $_SESSION["cart_item"] = $itemArray;
+    }
+    App::redirectTo("{$previous_url}");
+}
 ?>
 
 <div class="flagship-store">
@@ -64,9 +88,16 @@ $books = new Books();
                                                 </a>
                                                 <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
                                                 <div class="product-extra-link">
-                                                    <a href="#" class="addcart-link" title="Add to Cart"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+
+                                                    <form role="form" method="post">
+                                                        <input type="hidden" name="action" value="add"/>
+                                                        <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
+                                                        <input type="hidden" name="quantity" value="1"/>
+                                                        <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                    </form>
+            <!--                                                    <a href="#" class="addcart-link" title="Add to Cart"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                                     <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -126,11 +157,19 @@ $books = new Books();
                                                     <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
                                                 </a>
                                                 <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
-<!--                                                <div class="product-extra-link">
-                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                                </div>-->
+                                                <div class="product-extra-link">
+
+                                                    <form role="form" method="post">
+                                                        <input type="hidden" name="action" value="add"/>
+                                                        <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
+                                                        <input type="hidden" name="quantity" value="1"/>
+                                                        <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                    </form>
+
+                        <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                                                                            <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                                                            <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
+                                                </div>
                                             </div>
                                             <div class="product-info">
                                                 <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
@@ -203,11 +242,19 @@ $books = new Books();
                                                     <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
                                                 </a>
                                                 <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
-<!--                                                <div class="product-extra-link">
-                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                                </div>-->
+                                                <div class="product-extra-link">
+
+                                                    <form role="form" method="post">
+                                                        <input type="hidden" name="action" value="add"/>
+                                                        <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
+                                                        <input type="hidden" name="quantity" value="1"/>
+                                                        <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                    </form>
+
+            <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+            <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
+            <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
+                                                </div>
                                             </div>
                                             <div class="product-info">
                                                 <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>
@@ -266,11 +313,19 @@ $books = new Books();
                                                     <img src="<?php echo $location . $value2['cover_photo']; ?>" height="250" alt="<?php echo $value2['title'] . " COVER PHOTO"; ?>"/>
                                                 </a>
                                                 <a href="?quick-view&code=<?php echo $value2['id']; ?>" class="quickview-link plus fancybox.iframe">quick view</a>
-<!--                                                <div class="product-extra-link">
-                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                                                <div class="product-extra-link">
+
+                                                    <form role="form" method="post">
+                                                        <input type="hidden" name="action" value="add"/>
+                                                        <input type="hidden" name="code" value="<?php echo $value2['id']; ?>"/>
+                                                        <input type="hidden" name="quantity" value="1"/>
+                                                        <input type="submit" id="fancy_view" class="btn btn-secondary btn-success addcart" value="Add to Cart" />
+                                                    </form>
+
+<!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                                                     <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                                </div>-->
+                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
+                                                </div>
                                             </div>
                                             <div class="product-info">
                                                 <h3 class="product-title"><a href="?product-page&code=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h3>

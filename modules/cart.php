@@ -9,12 +9,13 @@ $system_administration = new System_Administration();
 $users = new Users();
 $books = new Books();
 
+$previous_url = $_SERVER['HTTP_REFERER'];
 if (!empty($_GET["cart_action"])) {
     switch ($_GET["cart_action"]) {
         case "remove":
             if (!empty($_SESSION["cart_item"])) {
                 foreach ($_SESSION["cart_item"] as $k => $v) {
-                    if ($_GET["code"] == $k)
+                    if ($_GET["code"] == $v['id'])
                         unset($_SESSION["cart_item"][$k]);
                     if (empty($_SESSION["cart_item"]))
                         unset($_SESSION["cart_item"]);
@@ -26,6 +27,7 @@ if (!empty($_GET["cart_action"])) {
             unset($_SESSION["item_total"]);
             break;
     }
+    App::redirectTo("{$previous_url}");
 }
 
 require_once "core/template/header.php";
@@ -38,7 +40,6 @@ if (isset($_SESSION["cart_number_of_items"]) AND $_SESSION["cart_number_of_items
     </div>
     <?php
 }
-
 ?>
 
 <div class="container">
@@ -158,7 +159,7 @@ if (isset($_SESSION["cart_number_of_items"]) AND $_SESSION["cart_number_of_items
                     <a style="float: right;" class=" go-button" href="?checkout">Proceed to Checkout</a>
                 </div>
                 <div class="wc-proceed-to-checkout">
-                    
+
                 </div>
             </div>
         </div>

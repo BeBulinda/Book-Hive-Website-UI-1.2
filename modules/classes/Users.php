@@ -78,6 +78,32 @@ class Users extends Database {
             return $this->addPrivilegeToRole();
         }
     }
+    
+    public function checkIfUsernameExists($email) {
+        $sql = "SELECT * FROM user_logs WHERE username=:email";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("email", $email);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (count($data) == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function checkIfUserEmailExists($email) {
+        $sql = "SELECT * FROM contacts WHERE email=:email";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("email", $email);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (count($data) == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     private function loginSystem() {
         $sql = "SELECT * FROM user_logs WHERE username=:username AND password=:password OR password=:pass";

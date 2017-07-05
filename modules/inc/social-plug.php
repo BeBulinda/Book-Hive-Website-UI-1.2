@@ -1,8 +1,8 @@
 <div class="detail-social">
     <ul class="list-social-detail list-inline-block">
-        <li><a href="#" class="soci-fa soc-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-        <li><a href="#" class="soci-fa soc-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-        <li><a href="#" class="soci-fa soc-print"><i class="fa fa-print" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.facebook.com/Bookhive-Kenya-1069281896550015/" class="soci-fa soc-facebook" target="_blank" title="Like us on Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a href="https://twitter.com/bookhivekenya" class="soci-fa soc-twitter" target="_blank" title="Follow us on Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.instagram.com/bookhivekenya/" class="soci-fa soc-print" target="_blank" title="Check us out on Instagram"><i class="fa fa-print" aria-hidden="true"></i></a></li>
     </ul>
 </div>
 
