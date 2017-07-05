@@ -39,7 +39,6 @@ if (!empty($_POST)) {
 //    require_once 'modules/noty/registration-false.php';
 //    unset($_SESSION['added_book_seller']);
 //}
-
 ?>
 
 <div id="content">
@@ -81,20 +80,28 @@ if (!empty($_POST)) {
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-12">
                                 <label class="control-label" for="county">County<sup>*</sup></label>
-                                <select class="form-magic" name="county">
-                                    <?php echo $system_administration->getCounties(); ?>
+                                <select class="county form-magic" id="country-list" name="county" onChange="getState(this.value);">
+                                    <?php // echo $system_administration->getCounties();   ?>
+                                    <option value="">Select County</option>
+                                    <?php
+                                    foreach ($results as $county) {
+                                        ?>
+                                        <option value="<?php echo $county["id"]; ?>"><?php echo $county["name"]; ?></option>
+                                        <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-12">
                                 <label class="control-label" for="sub_county">Sub-County<sup>*</sup></label>
-                                <select class="form-magic" name="sub_county">
-                                    <?php echo $system_administration->getSubCounties(); ?>
+                                <select class="form-magic" name="sub_county" id="county-list" onChange="getLocation(this.value);">
+                                    <?php //echo $system_administration->getSubCounties();  ?>
                                 </select>
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-12">
                                 <label class="control-label" for="location">Location<sup>*</sup></label>
-                                <select class="form-magic" name="location">
-                                    <?php echo $system_administration->getLocations(); ?>
+                                <select class="form-magic" name="location"id="location-list">
+                                    <?php //echo $system_administration->getLocations();  ?>
                                 </select>
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-12">

@@ -2,6 +2,12 @@
 // Before anything is sent, set the appropriate header
 header('Content-Type: text/html; charset=UTF-8');
 ?>
+<?php
+require_once("dbcontroller.php");
+$db_handle = new DBController();
+$query = "SELECT * FROM counties";
+$results = $db_handle->runQuery($query);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,7 +38,31 @@ header('Content-Type: text/html; charset=UTF-8');
         <link rel="stylesheet" type="text/css" href="web/css/responsive.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="web/css/browser.css" media="all"/>
         <!-- <link rel="stylesheet" type="text/css" href="web/css/rtl.css" media="all"/> -->
-
+        <!--Listing FILTER-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+        <script>
+            function getState(val) {
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8081/bookhive_v1.0_api/core/template/get_state.php",
+                    data: 'county_id=' + val,
+                    success: function (data) {
+                        $("#county-list").html(data);
+                    }
+                });
+            }
+            function getLocation(val) {
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8081/bookhive_v1.0_api/core/template/get_location.php",
+                    data: 'location_id=' + val,
+                    success: function (data) {
+                        $("#location-list").html(data);
+                    }
+                });
+            }
+        </script>
+        <!--Listing FILTER END-->
         <?php
         /*         * *
          * This section specifies the page header
