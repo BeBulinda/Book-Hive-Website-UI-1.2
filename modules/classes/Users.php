@@ -78,7 +78,7 @@ class Users extends Database {
             return $this->addPrivilegeToRole();
         }
     }
-    
+
     public function checkIfUsernameExists($email) {
         $sql = "SELECT * FROM user_logs WHERE username=:email";
         $stmt = $this->prepareQuery($sql);
@@ -117,20 +117,99 @@ class Users extends Database {
             $_SESSION['login_error'] = true;
             return false;
         } else {
+//            $data = $data[0];
+//            $_SESSION['userid'] = App::cleanText($data['id']);
+//            $_SESSION['login_user_type'] = $data['reference_type'];
+//            $_SESSION['login_user_reference_id'] = $data['reference_id'];
+//            $_SESSION['username'] = App::cleanText($data['id']);
+//            $_SESSION['user'] = $_POST['username'];
+//
+//            $sql2 = "UPDATE user_logs SET lastlogin=:login_time WHERE id=:user_ref";
+//            $stmt2 = $this->prepareQuery($sql2);
+//            $stmt2->bindValue("user_ref", $data['id']);
+//            $stmt2->bindValue("login_time", date("Y-m-d H:i:s"));
+//            $stmt2->execute();
+//
+//            $_SESSION['username'] = App::cleanText($data['username']);
+
+
             $data = $data[0];
-            $_SESSION['userid'] = App::cleanText($data['id']);
-            $_SESSION['login_user_type'] = $data['ref_type'];
-            $_SESSION['login_user_ref_id'] = $data['ref_id'];
-            $_SESSION['username'] = App::cleanText($data['id']);
-            $_SESSION['user'] = $_POST['username'];
+            $_SESSION['userid'] = App::cleanText($data['reference_id']);
+            $_SESSION['login_user_type'] = $data['reference_type'];
+            $_SESSION['logged_in_user_type_details'] = $this->fetchUserTypeDetails($_SESSION['login_user_type']);
+            $_SESSION['logged_in_user_details'] = $this->fetchLoggedInUserDetails($data['id']);
 
-            $sql2 = "UPDATE user_logs SET lastlogin=:login_time WHERE id=:user_ref";
-            $stmt2 = $this->prepareQuery($sql2);
-            $stmt2->bindValue("user_ref", $data['id']);
-            $stmt2->bindValue("login_time", date("Y-m-d H:i:s"));
-            $stmt2->execute();
+            if ($_SESSION['logged_in_user_type_details']['name'] == "STAFF") {
+                $_SESSION['user_details'] = $this->fetchStaffDetails($_SESSION['userid']);
+                $_SESSION['profile_link'] = "?view_staff_individual&code=" . $_SESSION['userid'];
+                $_SESSION['contacts'] = $this->fetchIndividualContactDetails($_SESSION['login_user_type'], $_SESSION['userid']);
 
-            $_SESSION['username'] = App::cleanText($data['username']);
+                if ($_SESSION['user_details']['reference_type'] == $this->getUserTypeRefId("BOOKHIVE")) {
+                    $_SESSION['bookhive_staff'] = true;
+                } else if ($_SESSION['user_details']['reference_type'] == $this->getUserTypeRefId("PUBLISHER")) {
+                    $_SESSION['publisher_staff'] = true;
+                    $_SESSION['institution_details'] = $this->fetchPublisherDetails($_SESSION['user_details']['reference_id']);
+                } else if ($_SESSION['user_details']['reference_type'] == $this->getUserTypeRefId("BOOK SELLER")) {
+                    $_SESSION['book_seller_staff'] = true;
+                    $_SESSION['institution_details'] = $this->fetchPublisherDetails($_SESSION['user_details']['reference_id']);
+                }
+            } else if ($_SESSION['logged_in_user_type_details']['name'] == "PUBLISHER") {
+//                $_SESSION['user_details'] = $this->fetchSystemAdministratorDetails($_SESSION['userid']);
+                $_SESSION['user_details'] = $this->fetchSystemAdministratorDetails2($_SESSION['logged_in_user_details']['reference_type'], $_SESSION['logged_in_user_details']['reference_id']);
+                $_SESSION['profile_link'] = "?view_system_administrators_individual&code=" . $_SESSION['userid'];
+                $_SESSION['institution_details'] = $this->fetchPublisherDetails($_SESSION['userid']);
+                $_SESSION['institution_link'] = "?view_publishers_individual&code=" . $_SESSION['userid'];
+                $_SESSION['contacts'] = $this->fetchIndividualContactDetails($_SESSION['login_user_type'], $_SESSION['userid']);
+            } else if ($_SESSION['logged_in_user_type_details']['name'] == "SELF PUBLISHER") {
+                $_SESSION['user_details'] = $this->fetchSelfPublisherDetails($_SESSION['userid']);
+                $_SESSION['profile_link'] = "?view_self_publishers_individual&code=" . $_SESSION['userid'];
+                $_SESSION['contacts'] = $this->fetchIndividualContactDetails($_SESSION['login_user_type'], $_SESSION['userid']);
+            } else if ($_SESSION['logged_in_user_type_details']['name'] == "BOOK SELLER") {
+                $_SESSION['user_details'] = $this->fetchSystemAdministratorDetails2($_SESSION['logged_in_user_details']['reference_type'], $_SESSION['logged_in_user_details']['reference_id']);
+                $_SESSION['profile_link'] = "?view_system_administrators_individual&code=" . $_SESSION['userid'];
+                $_SESSION['contacts'] = $this->fetchIndividualContactDetails($_SESSION['login_user_type'], $_SESSION['userid']);
+            } else if ($_SESSION['logged_in_user_type_details']['name'] == "INDIVIDUAL USER") {
+                $_SESSION['user_details'] = $this->fetchSystemAdministratorDetails($_SESSION['userid']);
+                $_SESSION['profile_link'] = "?view_system_administrators_individual&code=" . $_SESSION['userid'];
+                $_SESSION['contacts'] = $this->fetchIndividualContactDetails($_SESSION['login_user_type'], $_SESSION['userid']);
+            } else if ($_SESSION['logged_in_user_type_details']['name'] == "CORPORATE") {
+                $_SESSION['user_details'] = $this->fetchSystemAdministratorDetails2($_SESSION['logged_in_user_details']['reference_type'], $_SESSION['logged_in_user_details']['reference_id']);
+                $_SESSION['profile_link'] = "?view_system_administrators_individual&code=" . $_SESSION['userid'];
+                $_SESSION['contacts'] = $this->fetchIndividualContactDetails($_SESSION['login_user_type'], $_SESSION['userid']);
+            } else if ($_SESSION['logged_in_user_type_details']['name'] == "SCHOOL") {
+                $_SESSION['user_details'] = $this->fetchSystemAdministratorDetails2($_SESSION['logged_in_user_details']['reference_type'], $_SESSION['logged_in_user_details']['reference_id']);
+                $_SESSION['profile_link'] = "?view_system_administrators_individual&code=" . $_SESSION['userid'];
+                $_SESSION['contacts'] = $this->fetchIndividualContactDetails($_SESSION['login_user_type'], $_SESSION['userid']);
+            } else if ($_SESSION['logged_in_user_type_details']['name'] == "BOOKHIVE") {
+                $_SESSION['user_details'] = $this->fetchSystemAdministratorDetails2($_SESSION['logged_in_user_details']['reference_type'], $_SESSION['logged_in_user_details']['reference_id']);
+                $_SESSION['profile_link'] = "?view_system_administrators_individual&code=" . $_SESSION['userid'];
+                $_SESSION['contacts'] = $this->fetchIndividualContactDetails($_SESSION['login_user_type'], $_SESSION['userid']);
+            }
+
+
+
+//            if ($user_type_details['name'] == "STAFF") {
+//                $user_details = $users->fetchStaffMemberDetails($_SESSION['login_user_reference_id']);
+//                $contact_details = $users->fetchContactDetails("STAFF", $_SESSION['login_user_reference_id']);
+//            } else if ($user_type_details['name'] == "PUBLISHER") {
+//                $user_details = $users->fetchSystemAdministratorDetails($_SESSION['login_user_reference_id']);
+//                $contact_details = $users->fetchContactDetails("PUBLISHER", $_SESSION['login_user_reference_id']);
+//            } else if ($user_type_details['name'] == "BOOK SELLER") {
+//                $user_details = $users->fetchSystemAdministratorDetails($_SESSION['login_user_reference_id']);
+//                $contact_details = $users->fetchContactDetails("BOOK SELLER", $_SESSION['login_user_reference_id']);
+//            } else if ($user_type_details['name'] == "INDIVIDUAL USER") {
+//                $user_details = $users->fetchIndividualUserDetails($_SESSION['login_user_reference_id']);
+//                $contact_details = $users->fetchContactDetails(5, $_SESSION['login_user_reference_id']);
+//            } else if ($user_type_details['name'] == "CORPORATE") {
+//                $user_details = $users->fetchSystemAdministratorDetails($_SESSION['login_user_reference_id']);
+//                $contact_details = $users->fetchContactDetails("CORPORATE", $_SESSION['login_user_reference_id']);
+//            } else if ($user_type_details['name'] == "GUEST USER") {
+//                $user_details = $users->fetchGuestUserDetails($_SESSION['login_user_reference_id']);
+//                $contact_details = $users->fetchContactDetails("GUEST USER", $_SESSION['login_user_reference_id']);
+//            }
+
+
+
             return true;
         }
     }
@@ -155,6 +234,35 @@ class Users extends Database {
 
     public function fetchSystemAdministratorDetails($code) {
         $sql = "SELECT * FROM system_administrators WHERE id=:code";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("code", $code);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $info[0];
+    }
+
+    public function fetchSystemAdministratorDetails2($reference_type, $reference_id) {
+        $sql = "SELECT * FROM system_administrators WHERE reference_type=:reference_type AND reference_id=:reference_id";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("reference_type", $reference_type);
+        $stmt->bindParam("reference_id", $reference_id);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $info[0];
+    }
+
+    public function fetchIndividualContactDetails($reference_type, $reference_id) {
+        $sql = "SELECT * FROM contacts WHERE reference_type=:reference_type AND reference_id=:reference_id";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("reference_type", $reference_type);
+        $stmt->bindParam("reference_id", $reference_id);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $info[0];
+    }
+
+    public function fetchStaffDetails($code) {
+        $sql = "SELECT * FROM staff WHERE id=:code";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindParam("code", $code);
         $stmt->execute();
@@ -192,7 +300,7 @@ class Users extends Database {
     private function addCorporate() {
         $createdby = "WEBSITE USER";
         $seller_id = $this->getNextCorporateId();
-        $user_type_ref_id = $this->getUserTypeRefId("CORPORATE");
+        $user_type_reference_id = $this->getUserTypeRefId("CORPORATE");
 
         //corporate details
         $sql = "INSERT INTO corporates (company_name, description, logo, createdby, lastmodifiedby)"
@@ -209,7 +317,7 @@ class Users extends Database {
         $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, website, postal_number, postal_code, town, county, sub_county, location, lastmodifiedby)"
                 . " VALUES (:reference_type, :reference_id, :phone_number, :email, :website, :postal_number, :postal_code, :town, :county, :sub_county, :location, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("reference_type", $user_type_ref_id);
+        $stmt->bindValue("reference_type", $user_type_reference_id);
         $stmt->bindValue("reference_id", $seller_id);
         $stmt->bindValue("phone_number", strtoupper($_SESSION['phone_number']));
         $stmt->bindValue("email", strtoupper($_SESSION['email']));
@@ -227,7 +335,7 @@ class Users extends Database {
         $sql = "INSERT INTO system_administrators (level, reference_id, firstname, lastname, idnumber, phone_number, email, createdby, lastmodifiedby)"
                 . " VALUES (:level, :reference_id, :firstname, :lastname, :idnumber, :phone_number, :email, :createdby, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("level", $user_type_ref_id);
+        $stmt->bindValue("level", $user_type_reference_id);
         $stmt->bindValue("reference_id", $seller_id);
         $stmt->bindValue("firstname", strtoupper($_SESSION['admin_firstname']));
         $stmt->bindValue("lastname", strtoupper($_SESSION['admin_lastname']));
@@ -239,12 +347,12 @@ class Users extends Database {
         $stmt->execute();
 
         //User Login details
-        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
-                . " VALUES (:ref_type, :ref_id, :username, :password)";
+        $sql_userlogs = "INSERT INTO user_logs (reference_type, reference_id, username, password)"
+                . " VALUES (:reference_type, :reference_id, :username, :password)";
 
         $stmt_userlogs = $this->prepareQuery($sql_userlogs);
-        $stmt_userlogs->bindValue("ref_type", $user_type_ref_id);
-        $stmt_userlogs->bindValue("ref_id", $seller_id);
+        $stmt_userlogs->bindValue("reference_type", $user_type_reference_id);
+        $stmt_userlogs->bindValue("reference_id", $seller_id);
         $stmt_userlogs->bindValue("username", strtoupper($_SESSION['admin_email']));
         $stmt_userlogs->bindValue("password", sha1($_SESSION['admin_lastname'] . "123"));
         $stmt_userlogs->execute();
@@ -274,7 +382,7 @@ class Users extends Database {
     private function addSchool() {
         $createdby = "WEBSITE USER";
         $school_id = $this->getNextSchoolId();
-        $user_type_ref_id = $this->getUserTypeRefId("SCHOOL");
+        $user_type_reference_id = $this->getUserTypeRefId("SCHOOL");
 
         //corporate details
         $sql = "INSERT INTO schools (school_name, school_type, description, logo, createdby, lastmodifiedby)"
@@ -292,7 +400,7 @@ class Users extends Database {
         $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, website, postal_number, postal_code, town, county, sub_county, location, lastmodifiedby)"
                 . " VALUES (:reference_type, :reference_id, :phone_number, :email, :website, :postal_number, :postal_code, :town, :county, :sub_county, :location, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("reference_type", $user_type_ref_id);
+        $stmt->bindValue("reference_type", $user_type_reference_id);
         $stmt->bindValue("reference_id", $school_id);
         $stmt->bindValue("phone_number", strtoupper($_SESSION['phone_number']));
         $stmt->bindValue("email", strtoupper($_SESSION['email']));
@@ -310,7 +418,7 @@ class Users extends Database {
         $sql = "INSERT INTO system_administrators (level, reference_id, firstname, lastname, idnumber, phone_number, email, createdby, lastmodifiedby)"
                 . " VALUES (:level, :reference_id, :firstname, :lastname, :idnumber, :phone_number, :email, :createdby, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("level", $user_type_ref_id);
+        $stmt->bindValue("level", $user_type_reference_id);
         $stmt->bindValue("reference_id", $school_id);
         $stmt->bindValue("firstname", strtoupper($_SESSION['admin_firstname']));
         $stmt->bindValue("lastname", strtoupper($_SESSION['admin_lastname']));
@@ -322,12 +430,12 @@ class Users extends Database {
         $stmt->execute();
 
         //User Login details
-        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
-                . " VALUES (:ref_type, :ref_id, :username, :password)";
+        $sql_userlogs = "INSERT INTO user_logs (reference_type, reference_id, username, password)"
+                . " VALUES (:reference_type, :reference_id, :username, :password)";
 
         $stmt_userlogs = $this->prepareQuery($sql_userlogs);
-        $stmt_userlogs->bindValue("ref_type", $user_type_ref_id);
-        $stmt_userlogs->bindValue("ref_id", $school_id);
+        $stmt_userlogs->bindValue("reference_type", $user_type_reference_id);
+        $stmt_userlogs->bindValue("reference_id", $school_id);
         $stmt_userlogs->bindValue("username", strtoupper($_SESSION['admin_email']));
         $stmt_userlogs->bindValue("password", sha1($_SESSION['admin_lastname'] . "123"));
         $stmt_userlogs->execute();
@@ -357,7 +465,7 @@ class Users extends Database {
     private function addBookSeller() {
         $createdby = "WEBSITE USER";
         $seller_id = $this->getNextBookSellerId();
-        $user_type_ref_id = $this->getUserTypeRefId($_SESSION['user_type']);
+        $user_type_reference_id = $this->getUserTypeRefId($_SESSION['user_type']);
 
         //book seller details
         $sql = "INSERT INTO book_sellers (company_name, company_pin, description, createdby, lastmodifiedby)"
@@ -374,7 +482,7 @@ class Users extends Database {
         $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, postal_number, postal_code, town, county, sub_county, location, landmark_feature, lastmodifiedby)"
                 . " VALUES (:reference_type, :reference_id, :phone_number, :email, :postal_number, :postal_code, :town, :county, :sub_county, :location, :landmark_feature, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("reference_type", $user_type_ref_id);
+        $stmt->bindValue("reference_type", $user_type_reference_id);
         $stmt->bindValue("reference_id", $seller_id);
         $stmt->bindValue("phone_number", strtoupper($_SESSION['phone_number']));
         $stmt->bindValue("email", strtoupper($_SESSION['email']));
@@ -392,7 +500,7 @@ class Users extends Database {
         $sql = "INSERT INTO system_administrators (level, reference_id, firstname, lastname, idnumber, phone_number, email, createdby, lastmodifiedby)"
                 . " VALUES (:level, :reference_id, :firstname, :lastname, :idnumber, :phone_number, :email, :createdby, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("level", $user_type_ref_id);
+        $stmt->bindValue("level", $user_type_reference_id);
         $stmt->bindValue("reference_id", $seller_id);
         $stmt->bindValue("firstname", strtoupper($_SESSION['admin_firstname']));
         $stmt->bindValue("lastname", strtoupper($_SESSION['admin_lastname']));
@@ -404,12 +512,12 @@ class Users extends Database {
         $stmt->execute();
 
         //User Login details
-        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
-                . " VALUES (:ref_type, :ref_id, :username, :password)";
+        $sql_userlogs = "INSERT INTO user_logs (reference_type, reference_id, username, password)"
+                . " VALUES (:reference_type, :reference_id, :username, :password)";
 
         $stmt_userlogs = $this->prepareQuery($sql_userlogs);
-        $stmt_userlogs->bindValue("ref_type", $user_type_ref_id);
-        $stmt_userlogs->bindValue("ref_id", $seller_id);
+        $stmt_userlogs->bindValue("reference_type", $user_type_reference_id);
+        $stmt_userlogs->bindValue("reference_id", $seller_id);
         $stmt_userlogs->bindValue("username", strtoupper($_SESSION['admin_email']));
         $stmt_userlogs->bindValue("password", sha1($_SESSION['admin_lastname'] . "123"));
         $stmt_userlogs->execute();
@@ -450,7 +558,7 @@ class Users extends Database {
         $createdby = "WEBSITE USER";
         $individual_user_id = $this->getNextIndividualUserId();
 //        $user_type = "INDIVIDUAL USER";
-        $user_type_ref_id = $this->getUserTypeRefId("INDIVIDUAL USER");
+        $user_type_reference_id = $this->getUserTypeRefId("INDIVIDUAL USER");
 
         //individual details
         $sql = "INSERT INTO individual_users (firstname, lastname, gender, idnumber, createdby, lastmodifiedby)"
@@ -468,7 +576,7 @@ class Users extends Database {
         $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, lastmodifiedby)"
                 . " VALUES (:reference_type, :reference_id, :phone_number, :email, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("reference_type", $user_type_ref_id);
+        $stmt->bindValue("reference_type", $user_type_reference_id);
         $stmt->bindValue("reference_id", $individual_user_id);
         $stmt->bindValue("phone_number", strtoupper($_POST['phone_number']));
         $stmt->bindValue("email", strtoupper($_POST['email']));
@@ -476,19 +584,19 @@ class Users extends Database {
         $stmt->execute();
 
         //User Login details
-        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
-                . " VALUES (:ref_type, :ref_id, :username, :password)";
+        $sql_userlogs = "INSERT INTO user_logs (reference_type, reference_id, username, password)"
+                . " VALUES (:reference_type, :reference_id, :username, :password)";
 
         $stmt_userlogs = $this->prepareQuery($sql_userlogs);
-        $stmt_userlogs->bindValue("ref_type", strtoupper($user_type_ref_id));
-        $stmt_userlogs->bindValue("ref_id", $individual_user_id);
+        $stmt_userlogs->bindValue("reference_type", strtoupper($user_type_reference_id));
+        $stmt_userlogs->bindValue("reference_id", $individual_user_id);
         $stmt_userlogs->bindValue("username", strtoupper($_POST['email']));
         $stmt_userlogs->bindValue("password", sha1($_POST['lastname'] . "123"));
         $stmt_userlogs->execute();
-        
+
         $recipient = $_POST['email'];
-        $names = $_POST['firstname'].", ".$_POST['firstname'];
-        
+        $names = $_POST['firstname'] . ", " . $_POST['firstname'];
+
 //        $mail->addAddress($recipient, $names);     // Add a recipient
 //        $mail->addAddress('bellarmine16@live.com');               // Name is optional
 //        $mail->addAddress('bmugeni@reflexconcepts.co.ke');               // Name is optional
@@ -534,7 +642,7 @@ class Users extends Database {
     private function addSelfPublisher() {
         $createdby = "WEBSITE USER";
         $individual_user_id = $this->getNextSelfPublisherId();
-        $user_type_ref_id = $this->getUserTypeRefId("SELF PUBLISHER");
+        $user_type_reference_id = $this->getUserTypeRefId("SELF PUBLISHER");
 
         //individual details
         $sql = "INSERT INTO self_publishers (firstname, lastname, gender, idnumber, description, createdby, lastmodifiedby)"
@@ -553,7 +661,7 @@ class Users extends Database {
         $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, lastmodifiedby)"
                 . " VALUES (:reference_type, :reference_id, :phone_number, :email, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("reference_type", $user_type_ref_id);
+        $stmt->bindValue("reference_type", $user_type_reference_id);
         $stmt->bindValue("reference_id", $individual_user_id);
         $stmt->bindValue("phone_number", strtoupper($_POST['phone_number']));
         $stmt->bindValue("email", strtoupper($_POST['email']));
@@ -561,12 +669,12 @@ class Users extends Database {
         $stmt->execute();
 
         //User Login details
-        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
-                . " VALUES (:ref_type, :ref_id, :username, :password)";
+        $sql_userlogs = "INSERT INTO user_logs (reference_type, reference_id, username, password)"
+                . " VALUES (:reference_type, :reference_id, :username, :password)";
 
         $stmt_userlogs = $this->prepareQuery($sql_userlogs);
-        $stmt_userlogs->bindValue("ref_type", $user_type_ref_id);
-        $stmt_userlogs->bindValue("ref_id", $individual_user_id);
+        $stmt_userlogs->bindValue("reference_type", $user_type_reference_id);
+        $stmt_userlogs->bindValue("reference_id", $individual_user_id);
         $stmt_userlogs->bindValue("username", strtoupper($_POST['email']));
         $stmt_userlogs->bindValue("password", sha1($_POST['lastname'] . "123"));
         $stmt_userlogs->execute();
@@ -777,7 +885,7 @@ class Users extends Database {
     private function addPublisher() {
         $createdby = $_SESSION['createdby'];
         $publisher_id = $this->getNextPublisherId();
-        $user_type_ref_id = $this->getUserTypeRefId($_SESSION['user_type']);
+        $user_type_reference_id = $this->getUserTypeRefId($_SESSION['user_type']);
 
         //publisher details
         $sql = "INSERT INTO publishers (company_name, createdby, lastmodifiedby)"
@@ -792,7 +900,7 @@ class Users extends Database {
         $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, postal_number, postal_code, town, county, sub_county, location, landmark_feature, lastmodifiedby)"
                 . " VALUES (:reference_type, :reference_id, :phone_number, :email, :postal_number, :postal_code, :town, :county, :sub_county, :location, :landmark_feature, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("reference_type", $user_type_ref_id);
+        $stmt->bindValue("reference_type", $user_type_reference_id);
         $stmt->bindValue("reference_id", $publisher_id);
         $stmt->bindValue("phone_number", strtoupper($_SESSION['phone_number']));
         $stmt->bindValue("email", strtoupper($_SESSION['email']));
@@ -810,7 +918,7 @@ class Users extends Database {
         $sql = "INSERT INTO system_administrators (level, reference_id, firstname, lastname, idnumber, phone_number, email, createdby, lastmodifiedby)"
                 . " VALUES (:level, :reference_id, :firstname, :lastname, :idnumber, :phone_number, :email, :createdby, :lastmodifiedby)";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("level", $user_type_ref_id);
+        $stmt->bindValue("level", $user_type_reference_id);
         $stmt->bindValue("reference_id", $publisher_id);
         $stmt->bindValue("firstname", strtoupper($_SESSION['admin_firstname']));
         $stmt->bindValue("lastname", strtoupper($_SESSION['admin_lastname']));
@@ -822,12 +930,12 @@ class Users extends Database {
         $stmt->execute();
 
         //User Login details
-        $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
-                . " VALUES (:ref_type, :ref_id, :username, :password)";
+        $sql_userlogs = "INSERT INTO user_logs (reference_type, reference_id, username, password)"
+                . " VALUES (:reference_type, :reference_id, :username, :password)";
 
         $stmt_userlogs = $this->prepareQuery($sql_userlogs);
-        $stmt_userlogs->bindValue("ref_type", $user_type_ref_id);
-        $stmt_userlogs->bindValue("ref_id", $publisher_id);
+        $stmt_userlogs->bindValue("reference_type", $user_type_reference_id);
+        $stmt_userlogs->bindValue("reference_id", $publisher_id);
         $stmt_userlogs->bindValue("username", strtoupper($_SESSION['admin_email']));
         $stmt_userlogs->bindValue("password", sha1($_SESSION['admin_lastname'] . "123"));
         $stmt_userlogs->execute();
@@ -943,18 +1051,18 @@ class Users extends Database {
             return false;
         } else {
             if ($user_details['password_new'] == 0) {
-                $sql2 = "UPDATE user_logs SET password=:new_password, password_new=:new_password_status, password_code=:password_code WHERE ref_id=:ref_id";
+                $sql2 = "UPDATE user_logs SET password=:new_password, password_new=:new_password_status, password_code=:password_code WHERE reference_id=:reference_id";
                 $stmt2 = $this->prepareQuery($sql2);
                 $stmt2->bindValue("new_password", sha1($_POST['new_password']));
                 $stmt2->bindValue("new_password_status", 1);
                 $stmt2->bindValue("password_code", 0);
-                $stmt2->bindValue("ref_id", $_POST['userid']);
+                $stmt2->bindValue("reference_id", $_POST['userid']);
                 $stmt2->execute();
             } else {
-                $sql2 = "UPDATE user_logs SET password=:new_password WHERE ref_id=:ref_id";
+                $sql2 = "UPDATE user_logs SET password=:new_password WHERE reference_id=:reference_id";
                 $stmt2 = $this->prepareQuery($sql2);
                 $stmt2->bindValue("new_password", sha1($_POST['new_password']));
-                $stmt2->bindValue("ref_id", $_POST['userid']);
+                $stmt2->bindValue("reference_id", $_POST['userid']);
                 $stmt2->execute();
             }
             return true;
@@ -965,7 +1073,7 @@ class Users extends Database {
         $url = "http://bookhivekenya.com?login";
         $phone_number = "+254 726 771144";
         $email_address = "hello@bookhivekenya.com";
-        $sql = "SELECT s.firstname, s.lastname, c.email, c.ref_id FROM individual_users s LEFT JOIN contacts c ON s.id=c.ref_id WHERE s.firstname=:firstname AND s.lastname=:lastname AND c.email=:email";
+        $sql = "SELECT s.firstname, s.lastname, c.email, c.reference_id FROM individual_users s LEFT JOIN contacts c ON s.id=c.reference_id WHERE s.firstname=:firstname AND s.lastname=:lastname AND c.email=:email";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindValue("firstname", $_POST['firstname']);
         $stmt->bindValue("lastname", $_POST['lastname']);
@@ -975,8 +1083,8 @@ class Users extends Database {
         if (count($data) == 1) {
             $code = $this->randomString(20);
             $password = $this->randomString(10);
-            $ref_id = $data[0]['ref_id'];
-//            $username = $this->fetchLoggedInUserDetails($ref_id);
+            $reference_id = $data[0]['reference_id'];
+//            $username = $this->fetchLoggedInUserDetails($reference_id);
 
             $sender = "hello@bookhivekenya.com";
             $headers = "From: Bookhive Kenya <$sender>\r\n";
@@ -999,12 +1107,12 @@ class Users extends Database {
                     . "Visit <a href='http://bookhivekenya.com'>bookhivekenya.com</a> for more information.<br/>"
                     . "</body></html>";
 
-            $sql2 = "UPDATE user_logs SET password=:password, password_new=:new_password_state, password_code=:password_code WHERE ref_id=:ref_id";
+            $sql2 = "UPDATE user_logs SET password=:password, password_new=:new_password_state, password_code=:password_code WHERE reference_id=:reference_id";
             $stmt2 = $this->prepareQuery($sql2);
             $stmt2->bindValue("password", sha1($password));
             $stmt2->bindValue("password_code", $code);
             $stmt2->bindValue("new_password_state", 0);
-            $stmt2->bindValue("ref_id", $ref_id);
+            $stmt2->bindValue("reference_id", $reference_id);
             $stmt2->execute();
             mail($_POST['email'], $subject, $message, $headers);
             return true;

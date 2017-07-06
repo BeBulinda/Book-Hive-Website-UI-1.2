@@ -67,20 +67,20 @@ if (!empty($_POST)) {
 
                                         <?php
                                         if (App::isLoggedIn()) {
-                                            $user_type_details = $users->fetchUserTypeDetails($_SESSION['login_user_type']);
-                                            if ($user_type_details['name'] == "STAFF") {
-                                                $profile_link = "?view_staff_individual&code=" . $_SESSION['userid'];
-                                            } else if ($user_type_details['name'] == "PUBLISHER") {
-                                                $profile_link = "?view_publishers_individual&code=" . $_SESSION['userid'];
-                                            } else if ($user_type_details['name'] == "BOOK SELLER") {
-                                                $profile_link = "?view_book_sellers_individual&code=" . $_SESSION['userid'];
-                                            } else if ($user_type_details['name'] == "INDIVIDUAL USER") {
-                                                $profile_link = "?view_individual_users_individual&code=" . $_SESSION['userid'];
-                                            } else if ($user_type_details['name'] == "CORPORATE") {
-                                                $profile_link = "?view_corporates_individual&code=" . $_SESSION['userid'];
-                                            } else if ($user_type_details['name'] == "GUEST USER") {
-                                                $profile_link = "?view_guest_users_individual&code=" . $_SESSION['userid'];
-                                            }
+//                                            $user_type_details = $users->fetchUserTypeDetails($_SESSION['login_user_type']);
+//                                            if ($user_type_details['name'] == "STAFF") {
+//                                                $profile_link = "?view_staff_individual&code=" . $_SESSION['userid'];
+//                                            } else if ($user_type_details['name'] == "PUBLISHER") {
+//                                                $profile_link = "?view_publishers_individual&code=" . $_SESSION['userid'];
+//                                            } else if ($user_type_details['name'] == "BOOK SELLER") {
+//                                                $profile_link = "?view_book_sellers_individual&code=" . $_SESSION['userid'];
+//                                            } else if ($user_type_details['name'] == "INDIVIDUAL USER") {
+//                                                $profile_link = "?view_individual_users_individual&code=" . $_SESSION['userid'];
+//                                            } else if ($user_type_details['name'] == "CORPORATE") {
+//                                                $profile_link = "?view_corporates_individual&code=" . $_SESSION['userid'];
+//                                            } else if ($user_type_details['name'] == "GUEST USER") {
+//                                                $profile_link = "?view_guest_users_individual&code=" . $_SESSION['userid'];
+//                                            }
                                             ?> 
 
 <!--                                            <a data-toggle="modal" href="<?php // echo $profile_link; ?>">
@@ -90,8 +90,8 @@ if (!empty($_POST)) {
                                         <?php
                                         }
 
-                                        if (isset($_SESSION['user'])) {
-                                            echo $_SESSION['user'];
+                                        if (isset($_SESSION['logged_in_user_details'])) {
+                                            echo $_SESSION['logged_in_user_details']['username'];
                                         }
                                         ?>
                                     </a>

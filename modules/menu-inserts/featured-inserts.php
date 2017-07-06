@@ -42,7 +42,7 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                 foreach ($main_featured_book as $key => $value) {
                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+//                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
 
                         if ($value2['level_id'] == 1) {
                             $location = 'modules/images/books/ecd/';
@@ -78,7 +78,7 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                         foreach ($featured_books as $key => $value) {
                             $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                             foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+//                                $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
 
                                 if ($value2['level_id'] == 1) {
                                     $location = 'modules/images/books/ecd/';

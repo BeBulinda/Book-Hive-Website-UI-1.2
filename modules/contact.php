@@ -18,7 +18,7 @@ if (!empty($_POST)) {
 
         $_SESSION['add_success'] = true;
 
-        App::redirectTo("?register");
+//        App::redirectTo("?register");
     }
 }
 ?>
@@ -48,6 +48,9 @@ if (!empty($_POST)) {
                             </div>
                             <div class="col-md-6 col-sm-4 col-xs-12">
                                 <input type="text" name="website" placeholder="Website">
+                            </div>
+                            <div class="col-md-12 col-sm-4 col-xs-12">
+                                <input type="text" name="subject" placeholder="Subject">
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <textarea name="message" cols="30" rows="8" placeholder="Message"></textarea>
