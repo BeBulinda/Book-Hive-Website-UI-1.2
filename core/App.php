@@ -32,7 +32,7 @@ class App {
      */
 
     public static function isLoggedIn() {
-        return isset($_SESSION['username']);
+        return isset($_SESSION['userid']);
     }
 
     /*     * *

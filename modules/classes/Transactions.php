@@ -68,7 +68,7 @@ class Transactions extends Database {
                 //Add individual user
                 $createdby = "WEBSITE USER";
                 $individual_user_id = $users->getNextIndividualUserId();
-                $user_type_ref_id = $users->getUserTypeRefId("INDIVIDUAL USER");
+                $user_type_reference_id = $users->getUserTypeRefId("INDIVIDUAL USER");
 
                 //individual details
                 $sql = "INSERT INTO individual_users (firstname, lastname, gender, idnumber, createdby, lastmodifiedby)"
@@ -86,7 +86,7 @@ class Transactions extends Database {
                 $sql = "INSERT INTO contacts (reference_type, reference_id, phone_number, email, lastmodifiedby)"
                         . " VALUES (:reference_type, :reference_id, :phone_number, :email, :lastmodifiedby)";
                 $stmt = $this->prepareQuery($sql);
-                $stmt->bindValue("reference_type", $user_type_ref_id);
+                $stmt->bindValue("reference_type", $user_type_reference_id);
                 $stmt->bindValue("reference_id", $individual_user_id);
                 $stmt->bindValue("phone_number", strtoupper($_SESSION["billing_phone_number"]));
                 $stmt->bindValue("email", strtoupper($_SESSION["billing_email_address"]));
@@ -94,12 +94,12 @@ class Transactions extends Database {
                 $stmt->execute();
 
                 //User Login details
-                $sql_userlogs = "INSERT INTO user_logs (ref_type, ref_id, username, password)"
-                        . " VALUES (:ref_type, :ref_id, :username, :password)";
+                $sql_userlogs = "INSERT INTO user_logs (reference_type, reference_id, username, password)"
+                        . " VALUES (:reference_type, :reference_id, :username, :password)";
 
                 $stmt_userlogs = $this->prepareQuery($sql_userlogs);
-                $stmt_userlogs->bindValue("ref_type", strtoupper($user_type_ref_id));
-                $stmt_userlogs->bindValue("ref_id", $individual_user_id);
+                $stmt_userlogs->bindValue("reference_type", strtoupper($user_type_reference_id));
+                $stmt_userlogs->bindValue("reference_id", $individual_user_id);
                 $stmt_userlogs->bindValue("username", strtoupper($_SESSION["billing_email_address"]));
                 $stmt_userlogs->bindValue("password", sha1($_SESSION["billing_lastname"] . "123"));
                 $stmt_userlogs->execute();
@@ -134,7 +134,7 @@ class Transactions extends Database {
         $stmt->bindValue("book_id", $_SESSION["book_id"]);
         $stmt->bindValue("quantity", $_SESSION["quantity"]);
         $stmt->bindValue("unit_price", $_SESSION['unit_price']);
-        $stmt->bindValue("book_version", $_SESSION['book_details']['print_type']);
+        $stmt->bindValue("print_type", $_SESSION['book_details']['print_type']);
         $stmt->bindValue("publisher_type", $_SESSION['book_details']['publisher_type']);
         $stmt->bindValue("publisher", $_SESSION['book_details']['publisher']);
         $stmt->execute();

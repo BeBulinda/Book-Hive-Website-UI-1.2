@@ -22,28 +22,6 @@ if ($book_details['level_id'] == 1) {
 } else if ($book_details['level_id'] == 4) {
     $location = 'modules/images/books/adult/';
 }
-
-//if (!empty($_POST) AND $_POST['action'] == "add") {
-//    $productByCode = $books->fetchBookDetails($_POST["code"]);
-//    $itemArray = array($productByCode["id"] => array('id' => $productByCode["id"], 'title' => $productByCode["title"], 'price' => $productByCode["price"], 'quantity' => $_POST["quantity"]));
-//
-//    if (!empty($_SESSION["cart_item"])) {
-//        if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
-//            foreach ($_SESSION["cart_item"] as $k => $v) {
-//                if ($productByCode["id"] == $k) {
-//                    if (empty($_SESSION["cart_item"][$k]["quantity"])) {
-//                        $_SESSION["cart_item"][$k]["quantity"] = 0;
-//                    }
-//                    $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
-//                }
-//            }
-//        } else {
-//            $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
-//        }
-//    } else {
-//        $_SESSION["cart_item"] = $itemArray;
-//    }
-//}
 ?>
 <div id="content quick_view">
     <div class="content-page">

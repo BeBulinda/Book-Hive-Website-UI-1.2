@@ -50,7 +50,7 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                     $_SESSION["quantity"] = $item["quantity"];
 
                     $_SESSION['book_details'] = $books->fetchBookDetails($item["id"]);
-                            
+
 //                    $book_details = $books->fetchBookDetails($item["id"]);
 //                    $_SESSION['book_version'] = $book_details["print_type"];
 
@@ -151,52 +151,24 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                 <div class="check-billing">
                                     <div class="form-my-account">
                                         <h2 class="title18">Billing Details</h2>
-                                        <?php
-                                        if (App::isLoggedIn()) {
-
-                                            $user_type_details = $users->fetchUserTypeDetails($_SESSION['login_user_type']);
-                                            if ($user_type_details['name'] == "STAFF") {
-                                                $user_details = $users->fetchStaffMemberDetails($_SESSION['login_user_ref_id']);
-                                                $contact_details = $users->fetchContactDetails("STAFF", $_SESSION['login_user_ref_id']);
-                                            } else if ($user_type_details['name'] == "PUBLISHER") {
-                                                $user_details = $users->fetchSystemAdministratorDetails($_SESSION['login_user_ref_id']);
-                                                $contact_details = $users->fetchContactDetails("PUBLISHER", $_SESSION['login_user_ref_id']);
-                                            } else if ($user_type_details['name'] == "BOOK SELLER") {
-                                                $user_details = $users->fetchSystemAdministratorDetails($_SESSION['login_user_ref_id']);
-                                                $contact_details = $users->fetchContactDetails("BOOK SELLER", $_SESSION['login_user_ref_id']);
-                                            } else if ($user_type_details['name'] == "INDIVIDUAL USER") {
-                                                $user_details = $users->fetchIndividualUserDetails($_SESSION['login_user_ref_id']);
-                                                $contact_details = $users->fetchContactDetails(5, $_SESSION['login_user_ref_id']);
-                                            } else if ($user_type_details['name'] == "CORPORATE") {
-                                                $user_details = $users->fetchSystemAdministratorDetails($_SESSION['login_user_ref_id']);
-                                                $contact_details = $users->fetchContactDetails("CORPORATE", $_SESSION['login_user_ref_id']);
-                                            } else if ($user_type_details['name'] == "GUEST USER") {
-                                                $user_details = $users->fetchGuestUserDetails($_SESSION['login_user_ref_id']);
-                                                $contact_details = $users->fetchContactDetails("GUEST USER", $_SESSION['login_user_ref_id']);
-                                            }
-//                                            
-//                                            argDump($user_type_details);
-//                                            argDump($_SESSION['userid']);
-//                                            argDump($user_details);
-//                                            exit();
-                                            ?>                                        
+                                        <?php if (App::isLoggedIn()) { ?>                                        
                                             <p class="clearfix box-col2">                                            
-                                                <input type="text" name="firstname" value="First Name : <?php echo $user_details['firstname']; ?>" placeholder="First Name *" readonly="yes"/>
-                                                <input type="text" name="lastname" value="Last Name : <?php echo $user_details['lastname']; ?>" placeholder="Last Name *" readonly="yes"/>
+                                                <input type="text" name="firstname" value="<?php echo $_SESSION['user_details']['firstname']; ?>" placeholder="First Name *" readonly="yes"/>
+                                                <input type="text" name="lastname" value="<?php echo $_SESSION['user_details']['lastname']; ?>" placeholder="Last Name *" readonly="yes"/>
                                             </p>
                                             <p class="clearfix box-col2">
-                                                <input type="text" name="id_passport_number" value="ID/Passport : <?php echo $user_details['idnumber']; ?>" placeholder="ID/Passport Number*" readonly="yes"/>
-                                                <input type="text" name="phone_number" value="Phone : <?php echo $contact_details['phone_number']; ?>" placeholder="Phone *" readonly="yes"/>
+                                                <input type="text" name="id_passport_number" value="<?php echo $_SESSION['user_details']['idnumber']; ?>" placeholder="ID/Passport Number*" readonly="yes"/>
+                                                <input type="text" name="phone_number" value="<?php echo $_SESSION['contacts']['phone_number']; ?>" placeholder="Phone *" readonly="yes"/>
                                             </p>
                                             <p>
-                                                <input type="email" name="email_address" value="EMAIL : <?php echo $contact_details['email']; ?>" placeholder="Email *" readonly="yes"/>
+                                                <input type="email" name="email_address" value="<?php echo $_SESSION['contacts']['email']; ?>" placeholder="Email *" readonly="yes"/>
                                             </p>    
                                             <p>    
-                                                <input type="text" name="gender" value="GENDER : <?php echo $user_details['gender']; ?>" placeholder="Gender *" readonly="yes"/>
+                                                <input type="text" name="gender" value="XXXXXX<?php // echo $_SESSION['user_details']['gender'];   ?>" placeholder="Gender *" readonly="yes"/>
                                             </p>
-    <!--                                            <p>
-                                                <input type="text" name="company_name" value="Company : Reflex Concepts Ltd" placeholder="Company Name *" readonly="yes"/>
-                                            </p>-->
+                                            <p>
+                                                <input type="hidden" name="company_name" value="Reflex Concepts Ltd"/>
+                                            </p>
                                         <?php } else { ?>                                            
                                             <p class="clearfix box-col2">                                            
                                                 <input type="text" name="firstname" placeholder="First Name *" required=""/>
@@ -299,10 +271,10 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                         <input type="radio" data-order_button_text="Proceed to PayPal" value="credit_card" name="payment_method" class="input-radio" id="payment_method_paypal">
                                         <label for="payment_method_card">Credit Card</label>
                                     </li>
-<!--                                    <li class="payment_method_cod">
-                                        <input type="radio" data-order_button_text="" value="cash" name="payment_method" class="input-radio" id="payment_method_cod">
-                                        <label for="payment_method_cod">Cash on Delivery</label>
-                                    </li>-->
+                                    <!--                                    <li class="payment_method_cod">
+                                                                            <input type="radio" data-order_button_text="" value="cash" name="payment_method" class="input-radio" id="payment_method_cod">
+                                                                            <label for="payment_method_cod">Cash on Delivery</label>
+                                                                        </li>-->
                                 </ul>
                                 <div class="form-row">
                                     <input type="checkbox" name="terms_and_conditions" value="Yes" required=""/> <label for="remember"> &nbsp I accept Bookhive Kenya's <a href="?tac">terms and conditions</a></label>
