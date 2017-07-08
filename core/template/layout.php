@@ -45,7 +45,7 @@ $results = $db_handle->runQuery($query);
             function getState(val) {
                 $.ajax({
                     type: "POST",
-                    url: "http://tested.bookhivekenya.com/core/template/get_state.php",
+                    url: "http://localhost:8081/bookhive_v1.2_ui/core/template/get_state.php",
                     data: 'county_id=' + val,
                     success: function (data) {
                         $("#county-list").html(data);
@@ -55,7 +55,7 @@ $results = $db_handle->runQuery($query);
             function getLocation(val) {
                 $.ajax({
                     type: "POST",
-                    url: "http://tested.bookhivekenya.com/core/template/get_location.php",
+                    url: "http://localhost:8081/bookhive_v1.2_ui/core/template/get_location.php",
                     data: 'location_id=' + val,
                     success: function (data) {
                         $("#location-list").html(data);
