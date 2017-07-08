@@ -1069,20 +1069,24 @@ class Users extends Database {
         }
     }
 
+    public function randomString($length) {
+        $original_string = array_merge(range(0, 9), range('a', 'z'), range('A', 'Z'));
+        $original_string = implode("", $original_string);
+        return substr(str_shuffle($original_string), 0, $length);
+    }
+
     private function forgotPassword() {
         $url = "http://bookhivekenya.com?login";
         $phone_number = "+254 726 771144";
         $email_address = "hello@bookhivekenya.com";
-        $sql = "SELECT s.firstname, s.lastname, c.email, c.reference_id FROM individual_users s LEFT JOIN contacts c ON s.id=c.reference_id WHERE s.firstname=:firstname AND s.lastname=:lastname AND c.email=:email";
+        $sql = "SELECT * FROM user_logs WHERE username=:email";
         $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("firstname", $_POST['firstname']);
-        $stmt->bindValue("lastname", $_POST['lastname']);
-        $stmt->bindValue("email", $_POST['email']);
+        $stmt->bindValue("email", strtoupper($_POST['email']));
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (count($data) == 1) {
             $code = $this->randomString(20);
-            $password = $this->randomString(10);
+            $password =  $this->randomString(10);
             $reference_id = $data[0]['reference_id'];
 //            $username = $this->fetchLoggedInUserDetails($reference_id);
 

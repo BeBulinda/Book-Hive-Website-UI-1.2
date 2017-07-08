@@ -86,7 +86,7 @@ $books = new Books();
                         ?>
                         <div class="alert alert-block alert-error fade in">
                             <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>To proceed with this action, you must accept Bookhive Kenya's <a href="?tac">terms and conditions</a>.</strong>
+                            <strong>Password successfully updated. Please check your email for the updated login credentials.</strong>
                         </div>
                         <?php
                         unset($_SESSION['update_pass_forgot']);
@@ -94,7 +94,7 @@ $books = new Books();
                         ?>
                         <div class="alert alert-block alert-error fade in">
                             <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>To proceed with this action, you must accept Bookhive Kenya's <a href="?tac">terms and conditions</a>.</strong>
+                            <strong>Sorry, there was an error updating your password. Please confirm your email address and try the update process again.</strong>
                         </div>
                         <?php
                         unset($_SESSION['update_pass_forgot']);

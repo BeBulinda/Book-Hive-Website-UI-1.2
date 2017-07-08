@@ -23,7 +23,7 @@ if (!empty($_POST)) {
                                 <form method="post">
                                     <input type="hidden" name="action" value="forgot_password"/>
                                     <div class="row">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
+<!--                                        <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="controls">
                                                 <input  type="text" name="firstname"  placeholder="First Name">
                                             </div>
@@ -32,7 +32,7 @@ if (!empty($_POST)) {
                                             <div class="controls">
                                                 <input  type="text" name="lastname"  placeholder="Last Name">
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="controls">
                                                 <input  type="email" name="email"  placeholder="Email Address">
