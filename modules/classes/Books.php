@@ -7,7 +7,7 @@ require_once WPATH . "modules/classes/Users.php";
 class Books extends Database {
 
     public function fetchBookDetails($code) {
-        $sql = "SELECT * FROM books WHERE id=:code";
+        $sql = "SELECT * FROM books WHERE id=:code AND status=1021 ";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindParam("code", $code);
         $stmt->execute();
@@ -26,6 +26,7 @@ class Books extends Database {
                 . "OR type_id LIKE '%{$search_value}%' "
                 . "OR level_id LIKE '%{$search_value}%' "
                 . "OR price LIKE '%{$search_value}%' "
+                . "AND status=1021"
                 . " ORDER BY id ASC";
         $stmt = $this->prepareQuery($sql);
         $stmt->execute();
@@ -45,69 +46,33 @@ class Books extends Database {
     }
 
     public function getAllFilteredBooks($publisher, $book_level, $book_type, $print_type) {
-
-//        if ($publisher === "ALL" AND $book_level === "ALL" AND $book_type === "ALL" AND $print_type === "ALL") {
-//            $sql = "SELECT * FROM books ORDER BY id ASC";
-//        } else if ($publisher === "ALL" AND $book_level === "ALL" AND $book_type === "ALL" AND $print_type !== "ALL") {
-//            $sql = "SELECT * FROM books WHERE print_type=:print_type ORDER BY id ASC";
-//        } else if ($publisher === "ALL" AND $book_level === "ALL" AND $book_type !== "ALL" AND $print_type === "ALL") {
-//            $sql = "SELECT * FROM books WHERE type_id=:type_id ORDER BY id ASC";
-//        } else if ($publisher === "ALL" AND $book_level === "ALL" AND $book_type !== "ALL" AND $print_type !== "ALL") {
-//            $sql = "SELECT * FROM books WHERE type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
-//        } else if ($publisher === "ALL" AND $book_level !== "ALL" AND $book_type === "ALL" AND $print_type === "ALL") {
-//            $sql = "SELECT * FROM books WHERE level_id=:level_id ORDER BY id ASC";
-//        } else if ($publisher === "ALL" AND $book_level !== "ALL" AND $book_type === "ALL" AND $print_type !== "ALL") {
-//            $sql = "SELECT * FROM books WHERE level_id=:level_id AND print_type=:print_type ORDER BY id ASC";
-//        } else if ($publisher === "ALL" AND $book_level !== "ALL" AND $book_type !== "ALL" AND $print_type === "ALL") {
-//            $sql = "SELECT * FROM books WHERE level_id=:level_id AND type_id=:type_id ORDER BY id ASC";
-//        } else if ($publisher === "ALL" AND $book_level !== "ALL" AND $book_type !== "ALL" AND $print_type !== "ALL") {
-//            $sql = "SELECT * FROM books WHERE level_id=:level_id AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
-//        } else if ($publisher !== "ALL" AND $book_level === "ALL" AND $book_type === "ALL" AND $print_type === "ALL") {
-//            $sql = "SELECT * FROM books WHERE publisher=:publisher ORDER BY id ASC";
-//        } else if ($publisher !== "ALL" AND $book_level === "ALL" AND $book_type === "ALL" AND $print_type !== "ALL") {
-//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND print_type=:print_type ORDER BY id ASC";
-//        } else if ($publisher !== "ALL" AND $book_level === "ALL" AND $book_type !== "ALL" AND $print_type === "ALL") {
-//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND type_id=:type_id ORDER BY id ASC";
-//        } else if ($publisher !== "ALL" AND $book_level === "ALL" AND $book_type !== "ALL" AND $print_type !== "ALL") {
-//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
-//        } else if ($publisher !== "ALL" AND $book_level !== "ALL" AND $book_type === "ALL" AND $print_type === "ALL") {
-//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id ORDER BY id ASC";
-//        } else if ($publisher !== "ALL" AND $book_level !== "ALL" AND $book_type === "ALL" AND $print_type !== "ALL") {
-//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND print_type=:print_type ORDER BY id ASC";
-//        } else if ($publisher !== "ALL" AND $book_level !== "ALL" AND $book_type !== "ALL" AND $print_type === "ALL") {
-//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND type_id=:type_id ORDER BY id ASC";
-//        } else if ($publisher !== "ALL" AND $book_level !== "ALL" AND $book_type !== "ALL" AND $print_type !== "ALL") {
-//            $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
-//        }
-
-
         if ($publisher === "ALL") {
             if ($book_level === "ALL") {
                 if ($book_type === "ALL") {
                     if ($print_type === "ALL") {
-                        $sql = "SELECT * FROM books ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE status=1021 ORDER BY id ASC";
                     } else {
-                        $sql = "SELECT * FROM books WHERE print_type=:print_type ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE print_type=:print_type AND status=1021 ORDER BY id ASC";
                     }
                 } else {
                     if ($print_type === "ALL") {
-                        $sql = "SELECT * FROM books WHERE type_id=:type_id ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE type_id=:type_id  AND status=1021 ORDER BY id ASC";
                     } else {
-                        $sql = "SELECT * FROM books WHERE type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE type_id=:type_id AND print_type=:print_type AND status=1021 ORDER BY id ASC";
                     }
                 }
             } else {
                 if ($book_type === "ALL") {
                     if ($print_type === "ALL") {
-                        $sql = "SELECT * FROM books WHERE level_id=:level_id ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE level_id=:level_id AND status=1021 ORDER BY id ASC";
                     } else {
-                        $sql = "SELECT * FROM books WHERE level_id=:level_id AND print_type=:print_type ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE level_id=:level_id AND print_type=:print_type AND status=1021 ORDER BY id ASC";
                     }
                 } else {
                     if ($print_type === "ALL") {
-                        $sql = "SELECT * FROM books WHERE level_id=:level_id AND type_id=:type_id ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE level_id=:level_id AND type_id=:type_id AND status=1021 ORDER BY id ASC";
                     } else {
-                        $sql = "SELECT * FROM books WHERE level_id=:level_id AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE level_id=:level_id AND type_id=:type_id AND print_type=:print_type AND status=1021 ORDER BY id ASC";
                     }
                 }
             }
@@ -115,29 +80,29 @@ class Books extends Database {
             if ($book_level === "ALL") {
                 if ($book_type === "ALL") {
                     if ($print_type === "ALL") {
-                        $sql = "SELECT * FROM books WHERE publisher=:publisher ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND status=1021 ORDER BY id ASC";
                     } else {
-                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND print_type=:print_type ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND print_type=:print_type AND status=1021 ORDER BY id ASC";
                     }
                 } else {
                     if ($print_type === "ALL") {
-                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND type_id=:type_id ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND type_id=:type_id AND status=1021 ORDER BY id ASC";
                     } else {
-                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND type_id=:type_id AND print_type=:print_type AND status=1021 ORDER BY id ASC";
                     }
                 }
             } else {
                 if ($book_type === "ALL") {
                     if ($print_type === "ALL") {
-                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND status=1021 ORDER BY id ASC";
                     } else {
-                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND print_type=:print_type ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND print_type=:print_type AND status=1021 ORDER BY id ASC";
                     }
                 } else {
                     if ($print_type === "ALL") {
-                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND type_id=:type_id ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND type_id=:type_id AND status=1021 ORDER BY id ASC";
                     } else {
-                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND type_id=:type_id AND print_type=:print_type ORDER BY id ASC";
+                        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level_id AND type_id=:type_id AND print_type=:print_type AND status=1021 ORDER BY id ASC";
                     }
                 }
             }
@@ -186,7 +151,7 @@ class Books extends Database {
             }
             $category = $category_type;
             $value = $category_code;
-            $sql = "SELECT * FROM books WHERE level_id=:category_value ORDER BY id ASC";
+            $sql = "SELECT * FROM books WHERE level_id=:category_value AND status=1021 ORDER BY id ASC";
         }
 
         if ($category_type === "type") {
@@ -199,13 +164,13 @@ class Books extends Database {
             }
             $category = $category_type;
             $value = $category_code;
-            $sql = "SELECT * FROM books WHERE type_id=:category_value ORDER BY id ASC";
+            $sql = "SELECT * FROM books WHERE type_id=:category_value AND status=1021 ORDER BY id ASC";
         }
 
         if ($category_type === "publisher") {
             $category = $category_type;
             $value = $category_value;
-            $sql = "SELECT * FROM books WHERE publisher=:category_value ORDER BY id ASC";
+            $sql = "SELECT * FROM books WHERE publisher=:category_value AND status=1021 ORDER BY id ASC";
         }
 
         if ($category_type === "print_type") {
@@ -218,7 +183,7 @@ class Books extends Database {
             }
             $category = $category_type;
             $value = $category_code;
-            $sql = "SELECT * FROM books WHERE print_type=:category_value ORDER BY id ASC";
+            $sql = "SELECT * FROM books WHERE print_type=:category_value AND status=1021 ORDER BY id ASC";
         }
 
         if ($category_type === "primary_class") {
@@ -244,7 +209,7 @@ class Books extends Database {
             }
             $category = $category_code;
             $value = $class_code;
-            $sql = "SELECT * FROM books WHERE level_id=:category_type AND class=:category_value ORDER BY id ASC";
+            $sql = "SELECT * FROM books WHERE level_id=:category_type AND class=:category_value AND status=1021 ORDER BY id ASC";
         }
 
         if ($category_type === "secondary_class") {
@@ -262,7 +227,7 @@ class Books extends Database {
             }
             $category = $category_code;
             $value = $class_code;
-            $sql = "SELECT * FROM books WHERE level_id=:category_type AND class=:category_value ORDER BY id ASC";
+            $sql = "SELECT * FROM books WHERE level_id=:category_type AND class=:category_value AND status=1021 ORDER BY id ASC";
         }
 
         $stmt = $this->prepareQuery($sql);
@@ -307,7 +272,7 @@ class Books extends Database {
     }
 
     public function getAllSpecialBooks() {
-        $sql = "SELECT * FROM books ORDER BY id ASC LIMIT 3";
+        $sql = "SELECT * FROM books WHERE status=1021 ORDER BY id ASC LIMIT 3";
         $stmt = $this->prepareQuery($sql);
         $stmt->execute();
         $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -321,7 +286,7 @@ class Books extends Database {
     }
 
     public function getAllFeaturedBooks() {
-        $sql = "SELECT * FROM books ORDER BY id DESC LIMIT 5";
+        $sql = "SELECT * FROM books WHERE status=1021 ORDER BY id DESC LIMIT 5";
         $stmt = $this->prepareQuery($sql);
         $stmt->execute();
         $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -335,7 +300,7 @@ class Books extends Database {
     }
 
     public function getAllBestSellerBooks() {
-        $sql = "SELECT * FROM books ORDER BY id DESC LIMIT 10";
+        $sql = "SELECT * FROM books WHERE status=1021 ORDER BY id DESC LIMIT 10";
         $stmt = $this->prepareQuery($sql);
         $stmt->execute();
         $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -349,7 +314,7 @@ class Books extends Database {
     }
 
     public function getMainFeaturedBook() {
-        $sql = "SELECT * FROM books ORDER BY id DESC LIMIT 1";
+        $sql = "SELECT * FROM books WHERE status=1021 ORDER BY id DESC LIMIT 1";
         $stmt = $this->prepareQuery($sql);
         $stmt->execute();
         $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -366,7 +331,7 @@ class Books extends Database {
 
         $level_code = $this->getBookLevelRefTypeId($level);
 
-        $sql = "SELECT * FROM books WHERE level_id=:level ORDER BY id ASC";
+        $sql = "SELECT * FROM books WHERE level_id=:level AND status=1021 ORDER BY id ASC";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindValue("level", $level_code);
         $stmt->execute();
@@ -410,7 +375,7 @@ class Books extends Database {
 
         $publisher_code = $this->getBookPublisherRefTypeId($publisher);
 
-        $sql = "SELECT * FROM books WHERE publisher=:publisher ORDER BY id ASC";
+        $sql = "SELECT * FROM books WHERE publisher=:publisher AND status=1021 ORDER BY id ASC";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindValue("publisher", $publisher);
         $stmt->execute();
@@ -449,7 +414,7 @@ class Books extends Database {
 
         $level_code = $this->getBookLevelRefTypeId($level);
 
-        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level ORDER BY id ASC";
+        $sql = "SELECT * FROM books WHERE publisher=:publisher AND level_id=:level AND status=1021 ORDER BY id ASC";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindValue("level", $level_code);
         $stmt->bindValue("publisher", $publisher);
@@ -489,7 +454,7 @@ class Books extends Database {
 
         $type_code = $this->getBookTypeRefTypeId($type);
 
-        $sql = "SELECT * FROM books WHERE type_id=:type ORDER BY id ASC";
+        $sql = "SELECT * FROM books WHERE type_id=:type AND status=1021 ORDER BY id ASC";
         $stmt = $this->prepareQuery($sql);
         $stmt->bindValue("type", $type_code);
         $stmt->execute();
@@ -525,7 +490,7 @@ class Books extends Database {
     }
 
     public function getAllBooks() {
-        $sql = "SELECT * FROM books ORDER BY id ASC";
+        $sql = "SELECT * FROM books  WHERE status=1021 ORDER BY id ASC";
         $stmt = $this->prepareQuery($sql);
         $stmt->execute();
         $info = $stmt->fetchAll(PDO::FETCH_ASSOC);

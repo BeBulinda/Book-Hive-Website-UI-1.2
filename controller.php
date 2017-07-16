@@ -33,6 +33,9 @@ if (is_menu_set('home') != "") {
 } else if (is_menu_set('privacy_policy') != "") {
     $currentPage = WPATH . "modules/privacy_policy.php";
     set_title("Bookhive | Privacy Policy");
+} else if (is_menu_set('confirm_delivery') != "") {
+    $currentPage = WPATH . "modules/confirm_delivery.php";
+    set_title("Bookhive | Confirm Delivery");
 }
 
 /** An alternative to product page * */
@@ -190,6 +193,9 @@ else if (is_menu_set('about') != "") {
 } else if (is_menu_set('process_feedback') != "") {
     $currentPage = WPATH . "modules/process_feedback.php";
     set_title("Bookhive | Feedback");
+} else if (is_menu_set('admin_requests') != "") {
+    $currentPage = WPATH . "modules/admin_requests.php";
+    set_title("Bookhive | External Requests");
 } else if (!empty($_GET)) {
     App::redirectTo("?");
 } else {

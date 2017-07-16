@@ -68,7 +68,11 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                 foreach ($primary_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        if ($value2['publisher_type'] == "COMPANY") {
+                                            $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        } else if ($value2['publisher_type'] == "SELF") {
+                                            $publisher_details = $users->fetchSelfPublisherDetails($value2['publisher']);
+                                        }
 
                                         $url = "http://localhost/bookhive_ui/";
 //                              $url = "http://live_url/bookhive_ui/"; 
@@ -139,7 +143,11 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                 foreach ($primary_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        if ($value2['publisher_type'] == "COMPANY") {
+                                            $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        } else if ($value2['publisher_type'] == "SELF") {
+                                            $publisher_details = $users->fetchSelfPublisherDetails($value2['publisher']);
+                                        }
 
                                         $url = "http://localhost/bookhive_ui/";
 //                              $url = "http://live_url/bookhive_ui/"; 
@@ -224,7 +232,11 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                 foreach ($primary_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        if ($value2['publisher_type'] == "COMPANY") {
+                                            $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        } else if ($value2['publisher_type'] == "SELF") {
+                                            $publisher_details = $users->fetchSelfPublisherDetails($value2['publisher']);
+                                        }
 
                                         $url = "http://localhost/bookhive_ui/";
 //                              $url = "http://live_url/bookhive_ui/"; 
@@ -295,7 +307,11 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                 foreach ($primary_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        if ($value2['publisher_type'] == "COMPANY") {
+                                            $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        } else if ($value2['publisher_type'] == "SELF") {
+                                            $publisher_details = $users->fetchSelfPublisherDetails($value2['publisher']);
+                                        }
 
                                         $url = "http://localhost/bookhive_ui/";
 //                              $url = "http://live_url/bookhive_ui/"; 

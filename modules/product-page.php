@@ -122,7 +122,9 @@ require_once "core/template/header.php";
                         </div>
                     </div>
                     <!-- End Main Detail -->
-                    <div class="product-related border radius">
+                    
+                    
+<!--                    <div class="product-related border radius">
                         <h2 class="title18">ALSO PURCHASED</h2>
                         <div class="product-related-slider">
                             <div class="wrap-item" data-itemscustom="[[0,1],[480,2],[768,3],[980,4],[1200,5]]" data-pagination="false" data-navigation="true">
@@ -143,7 +145,7 @@ require_once "core/template/header.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Item -->
+                                 End Item 
                                 <div class="item-pro-ajax">
                                     <div class="product-thumb">
                                         <a href="detail.html" class="product-thumb-link">
@@ -161,7 +163,7 @@ require_once "core/template/header.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Item -->
+                                 End Item 
                                 <div class="item-pro-ajax">
                                     <div class="product-thumb">
                                         <a href="detail.html" class="product-thumb-link">
@@ -179,7 +181,7 @@ require_once "core/template/header.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Item -->
+                                 End Item 
                                 <div class="item-pro-ajax">
                                     <div class="product-thumb">
                                         <a href="detail.html" class="product-thumb-link">
@@ -197,7 +199,7 @@ require_once "core/template/header.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Item -->
+                                 End Item 
                                 <div class="item-pro-ajax">
                                     <div class="product-thumb">
                                         <a href="detail.html" class="product-thumb-link">
@@ -215,7 +217,7 @@ require_once "core/template/header.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Item -->
+                                 End Item 
                                 <div class="item-pro-ajax">
                                     <div class="product-thumb">
                                         <a href="detail.html" class="product-thumb-link">
@@ -233,7 +235,7 @@ require_once "core/template/header.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Item -->
+                                 End Item 
                                 <div class="item-pro-ajax">
                                     <div class="product-thumb">
                                         <a href="detail.html" class="product-thumb-link">
@@ -251,7 +253,7 @@ require_once "core/template/header.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Item -->
+                                 End Item 
                                 <div class="item-pro-ajax">
                                     <div class="product-thumb">
                                         <a href="detail.html" class="product-thumb-link">
@@ -269,10 +271,11 @@ require_once "core/template/header.php";
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Item -->
+                                 End Item 
                             </div>
                         </div>
-                    </div>
+                    </div>-->
+
                     <!-- End Product Related -->
                 </div>
             </div>

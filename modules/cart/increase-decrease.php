@@ -27,7 +27,7 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
 }
 ?>
 
-<form role="form" method="post" target="parent">
+<form role="form" method="post" target="_top">
     <input type="hidden" name="action" value="add"/>
     <input type="hidden" name="code" value="<?php echo $_SESSION["selected_book_id"]; ?>"/>
     <input type="hidden" name="previous_url" value="<?php echo $previous_url; ?>"/>
