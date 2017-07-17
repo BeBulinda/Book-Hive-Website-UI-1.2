@@ -137,7 +137,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-8 col-xs-12">
-                        <p class="copyright">BookHive Kenya © <?php echo date("Y"); ?> bookhive.com. All rights reserved.</p>
+                        <p class="copyright">Bookhive Kenya © <?php echo date("Y"); ?> bookhive.com. All rights reserved.</p>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <p class="designby"><img src="images/logo/bookhive_logo.svg" width="60" alt="" /> | <a href="http://reflexconcepts.co.ke" target="_blank" title="Reflex Concepts LTD | Difference, Delivery, Reliability"><img src="images/logo/logo.svg" width="60" alt="" /></a></p>
