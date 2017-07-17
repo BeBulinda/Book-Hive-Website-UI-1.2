@@ -62,7 +62,7 @@ if (!empty($_POST) AND $_POST['action'] == "update_cart") {
     } else {
         $_SESSION["cart_item"] = $itemArray;
     }
-    App::redirectTo($_POST["previous_url"]);
+//    App::redirectTo($_POST["previous_url"]);
 }
 
 require_once "core/template/header.php";
@@ -134,6 +134,7 @@ if (isset($_SESSION["cart_number_of_items"]) AND $_SESSION["cart_number_of_items
                         <form method="post">
                             <input type="hidden" name="action" value="update_cart"/>
                             <input type="hidden" name="code" value="<?php echo $item['id']; ?>"/>
+                            <input type="hidden" name="previous_url" value="<?php echo $previous_url; ?>"/>
                             <td class="product-quantity">
 
 <!--                                <div class="btn-group btn-group-sm" role="group">

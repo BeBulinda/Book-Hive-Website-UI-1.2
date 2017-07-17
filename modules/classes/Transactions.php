@@ -37,6 +37,28 @@ class Transactions extends Database {
         }
     }
 
+    public function approveItemDelivery($code) {
+        $sql = "UPDATE transaction_details SET delivery_status=1031, deliveredat=:deliveredat WHERE id=:code";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("code", $code);
+        $stmt->bindValue("deliveredat", date("Y-m-d H:i:s"));
+        if ($stmt->execute()) {
+            return true;
+        } else
+            return false;
+    }
+
+    public function rejectItemDelivery($code) {
+        $sql = "UPDATE transaction_details SET delivery_status=1030, deliveredat=:deliveredat WHERE id=:code";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("code", $code);
+        $stmt->bindValue("deliveredat", date("Y-m-d H:i:s"));
+        if ($stmt->execute()) {
+            return true;
+        } else
+            return false;
+    }
+
     public function deliverResponse($response) {
         header("HTTP/1.1 $response");
         echo $response;

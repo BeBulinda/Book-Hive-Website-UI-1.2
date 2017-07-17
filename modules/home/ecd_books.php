@@ -68,7 +68,11 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                 foreach ($ecd_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        if ($value2['publisher_type'] == "COMPANY") {
+                                            $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        } else if ($value2['publisher_type'] == "SELF") {
+                                            $publisher_details = $users->fetchSelfPublisherDetails($value2['publisher']);
+                                        }
 
                                         $url = "http://localhost/bookhive_ui/";
 //                              $url = "http://live_url/bookhive_ui/"; 
@@ -97,7 +101,7 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                                         <input type="hidden" name="quantity" value="1"/>
                                                         <button type="submit" id="fancy_view" class="add-cart-front"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Add to Cart</button>
                                                     </form>
-<!--                                                    <a href="#" class="addcart-link" title="Add to Cart"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>-->
+            <!--                                                    <a href="#" class="addcart-link" title="Add to Cart"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>-->
                                                                                   <!--                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
                                                                                                                                                               <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
                                                 </div>
@@ -138,7 +142,11 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                 foreach ($ecd_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        if ($value2['publisher_type'] == "COMPANY") {
+                                            $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        } else if ($value2['publisher_type'] == "SELF") {
+                                            $publisher_details = $users->fetchSelfPublisherDetails($value2['publisher']);
+                                        }
 
                                         $url = "http://localhost/bookhive_ui/";
 //                              $url = "http://live_url/bookhive_ui/"; 
@@ -168,9 +176,9 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                                         <button type="submit" id="fancy_view" class="add-cart-front"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Add to Cart</button>
                                                     </form>
 
-                        <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                                                            <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                                            <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
+                                    <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                                                                                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                                                                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -223,7 +231,11 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                 foreach ($ecd_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        if ($value2['publisher_type'] == "COMPANY") {
+                                            $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        } else if ($value2['publisher_type'] == "SELF") {
+                                            $publisher_details = $users->fetchSelfPublisherDetails($value2['publisher']);
+                                        }
 
                                         $url = "http://localhost/bookhive_ui/";
 //                              $url = "http://live_url/bookhive_ui/"; 
@@ -253,9 +265,9 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                                         <button type="submit" id="fancy_view" class="add-cart-front"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Add to Cart</button>
                                                     </form>
 
-            <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-            <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-            <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
+                        <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                        <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                        <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -294,7 +306,11 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                 foreach ($ecd_books_data as $key => $value) {
                                     $inner_array[$key] = json_decode($value, true); // this will give key val pair array
                                     foreach ((array) $inner_array[$key] as $key2 => $value2) {
-                                        $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        if ($value2['publisher_type'] == "COMPANY") {
+                                            $publisher_details = $users->fetchPublisherDetails($value2['publisher']);
+                                        } else if ($value2['publisher_type'] == "SELF") {
+                                            $publisher_details = $users->fetchSelfPublisherDetails($value2['publisher']);
+                                        }
 
                                         $url = "http://localhost/bookhive_ui/";
 //                              $url = "http://live_url/bookhive_ui/"; 
@@ -324,9 +340,9 @@ if (!empty($_POST) AND $_POST['action'] == "add") {
                                                         <button type="submit" id="fancy_view" class="add-cart-front"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Add to Cart</button>
                                                     </form>
 
-<!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                                                    <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                    <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
+            <!--                                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                                                                <a href="#" class="wishlist-link"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                                                <a href="#" class="compare-link"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
                                                 </div>
                                             </div>
                                             <div class="product-info">

@@ -2,6 +2,15 @@
 require_once WPATH . "modules/classes/Users.php";
 $users = new Users();
 
+if (isset($_SERVER['HTTP_REFERER'])) { 
+    $former_page_chunks = explode('?', $_SERVER['HTTP_REFERER'], 2);
+    if ($former_page_chunks[1] == "login") {
+        $previous_url = "?home";
+    } else {
+        $previous_url = "?" . $former_page_chunks[1];
+    } 
+}
+
 if (!empty($_POST)) {
     $success = $users->execute();
     if (is_bool($success) && $success == true) {
@@ -13,8 +22,7 @@ if (!empty($_POST)) {
             App::redirectTo("?update_password");
         }
         
-        header("Location: {$_POST['previous_page']}");
-        exit();
+        App::redirectTo($_POST["previous_url"]);
     }
 }
 
@@ -47,7 +55,7 @@ if (isset($_SESSION['account_blocked'])) {
                         <h2>SIGN IN</h2>
                         <form method="post">
                             <input type="hidden" name="action" value="login"/>
-                            <input type="hidden" name="previous_page" value="<?php echo $_SERVER['HTTP_REFERER']; ?>"/>
+                            <input type="hidden" name="previous_url" value="<?php echo $previous_url; ?>"/>
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="controls">
