@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\core"
+    "\\core",
+    "\\core\\database",
+    "\\core\\template"
   ],
-  "SelectedNode": "\\core\\include.php",
+  "SelectedNode": "\\core\\template\\dbcontroller.php",
   "PreviewInSolutionExplorer": false
 }
