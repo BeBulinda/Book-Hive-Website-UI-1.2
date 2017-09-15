@@ -21,7 +21,7 @@ if (!empty($_POST)) {
     <div class="content-page">
         <div class="container">
             <div class="contact-form-page">
-                <h2>contact from</h2>
+                <h2>Registration</h2>
                 <div class="form-contact">
                     <form method="post">
                         <input type="hidden" name="action" value="register_usertype"/>
@@ -35,12 +35,17 @@ if (!empty($_POST)) {
                             <div class="col-md-3 col-sm-4 col-xs-12">
                                 <input type="text" name="idnumber" placeholder="ID/Passport Number">
                             </div>
-                            
+
                             <div class="col-md-3 col-sm-4 col-xs-12">
                                 <input type="text" name="phone_number" placeholder="Phone Number">
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-12">
-                                <input type="text" name="email" placeholder="Email *">
+                                <input type="text" name="email" value="<?php
+                                if (isset($_SESSION['username'])) {
+                                    echo $_SESSION['username'];
+                                } else
+                                    echo 'Session Unset';
+                                ?>" readonly="">
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-12">
                                 <input type="text" name="postal_number" placeholder="Postal Number">
