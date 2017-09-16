@@ -44,17 +44,20 @@ if (!empty($_POST)) {
                                 <ul>
                                     <li><a href="?verify_book">Verify Book</a></li>
                                     <li><a href="?report_piracy">Report Piracy</a></li>
-                                    <li><a href="?register_self_publisher">Self Publisher Registration</a></li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Register</a>
-                                        <ul class="sub-menu">
-                                            <h5><li><a href="?register_individual_user">As An Individual User</a></li>
-                                                <li><a href="?register_book_seller">As A Book Seller</a></li>
-                                                <li><a href="?register_school">As A School</a></li>
-                                                <li><a href="?register_corporate">As A Corporate</a></li>
-                                            </h5>
-                                        </ul>
-                                    </li>
+
+                                    <?php if (!App::isLoggedIn()) { ?>
+                                        <li><a href="?register_self_publisher">Self Publisher Registration</a></li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">Register</a>
+                                            <ul class="sub-menu">
+                                                <h5><li><a href="?register_individual_user">As An Individual User</a></li>
+                                                    <li><a href="?register_book_seller">As A Book Seller</a></li>
+                                                    <li><a href="?register_school">As A School</a></li>
+                                                    <li><a href="?register_corporate">As A Corporate</a></li>
+                                                </h5>
+                                            </ul>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
 
                         </div>
@@ -65,35 +68,12 @@ if (!empty($_POST)) {
                                 <div class="currency-box">
                                     <a href="#" class="currency-current">
 
-                                        <?php
-                                        if (App::isLoggedIn()) {
-//                                            $user_type_details = $users->fetchUserTypeDetails($_SESSION['login_user_type']);
-//                                            if ($user_type_details['name'] == "STAFF") {
-//                                                $profile_link = "?view_staff_individual&code=" . $_SESSION['userid'];
-//                                            } else if ($user_type_details['name'] == "PUBLISHER") {
-//                                                $profile_link = "?view_publishers_individual&code=" . $_SESSION['userid'];
-//                                            } else if ($user_type_details['name'] == "BOOK SELLER") {
-//                                                $profile_link = "?view_book_sellers_individual&code=" . $_SESSION['userid'];
-//                                            } else if ($user_type_details['name'] == "INDIVIDUAL USER") {
-//                                                $profile_link = "?view_individual_users_individual&code=" . $_SESSION['userid'];
-//                                            } else if ($user_type_details['name'] == "CORPORATE") {
-//                                                $profile_link = "?view_corporates_individual&code=" . $_SESSION['userid'];
-//                                            } else if ($user_type_details['name'] == "GUEST USER") {
-//                                                $profile_link = "?view_guest_users_individual&code=" . $_SESSION['userid'];
-//                                            }
-                                            ?> 
+        <!--                                            <a data-toggle="modal" href="<?php // echo $_SESSION['profile_link'];   ?>">
+                <i class="fa fa-user fa-fw pull-right"></i>
+                Profile
+            </a>-->
 
-<!--                                            <a data-toggle="modal" href="<?php // echo $profile_link; ?>">
-                                                <i class="fa fa-user fa-fw pull-right"></i>
-                                                Profile
-                                            </a>-->
-                                        <?php
-                                        }
-
-                                        if (isset($_SESSION['logged_in_user_details'])) {
-                                            echo $_SESSION['logged_in_user_details']['username'];
-                                        }
-                                        ?>
+                                        <?php echo $_SESSION['user_details']['firstname'] . " " . $_SESSION['user_details']['lastname']; ?>
                                     </a>
                                 </div>
                                 <div class="currency-box">
@@ -223,12 +203,12 @@ if (!empty($_POST)) {
                                     ?>
                                     <ul class="sub-menu">
                                         <?php echo $users->menuPublishers(); ?>
-<!--                                        <li><a href='?storymoja_books'>STORYMOJA</a></li>
-                                        <li><a href="?klb_books">KLB</a></li>
-                                        <li><a href="?phoenix_books">PHOENIX</a></li>
-                                        <li><a href="?longhorn_books">LONGHORN</a></li>
-                                        <li><a href="?moran_books">MORAN</a></li>
-                                        <li><a href="?self_publisher_books">SELF PUBLISHERS</a></li>-->
+                                        <!--                                        <li><a href='?storymoja_books'>STORYMOJA</a></li>
+                                                                                <li><a href="?klb_books">KLB</a></li>
+                                                                                <li><a href="?phoenix_books">PHOENIX</a></li>
+                                                                                <li><a href="?longhorn_books">LONGHORN</a></li>
+                                                                                <li><a href="?moran_books">MORAN</a></li>
+                                                                                <li><a href="?self_publisher_books">SELF PUBLISHERS</a></li>-->
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
@@ -255,6 +235,6 @@ if (!empty($_POST)) {
         </div>
         <!-- End Main Header -->
     </div>
-    <?php //require_once 'top-menu.php'; ?>
+    <?php //require_once 'top-menu.php';  ?>
 </div>
 <!-- End Header -->

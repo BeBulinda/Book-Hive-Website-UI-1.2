@@ -70,17 +70,6 @@ class Transactions extends Database {
     }
 
     public function addTransaction() {
-        $sql = "INSERT INTO transactions (id, transaction_type, amount, buyer_type, buyer_id, payment_option)"
-                . " VALUES (:transaction_id, :transaction_type, :amount, :buyer_type, :buyer_id, :payment_option)";
-        $stmt = $this->prepareQuery($sql);
-        $stmt->bindValue("transaction_id", $_SESSION["transaction_id"]);
-        $stmt->bindValue("transaction_type", 01);
-        $stmt->bindValue("amount", $_SESSION["cart_total_cost"]);
-        $stmt->bindValue("buyer_type", 5);
-        $stmt->bindValue("buyer_id", 20);
-        $stmt->bindValue("payment_option", strtoupper($_SESSION['payment_option']));
-        $stmt->execute();
-
         if (!App::isLoggedIn()) {
             $users = new Users();
             $username_check = $users->checkIfUsernameExists(strtoupper($_SESSION["billing_email_address"]));
@@ -91,6 +80,9 @@ class Transactions extends Database {
                 $createdby = "WEBSITE USER";
                 $individual_user_id = $users->getNextIndividualUserId();
                 $user_type_reference_id = $users->getUserTypeRefId("INDIVIDUAL USER");
+
+                $buyer_type = $user_type_reference_id;
+                $buyer_id = $individual_user_id;
 
                 //individual details
                 $sql = "INSERT INTO individual_users (firstname, lastname, gender, idnumber, createdby, lastmodifiedby)"
@@ -143,8 +135,28 @@ class Transactions extends Database {
 //                . "Powered by: <img style='vertical-align: middle;' src='http://www.kitambulisho.com/images/reflex_logo_black.png' width='50' alt='Reflex Concepts Logo'>"
                         . "</body></html>";
                 mail(strtoupper($_SESSION["billing_email_address"]), $subject, $message, $headers);
+            } else {
+                $users = new Users();
+                $user_login_details = $users->fetchUserLoginDetails(strtoupper($_SESSION["billing_email_address"]));
+                $buyer_type = $user_login_details['reference_type'];
+                $buyer_id = $user_login_details['reference_id'];
             }
+        } else {
+            $buyer_type = $_SESSION['login_user_type'];
+            $buyer_id = $_SESSION['userid'];
         }
+
+        $sql = "INSERT INTO transactions (id, amount, buyer_type, buyer_id, different_address, payment_option)"
+                . " VALUES (:transaction_id, :amount, :buyer_type, :buyer_id, :different_address, :payment_option)";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("transaction_id", $_SESSION["transaction_id"]);
+        $stmt->bindValue("amount", $_SESSION["cart_total_cost"]);
+        $stmt->bindValue("buyer_type", $buyer_type);
+        $stmt->bindValue("buyer_id", $buyer_id);
+        $stmt->bindValue("different_address", strtoupper($_SESSION["billing_different_address_value"]));
+        $stmt->bindValue("payment_option", strtoupper($_SESSION['payment_option']));
+        $stmt->execute();
+
         return true;
     }
 

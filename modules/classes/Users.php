@@ -232,6 +232,15 @@ class Users extends Database {
         return $info[0];
     }
 
+    public function fetchUserLoginDetails($code) {
+        $sql = "SELECT * FROM user_logs WHERE username=:code";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindParam("code", $code);
+        $stmt->execute();
+        $info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $info[0];
+    }
+
     public function fetchSystemAdministratorDetails($code) {
         $sql = "SELECT * FROM system_administrators WHERE id=:code";
         $stmt = $this->prepareQuery($sql);

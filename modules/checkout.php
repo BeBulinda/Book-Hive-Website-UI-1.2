@@ -151,7 +151,68 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                 <div class="check-billing">
                                     <div class="form-my-account">
                                         <h2 class="title18">Billing Details</h2>
-                                        <?php if (App::isLoggedIn()) { ?>                                        
+                                        <?php
+                                        if (App::isLoggedIn()) {
+
+//                                            if ($_SESSION['logged_in_user_type_details']['name'] == "STAFF") {
+//                                                $firstname = $_SESSION['user_details']['firstname'];
+//                                                $lastname = $_SESSION['user_details']['lastname'];
+//                                                $id_passport_number = $_SESSION['user_details']['firstname'];
+//                                                $phone_number = $_SESSION['contacts']['lastname'];
+//                                                $email_address = $_SESSION['contacts']['firstname'];
+//                                                $gender = $_SESSION['user_details']['gender'];
+//                                            } else if ($_SESSION['logged_in_user_type_details']['name'] == "PUBLISHER") {
+//                                                $firstname = $_SESSION['user_details']['firstname'];
+//                                                $lastname = $_SESSION['user_details']['lastname'];
+//                                                $id_passport_number = $_SESSION['user_details']['firstname'];
+//                                                $phone_number = $_SESSION['contacts']['lastname'];
+//                                                $email_address = $_SESSION['contacts']['firstname'];
+//                                                $gender = $_SESSION['user_details']['gender'];
+//                                            } else if ($_SESSION['logged_in_user_type_details']['name'] == "SELF PUBLISHER") {
+//                                                $firstname = $_SESSION['user_details']['firstname'];
+//                                                $lastname = $_SESSION['user_details']['lastname'];
+//                                                $id_passport_number = $_SESSION['user_details']['firstname'];
+//                                                $phone_number = $_SESSION['contacts']['lastname'];
+//                                                $email_address = $_SESSION['contacts']['firstname'];
+//                                                $gender = $_SESSION['user_details']['gender'];
+//                                            } else if ($_SESSION['logged_in_user_type_details']['name'] == "BOOK SELLER") {
+//                                                $firstname = $_SESSION['user_details']['firstname'];
+//                                                $lastname = $_SESSION['user_details']['lastname'];
+//                                                $id_passport_number = $_SESSION['user_details']['firstname'];
+//                                                $phone_number = $_SESSION['contacts']['lastname'];
+//                                                $email_address = $_SESSION['contacts']['firstname'];
+//                                                $gender = $_SESSION['user_details']['gender'];
+//                                            } else if ($_SESSION['logged_in_user_type_details']['name'] == "INDIVIDUAL USER") {
+//                                                $firstname = $_SESSION['user_details']['firstname'];
+//                                                $lastname = $_SESSION['user_details']['lastname'];
+//                                                $id_passport_number = $_SESSION['user_details']['firstname'];
+//                                                $phone_number = $_SESSION['contacts']['lastname'];
+//                                                $email_address = $_SESSION['contacts']['firstname'];
+//                                                $gender = $_SESSION['user_details']['gender'];
+//                                            } else if ($_SESSION['logged_in_user_type_details']['name'] == "CORPORATE") {
+//                                                $firstname = $_SESSION['user_details']['firstname'];
+//                                                $lastname = $_SESSION['user_details']['lastname'];
+//                                                $id_passport_number = $_SESSION['user_details']['firstname'];
+//                                                $phone_number = $_SESSION['contacts']['lastname'];
+//                                                $email_address = $_SESSION['contacts']['firstname'];
+//                                                $gender = $_SESSION['user_details']['gender'];
+//                                            } else if ($_SESSION['logged_in_user_type_details']['name'] == "SCHOOL") {
+//                                                $firstname = $_SESSION['user_details']['firstname'];
+//                                                $lastname = $_SESSION['user_details']['lastname'];
+//                                                $id_passport_number = $_SESSION['user_details']['firstname'];
+//                                                $phone_number = $_SESSION['contacts']['lastname'];
+//                                                $email_address = $_SESSION['contacts']['firstname'];
+//                                                $gender = $_SESSION['user_details']['gender'];
+//                                            } else if ($_SESSION['logged_in_user_type_details']['name'] == "BOOKHIVE") {
+//                                                $firstname = $_SESSION['user_details']['firstname'];
+//                                                $lastname = $_SESSION['user_details']['lastname'];
+//                                                $id_passport_number = $_SESSION['user_details']['firstname'];
+//                                                $phone_number = $_SESSION['contacts']['lastname'];
+//                                                $email_address = $_SESSION['contacts']['firstname'];
+//                                                $gender = $_SESSION['user_details']['gender'];
+//                                            }
+
+                                            ?>                                        
                                             <p class="clearfix box-col2">                                            
                                                 <input type="text" name="firstname" value="<?php echo $_SESSION['user_details']['firstname']; ?>" placeholder="First Name *" readonly="yes"/>
                                                 <input type="text" name="lastname" value="<?php echo $_SESSION['user_details']['lastname']; ?>" placeholder="Last Name *" readonly="yes"/>
@@ -164,7 +225,7 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                                 <input type="email" name="email_address" value="<?php echo $_SESSION['contacts']['email']; ?>" placeholder="Email *" readonly="yes"/>
                                             </p>    
                                             <p>    
-                                                <input type="text" name="gender" value="XXXXXX<?php // echo $_SESSION['user_details']['gender'];   ?>" placeholder="Gender *" readonly="yes"/>
+                                                <input type="text" name="gender" value="XXXXXX<?php // echo $_SESSION['user_details']['gender'];      ?>" placeholder="Gender *" readonly="yes"/>
                                             </p>
                                             <p>
                                                 <input type="hidden" name="company_name" value="Reflex Concepts Ltd"/>
@@ -175,7 +236,7 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                                 <input type="text" name="lastname" placeholder="Last Name *" required=""/>
                                             </p>
                                             <p class="clearfix box-col2">
-                                                <input type="text" name="id_passport_number" placeholder="ID/Passport Number*" required=""/>
+                                                <input type="text" name="id_passport_number" placeholder="ID/Passport Number*"/>
                                                 <input type="text" name="phone_number" placeholder="Phone *" required=""/>
                                             </p>
                                             <p>
@@ -191,9 +252,9 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                             <p>
                                                 <input type="text" name="company_name" placeholder="Company Name *"/>
                                             </p>
-                                            <p>
+<!--                                            <p>
                                                 <input type="checkbox" name="create_account" value="Yes" /> <label for="remember">Create an account?</label>
-                                            </p>
+                                            </p>-->
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -202,12 +263,13 @@ if (!empty($_POST) AND $_POST['action'] == "checkout_transaction") {
                                 <div class="check-address">
                                     <div class="form-my-account">
                                         <p class="ship-address">
-                                            <input type="checkbox" name="different_address" value="Yes" /> <label for="address">Deliver to a different address?</label>
+                                            <!--<input type="checkbox" name="different_address" value="Yes" />--> 
+                                            <label for="address">Deliver to a different address?</label>
                                         </p>
                                         <p>
                                             <textarea name="different_address_value" cols="30" rows="10" onblur="if (this.value == '')
                                                         this.value = this.defaultValue" onfocus="if (this.value == this.defaultValue)
-                                                                    this.value = ''">Order Notes</textarea>
+                                                        this.value = ''" placeholder="Order Notes"></textarea>
                                         </p>
                                     </div>
                                 </div>		
