@@ -36,7 +36,26 @@ if (is_menu_set('home') != "") {
 } else if (is_menu_set('confirm_delivery') != "") {
     $currentPage = WPATH . "modules/confirm_delivery.php";
     set_title("Bookhive | Confirm Delivery");
-}
+} else if (is_menu_set('registering') != "") {
+    $currentPage = WPATH . "modules/registering.php";
+    set_title("Bookhive | Registration");
+} else if (is_menu_set('registering_self_publisher') != "") {
+    $currentPage = WPATH . "modules/registering_self_publisher.php";
+    set_title("Bookhive | Self Publisher Registration");
+} else if (is_menu_set('registering_individual_user') != "") {
+    $currentPage = WPATH . "modules/registering_individual_user.php";
+    set_title("Bookhive | Individual Registration");
+} else if (is_menu_set('registering_book_seller') != "") {
+    $currentPage = WPATH . "modules/registering_book_seller.php";
+    set_title("Bookhive | Book Seller Registration");
+} else if (is_menu_set('registering_corporate') != "") {
+    $currentPage = WPATH . "modules/registering_corporate.php";
+    set_title("Bookhive | Corporate Registration");
+} else if (is_menu_set('registering_school') != "") {
+    $currentPage = WPATH . "modules/registering_school.php";
+    set_title("Bookhive | School Registration");
+} 
+
 
 /** An alternative to product page * */
 //else if ( is_menu_set('detail') != ""){

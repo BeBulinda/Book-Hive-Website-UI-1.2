@@ -74,7 +74,9 @@ class Users extends Database {
             return $this->addContact();
         } else if ($_POST['action'] == "edit_contact") {
             return $this->editContact();
-        } else if ($_POST['action'] == "add_privilege_to_role") {
+        }  else if ($_POST['action'] == "confirmUsername") {
+            return $this->confirmUsername();
+        }  else if ($_POST['action'] == "add_privilege_to_role") {
             return $this->addPrivilegeToRole();
         }
     }
@@ -88,6 +90,20 @@ class Users extends Database {
         if (count($data) == 0) {
             return false;
         } else {
+            return true;
+        }
+    }
+    
+    public function confirmUsername() {
+        $sql = "SELECT * FROM user_logs WHERE username=:username";
+        $stmt = $this->prepareQuery($sql);
+        $stmt->bindValue("username", strtoupper($_POST['username']));
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($data) {
+            echo '<p class="warning">The email exists. Use a different email.</p>';
+        } else {
+            $_SESSION['username'] = $_POST['username'];
             return true;
         }
     }

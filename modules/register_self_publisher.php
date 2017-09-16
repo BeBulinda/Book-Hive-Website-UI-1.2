@@ -57,7 +57,12 @@ if (!empty($_POST)) {
                             </div>
                             <div class="col-md-3 col-sm-4 col-xs-12">
                                 <label class="control-label" for="email">Email<sup>*</sup></label>
-                                <input type="email" name="email" placeholder="Email Address" required="true">
+                                <input type="email" name="email" placeholder="Email Address" value="<?php
+                                if (isset($_SESSION['username'])) {
+                                    echo $_SESSION['username'];
+                                } else
+                                    echo 'Session Unset';
+                                ?>" readonly="">
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <textarea name="description" cols="30" rows="8" placeholder="Description"></textarea>
