@@ -185,8 +185,8 @@ class Users extends Database {
                 $_SESSION['profile_link'] = "?view_system_administrators_individual&code=" . $_SESSION['userid'];
                 $_SESSION['contacts'] = $this->fetchIndividualContactDetails($_SESSION['login_user_type'], $_SESSION['userid']);
             } else if ($_SESSION['logged_in_user_type_details']['name'] == "INDIVIDUAL USER") {
-                $_SESSION['user_details'] = $this->fetchSystemAdministratorDetails($_SESSION['userid']);
-                $_SESSION['profile_link'] = "?view_system_administrators_individual&code=" . $_SESSION['userid'];
+                $_SESSION['user_details'] = $this->fetchIndividualUserDetails($_SESSION['userid']);
+                $_SESSION['profile_link'] = "?view_individual_users_individual&code=" . $_SESSION['userid'];
                 $_SESSION['contacts'] = $this->fetchIndividualContactDetails($_SESSION['login_user_type'], $_SESSION['userid']);
             } else if ($_SESSION['logged_in_user_type_details']['name'] == "CORPORATE") {
                 $_SESSION['user_details'] = $this->fetchSystemAdministratorDetails2($_SESSION['logged_in_user_details']['reference_type'], $_SESSION['logged_in_user_details']['reference_id']);
