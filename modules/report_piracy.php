@@ -45,7 +45,16 @@ if (!empty($_POST)) {
                 <div class="form-contact">
                     <form method="post" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="add_piracy_report"/>
-                        <input type="hidden" name="reporter_type" value="2"/>
+                        
+                        <?php 
+                        if (isset($_SESSION['logged_in_user_type_details'])) {
+                            $reporter_type = $_SESSION['logged_in_user_type_details']['name'];
+                        } else {
+                            $reporter_type = "GUEST USER";
+                        }
+                        ?>
+                        
+                        <input type="hidden" name="reporter_type" value="<?php echo $reporter_type; ?>"/>
                         <input type="hidden" name="createdby" value="<?php echo 01; //  echo $_SESSION['userid'];            ?>"/>
                         <h5>Kindly fill in the below details:</h5>
                         <div class="row">
